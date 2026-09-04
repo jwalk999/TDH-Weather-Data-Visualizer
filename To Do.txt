@@ -1,0 +1,23 @@
+Main Goals:
+
+1. Create a GUI
+    - allow the user to change location, dates, and units with simple interface
+    - create profiles for different regions
+    - 
+2. Implement more weather types (precipitation, etc.)
+3. Find another API to use for forecasting (meteostat can only show historical data)
+4. Allow for severe weather alerts to be displayed to the user
+
+
+
+Side Goals: (after 1.0?)
+
+1. Implement into a program that can run multiple times throughout the day to stay up to date
+2. Add side program that tracks space weather (sun spots)
+
+Future Program Ideas:
+
+1. Celestial object tracker
+    - show the positions of Earth satellites, far space satellites, planets, and what cool things are visible in the night sky on certain dates
+2. NASA tracker
+    - implement cool data, pictures, and discoveries
