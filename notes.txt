@@ -1,0 +1,10 @@
+Building a program to collect and display weather data for a specific area.
+
+Dependencies:
+    - meteostat
+    - matplotlib
+    - pandas
+
+
+    jupyter notebook
+        -ipynb file 
