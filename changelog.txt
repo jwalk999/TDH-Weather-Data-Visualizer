@@ -1,0 +1,13 @@
+v0.1.0 - original alpha release
+    - added graph to plot yesterday's temperatures in Fehrenheit
+
+v0.2.0
+    - added graph to plot monthly normal temperatures for comparison
+    - changed save command to not run if the files are already present
+    - added changelog file
+    - graphs now have color and are more visually appealing
+    - changed the minimum temperature for the hourly graph to 30 degrees
+    - added LaGuardia Airport, NYC to the station id as an example
+    - removed unnecessary files
+    - added location name to the graph, changes when location_name var is changed
+    - !turned down the temperature!
