@@ -11,3 +11,13 @@ v0.2.0
     - removed unnecessary files
     - added location name to the graph, changes when location_name var is changed
     - !turned down the temperature!
+
+v0.3.0
+    - separated the scripts that collects the data and turns it into graphs
+        - looks cleaner and runs more efficiently
+    - changed the main data collection script into a callable function with station id and location name as parameters
+    - changed the climate normals graph script to only run if the user hasn't ran it before
+        - checks for the norms file in documents and skips it if it exists
+    - added another graph script to create a precipitation graph with the same parameters as temperature graph
+        - sometimes it doesn't rain, made sure that a blank graph is not generated
+    - !turned down the temperature!

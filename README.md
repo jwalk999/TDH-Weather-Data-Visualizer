@@ -8,18 +8,23 @@ In it's current state, it runs a .py file to get the current date, then uses tha
 The data is then turned into a viewable line graph, it is saved to the user's pc automatically and is named using the date for a unique identifier.
 The program now creates a temperature normals graph for the specific location between the years 1990 to 2026
 
+
+v0.3.0 - The script is now separated into two parts for ease of use. The user can now write their own scripts using the function get_weather_data from weather_script1.py
+
+:)
+
 To use:
 
-    1. Open weather_data.py in a text editor
-    2. Go to lines 25, 30, 58
-        change US/EASTERN and EASTERN identifiers to your specific Time Zone (https://docs.python.org/3/library/datetime.html#timezone-objects)
-    3. Go to line 58
-        change location_name to the name of the City you are collecting data from
-    4. Find line 59 and 69, and edit id="*****" to the specific weather station you want to target
-        info available on https://meteostat.net/en/
-        search for your target city and pick a weather station
-    5. Run weather_data.py
-    6. The created graph will open in a separate window, you can find the saved version at C:\Users*USERNAME*\Documents\Too Damn Hot!\weather_charts\temp_chart_date
-        Note: graphs will not save if there are already graphs of the same name, this is to ensure you aren't saving a hundred of the same graph
+    1. Open weather_script1.py
+    2. Line 19: change 'station_id' to the id corresponding to your selected location's id
+        - info found on https://meteostat.net
+    3. Change 'location_name' to the name of the city you are searching
+    4. Run graphs.py
 
-info: The day is plotted on a line graph and shows points for specific times (hourly increments) only if data for that time exists in meteostat's database.
+
+notes: 
+    - The day is plotted on a line graph and shows points for specific times (hourly increments) only if data for that time exists in meteostat's database.
+
+    - The climate norms chart will only run the first time, it will skip itself as long as the climate norms file exists in your documents\Too Damn Hot\weather_charts folder.
+
+    - The hourly temperatures chart script will continue to run, but will only save if the file for that day hasn't been saved yet.
