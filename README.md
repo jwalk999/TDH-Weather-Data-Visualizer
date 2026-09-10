@@ -1,9 +1,6 @@
 # TDH-Weather-Data-Visualizer
 Too Damn Hot is a python-based weather data visualization tool.
 
-
-Too Damn Hot is a python-based weather data visualization tool.
-
 In it's current state, it runs a .py file to get the current date, then uses that to connect to the meteostat library to get weather data from a selected weather station or geographical location. 
 The data is then turned into a viewable line graph, it is saved to the user's pc automatically and is named using the date for a unique identifier.
 The program now creates a temperature normals graph for the specific location between the years 1990 to 2026
