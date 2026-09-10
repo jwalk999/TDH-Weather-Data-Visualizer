@@ -23,6 +23,7 @@ To use:
 
 
 notes: 
+
     - The day is plotted on a line graph and shows points for specific times (hourly increments) only if data for that time exists in meteostat's database.
 
     - The climate norms chart will only run the first time, it will skip itself as long as the climate norms file exists in your documents\Too Damn Hot\weather_charts folder.
