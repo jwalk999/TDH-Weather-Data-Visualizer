@@ -26,3 +26,6 @@ notes:
     - The climate norms chart will only run the first time, it will skip itself as long as the climate norms file exists in your documents\Too Damn Hot\weather_charts folder.
 
     - The hourly temperatures chart script will continue to run, but will only save if the file for that day hasn't been saved yet.
+
+
+source: Source: Meteostat, Deutscher Wetterdienst
