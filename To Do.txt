@@ -15,6 +15,16 @@ Side Goals: (after 1.0?)
 1. Implement into a program that can run multiple times throughout the day to stay up to date
 2. Add side program that tracks space weather (sun spots)
 
+
+Interesting Repos to explore:
+1. https://github.com/pxl-ui/weather-i18n 
+    - integrate weather code translations with icons and descriptions
+
+
+
+
+
+
 Future Program Ideas:
 
 1. Celestial object tracker
