@@ -1,0 +1,2483 @@
+Help Function
+Help on package meteostat:
+
+NAME
+    meteostat
+
+DESCRIPTION
+    █▀▄▀█ █▀▀ ▀█▀ █▀▀ █▀█ █▀ ▀█▀ ▄▀█ ▀█▀
+    █░▀░█ ██▄ ░█░ ██▄ █▄█ ▄█ ░█░ █▀█ ░█░
+
+    A Python library for accessing open weather and climate data.
+
+    Meteorological data provided by Meteostat (https://dev.meteostat.net)
+    under the terms of the Creative Commons Attribution 4.0 International
+    License.
+
+    The code is licensed under the MIT license.
+
+PACKAGE CONTENTS
+    api (package)
+    enumerations
+    interpolation (package)
+    parameters
+    providers (package)
+    typing
+    utils (package)
+
+SUBMODULES
+    core
+
+CLASSES
+    builtins.object
+        meteostat.api.inventory.Inventory
+        meteostat.api.point.Point
+        meteostat.api.timeseries.TimeSeries
+        meteostat.typing.License
+        meteostat.typing.Station
+    enum.StrEnum(builtins.str, enum.ReprEnum)
+        meteostat.enumerations.Granularity
+        meteostat.enumerations.Parameter
+        meteostat.enumerations.Provider
+        meteostat.enumerations.UnitSystem
+
+    class Granularity(enum.StrEnum)
+     |  Granularity(*values)
+     |
+     |  The different levels of time series granularity
+     |
+     |  Method resolution order:
+     |      Granularity
+     |      enum.StrEnum
+     |      builtins.str
+     |      enum.ReprEnum
+     |      enum.Enum
+     |      builtins.object
+     |
+     |  Methods defined here:
+     |
+     |  __format__(self, format_spec, /) from builtins.str
+     |      Return a formatted version of the string as described by format_spec.
+     |
+     |  __new__(cls, value) from enum.Enum
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |
+     |  __str__(self, /) from builtins.str
+     |      Return str(self).
+     |
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |
+     |  DAILY = <Granularity.DAILY: 'daily'>
+     |
+     |  HOURLY = <Granularity.HOURLY: 'hourly'>
+     |
+     |  MONTHLY = <Granularity.MONTHLY: 'monthly'>
+     |
+     |  NORMALS = <Granularity.NORMALS: 'normals'>
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from enum.StrEnum:
+     |
+     |  __repr__(self) from enum.Enum
+     |      Return repr(self).
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.str:
+     |
+     |  __add__(self, value, /)
+     |      Return self+value.
+     |
+     |  __contains__(self, key, /)
+     |      Return bool(key in self).
+     |
+     |  __eq__(self, value, /)
+     |      Return self==value.
+     |
+     |  __ge__(self, value, /)
+     |      Return self>=value.
+     |
+     |  __getitem__(self, key, /)
+     |      Return self[key].
+     |
+     |  __getnewargs__(self, /)
+     |
+     |  __gt__(self, value, /)
+     |      Return self>value.
+     |
+     |  __hash__(self, /)
+     |      Return hash(self).
+     |
+     |  __iter__(self, /)
+     |      Implement iter(self).
+     |
+     |  __le__(self, value, /)
+     |      Return self<=value.
+     |
+     |  __len__(self, /)
+     |      Return len(self).
+     |
+     |  __lt__(self, value, /)
+     |      Return self<value.
+     |
+     |  __mod__(self, value, /)
+     |      Return self%value.
+     |
+     |  __mul__(self, value, /)
+     |      Return self*value.
+     |
+     |  __ne__(self, value, /)
+     |      Return self!=value.
+     |
+     |  __rmod__(self, value, /)
+     |      Return value%self.
+     |
+     |  __rmul__(self, value, /)
+     |      Return value*self.
+     |
+     |  __sizeof__(self, /)
+     |      Return the size of the string in memory, in bytes.
+     |
+     |  capitalize(self, /)
+     |      Return a capitalized version of the string.
+     |
+     |      More specifically, make the first character have upper case and the
+     |      rest lower case.
+     |
+     |  casefold(self, /)
+     |      Return a version of the string suitable for caseless comparisons.
+     |
+     |  center(self, width, fillchar=' ', /)
+     |      Return a centered string of length width.
+     |
+     |      Padding is done using the specified fill character (default is
+     |      a space).
+     |
+     |  count(self, sub[, start[, end]], /)
+     |      Return the number of non-overlapping occurrences of substring sub in string S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.
+     |
+     |  encode(self, /, encoding='utf-8', errors='strict')
+     |      Encode the string using the codec registered for encoding.
+     |
+     |      encoding
+     |        The encoding in which to encode the string.
+     |      errors
+     |        The error handling scheme to use for encoding errors.
+     |        The default is 'strict' meaning that encoding errors raise a
+     |        UnicodeEncodeError.  Other possible values are 'ignore', 'replace'
+     |        and 'xmlcharrefreplace' as well as any other name registered with
+     |        codecs.register_error that can handle UnicodeEncodeErrors.
+     |
+     |  endswith(self, suffix[, start[, end]], /)
+     |      Return True if the string ends with the specified suffix, False otherwise.
+     |
+     |      suffix
+     |        A string or a tuple of strings to try.
+     |      start
+     |        Optional start position. Default: start of the string.
+     |      end
+     |        Optional stop position. Default: end of the string.
+     |
+     |  expandtabs(self, /, tabsize=8)
+     |      Return a copy where all tab characters are expanded using spaces.
+     |
+     |      If tabsize is not given, a tab size of 8 characters is assumed.
+     |
+     |  find(self, sub[, start[, end]], /)
+     |      Return the lowest index in S where substring sub is found, such that sub is contained within S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.  Return -1 on failure.
+     |
+     |  format(self, /, *args, **kwargs)
+     |      Return a formatted version of the string, using substitutions from args and kwargs.
+     |      The substitutions are identified by braces ('{' and '}').
+     |
+     |  format_map(self, mapping, /)
+     |      Return a formatted version of the string, using substitutions from mapping.
+     |      The substitutions are identified by braces ('{' and '}').
+     |
+     |  index(self, sub[, start[, end]], /)
+     |      Return the lowest index in S where substring sub is found, such that sub is contained within S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.  Raises ValueError when the substring is not found.
+     |
+     |  isalnum(self, /)
+     |      Return True if the string is an alpha-numeric string, False otherwise.
+     |
+     |      A string is alpha-numeric if all characters in the string are
+     |      alpha-numeric and there is at least one character in the string.
+     |
+     |  isalpha(self, /)
+     |      Return True if the string is an alphabetic string, False otherwise.
+     |
+     |      A string is alphabetic if all characters in the string are
+     |      alphabetic and there is at least one character in the string.
+     |
+     |  isascii(self, /)
+     |      Return True if all characters in the string are ASCII, False otherwise.
+     |
+     |      ASCII characters have code points in the range U+0000-U+007F.
+     |      Empty string is ASCII too.
+     |
+     |  isdecimal(self, /)
+     |      Return True if the string is a decimal string, False otherwise.
+     |
+     |      A string is a decimal string if all characters in the string are
+     |      decimal and there is at least one character in the string.
+     |
+     |  isdigit(self, /)
+     |      Return True if the string is a digit string, False otherwise.
+     |
+     |      A string is a digit string if all characters in the string are
+     |      digits and there is at least one character in the string.
+     |
+     |  isidentifier(self, /)
+     |      Return True if the string is a valid Python identifier, False otherwise.
+     |
+     |      Call keyword.iskeyword(s) to test whether string s is a reserved
+     |      identifier, such as "def" or "class".
+     |
+     |  islower(self, /)
+     |      Return True if the string is a lowercase string, False otherwise.
+     |
+     |      A string is lowercase if all cased characters in the string are
+     |      lowercase and there is at least one cased character in the string.
+     |
+     |  isnumeric(self, /)
+     |      Return True if the string is a numeric string, False otherwise.
+     |
+     |      A string is numeric if all characters in the string are numeric and
+     |      there is at least one character in the string.
+     |
+     |  isprintable(self, /)
+     |      Return True if all characters in the string are printable, False otherwise.
+     |
+     |      A character is printable if repr() may use it in its output.
+     |
+     |  isspace(self, /)
+     |      Return True if the string is a whitespace string, False otherwise.
+     |
+     |      A string is whitespace if all characters in the string are
+     |      whitespace and there is at least one character in the string.
+     |
+     |  istitle(self, /)
+     |      Return True if the string is a title-cased string, False otherwise.
+     |
+     |      In a title-cased string, upper- and title-case characters may only
+     |      follow uncased characters and lowercase characters only cased ones.
+     |
+     |  isupper(self, /)
+     |      Return True if the string is an uppercase string, False otherwise.
+     |
+     |      A string is uppercase if all cased characters in the string are
+     |      uppercase and there is at least one cased character in the string.
+     |
+     |  join(self, iterable, /)
+     |      Concatenate any number of strings.
+     |
+     |      The string whose method is called is inserted in between each given
+     |      string.  The result is returned as a new string.
+     |
+     |      Example: '.'.join(['ab', 'pq', 'rs']) -> 'ab.pq.rs'
+     |
+     |  ljust(self, width, fillchar=' ', /)
+     |      Return a left-justified string of length width.
+     |
+     |      Padding is done using the specified fill character (default is
+     |      a space).
+     |
+     |  lower(self, /)
+     |      Return a copy of the string converted to lowercase.
+     |
+     |  lstrip(self, chars=None, /)
+     |      Return a copy of the string with leading whitespace removed.
+     |
+     |      If chars is given and not None, remove characters in chars instead.
+     |
+     |  partition(self, sep, /)
+     |      Partition the string into three parts using the given separator.
+     |
+     |      This will search for the separator in the string.  If the separator
+     |      is found, returns a 3-tuple containing the part before the
+     |      separator, the separator itself, and the part after it.
+     |
+     |      If the separator is not found, returns a 3-tuple containing
+     |      the original string and two empty strings.
+     |
+     |  removeprefix(self, prefix, /)
+     |      Return a str with the given prefix string removed if present.
+     |
+     |      If the string starts with the prefix string, return
+     |      string[len(prefix):].  Otherwise, return a copy of the original
+     |      string.
+     |
+     |  removesuffix(self, suffix, /)
+     |      Return a str with the given suffix string removed if present.
+     |
+     |      If the string ends with the suffix string and that suffix is not
+     |      empty, return string[:-len(suffix)].  Otherwise, return a copy of
+     |      the original string.
+     |
+     |  replace(self, old, new, /, count=-1)
+     |      Return a copy with all occurrences of substring old replaced by new.
+     |
+     |        count
+     |          Maximum number of occurrences to replace.
+     |          -1 (the default value) means replace all occurrences.
+     |
+     |      If the optional argument count is given, only the first count occurrences are
+     |      replaced.
+     |
+     |  rfind(self, sub[, start[, end]], /)
+     |      Return the highest index in S where substring sub is found, such that sub is contained within S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.  Return -1 on failure.
+     |
+     |  rindex(self, sub[, start[, end]], /)
+     |      Return the highest index in S where substring sub is found, such that sub is contained within S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.  Raises ValueError when the substring is not found.
+     |
+     |  rjust(self, width, fillchar=' ', /)
+     |      Return a right-justified string of length width.
+     |
+     |      Padding is done using the specified fill character (default is
+     |      a space).
+     |
+     |  rpartition(self, sep, /)
+     |      Partition the string into three parts using the given separator.
+     |
+     |      This will search for the separator in the string, starting at the
+     |      end.  If the separator is found, returns a 3-tuple containing the
+     |      part before the separator, the separator itself, and the part after
+     |      it.
+     |
+     |      If the separator is not found, returns a 3-tuple containing two
+     |      empty strings and the original string.
+     |
+     |  rsplit(self, /, sep=None, maxsplit=-1)
+     |      Return a list of the substrings in the string, using sep as the separator string.
+     |
+     |        sep
+     |          The separator used to split the string.
+     |
+     |          When set to None (the default value), will split on any
+     |          whitespace character (including \n \r \t \f and spaces) and
+     |          will discard empty strings from the result.
+     |        maxsplit
+     |          Maximum number of splits.
+     |          -1 (the default value) means no limit.
+     |
+     |      Splitting starts at the end of the string and works to the front.
+     |
+     |  rstrip(self, chars=None, /)
+     |      Return a copy of the string with trailing whitespace removed.
+     |
+     |      If chars is given and not None, remove characters in chars instead.
+     |
+     |  split(self, /, sep=None, maxsplit=-1)
+     |      Return a list of the substrings in the string, using sep as the separator string.
+     |
+     |        sep
+     |          The separator used to split the string.
+     |
+     |          When set to None (the default value), will split on any
+     |          whitespace character (including \n \r \t \f and spaces) and
+     |          will discard empty strings from the result.
+     |        maxsplit
+     |          Maximum number of splits.
+     |          -1 (the default value) means no limit.
+     |
+     |      Splitting starts at the front of the string and works to the end.
+     |
+     |      Note, str.split() is mainly useful for data that has been
+     |      intentionally delimited.  With natural text that includes
+     |      punctuation, consider using the regular expression module.
+     |
+     |  splitlines(self, /, keepends=False)
+     |      Return a list of the lines in the string, breaking at line boundaries.
+     |
+     |      Line breaks are not included in the resulting list unless keepends
+     |      is given and true.
+     |
+     |  startswith(self, prefix[, start[, end]], /)
+     |      Return True if the string starts with the specified prefix, False otherwise.
+     |
+     |      prefix
+     |        A string or a tuple of strings to try.
+     |      start
+     |        Optional start position. Default: start of the string.
+     |      end
+     |        Optional stop position. Default: end of the string.
+     |
+     |  strip(self, chars=None, /)
+     |      Return a copy of the string with leading and trailing whitespace removed.
+     |
+     |      If chars is given and not None, remove characters in chars instead.
+     |
+     |  swapcase(self, /)
+     |      Convert uppercase characters to lowercase and lowercase characters to uppercase.
+     |
+     |  title(self, /)
+     |      Return a version of the string where each word is titlecased.
+     |
+     |      More specifically, words start with uppercased characters and all
+     |      remaining cased characters have lower case.
+     |
+     |  translate(self, table, /)
+     |      Replace each character in the string using the given translation table.
+     |
+     |        table
+     |          Translation table, which must be a mapping of Unicode ordinals
+     |          to Unicode ordinals, strings, or None.
+     |
+     |      The table must implement lookup/indexing via __getitem__, for
+     |      instance a dictionary or list.  If this operation raises
+     |      LookupError, the character is left untouched.  Characters mapped to
+     |      None are deleted.
+     |
+     |  upper(self, /)
+     |      Return a copy of the string converted to uppercase.
+     |
+     |  zfill(self, width, /)
+     |      Pad a numeric string with zeros on the left, to fill a field of the given width.
+     |
+     |      The string is never truncated.
+     |
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from builtins.str:
+     |
+     |  maketrans(x, y=<unrepresentable>, z=<unrepresentable>, /)
+     |      Return a translation table usable for str.translate().
+     |
+     |      If there is only one argument, it must be a dictionary mapping
+     |      Unicode ordinals (integers) or characters to Unicode ordinals,
+     |      strings or None.  Character keys will be then converted to ordinals.
+     |      If there are two arguments, they must be strings of equal length,
+     |      and in the resulting dictionary, each character in x will be mapped
+     |      to the character at the same position in y.  If there is a third
+     |      argument, it must be a string, whose characters will be mapped to
+     |      None in the result.
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from enum.Enum:
+     |
+     |  __dir__(self)
+     |      Returns public methods and other interesting attributes.
+     |
+     |  __reduce_ex__(self, proto)
+     |      Helper for pickle.
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from enum.Enum:
+     |
+     |  name
+     |      The name of the Enum member.
+     |
+     |  value
+     |      The value of the Enum member.
+     |
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from enum.EnumType:
+     |
+     |  __members__
+     |      Returns a mapping of member name->value.
+     |
+     |      This mapping lists all enum members, including aliases.  Note that
+     |      this is a read-only view of the internal mapping.
+
+    class Inventory(builtins.object)
+     |  Inventory(df: Optional[pd.DataFrame] = None)
+     |
+     |  A weather station's data inventory
+     |
+     |  Methods defined here:
+     |
+     |  __init__(self, df: Optional[pd.DataFrame] = None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |
+     |  end
+     |      Get the latest end date from the inventory
+     |
+     |  parameters
+     |      Get the list of available parameters from the inventory
+     |
+     |  start
+     |      Get the earliest start date from the inventory
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |
+     |  __dict__
+     |      dictionary for instance variables
+     |
+     |  __weakref__
+     |      list of weak references to the object
+     |
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |
+     |  df = None
+
+    class License(builtins.object)
+     |  License(
+     |      commercial: bool,
+     |      attribution: Optional[str] = None,
+     |      name: Optional[str] = None,
+     |      url: Optional[str] = None
+     |  ) -> None
+     |
+     |  A license
+     |
+     |  Methods defined here:
+     |
+     |  __eq__(self, other)
+     |      Return self==value.
+     |
+     |  __init__(
+     |      self,
+     |      commercial: bool,
+     |      attribution: Optional[str] = None,
+     |      name: Optional[str] = None,
+     |      url: Optional[str] = None
+     |  ) -> None
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |
+     |  __replace__ = _replace(self, /, **changes) from dataclasses
+     |
+     |  __repr__(self)
+     |      Return repr(self).
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |
+     |  __dict__
+     |      dictionary for instance variables
+     |
+     |  __weakref__
+     |      list of weak references to the object
+     |
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |
+     |  __dataclass_fields__ = {'attribution': Field(name='attribution',type=s...
+     |
+     |  __dataclass_params__ = _DataclassParams(init=True,repr=True,eq=True,or...
+     |
+     |  __hash__ = None
+     |
+     |  __match_args__ = ('commercial', 'attribution', 'name', 'url')
+     |
+     |  attribution = None
+     |
+     |  name = None
+     |
+     |  url = None
+
+    class Parameter(enum.StrEnum)
+     |  Parameter(*values)
+     |
+     |  The different meteorological parameters supported by Meteostat
+     |
+     |  Method resolution order:
+     |      Parameter
+     |      enum.StrEnum
+     |      builtins.str
+     |      enum.ReprEnum
+     |      enum.Enum
+     |      builtins.object
+     |
+     |  Methods defined here:
+     |
+     |  __format__(self, format_spec, /) from builtins.str
+     |      Return a formatted version of the string as described by format_spec.
+     |
+     |  __new__(cls, value) from enum.Enum
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |
+     |  __str__(self, /) from builtins.str
+     |      Return str(self).
+     |
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |
+     |  CLDC = <Parameter.CLDC: 'cldc'>
+     |
+     |  COCO = <Parameter.COCO: 'coco'>
+     |
+     |  DWPT = <Parameter.DWPT: 'dwpt'>
+     |
+     |  PDAY = <Parameter.PDAY: 'pday'>
+     |
+     |  PRCP = <Parameter.PRCP: 'prcp'>
+     |
+     |  PRES = <Parameter.PRES: 'pres'>
+     |
+     |  RHUM = <Parameter.RHUM: 'rhum'>
+     |
+     |  SDHI = <Parameter.SDHI: 'sdhi'>
+     |
+     |  SDNI = <Parameter.SDNI: 'sdni'>
+     |
+     |  SGHI = <Parameter.SGHI: 'sghi'>
+     |
+     |  SNOW = <Parameter.SNOW: 'snow'>
+     |
+     |  SNWD = <Parameter.SNWD: 'snwd'>
+     |
+     |  TEMP = <Parameter.TEMP: 'temp'>
+     |
+     |  TMAX = <Parameter.TMAX: 'tmax'>
+     |
+     |  TMIN = <Parameter.TMIN: 'tmin'>
+     |
+     |  TSUN = <Parameter.TSUN: 'tsun'>
+     |
+     |  TXMN = <Parameter.TXMN: 'txmn'>
+     |
+     |  TXMX = <Parameter.TXMX: 'txmx'>
+     |
+     |  VSBY = <Parameter.VSBY: 'vsby'>
+     |
+     |  WDIR = <Parameter.WDIR: 'wdir'>
+     |
+     |  WPGT = <Parameter.WPGT: 'wpgt'>
+     |
+     |  WSPD = <Parameter.WSPD: 'wspd'>
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from enum.StrEnum:
+     |
+     |  __repr__(self) from enum.Enum
+     |      Return repr(self).
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.str:
+     |
+     |  __add__(self, value, /)
+     |      Return self+value.
+     |
+     |  __contains__(self, key, /)
+     |      Return bool(key in self).
+     |
+     |  __eq__(self, value, /)
+     |      Return self==value.
+     |
+     |  __ge__(self, value, /)
+     |      Return self>=value.
+     |
+     |  __getitem__(self, key, /)
+     |      Return self[key].
+     |
+     |  __getnewargs__(self, /)
+     |
+     |  __gt__(self, value, /)
+     |      Return self>value.
+     |
+     |  __hash__(self, /)
+     |      Return hash(self).
+     |
+     |  __iter__(self, /)
+     |      Implement iter(self).
+     |
+     |  __le__(self, value, /)
+     |      Return self<=value.
+     |
+     |  __len__(self, /)
+     |      Return len(self).
+     |
+     |  __lt__(self, value, /)
+     |      Return self<value.
+     |
+     |  __mod__(self, value, /)
+     |      Return self%value.
+     |
+     |  __mul__(self, value, /)
+     |      Return self*value.
+     |
+     |  __ne__(self, value, /)
+     |      Return self!=value.
+     |
+     |  __rmod__(self, value, /)
+     |      Return value%self.
+     |
+     |  __rmul__(self, value, /)
+     |      Return value*self.
+     |
+     |  __sizeof__(self, /)
+     |      Return the size of the string in memory, in bytes.
+     |
+     |  capitalize(self, /)
+     |      Return a capitalized version of the string.
+     |
+     |      More specifically, make the first character have upper case and the
+     |      rest lower case.
+     |
+     |  casefold(self, /)
+     |      Return a version of the string suitable for caseless comparisons.
+     |
+     |  center(self, width, fillchar=' ', /)
+     |      Return a centered string of length width.
+     |
+     |      Padding is done using the specified fill character (default is
+     |      a space).
+     |
+     |  count(self, sub[, start[, end]], /)
+     |      Return the number of non-overlapping occurrences of substring sub in string S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.
+     |
+     |  encode(self, /, encoding='utf-8', errors='strict')
+     |      Encode the string using the codec registered for encoding.
+     |
+     |      encoding
+     |        The encoding in which to encode the string.
+     |      errors
+     |        The error handling scheme to use for encoding errors.
+     |        The default is 'strict' meaning that encoding errors raise a
+     |        UnicodeEncodeError.  Other possible values are 'ignore', 'replace'
+     |        and 'xmlcharrefreplace' as well as any other name registered with
+     |        codecs.register_error that can handle UnicodeEncodeErrors.
+     |
+     |  endswith(self, suffix[, start[, end]], /)
+     |      Return True if the string ends with the specified suffix, False otherwise.
+     |
+     |      suffix
+     |        A string or a tuple of strings to try.
+     |      start
+     |        Optional start position. Default: start of the string.
+     |      end
+     |        Optional stop position. Default: end of the string.
+     |
+     |  expandtabs(self, /, tabsize=8)
+     |      Return a copy where all tab characters are expanded using spaces.
+     |
+     |      If tabsize is not given, a tab size of 8 characters is assumed.
+     |
+     |  find(self, sub[, start[, end]], /)
+     |      Return the lowest index in S where substring sub is found, such that sub is contained within S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.  Return -1 on failure.
+     |
+     |  format(self, /, *args, **kwargs)
+     |      Return a formatted version of the string, using substitutions from args and kwargs.
+     |      The substitutions are identified by braces ('{' and '}').
+     |
+     |  format_map(self, mapping, /)
+     |      Return a formatted version of the string, using substitutions from mapping.
+     |      The substitutions are identified by braces ('{' and '}').
+     |
+     |  index(self, sub[, start[, end]], /)
+     |      Return the lowest index in S where substring sub is found, such that sub is contained within S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.  Raises ValueError when the substring is not found.
+     |
+     |  isalnum(self, /)
+     |      Return True if the string is an alpha-numeric string, False otherwise.
+     |
+     |      A string is alpha-numeric if all characters in the string are
+     |      alpha-numeric and there is at least one character in the string.
+     |
+     |  isalpha(self, /)
+     |      Return True if the string is an alphabetic string, False otherwise.
+     |
+     |      A string is alphabetic if all characters in the string are
+     |      alphabetic and there is at least one character in the string.
+     |
+     |  isascii(self, /)
+     |      Return True if all characters in the string are ASCII, False otherwise.
+     |
+     |      ASCII characters have code points in the range U+0000-U+007F.
+     |      Empty string is ASCII too.
+     |
+     |  isdecimal(self, /)
+     |      Return True if the string is a decimal string, False otherwise.
+     |
+     |      A string is a decimal string if all characters in the string are
+     |      decimal and there is at least one character in the string.
+     |
+     |  isdigit(self, /)
+     |      Return True if the string is a digit string, False otherwise.
+     |
+     |      A string is a digit string if all characters in the string are
+     |      digits and there is at least one character in the string.
+     |
+     |  isidentifier(self, /)
+     |      Return True if the string is a valid Python identifier, False otherwise.
+     |
+     |      Call keyword.iskeyword(s) to test whether string s is a reserved
+     |      identifier, such as "def" or "class".
+     |
+     |  islower(self, /)
+     |      Return True if the string is a lowercase string, False otherwise.
+     |
+     |      A string is lowercase if all cased characters in the string are
+     |      lowercase and there is at least one cased character in the string.
+     |
+     |  isnumeric(self, /)
+     |      Return True if the string is a numeric string, False otherwise.
+     |
+     |      A string is numeric if all characters in the string are numeric and
+     |      there is at least one character in the string.
+     |
+     |  isprintable(self, /)
+     |      Return True if all characters in the string are printable, False otherwise.
+     |
+     |      A character is printable if repr() may use it in its output.
+     |
+     |  isspace(self, /)
+     |      Return True if the string is a whitespace string, False otherwise.
+     |
+     |      A string is whitespace if all characters in the string are
+     |      whitespace and there is at least one character in the string.
+     |
+     |  istitle(self, /)
+     |      Return True if the string is a title-cased string, False otherwise.
+     |
+     |      In a title-cased string, upper- and title-case characters may only
+     |      follow uncased characters and lowercase characters only cased ones.
+     |
+     |  isupper(self, /)
+     |      Return True if the string is an uppercase string, False otherwise.
+     |
+     |      A string is uppercase if all cased characters in the string are
+     |      uppercase and there is at least one cased character in the string.
+     |
+     |  join(self, iterable, /)
+     |      Concatenate any number of strings.
+     |
+     |      The string whose method is called is inserted in between each given
+     |      string.  The result is returned as a new string.
+     |
+     |      Example: '.'.join(['ab', 'pq', 'rs']) -> 'ab.pq.rs'
+     |
+     |  ljust(self, width, fillchar=' ', /)
+     |      Return a left-justified string of length width.
+     |
+     |      Padding is done using the specified fill character (default is
+     |      a space).
+     |
+     |  lower(self, /)
+     |      Return a copy of the string converted to lowercase.
+     |
+     |  lstrip(self, chars=None, /)
+     |      Return a copy of the string with leading whitespace removed.
+     |
+     |      If chars is given and not None, remove characters in chars instead.
+     |
+     |  partition(self, sep, /)
+     |      Partition the string into three parts using the given separator.
+     |
+     |      This will search for the separator in the string.  If the separator
+     |      is found, returns a 3-tuple containing the part before the
+     |      separator, the separator itself, and the part after it.
+     |
+     |      If the separator is not found, returns a 3-tuple containing
+     |      the original string and two empty strings.
+     |
+     |  removeprefix(self, prefix, /)
+     |      Return a str with the given prefix string removed if present.
+     |
+     |      If the string starts with the prefix string, return
+     |      string[len(prefix):].  Otherwise, return a copy of the original
+     |      string.
+     |
+     |  removesuffix(self, suffix, /)
+     |      Return a str with the given suffix string removed if present.
+     |
+     |      If the string ends with the suffix string and that suffix is not
+     |      empty, return string[:-len(suffix)].  Otherwise, return a copy of
+     |      the original string.
+     |
+     |  replace(self, old, new, /, count=-1)
+     |      Return a copy with all occurrences of substring old replaced by new.
+     |
+     |        count
+     |          Maximum number of occurrences to replace.
+     |          -1 (the default value) means replace all occurrences.
+     |
+     |      If the optional argument count is given, only the first count occurrences are
+     |      replaced.
+     |
+     |  rfind(self, sub[, start[, end]], /)
+     |      Return the highest index in S where substring sub is found, such that sub is contained within S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.  Return -1 on failure.
+     |
+     |  rindex(self, sub[, start[, end]], /)
+     |      Return the highest index in S where substring sub is found, such that sub is contained within S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.  Raises ValueError when the substring is not found.
+     |
+     |  rjust(self, width, fillchar=' ', /)
+     |      Return a right-justified string of length width.
+     |
+     |      Padding is done using the specified fill character (default is
+     |      a space).
+     |
+     |  rpartition(self, sep, /)
+     |      Partition the string into three parts using the given separator.
+     |
+     |      This will search for the separator in the string, starting at the
+     |      end.  If the separator is found, returns a 3-tuple containing the
+     |      part before the separator, the separator itself, and the part after
+     |      it.
+     |
+     |      If the separator is not found, returns a 3-tuple containing two
+     |      empty strings and the original string.
+     |
+     |  rsplit(self, /, sep=None, maxsplit=-1)
+     |      Return a list of the substrings in the string, using sep as the separator string.
+     |
+     |        sep
+     |          The separator used to split the string.
+     |
+     |          When set to None (the default value), will split on any
+     |          whitespace character (including \n \r \t \f and spaces) and
+     |          will discard empty strings from the result.
+     |        maxsplit
+     |          Maximum number of splits.
+     |          -1 (the default value) means no limit.
+     |
+     |      Splitting starts at the end of the string and works to the front.
+     |
+     |  rstrip(self, chars=None, /)
+     |      Return a copy of the string with trailing whitespace removed.
+     |
+     |      If chars is given and not None, remove characters in chars instead.
+     |
+     |  split(self, /, sep=None, maxsplit=-1)
+     |      Return a list of the substrings in the string, using sep as the separator string.
+     |
+     |        sep
+     |          The separator used to split the string.
+     |
+     |          When set to None (the default value), will split on any
+     |          whitespace character (including \n \r \t \f and spaces) and
+     |          will discard empty strings from the result.
+     |        maxsplit
+     |          Maximum number of splits.
+     |          -1 (the default value) means no limit.
+     |
+     |      Splitting starts at the front of the string and works to the end.
+     |
+     |      Note, str.split() is mainly useful for data that has been
+     |      intentionally delimited.  With natural text that includes
+     |      punctuation, consider using the regular expression module.
+     |
+     |  splitlines(self, /, keepends=False)
+     |      Return a list of the lines in the string, breaking at line boundaries.
+     |
+     |      Line breaks are not included in the resulting list unless keepends
+     |      is given and true.
+     |
+     |  startswith(self, prefix[, start[, end]], /)
+     |      Return True if the string starts with the specified prefix, False otherwise.
+     |
+     |      prefix
+     |        A string or a tuple of strings to try.
+     |      start
+     |        Optional start position. Default: start of the string.
+     |      end
+     |        Optional stop position. Default: end of the string.
+     |
+     |  strip(self, chars=None, /)
+     |      Return a copy of the string with leading and trailing whitespace removed.
+     |
+     |      If chars is given and not None, remove characters in chars instead.
+     |
+     |  swapcase(self, /)
+     |      Convert uppercase characters to lowercase and lowercase characters to uppercase.
+     |
+     |  title(self, /)
+     |      Return a version of the string where each word is titlecased.
+     |
+     |      More specifically, words start with uppercased characters and all
+     |      remaining cased characters have lower case.
+     |
+     |  translate(self, table, /)
+     |      Replace each character in the string using the given translation table.
+     |
+     |        table
+     |          Translation table, which must be a mapping of Unicode ordinals
+     |          to Unicode ordinals, strings, or None.
+     |
+     |      The table must implement lookup/indexing via __getitem__, for
+     |      instance a dictionary or list.  If this operation raises
+     |      LookupError, the character is left untouched.  Characters mapped to
+     |      None are deleted.
+     |
+     |  upper(self, /)
+     |      Return a copy of the string converted to uppercase.
+     |
+     |  zfill(self, width, /)
+     |      Pad a numeric string with zeros on the left, to fill a field of the given width.
+     |
+     |      The string is never truncated.
+     |
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from builtins.str:
+     |
+     |  maketrans(x, y=<unrepresentable>, z=<unrepresentable>, /)
+     |      Return a translation table usable for str.translate().
+     |
+     |      If there is only one argument, it must be a dictionary mapping
+     |      Unicode ordinals (integers) or characters to Unicode ordinals,
+     |      strings or None.  Character keys will be then converted to ordinals.
+     |      If there are two arguments, they must be strings of equal length,
+     |      and in the resulting dictionary, each character in x will be mapped
+     |      to the character at the same position in y.  If there is a third
+     |      argument, it must be a string, whose characters will be mapped to
+     |      None in the result.
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from enum.Enum:
+     |
+     |  __dir__(self)
+     |      Returns public methods and other interesting attributes.
+     |
+     |  __reduce_ex__(self, proto)
+     |      Helper for pickle.
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from enum.Enum:
+     |
+     |  name
+     |      The name of the Enum member.
+     |
+     |  value
+     |      The value of the Enum member.
+     |
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from enum.EnumType:
+     |
+     |  __members__
+     |      Returns a mapping of member name->value.
+     |
+     |      This mapping lists all enum members, including aliases.  Note that
+     |      this is a read-only view of the internal mapping.
+
+    class Point(builtins.object)
+     |  Point(latitude: float, longitude: float, elevation: Optional[int] = None) -> None
+     |
+     |  A geographical point
+     |
+     |  Methods defined here:
+     |
+     |  __init__(
+     |      self,
+     |      latitude: float,
+     |      longitude: float,
+     |      elevation: Optional[int] = None
+     |  ) -> None
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |
+     |  __dict__
+     |      dictionary for instance variables
+     |
+     |  __weakref__
+     |      list of weak references to the object
+
+    class Provider(enum.StrEnum)
+     |  Provider(*values)
+     |
+     |  Providers supported by Meteostat
+     |
+     |  Method resolution order:
+     |      Provider
+     |      enum.StrEnum
+     |      builtins.str
+     |      enum.ReprEnum
+     |      enum.Enum
+     |      builtins.object
+     |
+     |  Methods defined here:
+     |
+     |  __format__(self, format_spec, /) from builtins.str
+     |      Return a formatted version of the string as described by format_spec.
+     |
+     |  __new__(cls, value) from enum.Enum
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |
+     |  __str__(self, /) from builtins.str
+     |      Return str(self).
+     |
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |
+     |  CLIMAT = <Provider.CLIMAT: 'climat'>
+     |
+     |  DAILY = <Provider.DAILY: 'daily'>
+     |
+     |  DAILY_DERIVED = <Provider.DAILY_DERIVED: 'daily_derived'>
+     |
+     |  DWD_DAILY = <Provider.DWD_DAILY: 'dwd_daily'>
+     |
+     |  DWD_HOURLY = <Provider.DWD_HOURLY: 'dwd_hourly'>
+     |
+     |  DWD_MONTHLY = <Provider.DWD_MONTHLY: 'dwd_monthly'>
+     |
+     |  DWD_MOSMIX = <Provider.DWD_MOSMIX: 'dwd_mosmix'>
+     |
+     |  DWD_POI = <Provider.DWD_POI: 'dwd_poi'>
+     |
+     |  ECCC_DAILY = <Provider.ECCC_DAILY: 'eccc_daily'>
+     |
+     |  ECCC_HOURLY = <Provider.ECCC_HOURLY: 'eccc_hourly'>
+     |
+     |  ECCC_MONTHLY = <Provider.ECCC_MONTHLY: 'eccc_monthly'>
+     |
+     |  GHCND = <Provider.GHCND: 'ghcnd'>
+     |
+     |  GSA_DAILY = <Provider.GSA_DAILY: 'gsa_daily'>
+     |
+     |  GSA_HOURLY = <Provider.GSA_HOURLY: 'gsa_hourly'>
+     |
+     |  GSA_MONTHLY = <Provider.GSA_MONTHLY: 'gsa_monthly'>
+     |
+     |  GSA_SYNOP = <Provider.GSA_SYNOP: 'gsa_synop'>
+     |
+     |  HOURLY = <Provider.HOURLY: 'hourly'>
+     |
+     |  ISD_LITE = <Provider.ISD_LITE: 'isd_lite'>
+     |
+     |  METAR = <Provider.METAR: 'metar'>
+     |
+     |  METNO_FORECAST = <Provider.METNO_FORECAST: 'metno_forecast'>
+     |
+     |  MONTHLY = <Provider.MONTHLY: 'monthly'>
+     |
+     |  MONTHLY_DERIVED = <Provider.MONTHLY_DERIVED: 'monthly_derived'>
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from enum.StrEnum:
+     |
+     |  __repr__(self) from enum.Enum
+     |      Return repr(self).
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.str:
+     |
+     |  __add__(self, value, /)
+     |      Return self+value.
+     |
+     |  __contains__(self, key, /)
+     |      Return bool(key in self).
+     |
+     |  __eq__(self, value, /)
+     |      Return self==value.
+     |
+     |  __ge__(self, value, /)
+     |      Return self>=value.
+     |
+     |  __getitem__(self, key, /)
+     |      Return self[key].
+     |
+     |  __getnewargs__(self, /)
+     |
+     |  __gt__(self, value, /)
+     |      Return self>value.
+     |
+     |  __hash__(self, /)
+     |      Return hash(self).
+     |
+     |  __iter__(self, /)
+     |      Implement iter(self).
+     |
+     |  __le__(self, value, /)
+     |      Return self<=value.
+     |
+     |  __len__(self, /)
+     |      Return len(self).
+     |
+     |  __lt__(self, value, /)
+     |      Return self<value.
+     |
+     |  __mod__(self, value, /)
+     |      Return self%value.
+     |
+     |  __mul__(self, value, /)
+     |      Return self*value.
+     |
+     |  __ne__(self, value, /)
+     |      Return self!=value.
+     |
+     |  __rmod__(self, value, /)
+     |      Return value%self.
+     |
+     |  __rmul__(self, value, /)
+     |      Return value*self.
+     |
+     |  __sizeof__(self, /)
+     |      Return the size of the string in memory, in bytes.
+     |
+     |  capitalize(self, /)
+     |      Return a capitalized version of the string.
+     |
+     |      More specifically, make the first character have upper case and the
+     |      rest lower case.
+     |
+     |  casefold(self, /)
+     |      Return a version of the string suitable for caseless comparisons.
+     |
+     |  center(self, width, fillchar=' ', /)
+     |      Return a centered string of length width.
+     |
+     |      Padding is done using the specified fill character (default is
+     |      a space).
+     |
+     |  count(self, sub[, start[, end]], /)
+     |      Return the number of non-overlapping occurrences of substring sub in string S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.
+     |
+     |  encode(self, /, encoding='utf-8', errors='strict')
+     |      Encode the string using the codec registered for encoding.
+     |
+     |      encoding
+     |        The encoding in which to encode the string.
+     |      errors
+     |        The error handling scheme to use for encoding errors.
+     |        The default is 'strict' meaning that encoding errors raise a
+     |        UnicodeEncodeError.  Other possible values are 'ignore', 'replace'
+     |        and 'xmlcharrefreplace' as well as any other name registered with
+     |        codecs.register_error that can handle UnicodeEncodeErrors.
+     |
+     |  endswith(self, suffix[, start[, end]], /)
+     |      Return True if the string ends with the specified suffix, False otherwise.
+     |
+     |      suffix
+     |        A string or a tuple of strings to try.
+     |      start
+     |        Optional start position. Default: start of the string.
+     |      end
+     |        Optional stop position. Default: end of the string.
+     |
+     |  expandtabs(self, /, tabsize=8)
+     |      Return a copy where all tab characters are expanded using spaces.
+     |
+     |      If tabsize is not given, a tab size of 8 characters is assumed.
+     |
+     |  find(self, sub[, start[, end]], /)
+     |      Return the lowest index in S where substring sub is found, such that sub is contained within S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.  Return -1 on failure.
+     |
+     |  format(self, /, *args, **kwargs)
+     |      Return a formatted version of the string, using substitutions from args and kwargs.
+     |      The substitutions are identified by braces ('{' and '}').
+     |
+     |  format_map(self, mapping, /)
+     |      Return a formatted version of the string, using substitutions from mapping.
+     |      The substitutions are identified by braces ('{' and '}').
+     |
+     |  index(self, sub[, start[, end]], /)
+     |      Return the lowest index in S where substring sub is found, such that sub is contained within S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.  Raises ValueError when the substring is not found.
+     |
+     |  isalnum(self, /)
+     |      Return True if the string is an alpha-numeric string, False otherwise.
+     |
+     |      A string is alpha-numeric if all characters in the string are
+     |      alpha-numeric and there is at least one character in the string.
+     |
+     |  isalpha(self, /)
+     |      Return True if the string is an alphabetic string, False otherwise.
+     |
+     |      A string is alphabetic if all characters in the string are
+     |      alphabetic and there is at least one character in the string.
+     |
+     |  isascii(self, /)
+     |      Return True if all characters in the string are ASCII, False otherwise.
+     |
+     |      ASCII characters have code points in the range U+0000-U+007F.
+     |      Empty string is ASCII too.
+     |
+     |  isdecimal(self, /)
+     |      Return True if the string is a decimal string, False otherwise.
+     |
+     |      A string is a decimal string if all characters in the string are
+     |      decimal and there is at least one character in the string.
+     |
+     |  isdigit(self, /)
+     |      Return True if the string is a digit string, False otherwise.
+     |
+     |      A string is a digit string if all characters in the string are
+     |      digits and there is at least one character in the string.
+     |
+     |  isidentifier(self, /)
+     |      Return True if the string is a valid Python identifier, False otherwise.
+     |
+     |      Call keyword.iskeyword(s) to test whether string s is a reserved
+     |      identifier, such as "def" or "class".
+     |
+     |  islower(self, /)
+     |      Return True if the string is a lowercase string, False otherwise.
+     |
+     |      A string is lowercase if all cased characters in the string are
+     |      lowercase and there is at least one cased character in the string.
+     |
+     |  isnumeric(self, /)
+     |      Return True if the string is a numeric string, False otherwise.
+     |
+     |      A string is numeric if all characters in the string are numeric and
+     |      there is at least one character in the string.
+     |
+     |  isprintable(self, /)
+     |      Return True if all characters in the string are printable, False otherwise.
+     |
+     |      A character is printable if repr() may use it in its output.
+     |
+     |  isspace(self, /)
+     |      Return True if the string is a whitespace string, False otherwise.
+     |
+     |      A string is whitespace if all characters in the string are
+     |      whitespace and there is at least one character in the string.
+     |
+     |  istitle(self, /)
+     |      Return True if the string is a title-cased string, False otherwise.
+     |
+     |      In a title-cased string, upper- and title-case characters may only
+     |      follow uncased characters and lowercase characters only cased ones.
+     |
+     |  isupper(self, /)
+     |      Return True if the string is an uppercase string, False otherwise.
+     |
+     |      A string is uppercase if all cased characters in the string are
+     |      uppercase and there is at least one cased character in the string.
+     |
+     |  join(self, iterable, /)
+     |      Concatenate any number of strings.
+     |
+     |      The string whose method is called is inserted in between each given
+     |      string.  The result is returned as a new string.
+     |
+     |      Example: '.'.join(['ab', 'pq', 'rs']) -> 'ab.pq.rs'
+     |
+     |  ljust(self, width, fillchar=' ', /)
+     |      Return a left-justified string of length width.
+     |
+     |      Padding is done using the specified fill character (default is
+     |      a space).
+     |
+     |  lower(self, /)
+     |      Return a copy of the string converted to lowercase.
+     |
+     |  lstrip(self, chars=None, /)
+     |      Return a copy of the string with leading whitespace removed.
+     |
+     |      If chars is given and not None, remove characters in chars instead.
+     |
+     |  partition(self, sep, /)
+     |      Partition the string into three parts using the given separator.
+     |
+     |      This will search for the separator in the string.  If the separator
+     |      is found, returns a 3-tuple containing the part before the
+     |      separator, the separator itself, and the part after it.
+     |
+     |      If the separator is not found, returns a 3-tuple containing
+     |      the original string and two empty strings.
+     |
+     |  removeprefix(self, prefix, /)
+     |      Return a str with the given prefix string removed if present.
+     |
+     |      If the string starts with the prefix string, return
+     |      string[len(prefix):].  Otherwise, return a copy of the original
+     |      string.
+     |
+     |  removesuffix(self, suffix, /)
+     |      Return a str with the given suffix string removed if present.
+     |
+     |      If the string ends with the suffix string and that suffix is not
+     |      empty, return string[:-len(suffix)].  Otherwise, return a copy of
+     |      the original string.
+     |
+     |  replace(self, old, new, /, count=-1)
+     |      Return a copy with all occurrences of substring old replaced by new.
+     |
+     |        count
+     |          Maximum number of occurrences to replace.
+     |          -1 (the default value) means replace all occurrences.
+     |
+     |      If the optional argument count is given, only the first count occurrences are
+     |      replaced.
+     |
+     |  rfind(self, sub[, start[, end]], /)
+     |      Return the highest index in S where substring sub is found, such that sub is contained within S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.  Return -1 on failure.
+     |
+     |  rindex(self, sub[, start[, end]], /)
+     |      Return the highest index in S where substring sub is found, such that sub is contained within S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.  Raises ValueError when the substring is not found.
+     |
+     |  rjust(self, width, fillchar=' ', /)
+     |      Return a right-justified string of length width.
+     |
+     |      Padding is done using the specified fill character (default is
+     |      a space).
+     |
+     |  rpartition(self, sep, /)
+     |      Partition the string into three parts using the given separator.
+     |
+     |      This will search for the separator in the string, starting at the
+     |      end.  If the separator is found, returns a 3-tuple containing the
+     |      part before the separator, the separator itself, and the part after
+     |      it.
+     |
+     |      If the separator is not found, returns a 3-tuple containing two
+     |      empty strings and the original string.
+     |
+     |  rsplit(self, /, sep=None, maxsplit=-1)
+     |      Return a list of the substrings in the string, using sep as the separator string.
+     |
+     |        sep
+     |          The separator used to split the string.
+     |
+     |          When set to None (the default value), will split on any
+     |          whitespace character (including \n \r \t \f and spaces) and
+     |          will discard empty strings from the result.
+     |        maxsplit
+     |          Maximum number of splits.
+     |          -1 (the default value) means no limit.
+     |
+     |      Splitting starts at the end of the string and works to the front.
+     |
+     |  rstrip(self, chars=None, /)
+     |      Return a copy of the string with trailing whitespace removed.
+     |
+     |      If chars is given and not None, remove characters in chars instead.
+     |
+     |  split(self, /, sep=None, maxsplit=-1)
+     |      Return a list of the substrings in the string, using sep as the separator string.
+     |
+     |        sep
+     |          The separator used to split the string.
+     |
+     |          When set to None (the default value), will split on any
+     |          whitespace character (including \n \r \t \f and spaces) and
+     |          will discard empty strings from the result.
+     |        maxsplit
+     |          Maximum number of splits.
+     |          -1 (the default value) means no limit.
+     |
+     |      Splitting starts at the front of the string and works to the end.
+     |
+     |      Note, str.split() is mainly useful for data that has been
+     |      intentionally delimited.  With natural text that includes
+     |      punctuation, consider using the regular expression module.
+     |
+     |  splitlines(self, /, keepends=False)
+     |      Return a list of the lines in the string, breaking at line boundaries.
+     |
+     |      Line breaks are not included in the resulting list unless keepends
+     |      is given and true.
+     |
+     |  startswith(self, prefix[, start[, end]], /)
+     |      Return True if the string starts with the specified prefix, False otherwise.
+     |
+     |      prefix
+     |        A string or a tuple of strings to try.
+     |      start
+     |        Optional start position. Default: start of the string.
+     |      end
+     |        Optional stop position. Default: end of the string.
+     |
+     |  strip(self, chars=None, /)
+     |      Return a copy of the string with leading and trailing whitespace removed.
+     |
+     |      If chars is given and not None, remove characters in chars instead.
+     |
+     |  swapcase(self, /)
+     |      Convert uppercase characters to lowercase and lowercase characters to uppercase.
+     |
+     |  title(self, /)
+     |      Return a version of the string where each word is titlecased.
+     |
+     |      More specifically, words start with uppercased characters and all
+     |      remaining cased characters have lower case.
+     |
+     |  translate(self, table, /)
+     |      Replace each character in the string using the given translation table.
+     |
+     |        table
+     |          Translation table, which must be a mapping of Unicode ordinals
+     |          to Unicode ordinals, strings, or None.
+     |
+     |      The table must implement lookup/indexing via __getitem__, for
+     |      instance a dictionary or list.  If this operation raises
+     |      LookupError, the character is left untouched.  Characters mapped to
+     |      None are deleted.
+     |
+     |  upper(self, /)
+     |      Return a copy of the string converted to uppercase.
+     |
+     |  zfill(self, width, /)
+     |      Pad a numeric string with zeros on the left, to fill a field of the given width.
+     |
+     |      The string is never truncated.
+     |
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from builtins.str:
+     |
+     |  maketrans(x, y=<unrepresentable>, z=<unrepresentable>, /)
+     |      Return a translation table usable for str.translate().
+     |
+     |      If there is only one argument, it must be a dictionary mapping
+     |      Unicode ordinals (integers) or characters to Unicode ordinals,
+     |      strings or None.  Character keys will be then converted to ordinals.
+     |      If there are two arguments, they must be strings of equal length,
+     |      and in the resulting dictionary, each character in x will be mapped
+     |      to the character at the same position in y.  If there is a third
+     |      argument, it must be a string, whose characters will be mapped to
+     |      None in the result.
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from enum.Enum:
+     |
+     |  __dir__(self)
+     |      Returns public methods and other interesting attributes.
+     |
+     |  __reduce_ex__(self, proto)
+     |      Helper for pickle.
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from enum.Enum:
+     |
+     |  name
+     |      The name of the Enum member.
+     |
+     |  value
+     |      The value of the Enum member.
+     |
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from enum.EnumType:
+     |
+     |  __members__
+     |      Returns a mapping of member name->value.
+     |
+     |      This mapping lists all enum members, including aliases.  Note that
+     |      this is a read-only view of the internal mapping.
+
+    class Station(builtins.object)
+     |  Station(
+     |      id: str,
+     |      name: Optional[str] = None,
+     |      country: Optional[str] = None,
+     |      region: Optional[str] = None,
+     |      identifiers: dict[str, str] = <factory>,
+     |      latitude: Optional[float] = None,
+     |      longitude: Optional[float] = None,
+     |      elevation: Optional[int] = None,
+     |      timezone: Optional[str] = None
+     |  ) -> None
+     |
+     |  A weather station
+     |
+     |  For virtual stations created from Point objects, some fields will be None.
+     |
+     |  Methods defined here:
+     |
+     |  __eq__(self, other)
+     |      Return self==value.
+     |
+     |  __init__(
+     |      self,
+     |      id: str,
+     |      name: Optional[str] = None,
+     |      country: Optional[str] = None,
+     |      region: Optional[str] = None,
+     |      identifiers: dict[str, str] = <factory>,
+     |      latitude: Optional[float] = None,
+     |      longitude: Optional[float] = None,
+     |      elevation: Optional[int] = None,
+     |      timezone: Optional[str] = None
+     |  ) -> None
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |
+     |  __replace__ = _replace(self, /, **changes) from dataclasses
+     |
+     |  __repr__(self)
+     |      Return repr(self).
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |
+     |  __dict__
+     |      dictionary for instance variables
+     |
+     |  __weakref__
+     |      list of weak references to the object
+     |
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |
+     |  __dataclass_fields__ = {'country': Field(name='country',type=str | Non...
+     |
+     |  __dataclass_params__ = _DataclassParams(init=True,repr=True,eq=True,or...
+     |
+     |  __hash__ = None
+     |
+     |  __match_args__ = ('id', 'name', 'country', 'region', 'identifiers', 'l...
+     |
+     |  country = None
+     |
+     |  elevation = None
+     |
+     |  latitude = None
+     |
+     |  longitude = None
+     |
+     |  name = None
+     |
+     |  region = None
+     |
+     |  timezone = None
+
+    class TimeSeries(builtins.object)
+     |  TimeSeries(
+     |      granularity: Granularity,
+     |      stations: pd.DataFrame,
+     |      df: Optional[pd.DataFrame],
+     |      start: Optional[datetime] = None,
+     |      end: Optional[datetime] = None,
+     |      timezone: Optional[str] = None,
+     |      multi_station: bool = False
+     |  ) -> None
+     |
+     |  TimeSeries class which provides features which are
+     |  used across all granularities
+     |
+     |  Methods defined here:
+     |
+     |  __init__(
+     |      self,
+     |      granularity: Granularity,
+     |      stations: pd.DataFrame,
+     |      df: Optional[pd.DataFrame],
+     |      start: Optional[datetime] = None,
+     |      end: Optional[datetime] = None,
+     |      timezone: Optional[str] = None,
+     |      multi_station: bool = False
+     |  ) -> None
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |
+     |  __len__(self) -> int
+     |      Return number of rows in DataFrame
+     |
+     |  __str__(self) -> str
+     |      Return a stringified version of the DataFrame
+     |
+     |  completeness(self, parameter: Optional[Parameter | str] = None) -> Optional[float]
+     |      Get completeness for a specific parameter or the entire DataFrame.
+     |
+     |      Parameters
+     |      ----------
+     |      parameter : Parameter or str, optional
+     |          The parameter to calculate completeness for.
+     |          If None, calculates for the entire DataFrame.
+     |
+     |      Returns
+     |      -------
+     |      float or None
+     |          The completeness ratio for the specified parameter or the entire DataFrame.
+     |          Returns None if completeness cannot be determined (e.g., missing end date).
+     |          Returns 0.0 if no data but dates are defined.
+     |          Returns 1 if complete, or a value between 0 and 1 otherwise.
+     |
+     |  count(self, parameter: Optional[Parameter | str] = None) -> int
+     |      Get number of non-NaN values for a specific parameter.
+     |      If no parameter is specified, it returns the count for the entire DataFrame.
+     |
+     |      Parameters
+     |      ----------
+     |      parameter : Parameter or str
+     |          The parameter to count non-NaN values for. If None, counts for the entire DataFrame.
+     |
+     |      Returns
+     |      -------
+     |      int
+     |          The count of non-NaN values for the specified parameter or the entire DataFrame.
+     |
+     |  fetch(
+     |      self,
+     |      squash=True,
+     |      fill=False,
+     |      sources=False,
+     |      location=False,
+     |      clean=True,
+     |      humanize=False,
+     |      units: UnitSystem = <UnitSystem.METRIC: 'metric'>
+     |  ) -> Optional[pd.DataFrame]
+     |      Fetch the time series data as a DataFrame.
+     |
+     |      Parameters
+     |      ----------
+     |      squash : bool, optional
+     |          Whether to squash the DataFrame by source. Defaults to True.
+     |      fill : bool, optional
+     |          Whether to fill missing rows in the DataFrame. Defaults to False.
+     |      sources : bool, optional
+     |          Whether to include source information in the DataFrame. Defaults to False.
+     |      location : bool, optional
+     |          Whether to include location information (latitude, longitude, elevation)
+     |          in the DataFrame. Defaults to False.
+     |      clean : bool, optional
+     |          Whether to clean the DataFrame according to the schema. Defaults to True.
+     |      humanize : bool, optional
+     |          Whether to convert wind direction and condition codes to human-readable values. Defaults to False.
+     |      units : UnitSystem, optional
+     |          The unit system to use for the DataFrame. Defaults to metric units.
+     |
+     |      Returns
+     |      -------
+     |      pd.DataFrame or None
+     |          The time series data as a DataFrame, or None if no data is available.
+     |
+     |  validate(self) -> bool
+     |      Does the time series pass all validations?
+     |
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |
+     |  attribution
+     |      Attribution string
+     |
+     |  commercial
+     |      Is commercial use allowed?
+     |
+     |  empty
+     |      Is the time series empty?
+     |
+     |  freq
+     |      The time series frequency.
+     |
+     |      Returns a Pandas offset alias string (e.g. "1h", "1D", "1M") or
+     |      `None` for granularities where a regular frequency does not apply
+     |      (e.g. normals).
+     |
+     |  licenses
+     |      Get licenses
+     |
+     |  parameters
+     |      Get parameters
+     |
+     |  providers
+     |      Get included providers
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |
+     |  __dict__
+     |      dictionary for instance variables
+     |
+     |  __weakref__
+     |      list of weak references to the object
+     |
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |
+     |  end = None
+     |
+     |  start = None
+     |
+     |  timezone = None
+
+    class UnitSystem(enum.StrEnum)
+     |  UnitSystem(*values)
+     |
+     |  Unit Systems
+     |
+     |  Method resolution order:
+     |      UnitSystem
+     |      enum.StrEnum
+     |      builtins.str
+     |      enum.ReprEnum
+     |      enum.Enum
+     |      builtins.object
+     |
+     |  Methods defined here:
+     |
+     |  __format__(self, format_spec, /) from builtins.str
+     |      Return a formatted version of the string as described by format_spec.
+     |
+     |  __new__(cls, value) from enum.Enum
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |
+     |  __str__(self, /) from builtins.str
+     |      Return str(self).
+     |
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |
+     |  IMPERIAL = <UnitSystem.IMPERIAL: 'imperial'>
+     |
+     |  METRIC = <UnitSystem.METRIC: 'metric'>
+     |
+     |  SI = <UnitSystem.SI: 'si'>
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from enum.StrEnum:
+     |
+     |  __repr__(self) from enum.Enum
+     |      Return repr(self).
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.str:
+     |
+     |  __add__(self, value, /)
+     |      Return self+value.
+     |
+     |  __contains__(self, key, /)
+     |      Return bool(key in self).
+     |
+     |  __eq__(self, value, /)
+     |      Return self==value.
+     |
+     |  __ge__(self, value, /)
+     |      Return self>=value.
+     |
+     |  __getitem__(self, key, /)
+     |      Return self[key].
+     |
+     |  __getnewargs__(self, /)
+     |
+     |  __gt__(self, value, /)
+     |      Return self>value.
+     |
+     |  __hash__(self, /)
+     |      Return hash(self).
+     |
+     |  __iter__(self, /)
+     |      Implement iter(self).
+     |
+     |  __le__(self, value, /)
+     |      Return self<=value.
+     |
+     |  __len__(self, /)
+     |      Return len(self).
+     |
+     |  __lt__(self, value, /)
+     |      Return self<value.
+     |
+     |  __mod__(self, value, /)
+     |      Return self%value.
+     |
+     |  __mul__(self, value, /)
+     |      Return self*value.
+     |
+     |  __ne__(self, value, /)
+     |      Return self!=value.
+     |
+     |  __rmod__(self, value, /)
+     |      Return value%self.
+     |
+     |  __rmul__(self, value, /)
+     |      Return value*self.
+     |
+     |  __sizeof__(self, /)
+     |      Return the size of the string in memory, in bytes.
+     |
+     |  capitalize(self, /)
+     |      Return a capitalized version of the string.
+     |
+     |      More specifically, make the first character have upper case and the
+     |      rest lower case.
+     |
+     |  casefold(self, /)
+     |      Return a version of the string suitable for caseless comparisons.
+     |
+     |  center(self, width, fillchar=' ', /)
+     |      Return a centered string of length width.
+     |
+     |      Padding is done using the specified fill character (default is
+     |      a space).
+     |
+     |  count(self, sub[, start[, end]], /)
+     |      Return the number of non-overlapping occurrences of substring sub in string S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.
+     |
+     |  encode(self, /, encoding='utf-8', errors='strict')
+     |      Encode the string using the codec registered for encoding.
+     |
+     |      encoding
+     |        The encoding in which to encode the string.
+     |      errors
+     |        The error handling scheme to use for encoding errors.
+     |        The default is 'strict' meaning that encoding errors raise a
+     |        UnicodeEncodeError.  Other possible values are 'ignore', 'replace'
+     |        and 'xmlcharrefreplace' as well as any other name registered with
+     |        codecs.register_error that can handle UnicodeEncodeErrors.
+     |
+     |  endswith(self, suffix[, start[, end]], /)
+     |      Return True if the string ends with the specified suffix, False otherwise.
+     |
+     |      suffix
+     |        A string or a tuple of strings to try.
+     |      start
+     |        Optional start position. Default: start of the string.
+     |      end
+     |        Optional stop position. Default: end of the string.
+     |
+     |  expandtabs(self, /, tabsize=8)
+     |      Return a copy where all tab characters are expanded using spaces.
+     |
+     |      If tabsize is not given, a tab size of 8 characters is assumed.
+     |
+     |  find(self, sub[, start[, end]], /)
+     |      Return the lowest index in S where substring sub is found, such that sub is contained within S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.  Return -1 on failure.
+     |
+     |  format(self, /, *args, **kwargs)
+     |      Return a formatted version of the string, using substitutions from args and kwargs.
+     |      The substitutions are identified by braces ('{' and '}').
+     |
+     |  format_map(self, mapping, /)
+     |      Return a formatted version of the string, using substitutions from mapping.
+     |      The substitutions are identified by braces ('{' and '}').
+     |
+     |  index(self, sub[, start[, end]], /)
+     |      Return the lowest index in S where substring sub is found, such that sub is contained within S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.  Raises ValueError when the substring is not found.
+     |
+     |  isalnum(self, /)
+     |      Return True if the string is an alpha-numeric string, False otherwise.
+     |
+     |      A string is alpha-numeric if all characters in the string are
+     |      alpha-numeric and there is at least one character in the string.
+     |
+     |  isalpha(self, /)
+     |      Return True if the string is an alphabetic string, False otherwise.
+     |
+     |      A string is alphabetic if all characters in the string are
+     |      alphabetic and there is at least one character in the string.
+     |
+     |  isascii(self, /)
+     |      Return True if all characters in the string are ASCII, False otherwise.
+     |
+     |      ASCII characters have code points in the range U+0000-U+007F.
+     |      Empty string is ASCII too.
+     |
+     |  isdecimal(self, /)
+     |      Return True if the string is a decimal string, False otherwise.
+     |
+     |      A string is a decimal string if all characters in the string are
+     |      decimal and there is at least one character in the string.
+     |
+     |  isdigit(self, /)
+     |      Return True if the string is a digit string, False otherwise.
+     |
+     |      A string is a digit string if all characters in the string are
+     |      digits and there is at least one character in the string.
+     |
+     |  isidentifier(self, /)
+     |      Return True if the string is a valid Python identifier, False otherwise.
+     |
+     |      Call keyword.iskeyword(s) to test whether string s is a reserved
+     |      identifier, such as "def" or "class".
+     |
+     |  islower(self, /)
+     |      Return True if the string is a lowercase string, False otherwise.
+     |
+     |      A string is lowercase if all cased characters in the string are
+     |      lowercase and there is at least one cased character in the string.
+     |
+     |  isnumeric(self, /)
+     |      Return True if the string is a numeric string, False otherwise.
+     |
+     |      A string is numeric if all characters in the string are numeric and
+     |      there is at least one character in the string.
+     |
+     |  isprintable(self, /)
+     |      Return True if all characters in the string are printable, False otherwise.
+     |
+     |      A character is printable if repr() may use it in its output.
+     |
+     |  isspace(self, /)
+     |      Return True if the string is a whitespace string, False otherwise.
+     |
+     |      A string is whitespace if all characters in the string are
+     |      whitespace and there is at least one character in the string.
+     |
+     |  istitle(self, /)
+     |      Return True if the string is a title-cased string, False otherwise.
+     |
+     |      In a title-cased string, upper- and title-case characters may only
+     |      follow uncased characters and lowercase characters only cased ones.
+     |
+     |  isupper(self, /)
+     |      Return True if the string is an uppercase string, False otherwise.
+     |
+     |      A string is uppercase if all cased characters in the string are
+     |      uppercase and there is at least one cased character in the string.
+     |
+     |  join(self, iterable, /)
+     |      Concatenate any number of strings.
+     |
+     |      The string whose method is called is inserted in between each given
+     |      string.  The result is returned as a new string.
+     |
+     |      Example: '.'.join(['ab', 'pq', 'rs']) -> 'ab.pq.rs'
+     |
+     |  ljust(self, width, fillchar=' ', /)
+     |      Return a left-justified string of length width.
+     |
+     |      Padding is done using the specified fill character (default is
+     |      a space).
+     |
+     |  lower(self, /)
+     |      Return a copy of the string converted to lowercase.
+     |
+     |  lstrip(self, chars=None, /)
+     |      Return a copy of the string with leading whitespace removed.
+     |
+     |      If chars is given and not None, remove characters in chars instead.
+     |
+     |  partition(self, sep, /)
+     |      Partition the string into three parts using the given separator.
+     |
+     |      This will search for the separator in the string.  If the separator
+     |      is found, returns a 3-tuple containing the part before the
+     |      separator, the separator itself, and the part after it.
+     |
+     |      If the separator is not found, returns a 3-tuple containing
+     |      the original string and two empty strings.
+     |
+     |  removeprefix(self, prefix, /)
+     |      Return a str with the given prefix string removed if present.
+     |
+     |      If the string starts with the prefix string, return
+     |      string[len(prefix):].  Otherwise, return a copy of the original
+     |      string.
+     |
+     |  removesuffix(self, suffix, /)
+     |      Return a str with the given suffix string removed if present.
+     |
+     |      If the string ends with the suffix string and that suffix is not
+     |      empty, return string[:-len(suffix)].  Otherwise, return a copy of
+     |      the original string.
+     |
+     |  replace(self, old, new, /, count=-1)
+     |      Return a copy with all occurrences of substring old replaced by new.
+     |
+     |        count
+     |          Maximum number of occurrences to replace.
+     |          -1 (the default value) means replace all occurrences.
+     |
+     |      If the optional argument count is given, only the first count occurrences are
+     |      replaced.
+     |
+     |  rfind(self, sub[, start[, end]], /)
+     |      Return the highest index in S where substring sub is found, such that sub is contained within S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.  Return -1 on failure.
+     |
+     |  rindex(self, sub[, start[, end]], /)
+     |      Return the highest index in S where substring sub is found, such that sub is contained within S[start:end].
+     |
+     |      Optional arguments start and end are interpreted as in slice
+     |      notation.  Raises ValueError when the substring is not found.
+     |
+     |  rjust(self, width, fillchar=' ', /)
+     |      Return a right-justified string of length width.
+     |
+     |      Padding is done using the specified fill character (default is
+     |      a space).
+     |
+     |  rpartition(self, sep, /)
+     |      Partition the string into three parts using the given separator.
+     |
+     |      This will search for the separator in the string, starting at the
+     |      end.  If the separator is found, returns a 3-tuple containing the
+     |      part before the separator, the separator itself, and the part after
+     |      it.
+     |
+     |      If the separator is not found, returns a 3-tuple containing two
+     |      empty strings and the original string.
+     |
+     |  rsplit(self, /, sep=None, maxsplit=-1)
+     |      Return a list of the substrings in the string, using sep as the separator string.
+     |
+     |        sep
+     |          The separator used to split the string.
+     |
+     |          When set to None (the default value), will split on any
+     |          whitespace character (including \n \r \t \f and spaces) and
+     |          will discard empty strings from the result.
+     |        maxsplit
+     |          Maximum number of splits.
+     |          -1 (the default value) means no limit.
+     |
+     |      Splitting starts at the end of the string and works to the front.
+     |
+     |  rstrip(self, chars=None, /)
+     |      Return a copy of the string with trailing whitespace removed.
+     |
+     |      If chars is given and not None, remove characters in chars instead.
+     |
+     |  split(self, /, sep=None, maxsplit=-1)
+     |      Return a list of the substrings in the string, using sep as the separator string.
+     |
+     |        sep
+     |          The separator used to split the string.
+     |
+     |          When set to None (the default value), will split on any
+     |          whitespace character (including \n \r \t \f and spaces) and
+     |          will discard empty strings from the result.
+     |        maxsplit
+     |          Maximum number of splits.
+     |          -1 (the default value) means no limit.
+     |
+     |      Splitting starts at the front of the string and works to the end.
+     |
+     |      Note, str.split() is mainly useful for data that has been
+     |      intentionally delimited.  With natural text that includes
+     |      punctuation, consider using the regular expression module.
+     |
+     |  splitlines(self, /, keepends=False)
+     |      Return a list of the lines in the string, breaking at line boundaries.
+     |
+     |      Line breaks are not included in the resulting list unless keepends
+     |      is given and true.
+     |
+     |  startswith(self, prefix[, start[, end]], /)
+     |      Return True if the string starts with the specified prefix, False otherwise.
+     |
+     |      prefix
+     |        A string or a tuple of strings to try.
+     |      start
+     |        Optional start position. Default: start of the string.
+     |      end
+     |        Optional stop position. Default: end of the string.
+     |
+     |  strip(self, chars=None, /)
+     |      Return a copy of the string with leading and trailing whitespace removed.
+     |
+     |      If chars is given and not None, remove characters in chars instead.
+     |
+     |  swapcase(self, /)
+     |      Convert uppercase characters to lowercase and lowercase characters to uppercase.
+     |
+     |  title(self, /)
+     |      Return a version of the string where each word is titlecased.
+     |
+     |      More specifically, words start with uppercased characters and all
+     |      remaining cased characters have lower case.
+     |
+     |  translate(self, table, /)
+     |      Replace each character in the string using the given translation table.
+     |
+     |        table
+     |          Translation table, which must be a mapping of Unicode ordinals
+     |          to Unicode ordinals, strings, or None.
+     |
+     |      The table must implement lookup/indexing via __getitem__, for
+     |      instance a dictionary or list.  If this operation raises
+     |      LookupError, the character is left untouched.  Characters mapped to
+     |      None are deleted.
+     |
+     |  upper(self, /)
+     |      Return a copy of the string converted to uppercase.
+     |
+     |  zfill(self, width, /)
+     |      Pad a numeric string with zeros on the left, to fill a field of the given width.
+     |
+     |      The string is never truncated.
+     |
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from builtins.str:
+     |
+     |  maketrans(x, y=<unrepresentable>, z=<unrepresentable>, /)
+     |      Return a translation table usable for str.translate().
+     |
+     |      If there is only one argument, it must be a dictionary mapping
+     |      Unicode ordinals (integers) or characters to Unicode ordinals,
+     |      strings or None.  Character keys will be then converted to ordinals.
+     |      If there are two arguments, they must be strings of equal length,
+     |      and in the resulting dictionary, each character in x will be mapped
+     |      to the character at the same position in y.  If there is a third
+     |      argument, it must be a string, whose characters will be mapped to
+     |      None in the result.
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from enum.Enum:
+     |
+     |  __dir__(self)
+     |      Returns public methods and other interesting attributes.
+     |
+     |  __reduce_ex__(self, proto)
+     |      Helper for pickle.
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from enum.Enum:
+     |
+     |  name
+     |      The name of the Enum member.
+     |
+     |  value
+     |      The value of the Enum member.
+     |
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from enum.EnumType:
+     |
+     |  __members__
+     |      Returns a mapping of member name->value.
+     |
+     |      This mapping lists all enum members, including aliases.  Note that
+     |      this is a read-only view of the internal mapping.
+
+FUNCTIONS
+    daily(
+        station: str | Station | Point | List[str | Station | Point] | pd.DataFrame,
+        start: Optional[datetime | date],
+        end: Optional[datetime | date],
+        parameters: Optional[List[Parameter]] = None,
+        providers: Optional[List[Provider]] = None
+    )
+        Access daily time series data.
+
+        Parameters
+        ----------
+        station : str, Station, Point, List[str | Station | Point], pd.Index, pd.Series
+            Weather station(s) or Point(s) to query data for. Can be a single station/point or a list.
+            Points are converted to virtual stations (with IDs like $0001, $0002, etc.) and only work
+            with geo-location providers.
+        start : datetime, date, optional
+            Start date for the data query. If None, the earliest available date will be used.
+        end : datetime, date, optional
+            End date for the data query. If None, the latest available date will be used.
+        parameters : List[Parameter], optional
+            List of parameters to include in the data query. Defaults to a set of common parameters.
+        providers : List[Provider], optional
+            List of data providers to use for the query. Defaults to the daily provider.
+
+        Returns
+        -------
+        TimeSeries
+            A TimeSeries object containing the daily data for the specified stations and parameters.
+
+    hourly(
+        station: str | Station | Point | List[str | Station | Point] | pd.DataFrame,
+        start: Optional[datetime | date],
+        end: Optional[datetime | date],
+        timezone: Optional[str] = None,
+        parameters: Optional[List[Parameter]] = None,
+        providers: Optional[List[Provider]] = None
+    )
+        Access hourly time series data.
+
+        Parameters
+        ----------
+        station : str, Station, Point, List[str | Station | Point], pd.Index, pd.Series
+            Weather station(s) or Point(s) to query data for. Can be a single station/point or a list.
+            Points are converted to virtual stations (with IDs like $0001, $0002, etc.) and only work
+            with geo-location providers.
+        start : datetime, date, optional
+            Start date for the data query. If None, the earliest available date will be used.
+        end : datetime, date, optional
+            End date for the data query. If None, the latest available date will be used.
+        timezone : str, optional
+            Time zone for the data query. If None, UTC will be used.
+        parameters : List[Parameter], optional
+            List of parameters to include in the data query. Defaults to a set of common parameters.
+        providers : List[Provider], optional
+            List of data providers to use for the query. Defaults to the hourly provider.
+
+        Returns
+        -------
+        TimeSeries
+            A TimeSeries object containing the hourly data for the specified stations and parameters.
+
+    interpolate(
+        ts: TimeSeries,
+        point: Point,
+        distance_threshold: Union[int, None] = 5000,
+        elevation_threshold: Union[int, None] = 50,
+        elevation_weight: float = 10,
+        power: float = 2.0,
+        lapse_rate: Union[float, None] = 6.5,
+        lapse_rate_threshold: int = 50
+    ) -> TimeSeries
+        Interpolate time series data spatially to a specific point.
+
+        Parameters
+        ----------
+        ts : TimeSeries
+            The time series to interpolate.
+        point : Point
+            The point to interpolate the data for.
+        distance_threshold : int, optional
+            Maximum distance (in meters) to use nearest neighbor (default: 5000).
+            Beyond this, IDW is used.
+        elevation_threshold : int, optional
+            Maximum elevation difference (in meters) to use nearest neighbor (default: 50).
+            Beyond this, IDW is used even if distance is within threshold.
+        elevation_weight : float, optional
+            Weight for elevation difference in distance calculation (default: 0.1).
+            The effective distance is calculated as:
+            sqrt(horizontal_distance^2 + (elevation_diff * elevation_weight)^2)
+        power : float, optional
+            Power parameter for IDW (default: 2.0). Higher values give more
+            weight to closer stations.
+        lapse_rate : float, optional
+            Apply lapse rate correction based on elevation difference (default: 6.5).
+        lapse_rate_threshold : int, optional
+            Elevation difference threshold (in meters) to apply lapse rate correction
+            (default: 50). If the elevation difference between the point and stations
+            is less than this, no correction is applied.
+
+        Returns
+        -------
+        pd.DataFrame or None
+            A DataFrame containing the interpolated data for the specified point,
+            or None if no data is available.
+
+    lapse_rate(ts: TimeSeries, parameter: Parameter = <Parameter.TEMP: 'temp'>) -> float | None
+        Calculate the lapse rate (temperature gradient) in degrees Celsius per kilometer
+        based on temperature and elevation data from multiple stations.
+
+        Parameters
+        ----------
+        df : pd.DataFrame
+            DataFrame containing temperature and elevation data for multiple stations.
+
+        Returns
+        -------
+        float
+            Calculated lapse rate in degrees Celsius per kilometer.
+
+    merge(objs: List[TimeSeries]) -> TimeSeries
+        Merge one or multiple Meteostat time series into a common one
+
+        In case of duplicate index, the last row will be prefered.
+        Hence, please pass newest data last.
+
+        Parameters
+        ----------
+        objs : List[TimeSeries]
+            List of time series objects to concatenate
+
+        Returns
+        -------
+        TimeSeries
+            Concatenated time series object
+
+        Raises
+        ------
+        ValueError
+            If the list is empty or time series objects have divergent granularity or time zone
+
+    monthly(
+        station: str | Station | Point | List[str | Station | Point] | pd.DataFrame,
+        start: Optional[datetime | date],
+        end: Optional[datetime | date],
+        parameters: Optional[List[Parameter]] = None,
+        providers: Optional[List[Provider]] = None
+    )
+        Access monthly time series data.
+
+        Parameters
+        ----------
+        station : str, Station, Point, List[str | Station | Point], pd.Index, pd.Series
+            Weather station(s) or Point(s) to query data for. Can be a single station/point or a list.
+            Points are converted to virtual stations (with IDs like $0001, $0002, etc.) and only work
+            with geo-location providers.
+        start : datetime, date, optional
+            Start date for the data query. If None, the earliest available date will be used.
+        end : datetime, date, optional
+            End date for the data query. If None, the latest available date will be used.
+        parameters : List[Parameter], optional
+            List of parameters to include in the data query. Defaults to a set of common parameters.
+        providers : List[Provider], optional
+            List of data providers to use for the query. Defaults to the monthly provider.
+
+        Returns
+        -------
+        TimeSeries
+            A TimeSeries object containing the monthly data for the specified stations and parameters.
+
+    normals(
+        station: str | Station | Point | List[str | Station | Point] | pd.DataFrame,
+        start: int = 1961,
+        end: int = 1990,
+        parameters: Optional[List[Parameter]] = None,
+        providers: Optional[List[Provider]] = None,
+        max_missing: int = 3
+    )
+        Access climate normals data.
+
+        Parameters
+        ----------
+        station : str, Station, Point, List[str | Station | Point], pd.Index, pd.Series
+            Weather station(s) or Point(s) to query data for. Can be a single station/point or a list.
+            Points are converted to virtual stations (with IDs like $0001, $0002, etc.) and only work
+            with geo-location providers.
+        start : int, optional
+            Start year for the data query. Defaults to 1961.
+        end : int, optional
+            End year for the data query. Defaults to 1990.
+        parameters : List[Parameter], optional
+            List of parameters to include in the data query. Defaults to a set of common parameters.
+        providers : List[Provider], optional
+            List of data providers to use for the query. Defaults to the monthly provider.
+        max_missing : int, optional
+            Maximum number of missing values allowed in a month to calculate the mean. Defaults to 3.
+
+        Returns
+        -------
+        TimeSeries
+            A TimeSeries object containing the climate normals data for the specified
+            stations and parameters.
+
+    purge(ttl: Optional[int] = None) -> None
+        Remove stale files from disk cache
+
+DATA
+    __all__ = ['config', 'daily', 'hourly', 'Granularity', 'interpolate', ...
+    __appname__ = 'meteostat'
+    config = <meteostat.api.config.Config object>
+    stations = <meteostat.api.stations.Stations object>
+
+VERSION
+    2.1.4
+
+FILE
+    c:\users\rrebe\documents\python projects\too damn hot!\.venv\lib\site-packages\meteostat\__init__.py
+
+
+
+__________________
+Directory Function
+['Granularity', 'Inventory', 'License', 'Parameter', 'Point', 'Provider', 'Station', 'TimeSeries', 'UnitSystem', '__all__', '__appname__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__path__', '__spec__', '__version__', 'api', 'config', 'core', 'daily', 'enumerations', 'hourly', 'interpolate', 'interpolation', 'lapse_rate', 'merge', 'monthly', 'normals', 'parameters', 'providers', 'purge', 'stations', 'typing', 'utils']

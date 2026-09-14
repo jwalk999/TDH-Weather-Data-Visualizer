@@ -1,0 +1,364 @@
+Help Function
+Help on class Path in module pathlib:
+
+class Path(PurePath)
+ |  Path(*args, **kwargs)
+ |
+ |  PurePath subclass that can make system calls.
+ |
+ |  Path represents a filesystem path but unlike PurePath, also offers
+ |  methods to do system calls on path objects. Depending on your system,
+ |  instantiating a Path will return either a PosixPath or a WindowsPath
+ |  object. You can also instantiate a PosixPath or WindowsPath directly,
+ |  but cannot instantiate a WindowsPath on a POSIX system or vice versa.
+ |
+ |  Method resolution order:
+ |      Path
+ |      PurePath
+ |      builtins.object
+ |
+ |  Methods defined here:
+ |
+ |  absolute(self)
+ |      Return an absolute version of this path
+ |      No normalization or symlink resolution is performed.
+ |
+ |      Use resolve() to resolve symlinks and remove '..' segments.
+ |
+ |  as_uri(self)
+ |      Return the path as a URI.
+ |
+ |  chmod(self, mode, *, follow_symlinks=True)
+ |      Change the permissions of the path, like os.chmod().
+ |
+ |  copy(self, target, **kwargs)
+ |      Recursively copy this file or directory tree to the given destination.
+ |
+ |  copy_into(self, target_dir, **kwargs)
+ |      Copy this file or directory tree into the given existing directory.
+ |
+ |  exists(self, *, follow_symlinks=True)
+ |      Whether this path exists.
+ |
+ |      This method normally follows symlinks; to check whether a symlink exists,
+ |      add the argument follow_symlinks=False.
+ |
+ |  expanduser(self)
+ |      Return a new path with expanded ~ and ~user constructs
+ |      (as returned by os.path.expanduser)
+ |
+ |  glob(self, pattern, *, case_sensitive=None, recurse_symlinks=False)
+ |      Iterate over this subtree and yield all existing files (of any
+ |      kind, including directories) matching the given relative pattern.
+ |
+ |  group(self, *, follow_symlinks=True)
+ |      Return the group name of the file gid.
+ |
+ |  hardlink_to(self, target)
+ |      Make this path a hard link pointing to the same file as *target*.
+ |
+ |      Note the order of arguments (self, target) is the reverse of os.link's.
+ |
+ |  is_block_device(self)
+ |      Whether this path is a block device.
+ |
+ |  is_char_device(self)
+ |      Whether this path is a character device.
+ |
+ |  is_dir(self, *, follow_symlinks=True)
+ |      Whether this path is a directory.
+ |
+ |  is_fifo(self)
+ |      Whether this path is a FIFO.
+ |
+ |  is_file(self, *, follow_symlinks=True)
+ |      Whether this path is a regular file (also True for symlinks pointing
+ |      to regular files).
+ |
+ |  is_junction(self)
+ |      Whether this path is a junction.
+ |
+ |  is_mount(self)
+ |      Check if this path is a mount point
+ |
+ |  is_socket(self)
+ |      Whether this path is a socket.
+ |
+ |  is_symlink(self)
+ |      Whether this path is a symbolic link.
+ |
+ |  iterdir(self)
+ |      Yield path objects of the directory contents.
+ |
+ |      The children are yielded in arbitrary order, and the
+ |      special entries '.' and '..' are not included.
+ |
+ |  lchmod(self, mode)
+ |      Like chmod(), except if the path points to a symlink, the symlink's
+ |      permissions are changed, rather than its target's.
+ |
+ |  lstat(self)
+ |      Like stat(), except if the path points to a symlink, the symlink's
+ |      status information is returned, rather than its target's.
+ |
+ |  mkdir(self, mode=511, parents=False, exist_ok=False)
+ |      Create a new directory at this given path.
+ |
+ |  move(self, target)
+ |      Recursively move this file or directory tree to the given destination.
+ |
+ |  move_into(self, target_dir)
+ |      Move this file or directory tree into the given existing directory.
+ |
+ |  open(self, mode='r', buffering=-1, encoding=None, errors=None, newline=None)
+ |      Open the file pointed to by this path and return a file object, as
+ |      the built-in open() function does.
+ |
+ |  owner(self, *, follow_symlinks=True)
+ |      Return the login name of the file owner.
+ |
+ |  read_bytes(self)
+ |      Open the file in bytes mode, read it, and close the file.
+ |
+ |  read_text(self, encoding=None, errors=None, newline=None)
+ |      Open the file in text mode, read it, and close the file.
+ |
+ |  readlink(self)
+ |      Return the path to which the symbolic link points.
+ |
+ |  rename(self, target)
+ |      Rename this path to the target path.
+ |
+ |      The target path may be absolute or relative. Relative paths are
+ |      interpreted relative to the current working directory, *not* the
+ |      directory of the Path object.
+ |
+ |      Returns the new Path instance pointing to the target path.
+ |
+ |  replace(self, target)
+ |      Rename this path to the target path, overwriting if that path exists.
+ |
+ |      The target path may be absolute or relative. Relative paths are
+ |      interpreted relative to the current working directory, *not* the
+ |      directory of the Path object.
+ |
+ |      Returns the new Path instance pointing to the target path.
+ |
+ |  resolve(self, strict=False)
+ |      Make the path absolute, resolving all symlinks on the way and also
+ |      normalizing it.
+ |
+ |  rglob(self, pattern, *, case_sensitive=None, recurse_symlinks=False)
+ |      Recursively yield all existing files (of any kind, including
+ |      directories) matching the given relative pattern, anywhere in
+ |      this subtree.
+ |
+ |  rmdir(self)
+ |      Remove this directory.  The directory must be empty.
+ |
+ |  samefile(self, other_path)
+ |      Return whether other_path is the same or not as this file
+ |      (as returned by os.path.samefile()).
+ |
+ |  stat(self, *, follow_symlinks=True)
+ |      Return the result of the stat() system call on this path, like
+ |      os.stat() does.
+ |
+ |  symlink_to(self, target, target_is_directory=False)
+ |      Make this path a symlink pointing to the target path.
+ |      Note the order of arguments (link, target) is the reverse of os.symlink.
+ |
+ |  touch(self, mode=438, exist_ok=True)
+ |      Create this file with the given access mode, if it doesn't exist.
+ |
+ |  unlink(self, missing_ok=False)
+ |      Remove this file or link.
+ |      If the path is a directory, use rmdir() instead.
+ |
+ |  walk(self, top_down=True, on_error=None, follow_symlinks=False)
+ |      Walk the directory tree from this directory, similar to os.walk().
+ |
+ |  write_bytes(self, data)
+ |      Open the file in bytes mode, write to it, and close the file.
+ |
+ |  write_text(self, data, encoding=None, errors=None, newline=None)
+ |      Open the file in text mode, write to it, and close the file.
+ |
+ |  ----------------------------------------------------------------------
+ |  Class methods defined here:
+ |
+ |  cwd()
+ |      Return a new path pointing to the current working directory.
+ |
+ |  from_uri(uri)
+ |      Return a new path from the given 'file' URI.
+ |
+ |  home()
+ |      Return a new path pointing to expanduser('~').
+ |
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |
+ |  __new__(cls, *args, **kwargs)
+ |      Construct a PurePath from one or several strings and or existing
+ |      PurePath objects.  The strings and path objects are combined so as
+ |      to yield a canonicalized path, which is incorporated into the
+ |      new PurePath object.
+ |
+ |  ----------------------------------------------------------------------
+ |  Readonly properties defined here:
+ |
+ |  info
+ |      A PathInfo object that exposes the file type and other file attributes
+ |      of this path.
+ |
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from PurePath:
+ |
+ |  __bytes__(self)
+ |      Return the bytes representation of the path.  This is only
+ |      recommended to use under Unix.
+ |
+ |  __eq__(self, other)
+ |      Return self==value.
+ |
+ |  __fspath__(self)
+ |
+ |  __ge__(self, other)
+ |      Return self>=value.
+ |
+ |  __gt__(self, other)
+ |      Return self>value.
+ |
+ |  __hash__(self)
+ |      Return hash(self).
+ |
+ |  __init__(self, *args)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |
+ |  __le__(self, other)
+ |      Return self<=value.
+ |
+ |  __lt__(self, other)
+ |      Return self<value.
+ |
+ |  __reduce__(self)
+ |      Helper for pickle.
+ |
+ |  __repr__(self)
+ |      Return repr(self).
+ |
+ |  __rtruediv__(self, key)
+ |
+ |  __str__(self)
+ |      Return the string representation of the path, suitable for
+ |      passing to system calls.
+ |
+ |  __truediv__(self, key)
+ |
+ |  as_posix(self)
+ |      Return the string representation of the path with forward (/)
+ |      slashes.
+ |
+ |  full_match(self, pattern, *, case_sensitive=None)
+ |      Return True if this path matches the given glob-style pattern. The
+ |      pattern is matched against the entire path.
+ |
+ |  is_absolute(self)
+ |      True if the path is absolute (has both a root and, if applicable,
+ |      a drive).
+ |
+ |  is_relative_to(self, other)
+ |      Return True if the path is relative to another path or False.
+ |
+ |  is_reserved(self)
+ |      Return True if the path contains one of the special names reserved
+ |      by the system, if any.
+ |
+ |  joinpath(self, *pathsegments)
+ |      Combine this path with one or several arguments, and return a
+ |      new path representing either a subpath (if all arguments are relative
+ |      paths) or a totally different path (if one of the arguments is
+ |      anchored).
+ |
+ |  match(self, path_pattern, *, case_sensitive=None)
+ |      Return True if this path matches the given pattern. If the pattern is
+ |      relative, matching is done from the right; otherwise, the entire path
+ |      is matched. The recursive wildcard '**' is *not* supported by this
+ |      method.
+ |
+ |  relative_to(self, other, *, walk_up=False)
+ |      Return the relative path to another path identified by the passed
+ |      arguments.  If the operation is not possible (because this is not
+ |      related to the other path), raise ValueError.
+ |
+ |      The *walk_up* parameter controls whether `..` may be used to resolve
+ |      the path.
+ |
+ |  with_name(self, name)
+ |      Return a new path with the file name changed.
+ |
+ |  with_segments(self, *pathsegments)
+ |      Construct a new path object from any number of path-like objects.
+ |      Subclasses may override this method to customize how new path objects
+ |      are created from methods like `iterdir()`.
+ |
+ |  with_stem(self, stem)
+ |      Return a new path with the stem changed.
+ |
+ |  with_suffix(self, suffix)
+ |      Return a new path with the file suffix changed.  If the path
+ |      has no suffix, add given suffix.  If the given suffix is an empty
+ |      string, remove the suffix from the path.
+ |
+ |  ----------------------------------------------------------------------
+ |  Readonly properties inherited from PurePath:
+ |
+ |  anchor
+ |      The concatenation of the drive and root, or ''.
+ |
+ |  drive
+ |      The drive prefix (letter or UNC path), if any.
+ |
+ |  name
+ |      The final path component, if any.
+ |
+ |  parent
+ |      The logical parent of the path.
+ |
+ |  parents
+ |      A sequence of this path's logical parents.
+ |
+ |  parts
+ |      An object providing sequence-like access to the
+ |      components in the filesystem path.
+ |
+ |  root
+ |      The root of the path, if any.
+ |
+ |  stem
+ |      The final path component, minus its last suffix.
+ |
+ |  suffix
+ |      The final component's last suffix, if any.
+ |
+ |      This includes the leading period. For example: '.txt'
+ |
+ |  suffixes
+ |      A list of the final component's suffixes, if any.
+ |
+ |      These include the leading periods. For example: ['.tar', '.gz']
+ |
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes inherited from PurePath:
+ |
+ |  parser = <module 'ntpath' (frozen)>
+ |      Common pathname manipulations, WindowsNT/95 version.
+ |
+ |      Instead of importing this module directly, import os and refer to this
+ |      module as os.path.
+
+
+__________________
+Directory Function
+['__bytes__', '__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__firstlineno__', '__format__', '__fspath__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rtruediv__', '__setattr__', '__sizeof__', '__slots__', '__static_attributes__', '__str__', '__subclasshook__', '__truediv__', '_copy_from', '_copy_from_file', '_copy_from_file_fallback', '_copy_from_symlink', '_delete', '_drv', '_filter_trailing_slash', '_format_parsed_parts', '_from_dir_entry', '_from_parsed_parts', '_from_parsed_string', '_hash', '_info', '_parse_path', '_parse_pattern', '_parts_normcase', '_parts_normcase_cached', '_raw_path', '_raw_paths', '_remove_leading_dot', '_remove_trailing_slash', '_root', '_str', '_str_normcase', '_str_normcase_cached', '_tail', '_tail_cached', 'absolute', 'anchor', 'as_posix', 'as_uri', 'chmod', 'copy', 'copy_into', 'cwd', 'drive', 'exists', 'expanduser', 'from_uri', 'full_match', 'glob', 'group', 'hardlink_to', 'home', 'info', 'is_absolute', 'is_block_device', 'is_char_device', 'is_dir', 'is_fifo', 'is_file', 'is_junction', 'is_mount', 'is_relative_to', 'is_reserved', 'is_socket', 'is_symlink', 'iterdir', 'joinpath', 'lchmod', 'lstat', 'match', 'mkdir', 'move', 'move_into', 'name', 'open', 'owner', 'parent', 'parents', 'parser', 'parts', 'read_bytes', 'read_text', 'readlink', 'relative_to', 'rename', 'replace', 'resolve', 'rglob', 'rmdir', 'root', 'samefile', 'stat', 'stem', 'suffix', 'suffixes', 'symlink_to', 'touch', 'unlink', 'walk', 'with_name', 'with_segments', 'with_stem', 'with_suffix', 'write_bytes', 'write_text']

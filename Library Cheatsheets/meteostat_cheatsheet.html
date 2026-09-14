@@ -1,0 +1,2183 @@
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">meteostat</strong> (version 2.1.4)</td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Crrebe%5Cdocuments%5Cpython%20projects%5Ctoo%20damn%20hot%21%5C.venv%5Clib%5Csite-packages%5Cmeteostat%5C__init__.py">c:\users\rrebe\documents\python projects\too damn hot!\.venv\lib\site-packages\meteostat\__init__.py</a></td></tr></table>
+    <p><span class="code">█▀▄▀█ █▀▀ ▀█▀ █▀▀ █▀█ █▀ ▀█▀ ▄▀█ ▀█▀<br>
+█░▀░█ ██▄ ░█░ ██▄ █▄█ ▄█ ░█░ █▀█ ░█░<br>
+&nbsp;<br>
+A&nbsp;Python&nbsp;library&nbsp;for&nbsp;accessing&nbsp;open&nbsp;weather&nbsp;and&nbsp;climate&nbsp;data.<br>
+&nbsp;<br>
+Meteorological&nbsp;data&nbsp;provided&nbsp;by&nbsp;Meteostat&nbsp;(<a href="https://dev.meteostat.net">https://dev.meteostat.net</a>)<br>
+under&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;Creative&nbsp;Commons&nbsp;Attribution&nbsp;4.0&nbsp;International<br>
+<a href="#License">License</a>.<br>
+&nbsp;<br>
+The&nbsp;code&nbsp;is&nbsp;licensed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Package Contents</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="meteostat.api.html"><strong>api</strong>&nbsp;(package)</a><br>
+<a href="meteostat.enumerations.html">enumerations</a><br>
+</td><td class="multicolumn"><a href="meteostat.interpolation.html"><strong>interpolation</strong>&nbsp;(package)</a><br>
+<a href="meteostat.parameters.html">parameters</a><br>
+</td><td class="multicolumn"><a href="meteostat.providers.html"><strong>providers</strong>&nbsp;(package)</a><br>
+<a href="meteostat.typing.html">typing</a><br>
+</td><td class="multicolumn"><a href="meteostat.utils.html"><strong>utils</strong>&nbsp;(package)</a><br>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="meteostat.api.inventory.html#Inventory">meteostat.api.inventory.Inventory</a>
+</dt><dt class="heading-text"><a href="meteostat.api.point.html#Point">meteostat.api.point.Point</a>
+</dt><dt class="heading-text"><a href="meteostat.api.timeseries.html#TimeSeries">meteostat.api.timeseries.TimeSeries</a>
+</dt><dt class="heading-text"><a href="meteostat.typing.html#License">meteostat.typing.License</a>
+</dt><dt class="heading-text"><a href="meteostat.typing.html#Station">meteostat.typing.Station</a>
+</dt></dl>
+</dd>
+<dt class="heading-text"><a href="enum.html#StrEnum">enum.StrEnum</a>(<a href="builtins.html#str">builtins.str</a>, <a href="enum.html#ReprEnum">enum.ReprEnum</a>)
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="meteostat.enumerations.html#Granularity">meteostat.enumerations.Granularity</a>
+</dt><dt class="heading-text"><a href="meteostat.enumerations.html#Parameter">meteostat.enumerations.Parameter</a>
+</dt><dt class="heading-text"><a href="meteostat.enumerations.html#Provider">meteostat.enumerations.Provider</a>
+</dt><dt class="heading-text"><a href="meteostat.enumerations.html#UnitSystem">meteostat.enumerations.UnitSystem</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Granularity">class <strong>Granularity</strong></a>(<a href="enum.html#StrEnum">enum.StrEnum</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Granularity">Granularity</a>(*values)<br>
+&nbsp;<br>
+The&nbsp;different&nbsp;levels&nbsp;of&nbsp;time&nbsp;series&nbsp;granularity<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="meteostat.enumerations.html#Granularity">Granularity</a></dd>
+<dd><a href="enum.html#StrEnum">enum.StrEnum</a></dd>
+<dd><a href="builtins.html#str">builtins.str</a></dd>
+<dd><a href="enum.html#ReprEnum">enum.ReprEnum</a></dd>
+<dd><a href="enum.html#Enum">enum.Enum</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Granularity-__format__"><strong>__format__</strong></a>(self, format_spec, /)<span class="grey"><span class="heading-text"> from <a href="builtins.html#str">builtins.str</a></span></span></dt><dd><span class="code">Return&nbsp;a&nbsp;formatted&nbsp;version&nbsp;of&nbsp;the&nbsp;string&nbsp;as&nbsp;described&nbsp;by&nbsp;format_spec.</span></dd></dl>
+
+<dl><dt><a name="Granularity-__new__"><strong>__new__</strong></a>(cls, value)<span class="grey"><span class="heading-text"> from enum.Enum</span></span></dt><dd><span class="code">Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="Granularity-__str__"><strong>__str__</strong></a>(self, /)<span class="grey"><span class="heading-text"> from <a href="builtins.html#str">builtins.str</a></span></span></dt><dd><span class="code">Return&nbsp;str(self).</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>DAILY</strong> = &lt;Granularity.DAILY: 'daily'&gt;</dl>
+
+<dl><dt><strong>HOURLY</strong> = &lt;Granularity.HOURLY: 'hourly'&gt;</dl>
+
+<dl><dt><strong>MONTHLY</strong> = &lt;Granularity.MONTHLY: 'monthly'&gt;</dl>
+
+<dl><dt><strong>NORMALS</strong> = &lt;Granularity.NORMALS: 'normals'&gt;</dl>
+
+<hr>
+Methods inherited from <a href="enum.html#StrEnum">enum.StrEnum</a>:<br>
+<dl><dt><a name="Granularity-__repr__"><strong>__repr__</strong></a>(self)<span class="grey"><span class="heading-text"> from enum.Enum</span></span></dt><dd><span class="code">Return&nbsp;repr(self).</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#str">builtins.str</a>:<br>
+<dl><dt><a name="Granularity-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self+value.</span></dd></dl>
+
+<dl><dt><a name="Granularity-__contains__"><strong>__contains__</strong></a>(self, key, /)</dt><dd><span class="code">Return&nbsp;bool(key&nbsp;in&nbsp;self).</span></dd></dl>
+
+<dl><dt><a name="Granularity-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self==value.</span></dd></dl>
+
+<dl><dt><a name="Granularity-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&gt;=value.</span></dd></dl>
+
+<dl><dt><a name="Granularity-__getitem__"><strong>__getitem__</strong></a>(self, key, /)</dt><dd><span class="code">Return&nbsp;self[key].</span></dd></dl>
+
+<dl><dt><a name="Granularity-__getnewargs__"><strong>__getnewargs__</strong></a>(self, /)</dt></dl>
+
+<dl><dt><a name="Granularity-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&gt;value.</span></dd></dl>
+
+<dl><dt><a name="Granularity-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;hash(self).</span></dd></dl>
+
+<dl><dt><a name="Granularity-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><span class="code">Implement&nbsp;iter(self).</span></dd></dl>
+
+<dl><dt><a name="Granularity-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&lt;=value.</span></dd></dl>
+
+<dl><dt><a name="Granularity-__len__"><strong>__len__</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;len(self).</span></dd></dl>
+
+<dl><dt><a name="Granularity-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&lt;value.</span></dd></dl>
+
+<dl><dt><a name="Granularity-__mod__"><strong>__mod__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self%value.</span></dd></dl>
+
+<dl><dt><a name="Granularity-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self*value.</span></dd></dl>
+
+<dl><dt><a name="Granularity-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self!=value.</span></dd></dl>
+
+<dl><dt><a name="Granularity-__rmod__"><strong>__rmod__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;value%self.</span></dd></dl>
+
+<dl><dt><a name="Granularity-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;value*self.</span></dd></dl>
+
+<dl><dt><a name="Granularity-__sizeof__"><strong>__sizeof__</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;string&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes.</span></dd></dl>
+
+<dl><dt><a name="Granularity-capitalize"><strong>capitalize</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;capitalized&nbsp;version&nbsp;of&nbsp;the&nbsp;string.<br>
+&nbsp;<br>
+More&nbsp;specifically,&nbsp;make&nbsp;the&nbsp;first&nbsp;character&nbsp;have&nbsp;upper&nbsp;case&nbsp;and&nbsp;the<br>
+rest&nbsp;lower&nbsp;case.</span></dd></dl>
+
+<dl><dt><a name="Granularity-casefold"><strong>casefold</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;version&nbsp;of&nbsp;the&nbsp;string&nbsp;suitable&nbsp;for&nbsp;caseless&nbsp;comparisons.</span></dd></dl>
+
+<dl><dt><a name="Granularity-center"><strong>center</strong></a>(self, width, fillchar=' ', /)</dt><dd><span class="code">Return&nbsp;a&nbsp;centered&nbsp;string&nbsp;of&nbsp;length&nbsp;width.<br>
+&nbsp;<br>
+Padding&nbsp;is&nbsp;done&nbsp;using&nbsp;the&nbsp;specified&nbsp;fill&nbsp;character&nbsp;(default&nbsp;is<br>
+a&nbsp;space).</span></dd></dl>
+
+<dl><dt><a name="Granularity-count"><strong>count</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;number&nbsp;of&nbsp;non-overlapping&nbsp;occurrences&nbsp;of&nbsp;substring&nbsp;sub&nbsp;in&nbsp;string&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.</span></dd></dl>
+
+<dl><dt><a name="Granularity-encode"><strong>encode</strong></a>(self, /, encoding='utf-8', errors='strict')</dt><dd><span class="code">Encode&nbsp;the&nbsp;string&nbsp;using&nbsp;the&nbsp;codec&nbsp;registered&nbsp;for&nbsp;encoding.<br>
+&nbsp;<br>
+encoding<br>
+&nbsp;&nbsp;The&nbsp;encoding&nbsp;in&nbsp;which&nbsp;to&nbsp;encode&nbsp;the&nbsp;string.<br>
+errors<br>
+&nbsp;&nbsp;The&nbsp;error&nbsp;handling&nbsp;scheme&nbsp;to&nbsp;use&nbsp;for&nbsp;encoding&nbsp;errors.<br>
+&nbsp;&nbsp;The&nbsp;default&nbsp;is&nbsp;'strict'&nbsp;meaning&nbsp;that&nbsp;encoding&nbsp;errors&nbsp;raise&nbsp;a<br>
+&nbsp;&nbsp;UnicodeEncodeError.&nbsp;&nbsp;Other&nbsp;possible&nbsp;values&nbsp;are&nbsp;'ignore',&nbsp;'replace'<br>
+&nbsp;&nbsp;and&nbsp;'xmlcharrefreplace'&nbsp;as&nbsp;well&nbsp;as&nbsp;any&nbsp;other&nbsp;name&nbsp;registered&nbsp;with<br>
+&nbsp;&nbsp;codecs.register_error&nbsp;that&nbsp;can&nbsp;handle&nbsp;UnicodeEncodeErrors.</span></dd></dl>
+
+<dl><dt><a name="Granularity-endswith"><strong>endswith</strong></a>(self, suffix[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;ends&nbsp;with&nbsp;the&nbsp;specified&nbsp;suffix,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+suffix<br>
+&nbsp;&nbsp;A&nbsp;string&nbsp;or&nbsp;a&nbsp;tuple&nbsp;of&nbsp;strings&nbsp;to&nbsp;try.<br>
+start<br>
+&nbsp;&nbsp;Optional&nbsp;start&nbsp;position.&nbsp;Default:&nbsp;start&nbsp;of&nbsp;the&nbsp;string.<br>
+end<br>
+&nbsp;&nbsp;Optional&nbsp;stop&nbsp;position.&nbsp;Default:&nbsp;end&nbsp;of&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Granularity-expandtabs"><strong>expandtabs</strong></a>(self, /, tabsize=8)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;where&nbsp;all&nbsp;tab&nbsp;characters&nbsp;are&nbsp;expanded&nbsp;using&nbsp;spaces.<br>
+&nbsp;<br>
+If&nbsp;tabsize&nbsp;is&nbsp;not&nbsp;given,&nbsp;a&nbsp;tab&nbsp;size&nbsp;of&nbsp;8&nbsp;characters&nbsp;is&nbsp;assumed.</span></dd></dl>
+
+<dl><dt><a name="Granularity-find"><strong>find</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;lowest&nbsp;index&nbsp;in&nbsp;S&nbsp;where&nbsp;substring&nbsp;sub&nbsp;is&nbsp;found,&nbsp;such&nbsp;that&nbsp;sub&nbsp;is&nbsp;contained&nbsp;within&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.&nbsp;&nbsp;Return&nbsp;-1&nbsp;on&nbsp;failure.</span></dd></dl>
+
+<dl><dt><a name="Granularity-format"><strong>format</strong></a>(self, /, *args, **kwargs)</dt><dd><span class="code">Return&nbsp;a&nbsp;formatted&nbsp;version&nbsp;of&nbsp;the&nbsp;string,&nbsp;using&nbsp;substitutions&nbsp;from&nbsp;args&nbsp;and&nbsp;kwargs.<br>
+The&nbsp;substitutions&nbsp;are&nbsp;identified&nbsp;by&nbsp;braces&nbsp;('{'&nbsp;and&nbsp;'}').</span></dd></dl>
+
+<dl><dt><a name="Granularity-format_map"><strong>format_map</strong></a>(self, mapping, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;formatted&nbsp;version&nbsp;of&nbsp;the&nbsp;string,&nbsp;using&nbsp;substitutions&nbsp;from&nbsp;mapping.<br>
+The&nbsp;substitutions&nbsp;are&nbsp;identified&nbsp;by&nbsp;braces&nbsp;('{'&nbsp;and&nbsp;'}').</span></dd></dl>
+
+<dl><dt><a name="Granularity-index"><strong>index</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;lowest&nbsp;index&nbsp;in&nbsp;S&nbsp;where&nbsp;substring&nbsp;sub&nbsp;is&nbsp;found,&nbsp;such&nbsp;that&nbsp;sub&nbsp;is&nbsp;contained&nbsp;within&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.&nbsp;&nbsp;Raises&nbsp;ValueError&nbsp;when&nbsp;the&nbsp;substring&nbsp;is&nbsp;not&nbsp;found.</span></dd></dl>
+
+<dl><dt><a name="Granularity-isalnum"><strong>isalnum</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;an&nbsp;alpha-numeric&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;alpha-numeric&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+alpha-numeric&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Granularity-isalpha"><strong>isalpha</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;an&nbsp;alphabetic&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;alphabetic&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+alphabetic&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Granularity-isascii"><strong>isascii</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are&nbsp;ASCII,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+ASCII&nbsp;characters&nbsp;have&nbsp;code&nbsp;points&nbsp;in&nbsp;the&nbsp;range&nbsp;U+0000-U+007F.<br>
+Empty&nbsp;string&nbsp;is&nbsp;ASCII&nbsp;too.</span></dd></dl>
+
+<dl><dt><a name="Granularity-isdecimal"><strong>isdecimal</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;decimal&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;a&nbsp;decimal&nbsp;string&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+decimal&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Granularity-isdigit"><strong>isdigit</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;digit&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;a&nbsp;digit&nbsp;string&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+digits&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Granularity-isidentifier"><strong>isidentifier</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;valid&nbsp;Python&nbsp;identifier,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+Call&nbsp;keyword.iskeyword(s)&nbsp;to&nbsp;test&nbsp;whether&nbsp;string&nbsp;s&nbsp;is&nbsp;a&nbsp;reserved<br>
+identifier,&nbsp;such&nbsp;as&nbsp;"def"&nbsp;or&nbsp;"class".</span></dd></dl>
+
+<dl><dt><a name="Granularity-islower"><strong>islower</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;lowercase&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;lowercase&nbsp;if&nbsp;all&nbsp;cased&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+lowercase&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;cased&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Granularity-isnumeric"><strong>isnumeric</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;numeric&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;numeric&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are&nbsp;numeric&nbsp;and<br>
+there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Granularity-isprintable"><strong>isprintable</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are&nbsp;printable,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;character&nbsp;is&nbsp;printable&nbsp;if&nbsp;repr()&nbsp;may&nbsp;use&nbsp;it&nbsp;in&nbsp;its&nbsp;output.</span></dd></dl>
+
+<dl><dt><a name="Granularity-isspace"><strong>isspace</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;whitespace&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;whitespace&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+whitespace&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Granularity-istitle"><strong>istitle</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;title-cased&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+In&nbsp;a&nbsp;title-cased&nbsp;string,&nbsp;upper-&nbsp;and&nbsp;title-case&nbsp;characters&nbsp;may&nbsp;only<br>
+follow&nbsp;uncased&nbsp;characters&nbsp;and&nbsp;lowercase&nbsp;characters&nbsp;only&nbsp;cased&nbsp;ones.</span></dd></dl>
+
+<dl><dt><a name="Granularity-isupper"><strong>isupper</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;an&nbsp;uppercase&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;uppercase&nbsp;if&nbsp;all&nbsp;cased&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+uppercase&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;cased&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Granularity-join"><strong>join</strong></a>(self, iterable, /)</dt><dd><span class="code">Concatenate&nbsp;any&nbsp;number&nbsp;of&nbsp;strings.<br>
+&nbsp;<br>
+The&nbsp;string&nbsp;whose&nbsp;method&nbsp;is&nbsp;called&nbsp;is&nbsp;inserted&nbsp;in&nbsp;between&nbsp;each&nbsp;given<br>
+string.&nbsp;&nbsp;The&nbsp;result&nbsp;is&nbsp;returned&nbsp;as&nbsp;a&nbsp;new&nbsp;string.<br>
+&nbsp;<br>
+Example:&nbsp;'.'.<a href="#Granularity-join">join</a>(['ab',&nbsp;'pq',&nbsp;'rs'])&nbsp;-&gt;&nbsp;'ab.pq.rs'</span></dd></dl>
+
+<dl><dt><a name="Granularity-ljust"><strong>ljust</strong></a>(self, width, fillchar=' ', /)</dt><dd><span class="code">Return&nbsp;a&nbsp;left-justified&nbsp;string&nbsp;of&nbsp;length&nbsp;width.<br>
+&nbsp;<br>
+Padding&nbsp;is&nbsp;done&nbsp;using&nbsp;the&nbsp;specified&nbsp;fill&nbsp;character&nbsp;(default&nbsp;is<br>
+a&nbsp;space).</span></dd></dl>
+
+<dl><dt><a name="Granularity-lower"><strong>lower</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;converted&nbsp;to&nbsp;lowercase.</span></dd></dl>
+
+<dl><dt><a name="Granularity-lstrip"><strong>lstrip</strong></a>(self, chars=None, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;with&nbsp;leading&nbsp;whitespace&nbsp;removed.<br>
+&nbsp;<br>
+If&nbsp;chars&nbsp;is&nbsp;given&nbsp;and&nbsp;not&nbsp;None,&nbsp;remove&nbsp;characters&nbsp;in&nbsp;chars&nbsp;instead.</span></dd></dl>
+
+<dl><dt><a name="Granularity-partition"><strong>partition</strong></a>(self, sep, /)</dt><dd><span class="code">Partition&nbsp;the&nbsp;string&nbsp;into&nbsp;three&nbsp;parts&nbsp;using&nbsp;the&nbsp;given&nbsp;separator.<br>
+&nbsp;<br>
+This&nbsp;will&nbsp;search&nbsp;for&nbsp;the&nbsp;separator&nbsp;in&nbsp;the&nbsp;string.&nbsp;&nbsp;If&nbsp;the&nbsp;separator<br>
+is&nbsp;found,&nbsp;returns&nbsp;a&nbsp;3-tuple&nbsp;containing&nbsp;the&nbsp;part&nbsp;before&nbsp;the<br>
+separator,&nbsp;the&nbsp;separator&nbsp;itself,&nbsp;and&nbsp;the&nbsp;part&nbsp;after&nbsp;it.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;separator&nbsp;is&nbsp;not&nbsp;found,&nbsp;returns&nbsp;a&nbsp;3-tuple&nbsp;containing<br>
+the&nbsp;original&nbsp;string&nbsp;and&nbsp;two&nbsp;empty&nbsp;strings.</span></dd></dl>
+
+<dl><dt><a name="Granularity-removeprefix"><strong>removeprefix</strong></a>(self, prefix, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;str&nbsp;with&nbsp;the&nbsp;given&nbsp;prefix&nbsp;string&nbsp;removed&nbsp;if&nbsp;present.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;string&nbsp;starts&nbsp;with&nbsp;the&nbsp;prefix&nbsp;string,&nbsp;return<br>
+string[len(prefix):].&nbsp;&nbsp;Otherwise,&nbsp;return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;original<br>
+string.</span></dd></dl>
+
+<dl><dt><a name="Granularity-removesuffix"><strong>removesuffix</strong></a>(self, suffix, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;str&nbsp;with&nbsp;the&nbsp;given&nbsp;suffix&nbsp;string&nbsp;removed&nbsp;if&nbsp;present.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;string&nbsp;ends&nbsp;with&nbsp;the&nbsp;suffix&nbsp;string&nbsp;and&nbsp;that&nbsp;suffix&nbsp;is&nbsp;not<br>
+empty,&nbsp;return&nbsp;string[:-len(suffix)].&nbsp;&nbsp;Otherwise,&nbsp;return&nbsp;a&nbsp;copy&nbsp;of<br>
+the&nbsp;original&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Granularity-replace"><strong>replace</strong></a>(self, old, new, /, count=-1)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;with&nbsp;all&nbsp;occurrences&nbsp;of&nbsp;substring&nbsp;old&nbsp;replaced&nbsp;by&nbsp;new.<br>
+&nbsp;<br>
+&nbsp;&nbsp;count<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Maximum&nbsp;number&nbsp;of&nbsp;occurrences&nbsp;to&nbsp;replace.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-1&nbsp;(the&nbsp;default&nbsp;value)&nbsp;means&nbsp;replace&nbsp;all&nbsp;occurrences.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;optional&nbsp;argument&nbsp;count&nbsp;is&nbsp;given,&nbsp;only&nbsp;the&nbsp;first&nbsp;count&nbsp;occurrences&nbsp;are<br>
+replaced.</span></dd></dl>
+
+<dl><dt><a name="Granularity-rfind"><strong>rfind</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;highest&nbsp;index&nbsp;in&nbsp;S&nbsp;where&nbsp;substring&nbsp;sub&nbsp;is&nbsp;found,&nbsp;such&nbsp;that&nbsp;sub&nbsp;is&nbsp;contained&nbsp;within&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.&nbsp;&nbsp;Return&nbsp;-1&nbsp;on&nbsp;failure.</span></dd></dl>
+
+<dl><dt><a name="Granularity-rindex"><strong>rindex</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;highest&nbsp;index&nbsp;in&nbsp;S&nbsp;where&nbsp;substring&nbsp;sub&nbsp;is&nbsp;found,&nbsp;such&nbsp;that&nbsp;sub&nbsp;is&nbsp;contained&nbsp;within&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.&nbsp;&nbsp;Raises&nbsp;ValueError&nbsp;when&nbsp;the&nbsp;substring&nbsp;is&nbsp;not&nbsp;found.</span></dd></dl>
+
+<dl><dt><a name="Granularity-rjust"><strong>rjust</strong></a>(self, width, fillchar=' ', /)</dt><dd><span class="code">Return&nbsp;a&nbsp;right-justified&nbsp;string&nbsp;of&nbsp;length&nbsp;width.<br>
+&nbsp;<br>
+Padding&nbsp;is&nbsp;done&nbsp;using&nbsp;the&nbsp;specified&nbsp;fill&nbsp;character&nbsp;(default&nbsp;is<br>
+a&nbsp;space).</span></dd></dl>
+
+<dl><dt><a name="Granularity-rpartition"><strong>rpartition</strong></a>(self, sep, /)</dt><dd><span class="code">Partition&nbsp;the&nbsp;string&nbsp;into&nbsp;three&nbsp;parts&nbsp;using&nbsp;the&nbsp;given&nbsp;separator.<br>
+&nbsp;<br>
+This&nbsp;will&nbsp;search&nbsp;for&nbsp;the&nbsp;separator&nbsp;in&nbsp;the&nbsp;string,&nbsp;starting&nbsp;at&nbsp;the<br>
+end.&nbsp;&nbsp;If&nbsp;the&nbsp;separator&nbsp;is&nbsp;found,&nbsp;returns&nbsp;a&nbsp;3-tuple&nbsp;containing&nbsp;the<br>
+part&nbsp;before&nbsp;the&nbsp;separator,&nbsp;the&nbsp;separator&nbsp;itself,&nbsp;and&nbsp;the&nbsp;part&nbsp;after<br>
+it.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;separator&nbsp;is&nbsp;not&nbsp;found,&nbsp;returns&nbsp;a&nbsp;3-tuple&nbsp;containing&nbsp;two<br>
+empty&nbsp;strings&nbsp;and&nbsp;the&nbsp;original&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Granularity-rsplit"><strong>rsplit</strong></a>(self, /, sep=None, maxsplit=-1)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;substrings&nbsp;in&nbsp;the&nbsp;string,&nbsp;using&nbsp;sep&nbsp;as&nbsp;the&nbsp;separator&nbsp;string.<br>
+&nbsp;<br>
+&nbsp;&nbsp;sep<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;separator&nbsp;used&nbsp;to&nbsp;split&nbsp;the&nbsp;string.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;set&nbsp;to&nbsp;None&nbsp;(the&nbsp;default&nbsp;value),&nbsp;will&nbsp;split&nbsp;on&nbsp;any<br>
+&nbsp;&nbsp;&nbsp;&nbsp;whitespace&nbsp;character&nbsp;(including&nbsp;\n&nbsp;\r&nbsp;\t&nbsp;\f&nbsp;and&nbsp;spaces)&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;discard&nbsp;empty&nbsp;strings&nbsp;from&nbsp;the&nbsp;result.<br>
+&nbsp;&nbsp;maxsplit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Maximum&nbsp;number&nbsp;of&nbsp;splits.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-1&nbsp;(the&nbsp;default&nbsp;value)&nbsp;means&nbsp;no&nbsp;limit.<br>
+&nbsp;<br>
+Splitting&nbsp;starts&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;string&nbsp;and&nbsp;works&nbsp;to&nbsp;the&nbsp;front.</span></dd></dl>
+
+<dl><dt><a name="Granularity-rstrip"><strong>rstrip</strong></a>(self, chars=None, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;with&nbsp;trailing&nbsp;whitespace&nbsp;removed.<br>
+&nbsp;<br>
+If&nbsp;chars&nbsp;is&nbsp;given&nbsp;and&nbsp;not&nbsp;None,&nbsp;remove&nbsp;characters&nbsp;in&nbsp;chars&nbsp;instead.</span></dd></dl>
+
+<dl><dt><a name="Granularity-split"><strong>split</strong></a>(self, /, sep=None, maxsplit=-1)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;substrings&nbsp;in&nbsp;the&nbsp;string,&nbsp;using&nbsp;sep&nbsp;as&nbsp;the&nbsp;separator&nbsp;string.<br>
+&nbsp;<br>
+&nbsp;&nbsp;sep<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;separator&nbsp;used&nbsp;to&nbsp;split&nbsp;the&nbsp;string.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;set&nbsp;to&nbsp;None&nbsp;(the&nbsp;default&nbsp;value),&nbsp;will&nbsp;split&nbsp;on&nbsp;any<br>
+&nbsp;&nbsp;&nbsp;&nbsp;whitespace&nbsp;character&nbsp;(including&nbsp;\n&nbsp;\r&nbsp;\t&nbsp;\f&nbsp;and&nbsp;spaces)&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;discard&nbsp;empty&nbsp;strings&nbsp;from&nbsp;the&nbsp;result.<br>
+&nbsp;&nbsp;maxsplit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Maximum&nbsp;number&nbsp;of&nbsp;splits.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-1&nbsp;(the&nbsp;default&nbsp;value)&nbsp;means&nbsp;no&nbsp;limit.<br>
+&nbsp;<br>
+Splitting&nbsp;starts&nbsp;at&nbsp;the&nbsp;front&nbsp;of&nbsp;the&nbsp;string&nbsp;and&nbsp;works&nbsp;to&nbsp;the&nbsp;end.<br>
+&nbsp;<br>
+Note,&nbsp;str.<a href="#Granularity-split">split</a>()&nbsp;is&nbsp;mainly&nbsp;useful&nbsp;for&nbsp;data&nbsp;that&nbsp;has&nbsp;been<br>
+intentionally&nbsp;delimited.&nbsp;&nbsp;With&nbsp;natural&nbsp;text&nbsp;that&nbsp;includes<br>
+punctuation,&nbsp;consider&nbsp;using&nbsp;the&nbsp;regular&nbsp;expression&nbsp;module.</span></dd></dl>
+
+<dl><dt><a name="Granularity-splitlines"><strong>splitlines</strong></a>(self, /, keepends=False)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;lines&nbsp;in&nbsp;the&nbsp;string,&nbsp;breaking&nbsp;at&nbsp;line&nbsp;boundaries.<br>
+&nbsp;<br>
+Line&nbsp;breaks&nbsp;are&nbsp;not&nbsp;included&nbsp;in&nbsp;the&nbsp;resulting&nbsp;list&nbsp;unless&nbsp;keepends<br>
+is&nbsp;given&nbsp;and&nbsp;true.</span></dd></dl>
+
+<dl><dt><a name="Granularity-startswith"><strong>startswith</strong></a>(self, prefix[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;starts&nbsp;with&nbsp;the&nbsp;specified&nbsp;prefix,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+prefix<br>
+&nbsp;&nbsp;A&nbsp;string&nbsp;or&nbsp;a&nbsp;tuple&nbsp;of&nbsp;strings&nbsp;to&nbsp;try.<br>
+start<br>
+&nbsp;&nbsp;Optional&nbsp;start&nbsp;position.&nbsp;Default:&nbsp;start&nbsp;of&nbsp;the&nbsp;string.<br>
+end<br>
+&nbsp;&nbsp;Optional&nbsp;stop&nbsp;position.&nbsp;Default:&nbsp;end&nbsp;of&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Granularity-strip"><strong>strip</strong></a>(self, chars=None, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;with&nbsp;leading&nbsp;and&nbsp;trailing&nbsp;whitespace&nbsp;removed.<br>
+&nbsp;<br>
+If&nbsp;chars&nbsp;is&nbsp;given&nbsp;and&nbsp;not&nbsp;None,&nbsp;remove&nbsp;characters&nbsp;in&nbsp;chars&nbsp;instead.</span></dd></dl>
+
+<dl><dt><a name="Granularity-swapcase"><strong>swapcase</strong></a>(self, /)</dt><dd><span class="code">Convert&nbsp;uppercase&nbsp;characters&nbsp;to&nbsp;lowercase&nbsp;and&nbsp;lowercase&nbsp;characters&nbsp;to&nbsp;uppercase.</span></dd></dl>
+
+<dl><dt><a name="Granularity-title"><strong>title</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;version&nbsp;of&nbsp;the&nbsp;string&nbsp;where&nbsp;each&nbsp;word&nbsp;is&nbsp;titlecased.<br>
+&nbsp;<br>
+More&nbsp;specifically,&nbsp;words&nbsp;start&nbsp;with&nbsp;uppercased&nbsp;characters&nbsp;and&nbsp;all<br>
+remaining&nbsp;cased&nbsp;characters&nbsp;have&nbsp;lower&nbsp;case.</span></dd></dl>
+
+<dl><dt><a name="Granularity-translate"><strong>translate</strong></a>(self, table, /)</dt><dd><span class="code">Replace&nbsp;each&nbsp;character&nbsp;in&nbsp;the&nbsp;string&nbsp;using&nbsp;the&nbsp;given&nbsp;translation&nbsp;table.<br>
+&nbsp;<br>
+&nbsp;&nbsp;table<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Translation&nbsp;table,&nbsp;which&nbsp;must&nbsp;be&nbsp;a&nbsp;mapping&nbsp;of&nbsp;Unicode&nbsp;ordinals<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;Unicode&nbsp;ordinals,&nbsp;strings,&nbsp;or&nbsp;None.<br>
+&nbsp;<br>
+The&nbsp;table&nbsp;must&nbsp;implement&nbsp;lookup/indexing&nbsp;via&nbsp;__getitem__,&nbsp;for<br>
+instance&nbsp;a&nbsp;dictionary&nbsp;or&nbsp;list.&nbsp;&nbsp;If&nbsp;this&nbsp;operation&nbsp;raises<br>
+LookupError,&nbsp;the&nbsp;character&nbsp;is&nbsp;left&nbsp;untouched.&nbsp;&nbsp;Characters&nbsp;mapped&nbsp;to<br>
+None&nbsp;are&nbsp;deleted.</span></dd></dl>
+
+<dl><dt><a name="Granularity-upper"><strong>upper</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;converted&nbsp;to&nbsp;uppercase.</span></dd></dl>
+
+<dl><dt><a name="Granularity-zfill"><strong>zfill</strong></a>(self, width, /)</dt><dd><span class="code">Pad&nbsp;a&nbsp;numeric&nbsp;string&nbsp;with&nbsp;zeros&nbsp;on&nbsp;the&nbsp;left,&nbsp;to&nbsp;fill&nbsp;a&nbsp;field&nbsp;of&nbsp;the&nbsp;given&nbsp;width.<br>
+&nbsp;<br>
+The&nbsp;string&nbsp;is&nbsp;never&nbsp;truncated.</span></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#str">builtins.str</a>:<br>
+<dl><dt><a name="Granularity-maketrans"><strong>maketrans</strong></a>(x, y=&lt;unrepresentable&gt;, z=&lt;unrepresentable&gt;, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;translation&nbsp;table&nbsp;usable&nbsp;for&nbsp;str.<a href="#Granularity-translate">translate</a>().<br>
+&nbsp;<br>
+If&nbsp;there&nbsp;is&nbsp;only&nbsp;one&nbsp;argument,&nbsp;it&nbsp;must&nbsp;be&nbsp;a&nbsp;dictionary&nbsp;mapping<br>
+Unicode&nbsp;ordinals&nbsp;(integers)&nbsp;or&nbsp;characters&nbsp;to&nbsp;Unicode&nbsp;ordinals,<br>
+strings&nbsp;or&nbsp;None.&nbsp;&nbsp;Character&nbsp;keys&nbsp;will&nbsp;be&nbsp;then&nbsp;converted&nbsp;to&nbsp;ordinals.<br>
+If&nbsp;there&nbsp;are&nbsp;two&nbsp;arguments,&nbsp;they&nbsp;must&nbsp;be&nbsp;strings&nbsp;of&nbsp;equal&nbsp;length,<br>
+and&nbsp;in&nbsp;the&nbsp;resulting&nbsp;dictionary,&nbsp;each&nbsp;character&nbsp;in&nbsp;x&nbsp;will&nbsp;be&nbsp;mapped<br>
+to&nbsp;the&nbsp;character&nbsp;at&nbsp;the&nbsp;same&nbsp;position&nbsp;in&nbsp;y.&nbsp;&nbsp;If&nbsp;there&nbsp;is&nbsp;a&nbsp;third<br>
+argument,&nbsp;it&nbsp;must&nbsp;be&nbsp;a&nbsp;string,&nbsp;whose&nbsp;characters&nbsp;will&nbsp;be&nbsp;mapped&nbsp;to<br>
+None&nbsp;in&nbsp;the&nbsp;result.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><a name="Granularity-__dir__"><strong>__dir__</strong></a>(self)</dt><dd><span class="code">Returns&nbsp;public&nbsp;methods&nbsp;and&nbsp;other&nbsp;interesting&nbsp;attributes.</span></dd></dl>
+
+<dl><dt><a name="Granularity-__reduce_ex__"><strong>__reduce_ex__</strong></a>(self, proto)</dt><dd><span class="code">Helper&nbsp;for&nbsp;pickle.</span></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><span class="code">The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><span class="code">The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumType">enum.EnumType</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><span class="code">Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;&nbsp;Note&nbsp;that<br>
+this&nbsp;is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Inventory">class <strong>Inventory</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Inventory">Inventory</a>(df:&nbsp;Optional[pd.DataFrame]&nbsp;=&nbsp;None)<br>
+&nbsp;<br>
+A&nbsp;weather&nbsp;station's&nbsp;data&nbsp;inventory<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="Inventory-__init__"><strong>__init__</strong></a>(self, df: Optional[pd.DataFrame] = None)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>end</strong></dt>
+<dd><span class="code">Get&nbsp;the&nbsp;latest&nbsp;end&nbsp;date&nbsp;from&nbsp;the&nbsp;inventory</span></dd>
+</dl>
+<dl><dt><strong>parameters</strong></dt>
+<dd><span class="code">Get&nbsp;the&nbsp;list&nbsp;of&nbsp;available&nbsp;parameters&nbsp;from&nbsp;the&nbsp;inventory</span></dd>
+</dl>
+<dl><dt><strong>start</strong></dt>
+<dd><span class="code">Get&nbsp;the&nbsp;earliest&nbsp;start&nbsp;date&nbsp;from&nbsp;the&nbsp;inventory</span></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>df</strong> = None</dl>
+
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="License">class <strong>License</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#License">License</a>(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;commercial:&nbsp;bool,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;attribution:&nbsp;Optional[str]&nbsp;=&nbsp;None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;Optional[str]&nbsp;=&nbsp;None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;url:&nbsp;Optional[str]&nbsp;=&nbsp;None<br>
+)&nbsp;-&amp;gt;&nbsp;None<br>
+&nbsp;<br>
+A&nbsp;license<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="License-__eq__"><strong>__eq__</strong></a>(self, other)</dt><dd><span class="code">Return&nbsp;self==value.</span></dd></dl>
+
+<dl><dt><a name="License-__init__"><strong>__init__</strong></a>(
+    self,
+    commercial: bool,
+    attribution: Optional[str] = None,
+    name: Optional[str] = None,
+    url: Optional[str] = None
+) -&gt; None</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="License-__replace__"><strong>__replace__</strong></a> = _replace(self, /, **changes)<span class="grey"><span class="heading-text"> from <a href="dataclasses.html">dataclasses</a></span></span></dt></dl>
+
+<dl><dt><a name="License-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;repr(self).</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__dataclass_fields__</strong> = {'attribution': Field(name='attribution',type=str | None,default...xy({}),kw_only=False,doc=None,_field_type=_FIELD), 'commercial': Field(name='commercial',type=&lt;class 'bool'&gt;,defa...xy({}),kw_only=False,doc=None,_field_type=_FIELD), 'name': Field(name='name',type=str | None,default=None,d...xy({}),kw_only=False,doc=None,_field_type=_FIELD), 'url': Field(name='url',type=str | None,default=None,de...xy({}),kw_only=False,doc=None,_field_type=_FIELD)}</dl>
+
+<dl><dt><strong>__dataclass_params__</strong> = _DataclassParams(init=True,repr=True,eq=True,ord...rue,kw_only=False,slots=False,weakref_slot=False)</dl>
+
+<dl><dt><strong>__hash__</strong> = None</dl>
+
+<dl><dt><strong>__match_args__</strong> = ('commercial', 'attribution', 'name', 'url')</dl>
+
+<dl><dt><strong>attribution</strong> = None</dl>
+
+<dl><dt><strong>name</strong> = None</dl>
+
+<dl><dt><strong>url</strong> = None</dl>
+
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Parameter">class <strong>Parameter</strong></a>(<a href="enum.html#StrEnum">enum.StrEnum</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Parameter">Parameter</a>(*values)<br>
+&nbsp;<br>
+The&nbsp;different&nbsp;meteorological&nbsp;parameters&nbsp;supported&nbsp;by&nbsp;Meteostat<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="meteostat.enumerations.html#Parameter">Parameter</a></dd>
+<dd><a href="enum.html#StrEnum">enum.StrEnum</a></dd>
+<dd><a href="builtins.html#str">builtins.str</a></dd>
+<dd><a href="enum.html#ReprEnum">enum.ReprEnum</a></dd>
+<dd><a href="enum.html#Enum">enum.Enum</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Parameter-__format__"><strong>__format__</strong></a>(self, format_spec, /)<span class="grey"><span class="heading-text"> from <a href="builtins.html#str">builtins.str</a></span></span></dt><dd><span class="code">Return&nbsp;a&nbsp;formatted&nbsp;version&nbsp;of&nbsp;the&nbsp;string&nbsp;as&nbsp;described&nbsp;by&nbsp;format_spec.</span></dd></dl>
+
+<dl><dt><a name="Parameter-__new__"><strong>__new__</strong></a>(cls, value)<span class="grey"><span class="heading-text"> from enum.Enum</span></span></dt><dd><span class="code">Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="Parameter-__str__"><strong>__str__</strong></a>(self, /)<span class="grey"><span class="heading-text"> from <a href="builtins.html#str">builtins.str</a></span></span></dt><dd><span class="code">Return&nbsp;str(self).</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>CLDC</strong> = &lt;Parameter.CLDC: 'cldc'&gt;</dl>
+
+<dl><dt><strong>COCO</strong> = &lt;Parameter.COCO: 'coco'&gt;</dl>
+
+<dl><dt><strong>DWPT</strong> = &lt;Parameter.DWPT: 'dwpt'&gt;</dl>
+
+<dl><dt><strong>PDAY</strong> = &lt;Parameter.PDAY: 'pday'&gt;</dl>
+
+<dl><dt><strong>PRCP</strong> = &lt;Parameter.PRCP: 'prcp'&gt;</dl>
+
+<dl><dt><strong>PRES</strong> = &lt;Parameter.PRES: 'pres'&gt;</dl>
+
+<dl><dt><strong>RHUM</strong> = &lt;Parameter.RHUM: 'rhum'&gt;</dl>
+
+<dl><dt><strong>SDHI</strong> = &lt;Parameter.SDHI: 'sdhi'&gt;</dl>
+
+<dl><dt><strong>SDNI</strong> = &lt;Parameter.SDNI: 'sdni'&gt;</dl>
+
+<dl><dt><strong>SGHI</strong> = &lt;Parameter.SGHI: 'sghi'&gt;</dl>
+
+<dl><dt><strong>SNOW</strong> = &lt;Parameter.SNOW: 'snow'&gt;</dl>
+
+<dl><dt><strong>SNWD</strong> = &lt;Parameter.SNWD: 'snwd'&gt;</dl>
+
+<dl><dt><strong>TEMP</strong> = &lt;Parameter.TEMP: 'temp'&gt;</dl>
+
+<dl><dt><strong>TMAX</strong> = &lt;Parameter.TMAX: 'tmax'&gt;</dl>
+
+<dl><dt><strong>TMIN</strong> = &lt;Parameter.TMIN: 'tmin'&gt;</dl>
+
+<dl><dt><strong>TSUN</strong> = &lt;Parameter.TSUN: 'tsun'&gt;</dl>
+
+<dl><dt><strong>TXMN</strong> = &lt;Parameter.TXMN: 'txmn'&gt;</dl>
+
+<dl><dt><strong>TXMX</strong> = &lt;Parameter.TXMX: 'txmx'&gt;</dl>
+
+<dl><dt><strong>VSBY</strong> = &lt;Parameter.VSBY: 'vsby'&gt;</dl>
+
+<dl><dt><strong>WDIR</strong> = &lt;Parameter.WDIR: 'wdir'&gt;</dl>
+
+<dl><dt><strong>WPGT</strong> = &lt;Parameter.WPGT: 'wpgt'&gt;</dl>
+
+<dl><dt><strong>WSPD</strong> = &lt;Parameter.WSPD: 'wspd'&gt;</dl>
+
+<hr>
+Methods inherited from <a href="enum.html#StrEnum">enum.StrEnum</a>:<br>
+<dl><dt><a name="Parameter-__repr__"><strong>__repr__</strong></a>(self)<span class="grey"><span class="heading-text"> from enum.Enum</span></span></dt><dd><span class="code">Return&nbsp;repr(self).</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#str">builtins.str</a>:<br>
+<dl><dt><a name="Parameter-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self+value.</span></dd></dl>
+
+<dl><dt><a name="Parameter-__contains__"><strong>__contains__</strong></a>(self, key, /)</dt><dd><span class="code">Return&nbsp;bool(key&nbsp;in&nbsp;self).</span></dd></dl>
+
+<dl><dt><a name="Parameter-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self==value.</span></dd></dl>
+
+<dl><dt><a name="Parameter-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&gt;=value.</span></dd></dl>
+
+<dl><dt><a name="Parameter-__getitem__"><strong>__getitem__</strong></a>(self, key, /)</dt><dd><span class="code">Return&nbsp;self[key].</span></dd></dl>
+
+<dl><dt><a name="Parameter-__getnewargs__"><strong>__getnewargs__</strong></a>(self, /)</dt></dl>
+
+<dl><dt><a name="Parameter-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&gt;value.</span></dd></dl>
+
+<dl><dt><a name="Parameter-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;hash(self).</span></dd></dl>
+
+<dl><dt><a name="Parameter-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><span class="code">Implement&nbsp;iter(self).</span></dd></dl>
+
+<dl><dt><a name="Parameter-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&lt;=value.</span></dd></dl>
+
+<dl><dt><a name="Parameter-__len__"><strong>__len__</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;len(self).</span></dd></dl>
+
+<dl><dt><a name="Parameter-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&lt;value.</span></dd></dl>
+
+<dl><dt><a name="Parameter-__mod__"><strong>__mod__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self%value.</span></dd></dl>
+
+<dl><dt><a name="Parameter-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self*value.</span></dd></dl>
+
+<dl><dt><a name="Parameter-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self!=value.</span></dd></dl>
+
+<dl><dt><a name="Parameter-__rmod__"><strong>__rmod__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;value%self.</span></dd></dl>
+
+<dl><dt><a name="Parameter-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;value*self.</span></dd></dl>
+
+<dl><dt><a name="Parameter-__sizeof__"><strong>__sizeof__</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;string&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes.</span></dd></dl>
+
+<dl><dt><a name="Parameter-capitalize"><strong>capitalize</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;capitalized&nbsp;version&nbsp;of&nbsp;the&nbsp;string.<br>
+&nbsp;<br>
+More&nbsp;specifically,&nbsp;make&nbsp;the&nbsp;first&nbsp;character&nbsp;have&nbsp;upper&nbsp;case&nbsp;and&nbsp;the<br>
+rest&nbsp;lower&nbsp;case.</span></dd></dl>
+
+<dl><dt><a name="Parameter-casefold"><strong>casefold</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;version&nbsp;of&nbsp;the&nbsp;string&nbsp;suitable&nbsp;for&nbsp;caseless&nbsp;comparisons.</span></dd></dl>
+
+<dl><dt><a name="Parameter-center"><strong>center</strong></a>(self, width, fillchar=' ', /)</dt><dd><span class="code">Return&nbsp;a&nbsp;centered&nbsp;string&nbsp;of&nbsp;length&nbsp;width.<br>
+&nbsp;<br>
+Padding&nbsp;is&nbsp;done&nbsp;using&nbsp;the&nbsp;specified&nbsp;fill&nbsp;character&nbsp;(default&nbsp;is<br>
+a&nbsp;space).</span></dd></dl>
+
+<dl><dt><a name="Parameter-count"><strong>count</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;number&nbsp;of&nbsp;non-overlapping&nbsp;occurrences&nbsp;of&nbsp;substring&nbsp;sub&nbsp;in&nbsp;string&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.</span></dd></dl>
+
+<dl><dt><a name="Parameter-encode"><strong>encode</strong></a>(self, /, encoding='utf-8', errors='strict')</dt><dd><span class="code">Encode&nbsp;the&nbsp;string&nbsp;using&nbsp;the&nbsp;codec&nbsp;registered&nbsp;for&nbsp;encoding.<br>
+&nbsp;<br>
+encoding<br>
+&nbsp;&nbsp;The&nbsp;encoding&nbsp;in&nbsp;which&nbsp;to&nbsp;encode&nbsp;the&nbsp;string.<br>
+errors<br>
+&nbsp;&nbsp;The&nbsp;error&nbsp;handling&nbsp;scheme&nbsp;to&nbsp;use&nbsp;for&nbsp;encoding&nbsp;errors.<br>
+&nbsp;&nbsp;The&nbsp;default&nbsp;is&nbsp;'strict'&nbsp;meaning&nbsp;that&nbsp;encoding&nbsp;errors&nbsp;raise&nbsp;a<br>
+&nbsp;&nbsp;UnicodeEncodeError.&nbsp;&nbsp;Other&nbsp;possible&nbsp;values&nbsp;are&nbsp;'ignore',&nbsp;'replace'<br>
+&nbsp;&nbsp;and&nbsp;'xmlcharrefreplace'&nbsp;as&nbsp;well&nbsp;as&nbsp;any&nbsp;other&nbsp;name&nbsp;registered&nbsp;with<br>
+&nbsp;&nbsp;codecs.register_error&nbsp;that&nbsp;can&nbsp;handle&nbsp;UnicodeEncodeErrors.</span></dd></dl>
+
+<dl><dt><a name="Parameter-endswith"><strong>endswith</strong></a>(self, suffix[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;ends&nbsp;with&nbsp;the&nbsp;specified&nbsp;suffix,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+suffix<br>
+&nbsp;&nbsp;A&nbsp;string&nbsp;or&nbsp;a&nbsp;tuple&nbsp;of&nbsp;strings&nbsp;to&nbsp;try.<br>
+start<br>
+&nbsp;&nbsp;Optional&nbsp;start&nbsp;position.&nbsp;Default:&nbsp;start&nbsp;of&nbsp;the&nbsp;string.<br>
+end<br>
+&nbsp;&nbsp;Optional&nbsp;stop&nbsp;position.&nbsp;Default:&nbsp;end&nbsp;of&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Parameter-expandtabs"><strong>expandtabs</strong></a>(self, /, tabsize=8)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;where&nbsp;all&nbsp;tab&nbsp;characters&nbsp;are&nbsp;expanded&nbsp;using&nbsp;spaces.<br>
+&nbsp;<br>
+If&nbsp;tabsize&nbsp;is&nbsp;not&nbsp;given,&nbsp;a&nbsp;tab&nbsp;size&nbsp;of&nbsp;8&nbsp;characters&nbsp;is&nbsp;assumed.</span></dd></dl>
+
+<dl><dt><a name="Parameter-find"><strong>find</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;lowest&nbsp;index&nbsp;in&nbsp;S&nbsp;where&nbsp;substring&nbsp;sub&nbsp;is&nbsp;found,&nbsp;such&nbsp;that&nbsp;sub&nbsp;is&nbsp;contained&nbsp;within&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.&nbsp;&nbsp;Return&nbsp;-1&nbsp;on&nbsp;failure.</span></dd></dl>
+
+<dl><dt><a name="Parameter-format"><strong>format</strong></a>(self, /, *args, **kwargs)</dt><dd><span class="code">Return&nbsp;a&nbsp;formatted&nbsp;version&nbsp;of&nbsp;the&nbsp;string,&nbsp;using&nbsp;substitutions&nbsp;from&nbsp;args&nbsp;and&nbsp;kwargs.<br>
+The&nbsp;substitutions&nbsp;are&nbsp;identified&nbsp;by&nbsp;braces&nbsp;('{'&nbsp;and&nbsp;'}').</span></dd></dl>
+
+<dl><dt><a name="Parameter-format_map"><strong>format_map</strong></a>(self, mapping, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;formatted&nbsp;version&nbsp;of&nbsp;the&nbsp;string,&nbsp;using&nbsp;substitutions&nbsp;from&nbsp;mapping.<br>
+The&nbsp;substitutions&nbsp;are&nbsp;identified&nbsp;by&nbsp;braces&nbsp;('{'&nbsp;and&nbsp;'}').</span></dd></dl>
+
+<dl><dt><a name="Parameter-index"><strong>index</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;lowest&nbsp;index&nbsp;in&nbsp;S&nbsp;where&nbsp;substring&nbsp;sub&nbsp;is&nbsp;found,&nbsp;such&nbsp;that&nbsp;sub&nbsp;is&nbsp;contained&nbsp;within&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.&nbsp;&nbsp;Raises&nbsp;ValueError&nbsp;when&nbsp;the&nbsp;substring&nbsp;is&nbsp;not&nbsp;found.</span></dd></dl>
+
+<dl><dt><a name="Parameter-isalnum"><strong>isalnum</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;an&nbsp;alpha-numeric&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;alpha-numeric&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+alpha-numeric&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Parameter-isalpha"><strong>isalpha</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;an&nbsp;alphabetic&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;alphabetic&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+alphabetic&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Parameter-isascii"><strong>isascii</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are&nbsp;ASCII,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+ASCII&nbsp;characters&nbsp;have&nbsp;code&nbsp;points&nbsp;in&nbsp;the&nbsp;range&nbsp;U+0000-U+007F.<br>
+Empty&nbsp;string&nbsp;is&nbsp;ASCII&nbsp;too.</span></dd></dl>
+
+<dl><dt><a name="Parameter-isdecimal"><strong>isdecimal</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;decimal&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;a&nbsp;decimal&nbsp;string&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+decimal&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Parameter-isdigit"><strong>isdigit</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;digit&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;a&nbsp;digit&nbsp;string&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+digits&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Parameter-isidentifier"><strong>isidentifier</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;valid&nbsp;Python&nbsp;identifier,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+Call&nbsp;keyword.iskeyword(s)&nbsp;to&nbsp;test&nbsp;whether&nbsp;string&nbsp;s&nbsp;is&nbsp;a&nbsp;reserved<br>
+identifier,&nbsp;such&nbsp;as&nbsp;"def"&nbsp;or&nbsp;"class".</span></dd></dl>
+
+<dl><dt><a name="Parameter-islower"><strong>islower</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;lowercase&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;lowercase&nbsp;if&nbsp;all&nbsp;cased&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+lowercase&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;cased&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Parameter-isnumeric"><strong>isnumeric</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;numeric&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;numeric&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are&nbsp;numeric&nbsp;and<br>
+there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Parameter-isprintable"><strong>isprintable</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are&nbsp;printable,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;character&nbsp;is&nbsp;printable&nbsp;if&nbsp;repr()&nbsp;may&nbsp;use&nbsp;it&nbsp;in&nbsp;its&nbsp;output.</span></dd></dl>
+
+<dl><dt><a name="Parameter-isspace"><strong>isspace</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;whitespace&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;whitespace&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+whitespace&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Parameter-istitle"><strong>istitle</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;title-cased&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+In&nbsp;a&nbsp;title-cased&nbsp;string,&nbsp;upper-&nbsp;and&nbsp;title-case&nbsp;characters&nbsp;may&nbsp;only<br>
+follow&nbsp;uncased&nbsp;characters&nbsp;and&nbsp;lowercase&nbsp;characters&nbsp;only&nbsp;cased&nbsp;ones.</span></dd></dl>
+
+<dl><dt><a name="Parameter-isupper"><strong>isupper</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;an&nbsp;uppercase&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;uppercase&nbsp;if&nbsp;all&nbsp;cased&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+uppercase&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;cased&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Parameter-join"><strong>join</strong></a>(self, iterable, /)</dt><dd><span class="code">Concatenate&nbsp;any&nbsp;number&nbsp;of&nbsp;strings.<br>
+&nbsp;<br>
+The&nbsp;string&nbsp;whose&nbsp;method&nbsp;is&nbsp;called&nbsp;is&nbsp;inserted&nbsp;in&nbsp;between&nbsp;each&nbsp;given<br>
+string.&nbsp;&nbsp;The&nbsp;result&nbsp;is&nbsp;returned&nbsp;as&nbsp;a&nbsp;new&nbsp;string.<br>
+&nbsp;<br>
+Example:&nbsp;'.'.<a href="#Parameter-join">join</a>(['ab',&nbsp;'pq',&nbsp;'rs'])&nbsp;-&gt;&nbsp;'ab.pq.rs'</span></dd></dl>
+
+<dl><dt><a name="Parameter-ljust"><strong>ljust</strong></a>(self, width, fillchar=' ', /)</dt><dd><span class="code">Return&nbsp;a&nbsp;left-justified&nbsp;string&nbsp;of&nbsp;length&nbsp;width.<br>
+&nbsp;<br>
+Padding&nbsp;is&nbsp;done&nbsp;using&nbsp;the&nbsp;specified&nbsp;fill&nbsp;character&nbsp;(default&nbsp;is<br>
+a&nbsp;space).</span></dd></dl>
+
+<dl><dt><a name="Parameter-lower"><strong>lower</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;converted&nbsp;to&nbsp;lowercase.</span></dd></dl>
+
+<dl><dt><a name="Parameter-lstrip"><strong>lstrip</strong></a>(self, chars=None, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;with&nbsp;leading&nbsp;whitespace&nbsp;removed.<br>
+&nbsp;<br>
+If&nbsp;chars&nbsp;is&nbsp;given&nbsp;and&nbsp;not&nbsp;None,&nbsp;remove&nbsp;characters&nbsp;in&nbsp;chars&nbsp;instead.</span></dd></dl>
+
+<dl><dt><a name="Parameter-partition"><strong>partition</strong></a>(self, sep, /)</dt><dd><span class="code">Partition&nbsp;the&nbsp;string&nbsp;into&nbsp;three&nbsp;parts&nbsp;using&nbsp;the&nbsp;given&nbsp;separator.<br>
+&nbsp;<br>
+This&nbsp;will&nbsp;search&nbsp;for&nbsp;the&nbsp;separator&nbsp;in&nbsp;the&nbsp;string.&nbsp;&nbsp;If&nbsp;the&nbsp;separator<br>
+is&nbsp;found,&nbsp;returns&nbsp;a&nbsp;3-tuple&nbsp;containing&nbsp;the&nbsp;part&nbsp;before&nbsp;the<br>
+separator,&nbsp;the&nbsp;separator&nbsp;itself,&nbsp;and&nbsp;the&nbsp;part&nbsp;after&nbsp;it.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;separator&nbsp;is&nbsp;not&nbsp;found,&nbsp;returns&nbsp;a&nbsp;3-tuple&nbsp;containing<br>
+the&nbsp;original&nbsp;string&nbsp;and&nbsp;two&nbsp;empty&nbsp;strings.</span></dd></dl>
+
+<dl><dt><a name="Parameter-removeprefix"><strong>removeprefix</strong></a>(self, prefix, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;str&nbsp;with&nbsp;the&nbsp;given&nbsp;prefix&nbsp;string&nbsp;removed&nbsp;if&nbsp;present.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;string&nbsp;starts&nbsp;with&nbsp;the&nbsp;prefix&nbsp;string,&nbsp;return<br>
+string[len(prefix):].&nbsp;&nbsp;Otherwise,&nbsp;return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;original<br>
+string.</span></dd></dl>
+
+<dl><dt><a name="Parameter-removesuffix"><strong>removesuffix</strong></a>(self, suffix, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;str&nbsp;with&nbsp;the&nbsp;given&nbsp;suffix&nbsp;string&nbsp;removed&nbsp;if&nbsp;present.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;string&nbsp;ends&nbsp;with&nbsp;the&nbsp;suffix&nbsp;string&nbsp;and&nbsp;that&nbsp;suffix&nbsp;is&nbsp;not<br>
+empty,&nbsp;return&nbsp;string[:-len(suffix)].&nbsp;&nbsp;Otherwise,&nbsp;return&nbsp;a&nbsp;copy&nbsp;of<br>
+the&nbsp;original&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Parameter-replace"><strong>replace</strong></a>(self, old, new, /, count=-1)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;with&nbsp;all&nbsp;occurrences&nbsp;of&nbsp;substring&nbsp;old&nbsp;replaced&nbsp;by&nbsp;new.<br>
+&nbsp;<br>
+&nbsp;&nbsp;count<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Maximum&nbsp;number&nbsp;of&nbsp;occurrences&nbsp;to&nbsp;replace.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-1&nbsp;(the&nbsp;default&nbsp;value)&nbsp;means&nbsp;replace&nbsp;all&nbsp;occurrences.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;optional&nbsp;argument&nbsp;count&nbsp;is&nbsp;given,&nbsp;only&nbsp;the&nbsp;first&nbsp;count&nbsp;occurrences&nbsp;are<br>
+replaced.</span></dd></dl>
+
+<dl><dt><a name="Parameter-rfind"><strong>rfind</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;highest&nbsp;index&nbsp;in&nbsp;S&nbsp;where&nbsp;substring&nbsp;sub&nbsp;is&nbsp;found,&nbsp;such&nbsp;that&nbsp;sub&nbsp;is&nbsp;contained&nbsp;within&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.&nbsp;&nbsp;Return&nbsp;-1&nbsp;on&nbsp;failure.</span></dd></dl>
+
+<dl><dt><a name="Parameter-rindex"><strong>rindex</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;highest&nbsp;index&nbsp;in&nbsp;S&nbsp;where&nbsp;substring&nbsp;sub&nbsp;is&nbsp;found,&nbsp;such&nbsp;that&nbsp;sub&nbsp;is&nbsp;contained&nbsp;within&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.&nbsp;&nbsp;Raises&nbsp;ValueError&nbsp;when&nbsp;the&nbsp;substring&nbsp;is&nbsp;not&nbsp;found.</span></dd></dl>
+
+<dl><dt><a name="Parameter-rjust"><strong>rjust</strong></a>(self, width, fillchar=' ', /)</dt><dd><span class="code">Return&nbsp;a&nbsp;right-justified&nbsp;string&nbsp;of&nbsp;length&nbsp;width.<br>
+&nbsp;<br>
+Padding&nbsp;is&nbsp;done&nbsp;using&nbsp;the&nbsp;specified&nbsp;fill&nbsp;character&nbsp;(default&nbsp;is<br>
+a&nbsp;space).</span></dd></dl>
+
+<dl><dt><a name="Parameter-rpartition"><strong>rpartition</strong></a>(self, sep, /)</dt><dd><span class="code">Partition&nbsp;the&nbsp;string&nbsp;into&nbsp;three&nbsp;parts&nbsp;using&nbsp;the&nbsp;given&nbsp;separator.<br>
+&nbsp;<br>
+This&nbsp;will&nbsp;search&nbsp;for&nbsp;the&nbsp;separator&nbsp;in&nbsp;the&nbsp;string,&nbsp;starting&nbsp;at&nbsp;the<br>
+end.&nbsp;&nbsp;If&nbsp;the&nbsp;separator&nbsp;is&nbsp;found,&nbsp;returns&nbsp;a&nbsp;3-tuple&nbsp;containing&nbsp;the<br>
+part&nbsp;before&nbsp;the&nbsp;separator,&nbsp;the&nbsp;separator&nbsp;itself,&nbsp;and&nbsp;the&nbsp;part&nbsp;after<br>
+it.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;separator&nbsp;is&nbsp;not&nbsp;found,&nbsp;returns&nbsp;a&nbsp;3-tuple&nbsp;containing&nbsp;two<br>
+empty&nbsp;strings&nbsp;and&nbsp;the&nbsp;original&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Parameter-rsplit"><strong>rsplit</strong></a>(self, /, sep=None, maxsplit=-1)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;substrings&nbsp;in&nbsp;the&nbsp;string,&nbsp;using&nbsp;sep&nbsp;as&nbsp;the&nbsp;separator&nbsp;string.<br>
+&nbsp;<br>
+&nbsp;&nbsp;sep<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;separator&nbsp;used&nbsp;to&nbsp;split&nbsp;the&nbsp;string.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;set&nbsp;to&nbsp;None&nbsp;(the&nbsp;default&nbsp;value),&nbsp;will&nbsp;split&nbsp;on&nbsp;any<br>
+&nbsp;&nbsp;&nbsp;&nbsp;whitespace&nbsp;character&nbsp;(including&nbsp;\n&nbsp;\r&nbsp;\t&nbsp;\f&nbsp;and&nbsp;spaces)&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;discard&nbsp;empty&nbsp;strings&nbsp;from&nbsp;the&nbsp;result.<br>
+&nbsp;&nbsp;maxsplit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Maximum&nbsp;number&nbsp;of&nbsp;splits.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-1&nbsp;(the&nbsp;default&nbsp;value)&nbsp;means&nbsp;no&nbsp;limit.<br>
+&nbsp;<br>
+Splitting&nbsp;starts&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;string&nbsp;and&nbsp;works&nbsp;to&nbsp;the&nbsp;front.</span></dd></dl>
+
+<dl><dt><a name="Parameter-rstrip"><strong>rstrip</strong></a>(self, chars=None, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;with&nbsp;trailing&nbsp;whitespace&nbsp;removed.<br>
+&nbsp;<br>
+If&nbsp;chars&nbsp;is&nbsp;given&nbsp;and&nbsp;not&nbsp;None,&nbsp;remove&nbsp;characters&nbsp;in&nbsp;chars&nbsp;instead.</span></dd></dl>
+
+<dl><dt><a name="Parameter-split"><strong>split</strong></a>(self, /, sep=None, maxsplit=-1)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;substrings&nbsp;in&nbsp;the&nbsp;string,&nbsp;using&nbsp;sep&nbsp;as&nbsp;the&nbsp;separator&nbsp;string.<br>
+&nbsp;<br>
+&nbsp;&nbsp;sep<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;separator&nbsp;used&nbsp;to&nbsp;split&nbsp;the&nbsp;string.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;set&nbsp;to&nbsp;None&nbsp;(the&nbsp;default&nbsp;value),&nbsp;will&nbsp;split&nbsp;on&nbsp;any<br>
+&nbsp;&nbsp;&nbsp;&nbsp;whitespace&nbsp;character&nbsp;(including&nbsp;\n&nbsp;\r&nbsp;\t&nbsp;\f&nbsp;and&nbsp;spaces)&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;discard&nbsp;empty&nbsp;strings&nbsp;from&nbsp;the&nbsp;result.<br>
+&nbsp;&nbsp;maxsplit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Maximum&nbsp;number&nbsp;of&nbsp;splits.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-1&nbsp;(the&nbsp;default&nbsp;value)&nbsp;means&nbsp;no&nbsp;limit.<br>
+&nbsp;<br>
+Splitting&nbsp;starts&nbsp;at&nbsp;the&nbsp;front&nbsp;of&nbsp;the&nbsp;string&nbsp;and&nbsp;works&nbsp;to&nbsp;the&nbsp;end.<br>
+&nbsp;<br>
+Note,&nbsp;str.<a href="#Parameter-split">split</a>()&nbsp;is&nbsp;mainly&nbsp;useful&nbsp;for&nbsp;data&nbsp;that&nbsp;has&nbsp;been<br>
+intentionally&nbsp;delimited.&nbsp;&nbsp;With&nbsp;natural&nbsp;text&nbsp;that&nbsp;includes<br>
+punctuation,&nbsp;consider&nbsp;using&nbsp;the&nbsp;regular&nbsp;expression&nbsp;module.</span></dd></dl>
+
+<dl><dt><a name="Parameter-splitlines"><strong>splitlines</strong></a>(self, /, keepends=False)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;lines&nbsp;in&nbsp;the&nbsp;string,&nbsp;breaking&nbsp;at&nbsp;line&nbsp;boundaries.<br>
+&nbsp;<br>
+Line&nbsp;breaks&nbsp;are&nbsp;not&nbsp;included&nbsp;in&nbsp;the&nbsp;resulting&nbsp;list&nbsp;unless&nbsp;keepends<br>
+is&nbsp;given&nbsp;and&nbsp;true.</span></dd></dl>
+
+<dl><dt><a name="Parameter-startswith"><strong>startswith</strong></a>(self, prefix[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;starts&nbsp;with&nbsp;the&nbsp;specified&nbsp;prefix,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+prefix<br>
+&nbsp;&nbsp;A&nbsp;string&nbsp;or&nbsp;a&nbsp;tuple&nbsp;of&nbsp;strings&nbsp;to&nbsp;try.<br>
+start<br>
+&nbsp;&nbsp;Optional&nbsp;start&nbsp;position.&nbsp;Default:&nbsp;start&nbsp;of&nbsp;the&nbsp;string.<br>
+end<br>
+&nbsp;&nbsp;Optional&nbsp;stop&nbsp;position.&nbsp;Default:&nbsp;end&nbsp;of&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Parameter-strip"><strong>strip</strong></a>(self, chars=None, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;with&nbsp;leading&nbsp;and&nbsp;trailing&nbsp;whitespace&nbsp;removed.<br>
+&nbsp;<br>
+If&nbsp;chars&nbsp;is&nbsp;given&nbsp;and&nbsp;not&nbsp;None,&nbsp;remove&nbsp;characters&nbsp;in&nbsp;chars&nbsp;instead.</span></dd></dl>
+
+<dl><dt><a name="Parameter-swapcase"><strong>swapcase</strong></a>(self, /)</dt><dd><span class="code">Convert&nbsp;uppercase&nbsp;characters&nbsp;to&nbsp;lowercase&nbsp;and&nbsp;lowercase&nbsp;characters&nbsp;to&nbsp;uppercase.</span></dd></dl>
+
+<dl><dt><a name="Parameter-title"><strong>title</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;version&nbsp;of&nbsp;the&nbsp;string&nbsp;where&nbsp;each&nbsp;word&nbsp;is&nbsp;titlecased.<br>
+&nbsp;<br>
+More&nbsp;specifically,&nbsp;words&nbsp;start&nbsp;with&nbsp;uppercased&nbsp;characters&nbsp;and&nbsp;all<br>
+remaining&nbsp;cased&nbsp;characters&nbsp;have&nbsp;lower&nbsp;case.</span></dd></dl>
+
+<dl><dt><a name="Parameter-translate"><strong>translate</strong></a>(self, table, /)</dt><dd><span class="code">Replace&nbsp;each&nbsp;character&nbsp;in&nbsp;the&nbsp;string&nbsp;using&nbsp;the&nbsp;given&nbsp;translation&nbsp;table.<br>
+&nbsp;<br>
+&nbsp;&nbsp;table<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Translation&nbsp;table,&nbsp;which&nbsp;must&nbsp;be&nbsp;a&nbsp;mapping&nbsp;of&nbsp;Unicode&nbsp;ordinals<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;Unicode&nbsp;ordinals,&nbsp;strings,&nbsp;or&nbsp;None.<br>
+&nbsp;<br>
+The&nbsp;table&nbsp;must&nbsp;implement&nbsp;lookup/indexing&nbsp;via&nbsp;__getitem__,&nbsp;for<br>
+instance&nbsp;a&nbsp;dictionary&nbsp;or&nbsp;list.&nbsp;&nbsp;If&nbsp;this&nbsp;operation&nbsp;raises<br>
+LookupError,&nbsp;the&nbsp;character&nbsp;is&nbsp;left&nbsp;untouched.&nbsp;&nbsp;Characters&nbsp;mapped&nbsp;to<br>
+None&nbsp;are&nbsp;deleted.</span></dd></dl>
+
+<dl><dt><a name="Parameter-upper"><strong>upper</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;converted&nbsp;to&nbsp;uppercase.</span></dd></dl>
+
+<dl><dt><a name="Parameter-zfill"><strong>zfill</strong></a>(self, width, /)</dt><dd><span class="code">Pad&nbsp;a&nbsp;numeric&nbsp;string&nbsp;with&nbsp;zeros&nbsp;on&nbsp;the&nbsp;left,&nbsp;to&nbsp;fill&nbsp;a&nbsp;field&nbsp;of&nbsp;the&nbsp;given&nbsp;width.<br>
+&nbsp;<br>
+The&nbsp;string&nbsp;is&nbsp;never&nbsp;truncated.</span></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#str">builtins.str</a>:<br>
+<dl><dt><a name="Parameter-maketrans"><strong>maketrans</strong></a>(x, y=&lt;unrepresentable&gt;, z=&lt;unrepresentable&gt;, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;translation&nbsp;table&nbsp;usable&nbsp;for&nbsp;str.<a href="#Parameter-translate">translate</a>().<br>
+&nbsp;<br>
+If&nbsp;there&nbsp;is&nbsp;only&nbsp;one&nbsp;argument,&nbsp;it&nbsp;must&nbsp;be&nbsp;a&nbsp;dictionary&nbsp;mapping<br>
+Unicode&nbsp;ordinals&nbsp;(integers)&nbsp;or&nbsp;characters&nbsp;to&nbsp;Unicode&nbsp;ordinals,<br>
+strings&nbsp;or&nbsp;None.&nbsp;&nbsp;Character&nbsp;keys&nbsp;will&nbsp;be&nbsp;then&nbsp;converted&nbsp;to&nbsp;ordinals.<br>
+If&nbsp;there&nbsp;are&nbsp;two&nbsp;arguments,&nbsp;they&nbsp;must&nbsp;be&nbsp;strings&nbsp;of&nbsp;equal&nbsp;length,<br>
+and&nbsp;in&nbsp;the&nbsp;resulting&nbsp;dictionary,&nbsp;each&nbsp;character&nbsp;in&nbsp;x&nbsp;will&nbsp;be&nbsp;mapped<br>
+to&nbsp;the&nbsp;character&nbsp;at&nbsp;the&nbsp;same&nbsp;position&nbsp;in&nbsp;y.&nbsp;&nbsp;If&nbsp;there&nbsp;is&nbsp;a&nbsp;third<br>
+argument,&nbsp;it&nbsp;must&nbsp;be&nbsp;a&nbsp;string,&nbsp;whose&nbsp;characters&nbsp;will&nbsp;be&nbsp;mapped&nbsp;to<br>
+None&nbsp;in&nbsp;the&nbsp;result.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><a name="Parameter-__dir__"><strong>__dir__</strong></a>(self)</dt><dd><span class="code">Returns&nbsp;public&nbsp;methods&nbsp;and&nbsp;other&nbsp;interesting&nbsp;attributes.</span></dd></dl>
+
+<dl><dt><a name="Parameter-__reduce_ex__"><strong>__reduce_ex__</strong></a>(self, proto)</dt><dd><span class="code">Helper&nbsp;for&nbsp;pickle.</span></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><span class="code">The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><span class="code">The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumType">enum.EnumType</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><span class="code">Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;&nbsp;Note&nbsp;that<br>
+this&nbsp;is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Point">class <strong>Point</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Point">Point</a>(latitude:&nbsp;float,&nbsp;longitude:&nbsp;float,&nbsp;elevation:&nbsp;Optional[int]&nbsp;=&nbsp;None)&nbsp;-&amp;gt;&nbsp;None<br>
+&nbsp;<br>
+A&nbsp;geographical&nbsp;point<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="Point-__init__"><strong>__init__</strong></a>(
+    self,
+    latitude: float,
+    longitude: float,
+    elevation: Optional[int] = None
+) -&gt; None</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Provider">class <strong>Provider</strong></a>(<a href="enum.html#StrEnum">enum.StrEnum</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Provider">Provider</a>(*values)<br>
+&nbsp;<br>
+Providers&nbsp;supported&nbsp;by&nbsp;Meteostat<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="meteostat.enumerations.html#Provider">Provider</a></dd>
+<dd><a href="enum.html#StrEnum">enum.StrEnum</a></dd>
+<dd><a href="builtins.html#str">builtins.str</a></dd>
+<dd><a href="enum.html#ReprEnum">enum.ReprEnum</a></dd>
+<dd><a href="enum.html#Enum">enum.Enum</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Provider-__format__"><strong>__format__</strong></a>(self, format_spec, /)<span class="grey"><span class="heading-text"> from <a href="builtins.html#str">builtins.str</a></span></span></dt><dd><span class="code">Return&nbsp;a&nbsp;formatted&nbsp;version&nbsp;of&nbsp;the&nbsp;string&nbsp;as&nbsp;described&nbsp;by&nbsp;format_spec.</span></dd></dl>
+
+<dl><dt><a name="Provider-__new__"><strong>__new__</strong></a>(cls, value)<span class="grey"><span class="heading-text"> from enum.Enum</span></span></dt><dd><span class="code">Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="Provider-__str__"><strong>__str__</strong></a>(self, /)<span class="grey"><span class="heading-text"> from <a href="builtins.html#str">builtins.str</a></span></span></dt><dd><span class="code">Return&nbsp;str(self).</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>CLIMAT</strong> = &lt;Provider.CLIMAT: 'climat'&gt;</dl>
+
+<dl><dt><strong>DAILY</strong> = &lt;Provider.DAILY: 'daily'&gt;</dl>
+
+<dl><dt><strong>DAILY_DERIVED</strong> = &lt;Provider.DAILY_DERIVED: 'daily_derived'&gt;</dl>
+
+<dl><dt><strong>DWD_DAILY</strong> = &lt;Provider.DWD_DAILY: 'dwd_daily'&gt;</dl>
+
+<dl><dt><strong>DWD_HOURLY</strong> = &lt;Provider.DWD_HOURLY: 'dwd_hourly'&gt;</dl>
+
+<dl><dt><strong>DWD_MONTHLY</strong> = &lt;Provider.DWD_MONTHLY: 'dwd_monthly'&gt;</dl>
+
+<dl><dt><strong>DWD_MOSMIX</strong> = &lt;Provider.DWD_MOSMIX: 'dwd_mosmix'&gt;</dl>
+
+<dl><dt><strong>DWD_POI</strong> = &lt;Provider.DWD_POI: 'dwd_poi'&gt;</dl>
+
+<dl><dt><strong>ECCC_DAILY</strong> = &lt;Provider.ECCC_DAILY: 'eccc_daily'&gt;</dl>
+
+<dl><dt><strong>ECCC_HOURLY</strong> = &lt;Provider.ECCC_HOURLY: 'eccc_hourly'&gt;</dl>
+
+<dl><dt><strong>ECCC_MONTHLY</strong> = &lt;Provider.ECCC_MONTHLY: 'eccc_monthly'&gt;</dl>
+
+<dl><dt><strong>GHCND</strong> = &lt;Provider.GHCND: 'ghcnd'&gt;</dl>
+
+<dl><dt><strong>GSA_DAILY</strong> = &lt;Provider.GSA_DAILY: 'gsa_daily'&gt;</dl>
+
+<dl><dt><strong>GSA_HOURLY</strong> = &lt;Provider.GSA_HOURLY: 'gsa_hourly'&gt;</dl>
+
+<dl><dt><strong>GSA_MONTHLY</strong> = &lt;Provider.GSA_MONTHLY: 'gsa_monthly'&gt;</dl>
+
+<dl><dt><strong>GSA_SYNOP</strong> = &lt;Provider.GSA_SYNOP: 'gsa_synop'&gt;</dl>
+
+<dl><dt><strong>HOURLY</strong> = &lt;Provider.HOURLY: 'hourly'&gt;</dl>
+
+<dl><dt><strong>ISD_LITE</strong> = &lt;Provider.ISD_LITE: 'isd_lite'&gt;</dl>
+
+<dl><dt><strong>METAR</strong> = &lt;Provider.METAR: 'metar'&gt;</dl>
+
+<dl><dt><strong>METNO_FORECAST</strong> = &lt;Provider.METNO_FORECAST: 'metno_forecast'&gt;</dl>
+
+<dl><dt><strong>MONTHLY</strong> = &lt;Provider.MONTHLY: 'monthly'&gt;</dl>
+
+<dl><dt><strong>MONTHLY_DERIVED</strong> = &lt;Provider.MONTHLY_DERIVED: 'monthly_derived'&gt;</dl>
+
+<hr>
+Methods inherited from <a href="enum.html#StrEnum">enum.StrEnum</a>:<br>
+<dl><dt><a name="Provider-__repr__"><strong>__repr__</strong></a>(self)<span class="grey"><span class="heading-text"> from enum.Enum</span></span></dt><dd><span class="code">Return&nbsp;repr(self).</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#str">builtins.str</a>:<br>
+<dl><dt><a name="Provider-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self+value.</span></dd></dl>
+
+<dl><dt><a name="Provider-__contains__"><strong>__contains__</strong></a>(self, key, /)</dt><dd><span class="code">Return&nbsp;bool(key&nbsp;in&nbsp;self).</span></dd></dl>
+
+<dl><dt><a name="Provider-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self==value.</span></dd></dl>
+
+<dl><dt><a name="Provider-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&gt;=value.</span></dd></dl>
+
+<dl><dt><a name="Provider-__getitem__"><strong>__getitem__</strong></a>(self, key, /)</dt><dd><span class="code">Return&nbsp;self[key].</span></dd></dl>
+
+<dl><dt><a name="Provider-__getnewargs__"><strong>__getnewargs__</strong></a>(self, /)</dt></dl>
+
+<dl><dt><a name="Provider-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&gt;value.</span></dd></dl>
+
+<dl><dt><a name="Provider-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;hash(self).</span></dd></dl>
+
+<dl><dt><a name="Provider-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><span class="code">Implement&nbsp;iter(self).</span></dd></dl>
+
+<dl><dt><a name="Provider-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&lt;=value.</span></dd></dl>
+
+<dl><dt><a name="Provider-__len__"><strong>__len__</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;len(self).</span></dd></dl>
+
+<dl><dt><a name="Provider-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&lt;value.</span></dd></dl>
+
+<dl><dt><a name="Provider-__mod__"><strong>__mod__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self%value.</span></dd></dl>
+
+<dl><dt><a name="Provider-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self*value.</span></dd></dl>
+
+<dl><dt><a name="Provider-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self!=value.</span></dd></dl>
+
+<dl><dt><a name="Provider-__rmod__"><strong>__rmod__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;value%self.</span></dd></dl>
+
+<dl><dt><a name="Provider-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;value*self.</span></dd></dl>
+
+<dl><dt><a name="Provider-__sizeof__"><strong>__sizeof__</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;string&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes.</span></dd></dl>
+
+<dl><dt><a name="Provider-capitalize"><strong>capitalize</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;capitalized&nbsp;version&nbsp;of&nbsp;the&nbsp;string.<br>
+&nbsp;<br>
+More&nbsp;specifically,&nbsp;make&nbsp;the&nbsp;first&nbsp;character&nbsp;have&nbsp;upper&nbsp;case&nbsp;and&nbsp;the<br>
+rest&nbsp;lower&nbsp;case.</span></dd></dl>
+
+<dl><dt><a name="Provider-casefold"><strong>casefold</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;version&nbsp;of&nbsp;the&nbsp;string&nbsp;suitable&nbsp;for&nbsp;caseless&nbsp;comparisons.</span></dd></dl>
+
+<dl><dt><a name="Provider-center"><strong>center</strong></a>(self, width, fillchar=' ', /)</dt><dd><span class="code">Return&nbsp;a&nbsp;centered&nbsp;string&nbsp;of&nbsp;length&nbsp;width.<br>
+&nbsp;<br>
+Padding&nbsp;is&nbsp;done&nbsp;using&nbsp;the&nbsp;specified&nbsp;fill&nbsp;character&nbsp;(default&nbsp;is<br>
+a&nbsp;space).</span></dd></dl>
+
+<dl><dt><a name="Provider-count"><strong>count</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;number&nbsp;of&nbsp;non-overlapping&nbsp;occurrences&nbsp;of&nbsp;substring&nbsp;sub&nbsp;in&nbsp;string&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.</span></dd></dl>
+
+<dl><dt><a name="Provider-encode"><strong>encode</strong></a>(self, /, encoding='utf-8', errors='strict')</dt><dd><span class="code">Encode&nbsp;the&nbsp;string&nbsp;using&nbsp;the&nbsp;codec&nbsp;registered&nbsp;for&nbsp;encoding.<br>
+&nbsp;<br>
+encoding<br>
+&nbsp;&nbsp;The&nbsp;encoding&nbsp;in&nbsp;which&nbsp;to&nbsp;encode&nbsp;the&nbsp;string.<br>
+errors<br>
+&nbsp;&nbsp;The&nbsp;error&nbsp;handling&nbsp;scheme&nbsp;to&nbsp;use&nbsp;for&nbsp;encoding&nbsp;errors.<br>
+&nbsp;&nbsp;The&nbsp;default&nbsp;is&nbsp;'strict'&nbsp;meaning&nbsp;that&nbsp;encoding&nbsp;errors&nbsp;raise&nbsp;a<br>
+&nbsp;&nbsp;UnicodeEncodeError.&nbsp;&nbsp;Other&nbsp;possible&nbsp;values&nbsp;are&nbsp;'ignore',&nbsp;'replace'<br>
+&nbsp;&nbsp;and&nbsp;'xmlcharrefreplace'&nbsp;as&nbsp;well&nbsp;as&nbsp;any&nbsp;other&nbsp;name&nbsp;registered&nbsp;with<br>
+&nbsp;&nbsp;codecs.register_error&nbsp;that&nbsp;can&nbsp;handle&nbsp;UnicodeEncodeErrors.</span></dd></dl>
+
+<dl><dt><a name="Provider-endswith"><strong>endswith</strong></a>(self, suffix[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;ends&nbsp;with&nbsp;the&nbsp;specified&nbsp;suffix,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+suffix<br>
+&nbsp;&nbsp;A&nbsp;string&nbsp;or&nbsp;a&nbsp;tuple&nbsp;of&nbsp;strings&nbsp;to&nbsp;try.<br>
+start<br>
+&nbsp;&nbsp;Optional&nbsp;start&nbsp;position.&nbsp;Default:&nbsp;start&nbsp;of&nbsp;the&nbsp;string.<br>
+end<br>
+&nbsp;&nbsp;Optional&nbsp;stop&nbsp;position.&nbsp;Default:&nbsp;end&nbsp;of&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Provider-expandtabs"><strong>expandtabs</strong></a>(self, /, tabsize=8)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;where&nbsp;all&nbsp;tab&nbsp;characters&nbsp;are&nbsp;expanded&nbsp;using&nbsp;spaces.<br>
+&nbsp;<br>
+If&nbsp;tabsize&nbsp;is&nbsp;not&nbsp;given,&nbsp;a&nbsp;tab&nbsp;size&nbsp;of&nbsp;8&nbsp;characters&nbsp;is&nbsp;assumed.</span></dd></dl>
+
+<dl><dt><a name="Provider-find"><strong>find</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;lowest&nbsp;index&nbsp;in&nbsp;S&nbsp;where&nbsp;substring&nbsp;sub&nbsp;is&nbsp;found,&nbsp;such&nbsp;that&nbsp;sub&nbsp;is&nbsp;contained&nbsp;within&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.&nbsp;&nbsp;Return&nbsp;-1&nbsp;on&nbsp;failure.</span></dd></dl>
+
+<dl><dt><a name="Provider-format"><strong>format</strong></a>(self, /, *args, **kwargs)</dt><dd><span class="code">Return&nbsp;a&nbsp;formatted&nbsp;version&nbsp;of&nbsp;the&nbsp;string,&nbsp;using&nbsp;substitutions&nbsp;from&nbsp;args&nbsp;and&nbsp;kwargs.<br>
+The&nbsp;substitutions&nbsp;are&nbsp;identified&nbsp;by&nbsp;braces&nbsp;('{'&nbsp;and&nbsp;'}').</span></dd></dl>
+
+<dl><dt><a name="Provider-format_map"><strong>format_map</strong></a>(self, mapping, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;formatted&nbsp;version&nbsp;of&nbsp;the&nbsp;string,&nbsp;using&nbsp;substitutions&nbsp;from&nbsp;mapping.<br>
+The&nbsp;substitutions&nbsp;are&nbsp;identified&nbsp;by&nbsp;braces&nbsp;('{'&nbsp;and&nbsp;'}').</span></dd></dl>
+
+<dl><dt><a name="Provider-index"><strong>index</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;lowest&nbsp;index&nbsp;in&nbsp;S&nbsp;where&nbsp;substring&nbsp;sub&nbsp;is&nbsp;found,&nbsp;such&nbsp;that&nbsp;sub&nbsp;is&nbsp;contained&nbsp;within&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.&nbsp;&nbsp;Raises&nbsp;ValueError&nbsp;when&nbsp;the&nbsp;substring&nbsp;is&nbsp;not&nbsp;found.</span></dd></dl>
+
+<dl><dt><a name="Provider-isalnum"><strong>isalnum</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;an&nbsp;alpha-numeric&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;alpha-numeric&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+alpha-numeric&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Provider-isalpha"><strong>isalpha</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;an&nbsp;alphabetic&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;alphabetic&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+alphabetic&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Provider-isascii"><strong>isascii</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are&nbsp;ASCII,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+ASCII&nbsp;characters&nbsp;have&nbsp;code&nbsp;points&nbsp;in&nbsp;the&nbsp;range&nbsp;U+0000-U+007F.<br>
+Empty&nbsp;string&nbsp;is&nbsp;ASCII&nbsp;too.</span></dd></dl>
+
+<dl><dt><a name="Provider-isdecimal"><strong>isdecimal</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;decimal&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;a&nbsp;decimal&nbsp;string&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+decimal&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Provider-isdigit"><strong>isdigit</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;digit&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;a&nbsp;digit&nbsp;string&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+digits&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Provider-isidentifier"><strong>isidentifier</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;valid&nbsp;Python&nbsp;identifier,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+Call&nbsp;keyword.iskeyword(s)&nbsp;to&nbsp;test&nbsp;whether&nbsp;string&nbsp;s&nbsp;is&nbsp;a&nbsp;reserved<br>
+identifier,&nbsp;such&nbsp;as&nbsp;"def"&nbsp;or&nbsp;"class".</span></dd></dl>
+
+<dl><dt><a name="Provider-islower"><strong>islower</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;lowercase&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;lowercase&nbsp;if&nbsp;all&nbsp;cased&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+lowercase&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;cased&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Provider-isnumeric"><strong>isnumeric</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;numeric&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;numeric&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are&nbsp;numeric&nbsp;and<br>
+there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Provider-isprintable"><strong>isprintable</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are&nbsp;printable,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;character&nbsp;is&nbsp;printable&nbsp;if&nbsp;repr()&nbsp;may&nbsp;use&nbsp;it&nbsp;in&nbsp;its&nbsp;output.</span></dd></dl>
+
+<dl><dt><a name="Provider-isspace"><strong>isspace</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;whitespace&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;whitespace&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+whitespace&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Provider-istitle"><strong>istitle</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;title-cased&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+In&nbsp;a&nbsp;title-cased&nbsp;string,&nbsp;upper-&nbsp;and&nbsp;title-case&nbsp;characters&nbsp;may&nbsp;only<br>
+follow&nbsp;uncased&nbsp;characters&nbsp;and&nbsp;lowercase&nbsp;characters&nbsp;only&nbsp;cased&nbsp;ones.</span></dd></dl>
+
+<dl><dt><a name="Provider-isupper"><strong>isupper</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;an&nbsp;uppercase&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;uppercase&nbsp;if&nbsp;all&nbsp;cased&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+uppercase&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;cased&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Provider-join"><strong>join</strong></a>(self, iterable, /)</dt><dd><span class="code">Concatenate&nbsp;any&nbsp;number&nbsp;of&nbsp;strings.<br>
+&nbsp;<br>
+The&nbsp;string&nbsp;whose&nbsp;method&nbsp;is&nbsp;called&nbsp;is&nbsp;inserted&nbsp;in&nbsp;between&nbsp;each&nbsp;given<br>
+string.&nbsp;&nbsp;The&nbsp;result&nbsp;is&nbsp;returned&nbsp;as&nbsp;a&nbsp;new&nbsp;string.<br>
+&nbsp;<br>
+Example:&nbsp;'.'.<a href="#Provider-join">join</a>(['ab',&nbsp;'pq',&nbsp;'rs'])&nbsp;-&gt;&nbsp;'ab.pq.rs'</span></dd></dl>
+
+<dl><dt><a name="Provider-ljust"><strong>ljust</strong></a>(self, width, fillchar=' ', /)</dt><dd><span class="code">Return&nbsp;a&nbsp;left-justified&nbsp;string&nbsp;of&nbsp;length&nbsp;width.<br>
+&nbsp;<br>
+Padding&nbsp;is&nbsp;done&nbsp;using&nbsp;the&nbsp;specified&nbsp;fill&nbsp;character&nbsp;(default&nbsp;is<br>
+a&nbsp;space).</span></dd></dl>
+
+<dl><dt><a name="Provider-lower"><strong>lower</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;converted&nbsp;to&nbsp;lowercase.</span></dd></dl>
+
+<dl><dt><a name="Provider-lstrip"><strong>lstrip</strong></a>(self, chars=None, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;with&nbsp;leading&nbsp;whitespace&nbsp;removed.<br>
+&nbsp;<br>
+If&nbsp;chars&nbsp;is&nbsp;given&nbsp;and&nbsp;not&nbsp;None,&nbsp;remove&nbsp;characters&nbsp;in&nbsp;chars&nbsp;instead.</span></dd></dl>
+
+<dl><dt><a name="Provider-partition"><strong>partition</strong></a>(self, sep, /)</dt><dd><span class="code">Partition&nbsp;the&nbsp;string&nbsp;into&nbsp;three&nbsp;parts&nbsp;using&nbsp;the&nbsp;given&nbsp;separator.<br>
+&nbsp;<br>
+This&nbsp;will&nbsp;search&nbsp;for&nbsp;the&nbsp;separator&nbsp;in&nbsp;the&nbsp;string.&nbsp;&nbsp;If&nbsp;the&nbsp;separator<br>
+is&nbsp;found,&nbsp;returns&nbsp;a&nbsp;3-tuple&nbsp;containing&nbsp;the&nbsp;part&nbsp;before&nbsp;the<br>
+separator,&nbsp;the&nbsp;separator&nbsp;itself,&nbsp;and&nbsp;the&nbsp;part&nbsp;after&nbsp;it.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;separator&nbsp;is&nbsp;not&nbsp;found,&nbsp;returns&nbsp;a&nbsp;3-tuple&nbsp;containing<br>
+the&nbsp;original&nbsp;string&nbsp;and&nbsp;two&nbsp;empty&nbsp;strings.</span></dd></dl>
+
+<dl><dt><a name="Provider-removeprefix"><strong>removeprefix</strong></a>(self, prefix, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;str&nbsp;with&nbsp;the&nbsp;given&nbsp;prefix&nbsp;string&nbsp;removed&nbsp;if&nbsp;present.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;string&nbsp;starts&nbsp;with&nbsp;the&nbsp;prefix&nbsp;string,&nbsp;return<br>
+string[len(prefix):].&nbsp;&nbsp;Otherwise,&nbsp;return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;original<br>
+string.</span></dd></dl>
+
+<dl><dt><a name="Provider-removesuffix"><strong>removesuffix</strong></a>(self, suffix, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;str&nbsp;with&nbsp;the&nbsp;given&nbsp;suffix&nbsp;string&nbsp;removed&nbsp;if&nbsp;present.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;string&nbsp;ends&nbsp;with&nbsp;the&nbsp;suffix&nbsp;string&nbsp;and&nbsp;that&nbsp;suffix&nbsp;is&nbsp;not<br>
+empty,&nbsp;return&nbsp;string[:-len(suffix)].&nbsp;&nbsp;Otherwise,&nbsp;return&nbsp;a&nbsp;copy&nbsp;of<br>
+the&nbsp;original&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Provider-replace"><strong>replace</strong></a>(self, old, new, /, count=-1)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;with&nbsp;all&nbsp;occurrences&nbsp;of&nbsp;substring&nbsp;old&nbsp;replaced&nbsp;by&nbsp;new.<br>
+&nbsp;<br>
+&nbsp;&nbsp;count<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Maximum&nbsp;number&nbsp;of&nbsp;occurrences&nbsp;to&nbsp;replace.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-1&nbsp;(the&nbsp;default&nbsp;value)&nbsp;means&nbsp;replace&nbsp;all&nbsp;occurrences.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;optional&nbsp;argument&nbsp;count&nbsp;is&nbsp;given,&nbsp;only&nbsp;the&nbsp;first&nbsp;count&nbsp;occurrences&nbsp;are<br>
+replaced.</span></dd></dl>
+
+<dl><dt><a name="Provider-rfind"><strong>rfind</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;highest&nbsp;index&nbsp;in&nbsp;S&nbsp;where&nbsp;substring&nbsp;sub&nbsp;is&nbsp;found,&nbsp;such&nbsp;that&nbsp;sub&nbsp;is&nbsp;contained&nbsp;within&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.&nbsp;&nbsp;Return&nbsp;-1&nbsp;on&nbsp;failure.</span></dd></dl>
+
+<dl><dt><a name="Provider-rindex"><strong>rindex</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;highest&nbsp;index&nbsp;in&nbsp;S&nbsp;where&nbsp;substring&nbsp;sub&nbsp;is&nbsp;found,&nbsp;such&nbsp;that&nbsp;sub&nbsp;is&nbsp;contained&nbsp;within&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.&nbsp;&nbsp;Raises&nbsp;ValueError&nbsp;when&nbsp;the&nbsp;substring&nbsp;is&nbsp;not&nbsp;found.</span></dd></dl>
+
+<dl><dt><a name="Provider-rjust"><strong>rjust</strong></a>(self, width, fillchar=' ', /)</dt><dd><span class="code">Return&nbsp;a&nbsp;right-justified&nbsp;string&nbsp;of&nbsp;length&nbsp;width.<br>
+&nbsp;<br>
+Padding&nbsp;is&nbsp;done&nbsp;using&nbsp;the&nbsp;specified&nbsp;fill&nbsp;character&nbsp;(default&nbsp;is<br>
+a&nbsp;space).</span></dd></dl>
+
+<dl><dt><a name="Provider-rpartition"><strong>rpartition</strong></a>(self, sep, /)</dt><dd><span class="code">Partition&nbsp;the&nbsp;string&nbsp;into&nbsp;three&nbsp;parts&nbsp;using&nbsp;the&nbsp;given&nbsp;separator.<br>
+&nbsp;<br>
+This&nbsp;will&nbsp;search&nbsp;for&nbsp;the&nbsp;separator&nbsp;in&nbsp;the&nbsp;string,&nbsp;starting&nbsp;at&nbsp;the<br>
+end.&nbsp;&nbsp;If&nbsp;the&nbsp;separator&nbsp;is&nbsp;found,&nbsp;returns&nbsp;a&nbsp;3-tuple&nbsp;containing&nbsp;the<br>
+part&nbsp;before&nbsp;the&nbsp;separator,&nbsp;the&nbsp;separator&nbsp;itself,&nbsp;and&nbsp;the&nbsp;part&nbsp;after<br>
+it.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;separator&nbsp;is&nbsp;not&nbsp;found,&nbsp;returns&nbsp;a&nbsp;3-tuple&nbsp;containing&nbsp;two<br>
+empty&nbsp;strings&nbsp;and&nbsp;the&nbsp;original&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Provider-rsplit"><strong>rsplit</strong></a>(self, /, sep=None, maxsplit=-1)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;substrings&nbsp;in&nbsp;the&nbsp;string,&nbsp;using&nbsp;sep&nbsp;as&nbsp;the&nbsp;separator&nbsp;string.<br>
+&nbsp;<br>
+&nbsp;&nbsp;sep<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;separator&nbsp;used&nbsp;to&nbsp;split&nbsp;the&nbsp;string.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;set&nbsp;to&nbsp;None&nbsp;(the&nbsp;default&nbsp;value),&nbsp;will&nbsp;split&nbsp;on&nbsp;any<br>
+&nbsp;&nbsp;&nbsp;&nbsp;whitespace&nbsp;character&nbsp;(including&nbsp;\n&nbsp;\r&nbsp;\t&nbsp;\f&nbsp;and&nbsp;spaces)&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;discard&nbsp;empty&nbsp;strings&nbsp;from&nbsp;the&nbsp;result.<br>
+&nbsp;&nbsp;maxsplit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Maximum&nbsp;number&nbsp;of&nbsp;splits.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-1&nbsp;(the&nbsp;default&nbsp;value)&nbsp;means&nbsp;no&nbsp;limit.<br>
+&nbsp;<br>
+Splitting&nbsp;starts&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;string&nbsp;and&nbsp;works&nbsp;to&nbsp;the&nbsp;front.</span></dd></dl>
+
+<dl><dt><a name="Provider-rstrip"><strong>rstrip</strong></a>(self, chars=None, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;with&nbsp;trailing&nbsp;whitespace&nbsp;removed.<br>
+&nbsp;<br>
+If&nbsp;chars&nbsp;is&nbsp;given&nbsp;and&nbsp;not&nbsp;None,&nbsp;remove&nbsp;characters&nbsp;in&nbsp;chars&nbsp;instead.</span></dd></dl>
+
+<dl><dt><a name="Provider-split"><strong>split</strong></a>(self, /, sep=None, maxsplit=-1)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;substrings&nbsp;in&nbsp;the&nbsp;string,&nbsp;using&nbsp;sep&nbsp;as&nbsp;the&nbsp;separator&nbsp;string.<br>
+&nbsp;<br>
+&nbsp;&nbsp;sep<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;separator&nbsp;used&nbsp;to&nbsp;split&nbsp;the&nbsp;string.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;set&nbsp;to&nbsp;None&nbsp;(the&nbsp;default&nbsp;value),&nbsp;will&nbsp;split&nbsp;on&nbsp;any<br>
+&nbsp;&nbsp;&nbsp;&nbsp;whitespace&nbsp;character&nbsp;(including&nbsp;\n&nbsp;\r&nbsp;\t&nbsp;\f&nbsp;and&nbsp;spaces)&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;discard&nbsp;empty&nbsp;strings&nbsp;from&nbsp;the&nbsp;result.<br>
+&nbsp;&nbsp;maxsplit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Maximum&nbsp;number&nbsp;of&nbsp;splits.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-1&nbsp;(the&nbsp;default&nbsp;value)&nbsp;means&nbsp;no&nbsp;limit.<br>
+&nbsp;<br>
+Splitting&nbsp;starts&nbsp;at&nbsp;the&nbsp;front&nbsp;of&nbsp;the&nbsp;string&nbsp;and&nbsp;works&nbsp;to&nbsp;the&nbsp;end.<br>
+&nbsp;<br>
+Note,&nbsp;str.<a href="#Provider-split">split</a>()&nbsp;is&nbsp;mainly&nbsp;useful&nbsp;for&nbsp;data&nbsp;that&nbsp;has&nbsp;been<br>
+intentionally&nbsp;delimited.&nbsp;&nbsp;With&nbsp;natural&nbsp;text&nbsp;that&nbsp;includes<br>
+punctuation,&nbsp;consider&nbsp;using&nbsp;the&nbsp;regular&nbsp;expression&nbsp;module.</span></dd></dl>
+
+<dl><dt><a name="Provider-splitlines"><strong>splitlines</strong></a>(self, /, keepends=False)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;lines&nbsp;in&nbsp;the&nbsp;string,&nbsp;breaking&nbsp;at&nbsp;line&nbsp;boundaries.<br>
+&nbsp;<br>
+Line&nbsp;breaks&nbsp;are&nbsp;not&nbsp;included&nbsp;in&nbsp;the&nbsp;resulting&nbsp;list&nbsp;unless&nbsp;keepends<br>
+is&nbsp;given&nbsp;and&nbsp;true.</span></dd></dl>
+
+<dl><dt><a name="Provider-startswith"><strong>startswith</strong></a>(self, prefix[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;starts&nbsp;with&nbsp;the&nbsp;specified&nbsp;prefix,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+prefix<br>
+&nbsp;&nbsp;A&nbsp;string&nbsp;or&nbsp;a&nbsp;tuple&nbsp;of&nbsp;strings&nbsp;to&nbsp;try.<br>
+start<br>
+&nbsp;&nbsp;Optional&nbsp;start&nbsp;position.&nbsp;Default:&nbsp;start&nbsp;of&nbsp;the&nbsp;string.<br>
+end<br>
+&nbsp;&nbsp;Optional&nbsp;stop&nbsp;position.&nbsp;Default:&nbsp;end&nbsp;of&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="Provider-strip"><strong>strip</strong></a>(self, chars=None, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;with&nbsp;leading&nbsp;and&nbsp;trailing&nbsp;whitespace&nbsp;removed.<br>
+&nbsp;<br>
+If&nbsp;chars&nbsp;is&nbsp;given&nbsp;and&nbsp;not&nbsp;None,&nbsp;remove&nbsp;characters&nbsp;in&nbsp;chars&nbsp;instead.</span></dd></dl>
+
+<dl><dt><a name="Provider-swapcase"><strong>swapcase</strong></a>(self, /)</dt><dd><span class="code">Convert&nbsp;uppercase&nbsp;characters&nbsp;to&nbsp;lowercase&nbsp;and&nbsp;lowercase&nbsp;characters&nbsp;to&nbsp;uppercase.</span></dd></dl>
+
+<dl><dt><a name="Provider-title"><strong>title</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;version&nbsp;of&nbsp;the&nbsp;string&nbsp;where&nbsp;each&nbsp;word&nbsp;is&nbsp;titlecased.<br>
+&nbsp;<br>
+More&nbsp;specifically,&nbsp;words&nbsp;start&nbsp;with&nbsp;uppercased&nbsp;characters&nbsp;and&nbsp;all<br>
+remaining&nbsp;cased&nbsp;characters&nbsp;have&nbsp;lower&nbsp;case.</span></dd></dl>
+
+<dl><dt><a name="Provider-translate"><strong>translate</strong></a>(self, table, /)</dt><dd><span class="code">Replace&nbsp;each&nbsp;character&nbsp;in&nbsp;the&nbsp;string&nbsp;using&nbsp;the&nbsp;given&nbsp;translation&nbsp;table.<br>
+&nbsp;<br>
+&nbsp;&nbsp;table<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Translation&nbsp;table,&nbsp;which&nbsp;must&nbsp;be&nbsp;a&nbsp;mapping&nbsp;of&nbsp;Unicode&nbsp;ordinals<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;Unicode&nbsp;ordinals,&nbsp;strings,&nbsp;or&nbsp;None.<br>
+&nbsp;<br>
+The&nbsp;table&nbsp;must&nbsp;implement&nbsp;lookup/indexing&nbsp;via&nbsp;__getitem__,&nbsp;for<br>
+instance&nbsp;a&nbsp;dictionary&nbsp;or&nbsp;list.&nbsp;&nbsp;If&nbsp;this&nbsp;operation&nbsp;raises<br>
+LookupError,&nbsp;the&nbsp;character&nbsp;is&nbsp;left&nbsp;untouched.&nbsp;&nbsp;Characters&nbsp;mapped&nbsp;to<br>
+None&nbsp;are&nbsp;deleted.</span></dd></dl>
+
+<dl><dt><a name="Provider-upper"><strong>upper</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;converted&nbsp;to&nbsp;uppercase.</span></dd></dl>
+
+<dl><dt><a name="Provider-zfill"><strong>zfill</strong></a>(self, width, /)</dt><dd><span class="code">Pad&nbsp;a&nbsp;numeric&nbsp;string&nbsp;with&nbsp;zeros&nbsp;on&nbsp;the&nbsp;left,&nbsp;to&nbsp;fill&nbsp;a&nbsp;field&nbsp;of&nbsp;the&nbsp;given&nbsp;width.<br>
+&nbsp;<br>
+The&nbsp;string&nbsp;is&nbsp;never&nbsp;truncated.</span></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#str">builtins.str</a>:<br>
+<dl><dt><a name="Provider-maketrans"><strong>maketrans</strong></a>(x, y=&lt;unrepresentable&gt;, z=&lt;unrepresentable&gt;, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;translation&nbsp;table&nbsp;usable&nbsp;for&nbsp;str.<a href="#Provider-translate">translate</a>().<br>
+&nbsp;<br>
+If&nbsp;there&nbsp;is&nbsp;only&nbsp;one&nbsp;argument,&nbsp;it&nbsp;must&nbsp;be&nbsp;a&nbsp;dictionary&nbsp;mapping<br>
+Unicode&nbsp;ordinals&nbsp;(integers)&nbsp;or&nbsp;characters&nbsp;to&nbsp;Unicode&nbsp;ordinals,<br>
+strings&nbsp;or&nbsp;None.&nbsp;&nbsp;Character&nbsp;keys&nbsp;will&nbsp;be&nbsp;then&nbsp;converted&nbsp;to&nbsp;ordinals.<br>
+If&nbsp;there&nbsp;are&nbsp;two&nbsp;arguments,&nbsp;they&nbsp;must&nbsp;be&nbsp;strings&nbsp;of&nbsp;equal&nbsp;length,<br>
+and&nbsp;in&nbsp;the&nbsp;resulting&nbsp;dictionary,&nbsp;each&nbsp;character&nbsp;in&nbsp;x&nbsp;will&nbsp;be&nbsp;mapped<br>
+to&nbsp;the&nbsp;character&nbsp;at&nbsp;the&nbsp;same&nbsp;position&nbsp;in&nbsp;y.&nbsp;&nbsp;If&nbsp;there&nbsp;is&nbsp;a&nbsp;third<br>
+argument,&nbsp;it&nbsp;must&nbsp;be&nbsp;a&nbsp;string,&nbsp;whose&nbsp;characters&nbsp;will&nbsp;be&nbsp;mapped&nbsp;to<br>
+None&nbsp;in&nbsp;the&nbsp;result.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><a name="Provider-__dir__"><strong>__dir__</strong></a>(self)</dt><dd><span class="code">Returns&nbsp;public&nbsp;methods&nbsp;and&nbsp;other&nbsp;interesting&nbsp;attributes.</span></dd></dl>
+
+<dl><dt><a name="Provider-__reduce_ex__"><strong>__reduce_ex__</strong></a>(self, proto)</dt><dd><span class="code">Helper&nbsp;for&nbsp;pickle.</span></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><span class="code">The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><span class="code">The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumType">enum.EnumType</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><span class="code">Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;&nbsp;Note&nbsp;that<br>
+this&nbsp;is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Station">class <strong>Station</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Station">Station</a>(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;id:&nbsp;str,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;Optional[str]&nbsp;=&nbsp;None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;country:&nbsp;Optional[str]&nbsp;=&nbsp;None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;region:&nbsp;Optional[str]&nbsp;=&nbsp;None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;identifiers:&nbsp;dict[str,&nbsp;str]&nbsp;=&nbsp;&amp;lt;factory&amp;gt;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;latitude:&nbsp;Optional[float]&nbsp;=&nbsp;None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;longitude:&nbsp;Optional[float]&nbsp;=&nbsp;None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;elevation:&nbsp;Optional[int]&nbsp;=&nbsp;None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;timezone:&nbsp;Optional[str]&nbsp;=&nbsp;None<br>
+)&nbsp;-&amp;gt;&nbsp;None<br>
+&nbsp;<br>
+A&nbsp;weather&nbsp;station<br>
+&nbsp;<br>
+For&nbsp;virtual&nbsp;stations&nbsp;created&nbsp;from&nbsp;<a href="#Point">Point</a>&nbsp;objects,&nbsp;some&nbsp;fields&nbsp;will&nbsp;be&nbsp;None.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="Station-__eq__"><strong>__eq__</strong></a>(self, other)</dt><dd><span class="code">Return&nbsp;self==value.</span></dd></dl>
+
+<dl><dt><a name="Station-__init__"><strong>__init__</strong></a>(
+    self,
+    id: str,
+    name: Optional[str] = None,
+    country: Optional[str] = None,
+    region: Optional[str] = None,
+    identifiers: dict[str, str] = &lt;factory&gt;,
+    latitude: Optional[float] = None,
+    longitude: Optional[float] = None,
+    elevation: Optional[int] = None,
+    timezone: Optional[str] = None
+) -&gt; None</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="Station-__replace__"><strong>__replace__</strong></a> = _replace(self, /, **changes)<span class="grey"><span class="heading-text"> from <a href="dataclasses.html">dataclasses</a></span></span></dt></dl>
+
+<dl><dt><a name="Station-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;repr(self).</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__dataclass_fields__</strong> = {'country': Field(name='country',type=str | None,default=Non...xy({}),kw_only=False,doc=None,_field_type=_FIELD), 'elevation': Field(name='elevation',type=int | None,default=N...xy({}),kw_only=False,doc=None,_field_type=_FIELD), 'id': Field(name='id',type=&lt;class 'str'&gt;,default=&lt;data...xy({}),kw_only=False,doc=None,_field_type=_FIELD), 'identifiers': Field(name='identifiers',type=dict[str, str],def...xy({}),kw_only=False,doc=None,_field_type=_FIELD), 'latitude': Field(name='latitude',type=float | None,default=...xy({}),kw_only=False,doc=None,_field_type=_FIELD), 'longitude': Field(name='longitude',type=float | None,default...xy({}),kw_only=False,doc=None,_field_type=_FIELD), 'name': Field(name='name',type=str | None,default=None,d...xy({}),kw_only=False,doc=None,_field_type=_FIELD), 'region': Field(name='region',type=str | None,default=None...xy({}),kw_only=False,doc=None,_field_type=_FIELD), 'timezone': Field(name='timezone',type=str | None,default=No...xy({}),kw_only=False,doc=None,_field_type=_FIELD)}</dl>
+
+<dl><dt><strong>__dataclass_params__</strong> = _DataclassParams(init=True,repr=True,eq=True,ord...rue,kw_only=False,slots=False,weakref_slot=False)</dl>
+
+<dl><dt><strong>__hash__</strong> = None</dl>
+
+<dl><dt><strong>__match_args__</strong> = ('id', 'name', 'country', 'region', 'identifiers', 'latitude', 'longitude', 'elevation', 'timezone')</dl>
+
+<dl><dt><strong>country</strong> = None</dl>
+
+<dl><dt><strong>elevation</strong> = None</dl>
+
+<dl><dt><strong>latitude</strong> = None</dl>
+
+<dl><dt><strong>longitude</strong> = None</dl>
+
+<dl><dt><strong>name</strong> = None</dl>
+
+<dl><dt><strong>region</strong> = None</dl>
+
+<dl><dt><strong>timezone</strong> = None</dl>
+
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="TimeSeries">class <strong>TimeSeries</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#TimeSeries">TimeSeries</a>(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;granularity:&nbsp;<a href="#Granularity">Granularity</a>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stations:&nbsp;pd.DataFrame,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;df:&nbsp;Optional[pd.DataFrame],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;start:&nbsp;Optional[datetime]&nbsp;=&nbsp;None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end:&nbsp;Optional[datetime]&nbsp;=&nbsp;None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;timezone:&nbsp;Optional[str]&nbsp;=&nbsp;None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;multi_station:&nbsp;bool&nbsp;=&nbsp;False<br>
+)&nbsp;-&amp;gt;&nbsp;None<br>
+&nbsp;<br>
+<a href="#TimeSeries">TimeSeries</a>&nbsp;class&nbsp;which&nbsp;provides&nbsp;features&nbsp;which&nbsp;are<br>
+used&nbsp;across&nbsp;all&nbsp;granularities<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="TimeSeries-__init__"><strong>__init__</strong></a>(
+    self,
+    granularity: Granularity,
+    stations: pd.DataFrame,
+    df: Optional[pd.DataFrame],
+    start: Optional[datetime] = None,
+    end: Optional[datetime] = None,
+    timezone: Optional[str] = None,
+    multi_station: bool = False
+) -&gt; None</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="TimeSeries-__len__"><strong>__len__</strong></a>(self) -&gt; int</dt><dd><span class="code">Return&nbsp;number&nbsp;of&nbsp;rows&nbsp;in&nbsp;DataFrame</span></dd></dl>
+
+<dl><dt><a name="TimeSeries-__str__"><strong>__str__</strong></a>(self) -&gt; str</dt><dd><span class="code">Return&nbsp;a&nbsp;stringified&nbsp;version&nbsp;of&nbsp;the&nbsp;DataFrame</span></dd></dl>
+
+<dl><dt><a name="TimeSeries-completeness"><strong>completeness</strong></a>(self, parameter: Optional[Parameter | str] = None) -&gt; Optional[float]</dt><dd><span class="code">Get&nbsp;completeness&nbsp;for&nbsp;a&nbsp;specific&nbsp;parameter&nbsp;or&nbsp;the&nbsp;entire&nbsp;DataFrame.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+parameter&nbsp;:&nbsp;<a href="#Parameter">Parameter</a>&nbsp;or&nbsp;str,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;parameter&nbsp;to&nbsp;calculate&nbsp;completeness&nbsp;for.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;None,&nbsp;calculates&nbsp;for&nbsp;the&nbsp;entire&nbsp;DataFrame.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+float&nbsp;or&nbsp;None<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;completeness&nbsp;ratio&nbsp;for&nbsp;the&nbsp;specified&nbsp;parameter&nbsp;or&nbsp;the&nbsp;entire&nbsp;DataFrame.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Returns&nbsp;None&nbsp;if&nbsp;completeness&nbsp;cannot&nbsp;be&nbsp;determined&nbsp;(e.g.,&nbsp;missing&nbsp;end&nbsp;date).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Returns&nbsp;0.0&nbsp;if&nbsp;no&nbsp;data&nbsp;but&nbsp;dates&nbsp;are&nbsp;defined.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Returns&nbsp;1&nbsp;if&nbsp;complete,&nbsp;or&nbsp;a&nbsp;value&nbsp;between&nbsp;0&nbsp;and&nbsp;1&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="TimeSeries-count"><strong>count</strong></a>(self, parameter: Optional[Parameter | str] = None) -&gt; int</dt><dd><span class="code">Get&nbsp;number&nbsp;of&nbsp;non-NaN&nbsp;values&nbsp;for&nbsp;a&nbsp;specific&nbsp;parameter.<br>
+If&nbsp;no&nbsp;parameter&nbsp;is&nbsp;specified,&nbsp;it&nbsp;returns&nbsp;the&nbsp;count&nbsp;for&nbsp;the&nbsp;entire&nbsp;DataFrame.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+parameter&nbsp;:&nbsp;<a href="#Parameter">Parameter</a>&nbsp;or&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;parameter&nbsp;to&nbsp;count&nbsp;non-NaN&nbsp;values&nbsp;for.&nbsp;If&nbsp;None,&nbsp;counts&nbsp;for&nbsp;the&nbsp;entire&nbsp;DataFrame.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;count&nbsp;of&nbsp;non-NaN&nbsp;values&nbsp;for&nbsp;the&nbsp;specified&nbsp;parameter&nbsp;or&nbsp;the&nbsp;entire&nbsp;DataFrame.</span></dd></dl>
+
+<dl><dt><a name="TimeSeries-fetch"><strong>fetch</strong></a>(
+    self,
+    squash=True,
+    fill=False,
+    sources=False,
+    location=False,
+    clean=True,
+    humanize=False,
+    units: UnitSystem = &lt;UnitSystem.METRIC: 'metric'&gt;
+) -&gt; Optional[pd.DataFrame]</dt><dd><span class="code">Fetch&nbsp;the&nbsp;time&nbsp;series&nbsp;data&nbsp;as&nbsp;a&nbsp;DataFrame.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+squash&nbsp;:&nbsp;bool,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Whether&nbsp;to&nbsp;squash&nbsp;the&nbsp;DataFrame&nbsp;by&nbsp;source.&nbsp;Defaults&nbsp;to&nbsp;True.<br>
+fill&nbsp;:&nbsp;bool,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Whether&nbsp;to&nbsp;fill&nbsp;missing&nbsp;rows&nbsp;in&nbsp;the&nbsp;DataFrame.&nbsp;Defaults&nbsp;to&nbsp;False.<br>
+sources&nbsp;:&nbsp;bool,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Whether&nbsp;to&nbsp;include&nbsp;source&nbsp;information&nbsp;in&nbsp;the&nbsp;DataFrame.&nbsp;Defaults&nbsp;to&nbsp;False.<br>
+location&nbsp;:&nbsp;bool,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Whether&nbsp;to&nbsp;include&nbsp;location&nbsp;information&nbsp;(latitude,&nbsp;longitude,&nbsp;elevation)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;the&nbsp;DataFrame.&nbsp;Defaults&nbsp;to&nbsp;False.<br>
+clean&nbsp;:&nbsp;bool,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Whether&nbsp;to&nbsp;clean&nbsp;the&nbsp;DataFrame&nbsp;according&nbsp;to&nbsp;the&nbsp;schema.&nbsp;Defaults&nbsp;to&nbsp;True.<br>
+humanize&nbsp;:&nbsp;bool,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Whether&nbsp;to&nbsp;convert&nbsp;wind&nbsp;direction&nbsp;and&nbsp;condition&nbsp;codes&nbsp;to&nbsp;human-readable&nbsp;values.&nbsp;Defaults&nbsp;to&nbsp;False.<br>
+units&nbsp;:&nbsp;<a href="#UnitSystem">UnitSystem</a>,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;unit&nbsp;system&nbsp;to&nbsp;use&nbsp;for&nbsp;the&nbsp;DataFrame.&nbsp;Defaults&nbsp;to&nbsp;metric&nbsp;units.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+pd.DataFrame&nbsp;or&nbsp;None<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;time&nbsp;series&nbsp;data&nbsp;as&nbsp;a&nbsp;DataFrame,&nbsp;or&nbsp;None&nbsp;if&nbsp;no&nbsp;data&nbsp;is&nbsp;available.</span></dd></dl>
+
+<dl><dt><a name="TimeSeries-validate"><strong>validate</strong></a>(self) -&gt; bool</dt><dd><span class="code">Does&nbsp;the&nbsp;time&nbsp;series&nbsp;pass&nbsp;all&nbsp;validations?</span></dd></dl>
+
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>attribution</strong></dt>
+<dd><span class="code">Attribution&nbsp;string</span></dd>
+</dl>
+<dl><dt><strong>commercial</strong></dt>
+<dd><span class="code">Is&nbsp;commercial&nbsp;use&nbsp;allowed?</span></dd>
+</dl>
+<dl><dt><strong>empty</strong></dt>
+<dd><span class="code">Is&nbsp;the&nbsp;time&nbsp;series&nbsp;empty?</span></dd>
+</dl>
+<dl><dt><strong>freq</strong></dt>
+<dd><span class="code">The&nbsp;time&nbsp;series&nbsp;frequency.<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;Pandas&nbsp;offset&nbsp;alias&nbsp;string&nbsp;(e.g.&nbsp;"1h",&nbsp;"1D",&nbsp;"1M")&nbsp;or<br>
+`None`&nbsp;for&nbsp;granularities&nbsp;where&nbsp;a&nbsp;regular&nbsp;frequency&nbsp;does&nbsp;not&nbsp;apply<br>
+(e.g.&nbsp;normals).</span></dd>
+</dl>
+<dl><dt><strong>licenses</strong></dt>
+<dd><span class="code">Get&nbsp;licenses</span></dd>
+</dl>
+<dl><dt><strong>parameters</strong></dt>
+<dd><span class="code">Get&nbsp;parameters</span></dd>
+</dl>
+<dl><dt><strong>providers</strong></dt>
+<dd><span class="code">Get&nbsp;included&nbsp;providers</span></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>end</strong> = None</dl>
+
+<dl><dt><strong>start</strong> = None</dl>
+
+<dl><dt><strong>timezone</strong> = None</dl>
+
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="UnitSystem">class <strong>UnitSystem</strong></a>(<a href="enum.html#StrEnum">enum.StrEnum</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#UnitSystem">UnitSystem</a>(*values)<br>
+&nbsp;<br>
+Unit&nbsp;Systems<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="meteostat.enumerations.html#UnitSystem">UnitSystem</a></dd>
+<dd><a href="enum.html#StrEnum">enum.StrEnum</a></dd>
+<dd><a href="builtins.html#str">builtins.str</a></dd>
+<dd><a href="enum.html#ReprEnum">enum.ReprEnum</a></dd>
+<dd><a href="enum.html#Enum">enum.Enum</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="UnitSystem-__format__"><strong>__format__</strong></a>(self, format_spec, /)<span class="grey"><span class="heading-text"> from <a href="builtins.html#str">builtins.str</a></span></span></dt><dd><span class="code">Return&nbsp;a&nbsp;formatted&nbsp;version&nbsp;of&nbsp;the&nbsp;string&nbsp;as&nbsp;described&nbsp;by&nbsp;format_spec.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__new__"><strong>__new__</strong></a>(cls, value)<span class="grey"><span class="heading-text"> from enum.Enum</span></span></dt><dd><span class="code">Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__str__"><strong>__str__</strong></a>(self, /)<span class="grey"><span class="heading-text"> from <a href="builtins.html#str">builtins.str</a></span></span></dt><dd><span class="code">Return&nbsp;str(self).</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>IMPERIAL</strong> = &lt;UnitSystem.IMPERIAL: 'imperial'&gt;</dl>
+
+<dl><dt><strong>METRIC</strong> = &lt;UnitSystem.METRIC: 'metric'&gt;</dl>
+
+<dl><dt><strong>SI</strong> = &lt;UnitSystem.SI: 'si'&gt;</dl>
+
+<hr>
+Methods inherited from <a href="enum.html#StrEnum">enum.StrEnum</a>:<br>
+<dl><dt><a name="UnitSystem-__repr__"><strong>__repr__</strong></a>(self)<span class="grey"><span class="heading-text"> from enum.Enum</span></span></dt><dd><span class="code">Return&nbsp;repr(self).</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#str">builtins.str</a>:<br>
+<dl><dt><a name="UnitSystem-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self+value.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__contains__"><strong>__contains__</strong></a>(self, key, /)</dt><dd><span class="code">Return&nbsp;bool(key&nbsp;in&nbsp;self).</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self==value.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&gt;=value.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__getitem__"><strong>__getitem__</strong></a>(self, key, /)</dt><dd><span class="code">Return&nbsp;self[key].</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__getnewargs__"><strong>__getnewargs__</strong></a>(self, /)</dt></dl>
+
+<dl><dt><a name="UnitSystem-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&gt;value.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;hash(self).</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><span class="code">Implement&nbsp;iter(self).</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&lt;=value.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__len__"><strong>__len__</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;len(self).</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&lt;value.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__mod__"><strong>__mod__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self%value.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self*value.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self!=value.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__rmod__"><strong>__rmod__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;value%self.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;value*self.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__sizeof__"><strong>__sizeof__</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;string&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-capitalize"><strong>capitalize</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;capitalized&nbsp;version&nbsp;of&nbsp;the&nbsp;string.<br>
+&nbsp;<br>
+More&nbsp;specifically,&nbsp;make&nbsp;the&nbsp;first&nbsp;character&nbsp;have&nbsp;upper&nbsp;case&nbsp;and&nbsp;the<br>
+rest&nbsp;lower&nbsp;case.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-casefold"><strong>casefold</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;version&nbsp;of&nbsp;the&nbsp;string&nbsp;suitable&nbsp;for&nbsp;caseless&nbsp;comparisons.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-center"><strong>center</strong></a>(self, width, fillchar=' ', /)</dt><dd><span class="code">Return&nbsp;a&nbsp;centered&nbsp;string&nbsp;of&nbsp;length&nbsp;width.<br>
+&nbsp;<br>
+Padding&nbsp;is&nbsp;done&nbsp;using&nbsp;the&nbsp;specified&nbsp;fill&nbsp;character&nbsp;(default&nbsp;is<br>
+a&nbsp;space).</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-count"><strong>count</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;number&nbsp;of&nbsp;non-overlapping&nbsp;occurrences&nbsp;of&nbsp;substring&nbsp;sub&nbsp;in&nbsp;string&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-encode"><strong>encode</strong></a>(self, /, encoding='utf-8', errors='strict')</dt><dd><span class="code">Encode&nbsp;the&nbsp;string&nbsp;using&nbsp;the&nbsp;codec&nbsp;registered&nbsp;for&nbsp;encoding.<br>
+&nbsp;<br>
+encoding<br>
+&nbsp;&nbsp;The&nbsp;encoding&nbsp;in&nbsp;which&nbsp;to&nbsp;encode&nbsp;the&nbsp;string.<br>
+errors<br>
+&nbsp;&nbsp;The&nbsp;error&nbsp;handling&nbsp;scheme&nbsp;to&nbsp;use&nbsp;for&nbsp;encoding&nbsp;errors.<br>
+&nbsp;&nbsp;The&nbsp;default&nbsp;is&nbsp;'strict'&nbsp;meaning&nbsp;that&nbsp;encoding&nbsp;errors&nbsp;raise&nbsp;a<br>
+&nbsp;&nbsp;UnicodeEncodeError.&nbsp;&nbsp;Other&nbsp;possible&nbsp;values&nbsp;are&nbsp;'ignore',&nbsp;'replace'<br>
+&nbsp;&nbsp;and&nbsp;'xmlcharrefreplace'&nbsp;as&nbsp;well&nbsp;as&nbsp;any&nbsp;other&nbsp;name&nbsp;registered&nbsp;with<br>
+&nbsp;&nbsp;codecs.register_error&nbsp;that&nbsp;can&nbsp;handle&nbsp;UnicodeEncodeErrors.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-endswith"><strong>endswith</strong></a>(self, suffix[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;ends&nbsp;with&nbsp;the&nbsp;specified&nbsp;suffix,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+suffix<br>
+&nbsp;&nbsp;A&nbsp;string&nbsp;or&nbsp;a&nbsp;tuple&nbsp;of&nbsp;strings&nbsp;to&nbsp;try.<br>
+start<br>
+&nbsp;&nbsp;Optional&nbsp;start&nbsp;position.&nbsp;Default:&nbsp;start&nbsp;of&nbsp;the&nbsp;string.<br>
+end<br>
+&nbsp;&nbsp;Optional&nbsp;stop&nbsp;position.&nbsp;Default:&nbsp;end&nbsp;of&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-expandtabs"><strong>expandtabs</strong></a>(self, /, tabsize=8)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;where&nbsp;all&nbsp;tab&nbsp;characters&nbsp;are&nbsp;expanded&nbsp;using&nbsp;spaces.<br>
+&nbsp;<br>
+If&nbsp;tabsize&nbsp;is&nbsp;not&nbsp;given,&nbsp;a&nbsp;tab&nbsp;size&nbsp;of&nbsp;8&nbsp;characters&nbsp;is&nbsp;assumed.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-find"><strong>find</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;lowest&nbsp;index&nbsp;in&nbsp;S&nbsp;where&nbsp;substring&nbsp;sub&nbsp;is&nbsp;found,&nbsp;such&nbsp;that&nbsp;sub&nbsp;is&nbsp;contained&nbsp;within&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.&nbsp;&nbsp;Return&nbsp;-1&nbsp;on&nbsp;failure.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-format"><strong>format</strong></a>(self, /, *args, **kwargs)</dt><dd><span class="code">Return&nbsp;a&nbsp;formatted&nbsp;version&nbsp;of&nbsp;the&nbsp;string,&nbsp;using&nbsp;substitutions&nbsp;from&nbsp;args&nbsp;and&nbsp;kwargs.<br>
+The&nbsp;substitutions&nbsp;are&nbsp;identified&nbsp;by&nbsp;braces&nbsp;('{'&nbsp;and&nbsp;'}').</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-format_map"><strong>format_map</strong></a>(self, mapping, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;formatted&nbsp;version&nbsp;of&nbsp;the&nbsp;string,&nbsp;using&nbsp;substitutions&nbsp;from&nbsp;mapping.<br>
+The&nbsp;substitutions&nbsp;are&nbsp;identified&nbsp;by&nbsp;braces&nbsp;('{'&nbsp;and&nbsp;'}').</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-index"><strong>index</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;lowest&nbsp;index&nbsp;in&nbsp;S&nbsp;where&nbsp;substring&nbsp;sub&nbsp;is&nbsp;found,&nbsp;such&nbsp;that&nbsp;sub&nbsp;is&nbsp;contained&nbsp;within&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.&nbsp;&nbsp;Raises&nbsp;ValueError&nbsp;when&nbsp;the&nbsp;substring&nbsp;is&nbsp;not&nbsp;found.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-isalnum"><strong>isalnum</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;an&nbsp;alpha-numeric&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;alpha-numeric&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+alpha-numeric&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-isalpha"><strong>isalpha</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;an&nbsp;alphabetic&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;alphabetic&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+alphabetic&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-isascii"><strong>isascii</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are&nbsp;ASCII,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+ASCII&nbsp;characters&nbsp;have&nbsp;code&nbsp;points&nbsp;in&nbsp;the&nbsp;range&nbsp;U+0000-U+007F.<br>
+Empty&nbsp;string&nbsp;is&nbsp;ASCII&nbsp;too.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-isdecimal"><strong>isdecimal</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;decimal&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;a&nbsp;decimal&nbsp;string&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+decimal&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-isdigit"><strong>isdigit</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;digit&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;a&nbsp;digit&nbsp;string&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+digits&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-isidentifier"><strong>isidentifier</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;valid&nbsp;Python&nbsp;identifier,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+Call&nbsp;keyword.iskeyword(s)&nbsp;to&nbsp;test&nbsp;whether&nbsp;string&nbsp;s&nbsp;is&nbsp;a&nbsp;reserved<br>
+identifier,&nbsp;such&nbsp;as&nbsp;"def"&nbsp;or&nbsp;"class".</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-islower"><strong>islower</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;lowercase&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;lowercase&nbsp;if&nbsp;all&nbsp;cased&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+lowercase&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;cased&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-isnumeric"><strong>isnumeric</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;numeric&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;numeric&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are&nbsp;numeric&nbsp;and<br>
+there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-isprintable"><strong>isprintable</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are&nbsp;printable,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;character&nbsp;is&nbsp;printable&nbsp;if&nbsp;repr()&nbsp;may&nbsp;use&nbsp;it&nbsp;in&nbsp;its&nbsp;output.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-isspace"><strong>isspace</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;whitespace&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;whitespace&nbsp;if&nbsp;all&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+whitespace&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-istitle"><strong>istitle</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;title-cased&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+In&nbsp;a&nbsp;title-cased&nbsp;string,&nbsp;upper-&nbsp;and&nbsp;title-case&nbsp;characters&nbsp;may&nbsp;only<br>
+follow&nbsp;uncased&nbsp;characters&nbsp;and&nbsp;lowercase&nbsp;characters&nbsp;only&nbsp;cased&nbsp;ones.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-isupper"><strong>isupper</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;an&nbsp;uppercase&nbsp;string,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;is&nbsp;uppercase&nbsp;if&nbsp;all&nbsp;cased&nbsp;characters&nbsp;in&nbsp;the&nbsp;string&nbsp;are<br>
+uppercase&nbsp;and&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;one&nbsp;cased&nbsp;character&nbsp;in&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-join"><strong>join</strong></a>(self, iterable, /)</dt><dd><span class="code">Concatenate&nbsp;any&nbsp;number&nbsp;of&nbsp;strings.<br>
+&nbsp;<br>
+The&nbsp;string&nbsp;whose&nbsp;method&nbsp;is&nbsp;called&nbsp;is&nbsp;inserted&nbsp;in&nbsp;between&nbsp;each&nbsp;given<br>
+string.&nbsp;&nbsp;The&nbsp;result&nbsp;is&nbsp;returned&nbsp;as&nbsp;a&nbsp;new&nbsp;string.<br>
+&nbsp;<br>
+Example:&nbsp;'.'.<a href="#UnitSystem-join">join</a>(['ab',&nbsp;'pq',&nbsp;'rs'])&nbsp;-&gt;&nbsp;'ab.pq.rs'</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-ljust"><strong>ljust</strong></a>(self, width, fillchar=' ', /)</dt><dd><span class="code">Return&nbsp;a&nbsp;left-justified&nbsp;string&nbsp;of&nbsp;length&nbsp;width.<br>
+&nbsp;<br>
+Padding&nbsp;is&nbsp;done&nbsp;using&nbsp;the&nbsp;specified&nbsp;fill&nbsp;character&nbsp;(default&nbsp;is<br>
+a&nbsp;space).</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-lower"><strong>lower</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;converted&nbsp;to&nbsp;lowercase.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-lstrip"><strong>lstrip</strong></a>(self, chars=None, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;with&nbsp;leading&nbsp;whitespace&nbsp;removed.<br>
+&nbsp;<br>
+If&nbsp;chars&nbsp;is&nbsp;given&nbsp;and&nbsp;not&nbsp;None,&nbsp;remove&nbsp;characters&nbsp;in&nbsp;chars&nbsp;instead.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-partition"><strong>partition</strong></a>(self, sep, /)</dt><dd><span class="code">Partition&nbsp;the&nbsp;string&nbsp;into&nbsp;three&nbsp;parts&nbsp;using&nbsp;the&nbsp;given&nbsp;separator.<br>
+&nbsp;<br>
+This&nbsp;will&nbsp;search&nbsp;for&nbsp;the&nbsp;separator&nbsp;in&nbsp;the&nbsp;string.&nbsp;&nbsp;If&nbsp;the&nbsp;separator<br>
+is&nbsp;found,&nbsp;returns&nbsp;a&nbsp;3-tuple&nbsp;containing&nbsp;the&nbsp;part&nbsp;before&nbsp;the<br>
+separator,&nbsp;the&nbsp;separator&nbsp;itself,&nbsp;and&nbsp;the&nbsp;part&nbsp;after&nbsp;it.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;separator&nbsp;is&nbsp;not&nbsp;found,&nbsp;returns&nbsp;a&nbsp;3-tuple&nbsp;containing<br>
+the&nbsp;original&nbsp;string&nbsp;and&nbsp;two&nbsp;empty&nbsp;strings.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-removeprefix"><strong>removeprefix</strong></a>(self, prefix, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;str&nbsp;with&nbsp;the&nbsp;given&nbsp;prefix&nbsp;string&nbsp;removed&nbsp;if&nbsp;present.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;string&nbsp;starts&nbsp;with&nbsp;the&nbsp;prefix&nbsp;string,&nbsp;return<br>
+string[len(prefix):].&nbsp;&nbsp;Otherwise,&nbsp;return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;original<br>
+string.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-removesuffix"><strong>removesuffix</strong></a>(self, suffix, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;str&nbsp;with&nbsp;the&nbsp;given&nbsp;suffix&nbsp;string&nbsp;removed&nbsp;if&nbsp;present.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;string&nbsp;ends&nbsp;with&nbsp;the&nbsp;suffix&nbsp;string&nbsp;and&nbsp;that&nbsp;suffix&nbsp;is&nbsp;not<br>
+empty,&nbsp;return&nbsp;string[:-len(suffix)].&nbsp;&nbsp;Otherwise,&nbsp;return&nbsp;a&nbsp;copy&nbsp;of<br>
+the&nbsp;original&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-replace"><strong>replace</strong></a>(self, old, new, /, count=-1)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;with&nbsp;all&nbsp;occurrences&nbsp;of&nbsp;substring&nbsp;old&nbsp;replaced&nbsp;by&nbsp;new.<br>
+&nbsp;<br>
+&nbsp;&nbsp;count<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Maximum&nbsp;number&nbsp;of&nbsp;occurrences&nbsp;to&nbsp;replace.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-1&nbsp;(the&nbsp;default&nbsp;value)&nbsp;means&nbsp;replace&nbsp;all&nbsp;occurrences.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;optional&nbsp;argument&nbsp;count&nbsp;is&nbsp;given,&nbsp;only&nbsp;the&nbsp;first&nbsp;count&nbsp;occurrences&nbsp;are<br>
+replaced.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-rfind"><strong>rfind</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;highest&nbsp;index&nbsp;in&nbsp;S&nbsp;where&nbsp;substring&nbsp;sub&nbsp;is&nbsp;found,&nbsp;such&nbsp;that&nbsp;sub&nbsp;is&nbsp;contained&nbsp;within&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.&nbsp;&nbsp;Return&nbsp;-1&nbsp;on&nbsp;failure.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-rindex"><strong>rindex</strong></a>(self, sub[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;the&nbsp;highest&nbsp;index&nbsp;in&nbsp;S&nbsp;where&nbsp;substring&nbsp;sub&nbsp;is&nbsp;found,&nbsp;such&nbsp;that&nbsp;sub&nbsp;is&nbsp;contained&nbsp;within&nbsp;S[start:end].<br>
+&nbsp;<br>
+Optional&nbsp;arguments&nbsp;start&nbsp;and&nbsp;end&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;in&nbsp;slice<br>
+notation.&nbsp;&nbsp;Raises&nbsp;ValueError&nbsp;when&nbsp;the&nbsp;substring&nbsp;is&nbsp;not&nbsp;found.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-rjust"><strong>rjust</strong></a>(self, width, fillchar=' ', /)</dt><dd><span class="code">Return&nbsp;a&nbsp;right-justified&nbsp;string&nbsp;of&nbsp;length&nbsp;width.<br>
+&nbsp;<br>
+Padding&nbsp;is&nbsp;done&nbsp;using&nbsp;the&nbsp;specified&nbsp;fill&nbsp;character&nbsp;(default&nbsp;is<br>
+a&nbsp;space).</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-rpartition"><strong>rpartition</strong></a>(self, sep, /)</dt><dd><span class="code">Partition&nbsp;the&nbsp;string&nbsp;into&nbsp;three&nbsp;parts&nbsp;using&nbsp;the&nbsp;given&nbsp;separator.<br>
+&nbsp;<br>
+This&nbsp;will&nbsp;search&nbsp;for&nbsp;the&nbsp;separator&nbsp;in&nbsp;the&nbsp;string,&nbsp;starting&nbsp;at&nbsp;the<br>
+end.&nbsp;&nbsp;If&nbsp;the&nbsp;separator&nbsp;is&nbsp;found,&nbsp;returns&nbsp;a&nbsp;3-tuple&nbsp;containing&nbsp;the<br>
+part&nbsp;before&nbsp;the&nbsp;separator,&nbsp;the&nbsp;separator&nbsp;itself,&nbsp;and&nbsp;the&nbsp;part&nbsp;after<br>
+it.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;separator&nbsp;is&nbsp;not&nbsp;found,&nbsp;returns&nbsp;a&nbsp;3-tuple&nbsp;containing&nbsp;two<br>
+empty&nbsp;strings&nbsp;and&nbsp;the&nbsp;original&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-rsplit"><strong>rsplit</strong></a>(self, /, sep=None, maxsplit=-1)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;substrings&nbsp;in&nbsp;the&nbsp;string,&nbsp;using&nbsp;sep&nbsp;as&nbsp;the&nbsp;separator&nbsp;string.<br>
+&nbsp;<br>
+&nbsp;&nbsp;sep<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;separator&nbsp;used&nbsp;to&nbsp;split&nbsp;the&nbsp;string.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;set&nbsp;to&nbsp;None&nbsp;(the&nbsp;default&nbsp;value),&nbsp;will&nbsp;split&nbsp;on&nbsp;any<br>
+&nbsp;&nbsp;&nbsp;&nbsp;whitespace&nbsp;character&nbsp;(including&nbsp;\n&nbsp;\r&nbsp;\t&nbsp;\f&nbsp;and&nbsp;spaces)&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;discard&nbsp;empty&nbsp;strings&nbsp;from&nbsp;the&nbsp;result.<br>
+&nbsp;&nbsp;maxsplit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Maximum&nbsp;number&nbsp;of&nbsp;splits.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-1&nbsp;(the&nbsp;default&nbsp;value)&nbsp;means&nbsp;no&nbsp;limit.<br>
+&nbsp;<br>
+Splitting&nbsp;starts&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;string&nbsp;and&nbsp;works&nbsp;to&nbsp;the&nbsp;front.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-rstrip"><strong>rstrip</strong></a>(self, chars=None, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;with&nbsp;trailing&nbsp;whitespace&nbsp;removed.<br>
+&nbsp;<br>
+If&nbsp;chars&nbsp;is&nbsp;given&nbsp;and&nbsp;not&nbsp;None,&nbsp;remove&nbsp;characters&nbsp;in&nbsp;chars&nbsp;instead.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-split"><strong>split</strong></a>(self, /, sep=None, maxsplit=-1)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;substrings&nbsp;in&nbsp;the&nbsp;string,&nbsp;using&nbsp;sep&nbsp;as&nbsp;the&nbsp;separator&nbsp;string.<br>
+&nbsp;<br>
+&nbsp;&nbsp;sep<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;separator&nbsp;used&nbsp;to&nbsp;split&nbsp;the&nbsp;string.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;set&nbsp;to&nbsp;None&nbsp;(the&nbsp;default&nbsp;value),&nbsp;will&nbsp;split&nbsp;on&nbsp;any<br>
+&nbsp;&nbsp;&nbsp;&nbsp;whitespace&nbsp;character&nbsp;(including&nbsp;\n&nbsp;\r&nbsp;\t&nbsp;\f&nbsp;and&nbsp;spaces)&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;discard&nbsp;empty&nbsp;strings&nbsp;from&nbsp;the&nbsp;result.<br>
+&nbsp;&nbsp;maxsplit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Maximum&nbsp;number&nbsp;of&nbsp;splits.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-1&nbsp;(the&nbsp;default&nbsp;value)&nbsp;means&nbsp;no&nbsp;limit.<br>
+&nbsp;<br>
+Splitting&nbsp;starts&nbsp;at&nbsp;the&nbsp;front&nbsp;of&nbsp;the&nbsp;string&nbsp;and&nbsp;works&nbsp;to&nbsp;the&nbsp;end.<br>
+&nbsp;<br>
+Note,&nbsp;str.<a href="#UnitSystem-split">split</a>()&nbsp;is&nbsp;mainly&nbsp;useful&nbsp;for&nbsp;data&nbsp;that&nbsp;has&nbsp;been<br>
+intentionally&nbsp;delimited.&nbsp;&nbsp;With&nbsp;natural&nbsp;text&nbsp;that&nbsp;includes<br>
+punctuation,&nbsp;consider&nbsp;using&nbsp;the&nbsp;regular&nbsp;expression&nbsp;module.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-splitlines"><strong>splitlines</strong></a>(self, /, keepends=False)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;lines&nbsp;in&nbsp;the&nbsp;string,&nbsp;breaking&nbsp;at&nbsp;line&nbsp;boundaries.<br>
+&nbsp;<br>
+Line&nbsp;breaks&nbsp;are&nbsp;not&nbsp;included&nbsp;in&nbsp;the&nbsp;resulting&nbsp;list&nbsp;unless&nbsp;keepends<br>
+is&nbsp;given&nbsp;and&nbsp;true.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-startswith"><strong>startswith</strong></a>(self, prefix[, start[, end]], /)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;string&nbsp;starts&nbsp;with&nbsp;the&nbsp;specified&nbsp;prefix,&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+prefix<br>
+&nbsp;&nbsp;A&nbsp;string&nbsp;or&nbsp;a&nbsp;tuple&nbsp;of&nbsp;strings&nbsp;to&nbsp;try.<br>
+start<br>
+&nbsp;&nbsp;Optional&nbsp;start&nbsp;position.&nbsp;Default:&nbsp;start&nbsp;of&nbsp;the&nbsp;string.<br>
+end<br>
+&nbsp;&nbsp;Optional&nbsp;stop&nbsp;position.&nbsp;Default:&nbsp;end&nbsp;of&nbsp;the&nbsp;string.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-strip"><strong>strip</strong></a>(self, chars=None, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;with&nbsp;leading&nbsp;and&nbsp;trailing&nbsp;whitespace&nbsp;removed.<br>
+&nbsp;<br>
+If&nbsp;chars&nbsp;is&nbsp;given&nbsp;and&nbsp;not&nbsp;None,&nbsp;remove&nbsp;characters&nbsp;in&nbsp;chars&nbsp;instead.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-swapcase"><strong>swapcase</strong></a>(self, /)</dt><dd><span class="code">Convert&nbsp;uppercase&nbsp;characters&nbsp;to&nbsp;lowercase&nbsp;and&nbsp;lowercase&nbsp;characters&nbsp;to&nbsp;uppercase.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-title"><strong>title</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;version&nbsp;of&nbsp;the&nbsp;string&nbsp;where&nbsp;each&nbsp;word&nbsp;is&nbsp;titlecased.<br>
+&nbsp;<br>
+More&nbsp;specifically,&nbsp;words&nbsp;start&nbsp;with&nbsp;uppercased&nbsp;characters&nbsp;and&nbsp;all<br>
+remaining&nbsp;cased&nbsp;characters&nbsp;have&nbsp;lower&nbsp;case.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-translate"><strong>translate</strong></a>(self, table, /)</dt><dd><span class="code">Replace&nbsp;each&nbsp;character&nbsp;in&nbsp;the&nbsp;string&nbsp;using&nbsp;the&nbsp;given&nbsp;translation&nbsp;table.<br>
+&nbsp;<br>
+&nbsp;&nbsp;table<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Translation&nbsp;table,&nbsp;which&nbsp;must&nbsp;be&nbsp;a&nbsp;mapping&nbsp;of&nbsp;Unicode&nbsp;ordinals<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;Unicode&nbsp;ordinals,&nbsp;strings,&nbsp;or&nbsp;None.<br>
+&nbsp;<br>
+The&nbsp;table&nbsp;must&nbsp;implement&nbsp;lookup/indexing&nbsp;via&nbsp;__getitem__,&nbsp;for<br>
+instance&nbsp;a&nbsp;dictionary&nbsp;or&nbsp;list.&nbsp;&nbsp;If&nbsp;this&nbsp;operation&nbsp;raises<br>
+LookupError,&nbsp;the&nbsp;character&nbsp;is&nbsp;left&nbsp;untouched.&nbsp;&nbsp;Characters&nbsp;mapped&nbsp;to<br>
+None&nbsp;are&nbsp;deleted.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-upper"><strong>upper</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;string&nbsp;converted&nbsp;to&nbsp;uppercase.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-zfill"><strong>zfill</strong></a>(self, width, /)</dt><dd><span class="code">Pad&nbsp;a&nbsp;numeric&nbsp;string&nbsp;with&nbsp;zeros&nbsp;on&nbsp;the&nbsp;left,&nbsp;to&nbsp;fill&nbsp;a&nbsp;field&nbsp;of&nbsp;the&nbsp;given&nbsp;width.<br>
+&nbsp;<br>
+The&nbsp;string&nbsp;is&nbsp;never&nbsp;truncated.</span></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#str">builtins.str</a>:<br>
+<dl><dt><a name="UnitSystem-maketrans"><strong>maketrans</strong></a>(x, y=&lt;unrepresentable&gt;, z=&lt;unrepresentable&gt;, /)</dt><dd><span class="code">Return&nbsp;a&nbsp;translation&nbsp;table&nbsp;usable&nbsp;for&nbsp;str.<a href="#UnitSystem-translate">translate</a>().<br>
+&nbsp;<br>
+If&nbsp;there&nbsp;is&nbsp;only&nbsp;one&nbsp;argument,&nbsp;it&nbsp;must&nbsp;be&nbsp;a&nbsp;dictionary&nbsp;mapping<br>
+Unicode&nbsp;ordinals&nbsp;(integers)&nbsp;or&nbsp;characters&nbsp;to&nbsp;Unicode&nbsp;ordinals,<br>
+strings&nbsp;or&nbsp;None.&nbsp;&nbsp;Character&nbsp;keys&nbsp;will&nbsp;be&nbsp;then&nbsp;converted&nbsp;to&nbsp;ordinals.<br>
+If&nbsp;there&nbsp;are&nbsp;two&nbsp;arguments,&nbsp;they&nbsp;must&nbsp;be&nbsp;strings&nbsp;of&nbsp;equal&nbsp;length,<br>
+and&nbsp;in&nbsp;the&nbsp;resulting&nbsp;dictionary,&nbsp;each&nbsp;character&nbsp;in&nbsp;x&nbsp;will&nbsp;be&nbsp;mapped<br>
+to&nbsp;the&nbsp;character&nbsp;at&nbsp;the&nbsp;same&nbsp;position&nbsp;in&nbsp;y.&nbsp;&nbsp;If&nbsp;there&nbsp;is&nbsp;a&nbsp;third<br>
+argument,&nbsp;it&nbsp;must&nbsp;be&nbsp;a&nbsp;string,&nbsp;whose&nbsp;characters&nbsp;will&nbsp;be&nbsp;mapped&nbsp;to<br>
+None&nbsp;in&nbsp;the&nbsp;result.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><a name="UnitSystem-__dir__"><strong>__dir__</strong></a>(self)</dt><dd><span class="code">Returns&nbsp;public&nbsp;methods&nbsp;and&nbsp;other&nbsp;interesting&nbsp;attributes.</span></dd></dl>
+
+<dl><dt><a name="UnitSystem-__reduce_ex__"><strong>__reduce_ex__</strong></a>(self, proto)</dt><dd><span class="code">Helper&nbsp;for&nbsp;pickle.</span></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><span class="code">The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><span class="code">The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumType">enum.EnumType</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><span class="code">Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;&nbsp;Note&nbsp;that<br>
+this&nbsp;is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</span></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-daily"><strong>daily</strong></a>(
+    station: str | Station | Point | List[str | Station | Point] | pd.DataFrame,
+    start: Optional[datetime | date],
+    end: Optional[datetime | date],
+    parameters: Optional[List[Parameter]] = None,
+    providers: Optional[List[Provider]] = None
+)</dt><dd><span class="code">Access&nbsp;daily&nbsp;time&nbsp;series&nbsp;data.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+station&nbsp;:&nbsp;str,&nbsp;<a href="#Station">Station</a>,&nbsp;<a href="#Point">Point</a>,&nbsp;List[str&nbsp;|&nbsp;<a href="#Station">Station</a>&nbsp;|&nbsp;<a href="#Point">Point</a>],&nbsp;pd.Index,&nbsp;pd.Series<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Weather&nbsp;station(s)&nbsp;or&nbsp;<a href="#Point">Point</a>(s)&nbsp;to&nbsp;query&nbsp;data&nbsp;for.&nbsp;Can&nbsp;be&nbsp;a&nbsp;single&nbsp;station/point&nbsp;or&nbsp;a&nbsp;list.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Points&nbsp;are&nbsp;converted&nbsp;to&nbsp;virtual&nbsp;stations&nbsp;(with&nbsp;IDs&nbsp;like&nbsp;$0001,&nbsp;$0002,&nbsp;etc.)&nbsp;and&nbsp;only&nbsp;work<br>
+&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;geo-location&nbsp;providers.<br>
+start&nbsp;:&nbsp;datetime,&nbsp;date,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Start&nbsp;date&nbsp;for&nbsp;the&nbsp;data&nbsp;query.&nbsp;If&nbsp;None,&nbsp;the&nbsp;earliest&nbsp;available&nbsp;date&nbsp;will&nbsp;be&nbsp;used.<br>
+end&nbsp;:&nbsp;datetime,&nbsp;date,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;End&nbsp;date&nbsp;for&nbsp;the&nbsp;data&nbsp;query.&nbsp;If&nbsp;None,&nbsp;the&nbsp;latest&nbsp;available&nbsp;date&nbsp;will&nbsp;be&nbsp;used.<br>
+parameters&nbsp;:&nbsp;List[<a href="#Parameter">Parameter</a>],&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;parameters&nbsp;to&nbsp;include&nbsp;in&nbsp;the&nbsp;data&nbsp;query.&nbsp;Defaults&nbsp;to&nbsp;a&nbsp;set&nbsp;of&nbsp;common&nbsp;parameters.<br>
+providers&nbsp;:&nbsp;List[<a href="#Provider">Provider</a>],&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;data&nbsp;providers&nbsp;to&nbsp;use&nbsp;for&nbsp;the&nbsp;query.&nbsp;Defaults&nbsp;to&nbsp;the&nbsp;daily&nbsp;provider.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+<a href="#TimeSeries">TimeSeries</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;<a href="#TimeSeries">TimeSeries</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;containing&nbsp;the&nbsp;daily&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;stations&nbsp;and&nbsp;parameters.</span></dd></dl>
+ <dl><dt><a name="-hourly"><strong>hourly</strong></a>(
+    station: str | Station | Point | List[str | Station | Point] | pd.DataFrame,
+    start: Optional[datetime | date],
+    end: Optional[datetime | date],
+    timezone: Optional[str] = None,
+    parameters: Optional[List[Parameter]] = None,
+    providers: Optional[List[Provider]] = None
+)</dt><dd><span class="code">Access&nbsp;hourly&nbsp;time&nbsp;series&nbsp;data.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+station&nbsp;:&nbsp;str,&nbsp;<a href="#Station">Station</a>,&nbsp;<a href="#Point">Point</a>,&nbsp;List[str&nbsp;|&nbsp;<a href="#Station">Station</a>&nbsp;|&nbsp;<a href="#Point">Point</a>],&nbsp;pd.Index,&nbsp;pd.Series<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Weather&nbsp;station(s)&nbsp;or&nbsp;<a href="#Point">Point</a>(s)&nbsp;to&nbsp;query&nbsp;data&nbsp;for.&nbsp;Can&nbsp;be&nbsp;a&nbsp;single&nbsp;station/point&nbsp;or&nbsp;a&nbsp;list.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Points&nbsp;are&nbsp;converted&nbsp;to&nbsp;virtual&nbsp;stations&nbsp;(with&nbsp;IDs&nbsp;like&nbsp;$0001,&nbsp;$0002,&nbsp;etc.)&nbsp;and&nbsp;only&nbsp;work<br>
+&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;geo-location&nbsp;providers.<br>
+start&nbsp;:&nbsp;datetime,&nbsp;date,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Start&nbsp;date&nbsp;for&nbsp;the&nbsp;data&nbsp;query.&nbsp;If&nbsp;None,&nbsp;the&nbsp;earliest&nbsp;available&nbsp;date&nbsp;will&nbsp;be&nbsp;used.<br>
+end&nbsp;:&nbsp;datetime,&nbsp;date,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;End&nbsp;date&nbsp;for&nbsp;the&nbsp;data&nbsp;query.&nbsp;If&nbsp;None,&nbsp;the&nbsp;latest&nbsp;available&nbsp;date&nbsp;will&nbsp;be&nbsp;used.<br>
+timezone&nbsp;:&nbsp;str,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Time&nbsp;zone&nbsp;for&nbsp;the&nbsp;data&nbsp;query.&nbsp;If&nbsp;None,&nbsp;UTC&nbsp;will&nbsp;be&nbsp;used.<br>
+parameters&nbsp;:&nbsp;List[<a href="#Parameter">Parameter</a>],&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;parameters&nbsp;to&nbsp;include&nbsp;in&nbsp;the&nbsp;data&nbsp;query.&nbsp;Defaults&nbsp;to&nbsp;a&nbsp;set&nbsp;of&nbsp;common&nbsp;parameters.<br>
+providers&nbsp;:&nbsp;List[<a href="#Provider">Provider</a>],&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;data&nbsp;providers&nbsp;to&nbsp;use&nbsp;for&nbsp;the&nbsp;query.&nbsp;Defaults&nbsp;to&nbsp;the&nbsp;hourly&nbsp;provider.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+<a href="#TimeSeries">TimeSeries</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;<a href="#TimeSeries">TimeSeries</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;containing&nbsp;the&nbsp;hourly&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;stations&nbsp;and&nbsp;parameters.</span></dd></dl>
+ <dl><dt><a name="-interpolate"><strong>interpolate</strong></a>(
+    ts: TimeSeries,
+    point: Point,
+    distance_threshold: Union[int, None] = 5000,
+    elevation_threshold: Union[int, None] = 50,
+    elevation_weight: float = 10,
+    power: float = 2.0,
+    lapse_rate: Union[float, None] = 6.5,
+    lapse_rate_threshold: int = 50
+) -&gt; TimeSeries</dt><dd><span class="code">Interpolate&nbsp;time&nbsp;series&nbsp;data&nbsp;spatially&nbsp;to&nbsp;a&nbsp;specific&nbsp;point.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+ts&nbsp;:&nbsp;<a href="#TimeSeries">TimeSeries</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;time&nbsp;series&nbsp;to&nbsp;interpolate.<br>
+point&nbsp;:&nbsp;<a href="#Point">Point</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;point&nbsp;to&nbsp;interpolate&nbsp;the&nbsp;data&nbsp;for.<br>
+distance_threshold&nbsp;:&nbsp;int,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Maximum&nbsp;distance&nbsp;(in&nbsp;meters)&nbsp;to&nbsp;use&nbsp;nearest&nbsp;neighbor&nbsp;(default:&nbsp;5000).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Beyond&nbsp;this,&nbsp;IDW&nbsp;is&nbsp;used.<br>
+elevation_threshold&nbsp;:&nbsp;int,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Maximum&nbsp;elevation&nbsp;difference&nbsp;(in&nbsp;meters)&nbsp;to&nbsp;use&nbsp;nearest&nbsp;neighbor&nbsp;(default:&nbsp;50).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Beyond&nbsp;this,&nbsp;IDW&nbsp;is&nbsp;used&nbsp;even&nbsp;if&nbsp;distance&nbsp;is&nbsp;within&nbsp;threshold.<br>
+elevation_weight&nbsp;:&nbsp;float,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Weight&nbsp;for&nbsp;elevation&nbsp;difference&nbsp;in&nbsp;distance&nbsp;calculation&nbsp;(default:&nbsp;0.1).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;effective&nbsp;distance&nbsp;is&nbsp;calculated&nbsp;as:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sqrt(horizontal_distance^2&nbsp;+&nbsp;(elevation_diff&nbsp;*&nbsp;elevation_weight)^2)<br>
+power&nbsp;:&nbsp;float,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Power&nbsp;parameter&nbsp;for&nbsp;IDW&nbsp;(default:&nbsp;2.0).&nbsp;Higher&nbsp;values&nbsp;give&nbsp;more<br>
+&nbsp;&nbsp;&nbsp;&nbsp;weight&nbsp;to&nbsp;closer&nbsp;stations.<br>
+lapse_rate&nbsp;:&nbsp;float,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Apply&nbsp;lapse&nbsp;rate&nbsp;correction&nbsp;based&nbsp;on&nbsp;elevation&nbsp;difference&nbsp;(default:&nbsp;6.5).<br>
+lapse_rate_threshold&nbsp;:&nbsp;int,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Elevation&nbsp;difference&nbsp;threshold&nbsp;(in&nbsp;meters)&nbsp;to&nbsp;apply&nbsp;lapse&nbsp;rate&nbsp;correction<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(default:&nbsp;50).&nbsp;If&nbsp;the&nbsp;elevation&nbsp;difference&nbsp;between&nbsp;the&nbsp;point&nbsp;and&nbsp;stations<br>
+&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;less&nbsp;than&nbsp;this,&nbsp;no&nbsp;correction&nbsp;is&nbsp;applied.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+pd.DataFrame&nbsp;or&nbsp;None<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;DataFrame&nbsp;containing&nbsp;the&nbsp;interpolated&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;point,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;None&nbsp;if&nbsp;no&nbsp;data&nbsp;is&nbsp;available.</span></dd></dl>
+ <dl><dt><a name="-lapse_rate"><strong>lapse_rate</strong></a>(ts: TimeSeries, parameter: Parameter = &lt;Parameter.TEMP: 'temp'&gt;) -&gt; float | None</dt><dd><span class="code">Calculate&nbsp;the&nbsp;lapse&nbsp;rate&nbsp;(temperature&nbsp;gradient)&nbsp;in&nbsp;degrees&nbsp;Celsius&nbsp;per&nbsp;kilometer<br>
+based&nbsp;on&nbsp;temperature&nbsp;and&nbsp;elevation&nbsp;data&nbsp;from&nbsp;multiple&nbsp;stations.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+df&nbsp;:&nbsp;pd.DataFrame<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DataFrame&nbsp;containing&nbsp;temperature&nbsp;and&nbsp;elevation&nbsp;data&nbsp;for&nbsp;multiple&nbsp;stations.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Calculated&nbsp;lapse&nbsp;rate&nbsp;in&nbsp;degrees&nbsp;Celsius&nbsp;per&nbsp;kilometer.</span></dd></dl>
+ <dl><dt><a name="-merge"><strong>merge</strong></a>(objs: List[TimeSeries]) -&gt; TimeSeries</dt><dd><span class="code">Merge&nbsp;one&nbsp;or&nbsp;multiple&nbsp;Meteostat&nbsp;time&nbsp;series&nbsp;into&nbsp;a&nbsp;common&nbsp;one<br>
+&nbsp;<br>
+In&nbsp;case&nbsp;of&nbsp;duplicate&nbsp;index,&nbsp;the&nbsp;last&nbsp;row&nbsp;will&nbsp;be&nbsp;prefered.<br>
+Hence,&nbsp;please&nbsp;pass&nbsp;newest&nbsp;data&nbsp;last.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+objs&nbsp;:&nbsp;List[<a href="#TimeSeries">TimeSeries</a>]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;time&nbsp;series&nbsp;objects&nbsp;to&nbsp;concatenate<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+<a href="#TimeSeries">TimeSeries</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;Concatenated&nbsp;time&nbsp;series&nbsp;<a href="builtins.html#object">object</a><br>
+&nbsp;<br>
+Raises<br>
+------<br>
+ValueError<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;the&nbsp;list&nbsp;is&nbsp;empty&nbsp;or&nbsp;time&nbsp;series&nbsp;objects&nbsp;have&nbsp;divergent&nbsp;granularity&nbsp;or&nbsp;time&nbsp;zone</span></dd></dl>
+ <dl><dt><a name="-monthly"><strong>monthly</strong></a>(
+    station: str | Station | Point | List[str | Station | Point] | pd.DataFrame,
+    start: Optional[datetime | date],
+    end: Optional[datetime | date],
+    parameters: Optional[List[Parameter]] = None,
+    providers: Optional[List[Provider]] = None
+)</dt><dd><span class="code">Access&nbsp;monthly&nbsp;time&nbsp;series&nbsp;data.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+station&nbsp;:&nbsp;str,&nbsp;<a href="#Station">Station</a>,&nbsp;<a href="#Point">Point</a>,&nbsp;List[str&nbsp;|&nbsp;<a href="#Station">Station</a>&nbsp;|&nbsp;<a href="#Point">Point</a>],&nbsp;pd.Index,&nbsp;pd.Series<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Weather&nbsp;station(s)&nbsp;or&nbsp;<a href="#Point">Point</a>(s)&nbsp;to&nbsp;query&nbsp;data&nbsp;for.&nbsp;Can&nbsp;be&nbsp;a&nbsp;single&nbsp;station/point&nbsp;or&nbsp;a&nbsp;list.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Points&nbsp;are&nbsp;converted&nbsp;to&nbsp;virtual&nbsp;stations&nbsp;(with&nbsp;IDs&nbsp;like&nbsp;$0001,&nbsp;$0002,&nbsp;etc.)&nbsp;and&nbsp;only&nbsp;work<br>
+&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;geo-location&nbsp;providers.<br>
+start&nbsp;:&nbsp;datetime,&nbsp;date,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Start&nbsp;date&nbsp;for&nbsp;the&nbsp;data&nbsp;query.&nbsp;If&nbsp;None,&nbsp;the&nbsp;earliest&nbsp;available&nbsp;date&nbsp;will&nbsp;be&nbsp;used.<br>
+end&nbsp;:&nbsp;datetime,&nbsp;date,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;End&nbsp;date&nbsp;for&nbsp;the&nbsp;data&nbsp;query.&nbsp;If&nbsp;None,&nbsp;the&nbsp;latest&nbsp;available&nbsp;date&nbsp;will&nbsp;be&nbsp;used.<br>
+parameters&nbsp;:&nbsp;List[<a href="#Parameter">Parameter</a>],&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;parameters&nbsp;to&nbsp;include&nbsp;in&nbsp;the&nbsp;data&nbsp;query.&nbsp;Defaults&nbsp;to&nbsp;a&nbsp;set&nbsp;of&nbsp;common&nbsp;parameters.<br>
+providers&nbsp;:&nbsp;List[<a href="#Provider">Provider</a>],&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;data&nbsp;providers&nbsp;to&nbsp;use&nbsp;for&nbsp;the&nbsp;query.&nbsp;Defaults&nbsp;to&nbsp;the&nbsp;monthly&nbsp;provider.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+<a href="#TimeSeries">TimeSeries</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;<a href="#TimeSeries">TimeSeries</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;containing&nbsp;the&nbsp;monthly&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;stations&nbsp;and&nbsp;parameters.</span></dd></dl>
+ <dl><dt><a name="-normals"><strong>normals</strong></a>(
+    station: str | Station | Point | List[str | Station | Point] | pd.DataFrame,
+    start: int = 1961,
+    end: int = 1990,
+    parameters: Optional[List[Parameter]] = None,
+    providers: Optional[List[Provider]] = None,
+    max_missing: int = 3
+)</dt><dd><span class="code">Access&nbsp;climate&nbsp;normals&nbsp;data.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+station&nbsp;:&nbsp;str,&nbsp;<a href="#Station">Station</a>,&nbsp;<a href="#Point">Point</a>,&nbsp;List[str&nbsp;|&nbsp;<a href="#Station">Station</a>&nbsp;|&nbsp;<a href="#Point">Point</a>],&nbsp;pd.Index,&nbsp;pd.Series<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Weather&nbsp;station(s)&nbsp;or&nbsp;<a href="#Point">Point</a>(s)&nbsp;to&nbsp;query&nbsp;data&nbsp;for.&nbsp;Can&nbsp;be&nbsp;a&nbsp;single&nbsp;station/point&nbsp;or&nbsp;a&nbsp;list.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Points&nbsp;are&nbsp;converted&nbsp;to&nbsp;virtual&nbsp;stations&nbsp;(with&nbsp;IDs&nbsp;like&nbsp;$0001,&nbsp;$0002,&nbsp;etc.)&nbsp;and&nbsp;only&nbsp;work<br>
+&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;geo-location&nbsp;providers.<br>
+start&nbsp;:&nbsp;int,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Start&nbsp;year&nbsp;for&nbsp;the&nbsp;data&nbsp;query.&nbsp;Defaults&nbsp;to&nbsp;1961.<br>
+end&nbsp;:&nbsp;int,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;End&nbsp;year&nbsp;for&nbsp;the&nbsp;data&nbsp;query.&nbsp;Defaults&nbsp;to&nbsp;1990.<br>
+parameters&nbsp;:&nbsp;List[<a href="#Parameter">Parameter</a>],&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;parameters&nbsp;to&nbsp;include&nbsp;in&nbsp;the&nbsp;data&nbsp;query.&nbsp;Defaults&nbsp;to&nbsp;a&nbsp;set&nbsp;of&nbsp;common&nbsp;parameters.<br>
+providers&nbsp;:&nbsp;List[<a href="#Provider">Provider</a>],&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;data&nbsp;providers&nbsp;to&nbsp;use&nbsp;for&nbsp;the&nbsp;query.&nbsp;Defaults&nbsp;to&nbsp;the&nbsp;monthly&nbsp;provider.<br>
+max_missing&nbsp;:&nbsp;int,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Maximum&nbsp;number&nbsp;of&nbsp;missing&nbsp;values&nbsp;allowed&nbsp;in&nbsp;a&nbsp;month&nbsp;to&nbsp;calculate&nbsp;the&nbsp;mean.&nbsp;Defaults&nbsp;to&nbsp;3.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+<a href="#TimeSeries">TimeSeries</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;<a href="#TimeSeries">TimeSeries</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;containing&nbsp;the&nbsp;climate&nbsp;normals&nbsp;data&nbsp;for&nbsp;the&nbsp;specified<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stations&nbsp;and&nbsp;parameters.</span></dd></dl>
+ <dl><dt><a name="-purge"><strong>purge</strong></a>(ttl: Optional[int] = None) -&gt; None</dt><dd><span class="code">Remove&nbsp;stale&nbsp;files&nbsp;from&nbsp;disk&nbsp;cache</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>__all__</strong> = ['config', 'daily', 'hourly', 'Granularity', 'interpolate', 'Inventory', 'lapse_rate', 'License', 'merge', 'monthly', 'normals', 'Parameter', 'Point', 'Provider', 'purge', 'Station', 'stations', 'TimeSeries', 'UnitSystem']<br>
+<strong>__appname__</strong> = 'meteostat'<br>
+<strong>config</strong> = &lt;meteostat.api.config.Config object&gt;<br>
+<strong>stations</strong> = &lt;meteostat.api.stations.Stations object&gt;</td></tr></table>

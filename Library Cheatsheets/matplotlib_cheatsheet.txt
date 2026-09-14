@@ -1,0 +1,866 @@
+Help Function
+Help on package matplotlib:
+
+NAME
+    matplotlib - An object-oriented plotting library.
+
+DESCRIPTION
+    A procedural interface is provided by the companion pyplot module,
+    which may be imported directly, e.g.::
+
+        import matplotlib.pyplot as plt
+
+    or using ipython::
+
+        ipython
+
+    at your terminal, followed by::
+
+        In [1]: %matplotlib
+        In [2]: import matplotlib.pyplot as plt
+
+    at the ipython shell prompt.
+
+    For the most part, direct use of the explicit object-oriented library is
+    encouraged when programming; the implicit pyplot interface is primarily for
+    working interactively. The exceptions to this suggestion are the pyplot
+    functions `.pyplot.figure`, `.pyplot.subplot`, `.pyplot.subplots`, and
+    `.pyplot.savefig`, which can greatly simplify scripting.  See
+    :ref:`api_interfaces` for an explanation of the tradeoffs between the implicit
+    and explicit interfaces.
+
+    Modules include:
+
+    :mod:`matplotlib.axes`
+        The `~.axes.Axes` class.  Most pyplot functions are wrappers for
+        `~.axes.Axes` methods.  The axes module is the highest level of OO
+        access to the library.
+
+    :mod:`matplotlib.figure`
+        The `.Figure` class.
+
+    :mod:`matplotlib.artist`
+        The `.Artist` base class for all classes that draw things.
+
+    :mod:`matplotlib.lines`
+        The `.Line2D` class for drawing lines and markers.
+
+    :mod:`matplotlib.patches`
+        Classes for drawing polygons.
+
+    :mod:`matplotlib.text`
+        The `.Text` and `.Annotation` classes.
+
+    :mod:`matplotlib.image`
+        The `.AxesImage` and `.FigureImage` classes.
+
+    :mod:`matplotlib.collections`
+        Classes for efficient drawing of groups of lines or polygons.
+
+    :mod:`matplotlib.colors`
+        Color specifications and making colormaps.
+
+    :mod:`matplotlib.cm`
+        Colormaps, and the `.ScalarMappable` mixin class for providing color
+        mapping functionality to other classes.
+
+    :mod:`matplotlib.ticker`
+        Calculation of tick mark locations and formatting of tick labels.
+
+    :mod:`matplotlib.backends`
+        A subpackage with modules for various GUI libraries and output formats.
+
+    The base matplotlib namespace includes:
+
+    `~matplotlib.rcParams`
+        Default configuration settings; their defaults may be overridden using
+        a :file:`matplotlibrc` file.
+
+    `~matplotlib.use`
+        Setting the Matplotlib backend.  This should be called before any
+        figure is created, because it is not possible to switch between
+        different GUI backends after that.
+
+    The following environment variables can be used to customize the behavior:
+
+    :envvar:`MPLBACKEND`
+        This optional variable can be set to choose the Matplotlib backend. See
+        :ref:`what-is-a-backend`.
+
+    :envvar:`MPLCONFIGDIR`
+        This is the directory used to store user customizations to
+        Matplotlib, as well as some caches to improve performance. If
+        :envvar:`MPLCONFIGDIR` is not defined, :file:`{HOME}/.config/matplotlib`
+        and :file:`{HOME}/.cache/matplotlib` are used on Linux, and
+        :file:`{HOME}/.matplotlib` on other platforms, if they are
+        writable. Otherwise, the Python standard library's `tempfile.gettempdir`
+        is used to find a base directory in which the :file:`matplotlib`
+        subdirectory is created.
+
+    Matplotlib was initially written by John D. Hunter (1968-2012) and is now
+    developed and maintained by a host of others.
+
+    Occasionally the internal documentation (python docstrings) will refer
+    to MATLAB®, a registered trademark of The MathWorks, Inc.
+
+PACKAGE CONTENTS
+    _afm
+    _animation_data
+    _api (package)
+    _blocking_input
+    _c_internal_utils
+    _cm
+    _cm_bivar
+    _cm_listed
+    _cm_multivar
+    _color_data
+    _constrained_layout
+    _docstring
+    _enums
+    _fontconfig_pattern
+    _image
+    _internal_utils
+    _layoutgrid
+    _mathtext
+    _mathtext_data
+    _path
+    _pylab_helpers
+    _qhull
+    _style_helpers
+    _text_helpers
+    _tight_bbox
+    _tight_layout
+    _tri
+    _type1font
+    _version
+    animation
+    artist
+    axes (package)
+    axis
+    backend_bases
+    backend_managers
+    backend_tools
+    backends (package)
+    bezier
+    category
+    cbook
+    cm
+    collections
+    colorbar
+    colorizer
+    colors
+    container
+    contour
+    dates
+    dviread
+    figure
+    font_manager
+    ft2font
+    gridspec
+    hatch
+    image
+    inset
+    layout_engine
+    legend
+    legend_handler
+    lines
+    markers
+    mathtext
+    mlab
+    offsetbox
+    patches
+    path
+    patheffects
+    projections (package)
+    pylab
+    pyplot
+    quiver
+    rcsetup
+    sankey
+    scale
+    sphinxext (package)
+    spines
+    stackplot
+    streamplot
+    style (package)
+    table
+    testing (package)
+    tests (package)
+    texmanager
+    text
+    textpath
+    ticker
+    transforms
+    tri (package)
+    typing
+    units
+    widgets
+
+CLASSES
+    builtins.DeprecationWarning(builtins.Warning)
+        matplotlib._api.deprecation.MatplotlibDeprecationWarning
+    builtins.FileNotFoundError(builtins.OSError)
+        ExecutableNotFoundError
+    builtins.dict(builtins.object)
+        RcParams(collections.abc.MutableMapping, builtins.dict)
+    collections.abc.MutableMapping(collections.abc.Mapping)
+        RcParams(collections.abc.MutableMapping, builtins.dict)
+
+    class ExecutableNotFoundError(builtins.FileNotFoundError)
+     |  Error raised when an executable that Matplotlib optionally
+     |  depends on can't be found.
+     |
+     |  Method resolution order:
+     |      ExecutableNotFoundError
+     |      builtins.FileNotFoundError
+     |      builtins.OSError
+     |      builtins.Exception
+     |      builtins.BaseException
+     |      builtins.object
+     |
+     |  Data descriptors defined here:
+     |
+     |  __weakref__
+     |      list of weak references to the object
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.OSError:
+     |
+     |  __init__(self, /, *args, **kwargs)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |
+     |  __reduce__(self, /)
+     |      Helper for pickle.
+     |
+     |  __str__(self, /)
+     |      Return str(self).
+     |
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from builtins.OSError:
+     |
+     |  __new__(*args, **kwargs) class method of builtins.OSError
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.OSError:
+     |
+     |  characters_written
+     |
+     |  errno
+     |      POSIX exception code
+     |
+     |  filename
+     |      exception filename
+     |
+     |  filename2
+     |      second exception filename
+     |
+     |  strerror
+     |      exception strerror
+     |
+     |  winerror
+     |      Win32 exception code
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.BaseException:
+     |
+     |  __repr__(self, /)
+     |      Return repr(self).
+     |
+     |  __setstate__(self, state, /)
+     |
+     |  add_note(self, note, /)
+     |      Add a note to the exception
+     |
+     |  with_traceback(self, tb, /)
+     |      Set self.__traceback__ to tb and return self.
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.BaseException:
+     |
+     |  __cause__
+     |
+     |  __context__
+     |
+     |  __dict__
+     |
+     |  __suppress_context__
+     |
+     |  __traceback__
+     |
+     |  args
+
+    class MatplotlibDeprecationWarning(builtins.DeprecationWarning)
+     |  A class for issuing deprecation warnings for Matplotlib users.
+     |
+     |  Method resolution order:
+     |      MatplotlibDeprecationWarning
+     |      builtins.DeprecationWarning
+     |      builtins.Warning
+     |      builtins.Exception
+     |      builtins.BaseException
+     |      builtins.object
+     |
+     |  Data descriptors defined here:
+     |
+     |  __weakref__
+     |      list of weak references to the object
+     |
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from builtins.DeprecationWarning:
+     |
+     |  __new__(*args, **kwargs) class method of builtins.DeprecationWarning
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.BaseException:
+     |
+     |  __init__(self, /, *args, **kwargs)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |
+     |  __reduce__(self, /)
+     |      Helper for pickle.
+     |
+     |  __repr__(self, /)
+     |      Return repr(self).
+     |
+     |  __setstate__(self, state, /)
+     |
+     |  __str__(self, /)
+     |      Return str(self).
+     |
+     |  add_note(self, note, /)
+     |      Add a note to the exception
+     |
+     |  with_traceback(self, tb, /)
+     |      Set self.__traceback__ to tb and return self.
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.BaseException:
+     |
+     |  __cause__
+     |
+     |  __context__
+     |
+     |  __dict__
+     |
+     |  __suppress_context__
+     |
+     |  __traceback__
+     |
+     |  args
+
+    class RcParams(collections.abc.MutableMapping, builtins.dict)
+     |  RcParams(*args, **kwargs)
+     |
+     |  A dict-like key-value store for config parameters, including validation.
+     |
+     |  This is the data structure behind `matplotlib.rcParams`.
+     |
+     |  The complete list of rcParams can be found in :doc:`/users/explain/configuration`.
+     |
+     |  Method resolution order:
+     |      RcParams
+     |      collections.abc.MutableMapping
+     |      collections.abc.Mapping
+     |      collections.abc.Collection
+     |      collections.abc.Sized
+     |      collections.abc.Iterable
+     |      collections.abc.Container
+     |      builtins.dict
+     |      builtins.object
+     |
+     |  Methods defined here:
+     |
+     |  __getitem__(self, key)
+     |      Return self[key].
+     |
+     |  __init__(self, *args, **kwargs)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |
+     |  __iter__(self)
+     |      Yield sorted list of keys.
+     |
+     |  __len__(self)
+     |      Return len(self).
+     |
+     |  __repr__(self)
+     |      Return repr(self).
+     |
+     |  __setitem__(self, key, val)
+     |      Set self[key] to value.
+     |
+     |  __str__(self)
+     |      Return str(self).
+     |
+     |  copy(self)
+     |      Copy this RcParams instance.
+     |
+     |  find_all(self, pattern)
+     |      Return the subset of this RcParams dictionary whose keys match,
+     |      using :func:`re.search`, the given ``pattern``.
+     |
+     |      .. note::
+     |
+     |          Changes to the returned dictionary are *not* propagated to
+     |          the parent RcParams dictionary.
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |
+     |  __dict__
+     |      dictionary for instance variables
+     |
+     |  __weakref__
+     |      list of weak references to the object
+     |
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |
+     |  __abstractmethods__ = frozenset({'__delitem__'})
+     |
+     |  validate = {'_internal.classic_mode': <function validate_bool>, 'agg.p...
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from collections.abc.MutableMapping:
+     |
+     |  __delitem__(self, key)
+     |
+     |  clear(self)
+     |      D.clear() -> None.  Remove all items from D.
+     |
+     |  pop(self, key, default=<object object at 0x0000025028D401F0>)
+     |      D.pop(k[,d]) -> v, remove specified key and return the corresponding
+     |      value.  If key is not found, d is returned if given, otherwise
+     |      KeyError is raised.
+     |
+     |  popitem(self)
+     |      D.popitem() -> (k, v), remove and return some (key, value) pair
+     |      as a 2-tuple; but raise KeyError if D is empty.
+     |
+     |  setdefault(self, key, default=None)
+     |      D.setdefault(k[,d]) -> D.get(k,d), also set D[k]=d if k not in D
+     |
+     |  update(self, other=(), /, **kwds)
+     |      D.update([E, ]**F) -> None.  Update D from mapping/iterable E and F.
+     |      If E present and has a .keys() method, does:
+     |          for k in E.keys(): D[k] = E[k]
+     |      If E present and lacks .keys() method, does:
+     |          for (k, v) in E: D[k] = v
+     |      In either case, this is followed by:
+     |          for k, v in F.items(): D[k] = v
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from collections.abc.Mapping:
+     |
+     |  __contains__(self, key)
+     |
+     |  __eq__(self, other)
+     |      Return self==value.
+     |
+     |  get(self, key, default=None)
+     |      D.get(k[,d]) -> D[k] if k in D, else d.  d defaults to None.
+     |
+     |  items(self)
+     |      D.items() -> a set-like object providing a view on D's items
+     |
+     |  keys(self)
+     |      D.keys() -> a set-like object providing a view on D's keys
+     |
+     |  values(self)
+     |      D.values() -> an object providing a view on D's values
+     |
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from collections.abc.Mapping:
+     |
+     |  __hash__ = None
+     |
+     |  __reversed__ = None
+     |
+     |  ----------------------------------------------------------------------
+     |  Class methods inherited from collections.abc.Collection:
+     |
+     |  __subclasshook__(C)
+     |      Abstract classes can override this to customize issubclass().
+     |
+     |      This is invoked early on by abc.ABCMeta.__subclasscheck__().
+     |      It should return True, False or NotImplemented.  If it returns
+     |      NotImplemented, the normal algorithm is used.  Otherwise, it
+     |      overrides the normal algorithm (and the outcome is cached).
+     |
+     |  ----------------------------------------------------------------------
+     |  Class methods inherited from collections.abc.Iterable:
+     |
+     |  __class_getitem__ = GenericAlias(args, /)
+     |      Represent a PEP 585 generic type
+     |
+     |      E.g. for t = list[int], t.__origin__ is list and t.__args__ is (int,).
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.dict:
+     |
+     |  __ge__(self, value, /)
+     |      Return self>=value.
+     |
+     |  __gt__(self, value, /)
+     |      Return self>value.
+     |
+     |  __ior__(self, value, /)
+     |      Return self|=value.
+     |
+     |  __le__(self, value, /)
+     |      Return self<=value.
+     |
+     |  __lt__(self, value, /)
+     |      Return self<value.
+     |
+     |  __ne__(self, value, /)
+     |      Return self!=value.
+     |
+     |  __or__(self, value, /)
+     |      Return self|value.
+     |
+     |  __ror__(self, value, /)
+     |      Return value|self.
+     |
+     |  __sizeof__(self, /)
+     |      Return the size of the dict in memory, in bytes.
+     |
+     |  ----------------------------------------------------------------------
+     |  Class methods inherited from builtins.dict:
+     |
+     |  fromkeys(iterable, value=None, /)
+     |      Create a new dictionary with keys from iterable and values set to value.
+     |
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from builtins.dict:
+     |
+     |  __new__(*args, **kwargs) class method of builtins.dict
+     |      Create and return a new object.  See help(type) for accurate signature.
+
+FUNCTIONS
+    __getattr__(name)
+
+    get_backend(*, auto_select=True)
+        Return the name of the current backend.
+
+        Parameters
+        ----------
+        auto_select : bool, default: True
+            Whether to trigger backend resolution if no backend has been
+            selected so far. If True, this ensures that a valid backend
+            is returned. If False, this returns None if no backend has been
+            selected so far.
+
+            .. versionadded:: 3.10
+
+            .. admonition:: Provisional
+
+               The *auto_select* flag is provisional. It may be changed or removed
+               without prior warning.
+
+        See Also
+        --------
+        matplotlib.use
+
+    get_cachedir()
+        Return the string path of the cache directory.
+
+        The procedure used to find the directory is the same as for
+        `get_configdir`, except using ``$XDG_CACHE_HOME``/``$HOME/.cache`` instead
+        on Linux.  On Windows, uses ``%LOCALAPPDATA%\matplotlib`` (same as config).
+
+    get_configdir()
+        Return the string path of the configuration directory.
+
+        The directory is chosen as follows:
+
+        1. If the MPLCONFIGDIR environment variable is supplied, choose that.
+        2. On Linux, follow the XDG specification and look first in
+           ``$XDG_CONFIG_HOME``, if defined, or ``$HOME/.config``.  On Windows,
+           use ``%LOCALAPPDATA%\matplotlib``.  On other platforms, choose
+           ``$HOME/.matplotlib``.
+        3. If the chosen directory exists and is writable, use that as the
+           configuration directory.
+        4. Else, create a temporary directory, and use it as the configuration
+           directory.
+
+    get_data_path()
+        Return the path to Matplotlib data.
+
+    interactive(b)
+        Set whether to redraw after every plotting command (e.g. `.pyplot.xlabel`).
+
+    is_interactive()
+        Return whether to redraw after every plotting command.
+
+        .. note::
+
+            This function is only intended for use in backends. End users should
+            use `.pyplot.isinteractive` instead.
+
+    matplotlib_fname()
+        Get the location of the config file.
+
+        The file location is determined in the following order
+
+        - ``$PWD/matplotlibrc``
+        - ``$MATPLOTLIBRC`` if it is not a directory
+        - ``$MATPLOTLIBRC/matplotlibrc``
+        - ``$MPLCONFIGDIR/matplotlibrc``
+        - On Linux,
+            - ``$XDG_CONFIG_HOME/matplotlib/matplotlibrc`` (if ``$XDG_CONFIG_HOME``
+              is defined)
+            - or ``$HOME/.config/matplotlib/matplotlibrc`` (if ``$XDG_CONFIG_HOME``
+              is not defined)
+        - On other platforms,
+          - ``$HOME/.matplotlib/matplotlibrc`` if ``$HOME`` is defined
+        - Lastly, it looks in ``$MATPLOTLIBDATA/matplotlibrc``, which should always
+          exist.
+
+    rc(group, **kwargs)
+        Set the current `.rcParams`.  *group* is the grouping for the rc, e.g.,
+        for ``lines.linewidth`` the group is ``lines``, for
+        ``axes.facecolor``, the group is ``axes``, and so on.  Group may
+        also be a list or tuple of group names, e.g., (*xtick*, *ytick*).
+        *kwargs* is a dictionary attribute name/value pairs, e.g.,::
+
+          rc('lines', linewidth=2, color='r')
+
+        sets the current `.rcParams` and is equivalent to::
+
+          rcParams['lines.linewidth'] = 2
+          rcParams['lines.color'] = 'r'
+
+        The following aliases are available to save typing for interactive users:
+
+        ======  =================
+        Alias   Property
+        ======  =================
+        'lw'    'linewidth'
+        'ls'    'linestyle'
+        'c'     'color'
+        'fc'    'facecolor'
+        'ec'    'edgecolor'
+        'mew'   'markeredgewidth'
+        'aa'    'antialiased'
+        'sans'  'sans-serif'
+        ======  =================
+
+        Thus you could abbreviate the above call as::
+
+              rc('lines', lw=2, c='r')
+
+        Note you can use python's kwargs dictionary facility to store
+        dictionaries of default parameters.  e.g., you can customize the
+        font rc as follows::
+
+          font = {'family' : 'monospace',
+                  'weight' : 'bold',
+                  'size'   : 'large'}
+          rc('font', **font)  # pass in the font dict as kwargs
+
+        This enables you to easily switch between several configurations.  Use
+        ``matplotlib.style.use('default')`` or :func:`~matplotlib.rcdefaults` to
+        restore the default `.rcParams` after changes.
+
+        Notes
+        -----
+        Similar functionality is available by using the normal dict interface, i.e.
+        ``rcParams.update({"lines.linewidth": 2, ...})`` (but ``rcParams.update``
+        does not support abbreviations or grouping).
+
+    rc_context(rc=None, fname=None)
+        Return a context manager for temporarily changing rcParams.
+
+        The :rc:`backend` will not be reset by the context manager.
+
+        rcParams changed both through the context manager invocation and
+        in the body of the context will be reset on context exit.
+
+        Parameters
+        ----------
+        rc : dict
+            The rcParams to temporarily set.
+        fname : str or path-like
+            A file with Matplotlib rc settings. If both *fname* and *rc* are given,
+            settings from *rc* take precedence.
+
+        See Also
+        --------
+        :ref:`customizing-with-matplotlibrc-files`
+
+        Examples
+        --------
+        Passing explicit values via a dict::
+
+            with mpl.rc_context({'interactive': False}):
+                fig, ax = plt.subplots()
+                ax.plot(range(3), range(3))
+                fig.savefig('example.png')
+                plt.close(fig)
+
+        Loading settings from a file::
+
+             with mpl.rc_context(fname='print.rc'):
+                 plt.plot(x, y)  # uses 'print.rc'
+
+        Setting in the context body::
+
+            with mpl.rc_context():
+                # will be reset
+                mpl.rcParams['lines.linewidth'] = 5
+                plt.plot(x, y)
+
+    rc_file(fname, *, use_default_template=True)
+        Update `.rcParams` from file.
+
+        Style-blacklisted `.rcParams` (defined in
+        ``matplotlib.style.core.STYLE_BLACKLIST``) are not updated.
+
+        Parameters
+        ----------
+        fname : str or path-like
+            A file with Matplotlib rc settings.
+
+        use_default_template : bool
+            If True, initialize with default parameters before updating with those
+            in the given file. If False, the current configuration persists
+            and only the parameters specified in the file are updated.
+
+    rc_file_defaults()
+        Restore the `.rcParams` from the original rc file loaded by Matplotlib.
+
+        Style-blacklisted `.rcParams` (defined in
+        ``matplotlib.style.core.STYLE_BLACKLIST``) are not updated.
+
+    rc_params(fail_on_error=False)
+        Construct a `RcParams` instance from the default Matplotlib rc file.
+
+    rc_params_from_file(fname, fail_on_error=False, use_default_template=True)
+        Construct a `RcParams` from file *fname*.
+
+        Parameters
+        ----------
+        fname : str or path-like
+            A file with Matplotlib rc settings.
+        fail_on_error : bool
+            If True, raise an error when the parser fails to convert a parameter.
+        use_default_template : bool
+            If True, initialize with default parameters before updating with those
+            in the given file. If False, the configuration class only contains the
+            parameters specified in the file. (Useful for updating dicts.)
+
+    rcdefaults()
+        Restore the `.rcParams` from Matplotlib's internal default style.
+
+        Style-blacklisted `.rcParams` (defined in
+        ``matplotlib.style.core.STYLE_BLACKLIST``) are not updated.
+
+        See Also
+        --------
+        matplotlib.rc_file_defaults
+            Restore the `.rcParams` from the rc file originally loaded by
+            Matplotlib.
+        matplotlib.style.use
+            Use a specific style file.  Call ``style.use('default')`` to restore
+            the default style.
+
+    set_loglevel(level)
+        Configure Matplotlib's logging levels.
+
+        Matplotlib uses the standard library `logging` framework under the root
+        logger 'matplotlib'.  This is a helper function to:
+
+        - set Matplotlib's root logger level
+        - set the root logger handler's level, creating the handler
+          if it does not exist yet
+
+        Typically, one should call ``set_loglevel("INFO")`` or
+        ``set_loglevel("DEBUG")`` to get additional debugging information.
+
+        Users or applications that are installing their own logging handlers
+        may want to directly manipulate ``logging.getLogger('matplotlib')`` rather
+        than use this function.
+
+        Parameters
+        ----------
+        level : {"NOTSET", "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"}
+            The log level as defined in `Python logging levels
+            <https://docs.python.org/3/library/logging.html#logging-levels>`__.
+
+            For backwards compatibility, the levels are case-insensitive, but
+            the capitalized version is preferred in analogy to `logging.Logger.setLevel`.
+
+        Notes
+        -----
+        The first time this function is called, an additional handler is attached
+        to Matplotlib's root handler; this handler is reused every time and this
+        function simply manipulates the logger and handler's level.
+
+    use(backend, *, force=True)
+        Select the backend used for rendering and GUI integration.
+
+        If pyplot is already imported, `~matplotlib.pyplot.switch_backend` is used
+        to switch the backend.
+
+        Parameters
+        ----------
+        backend : str
+            The backend to switch to.  This can either be one of the standard
+            backend names, which are case-insensitive:
+
+            - interactive backends:
+              GTK3Agg, GTK3Cairo, GTK4Agg, GTK4Cairo, MacOSX, nbAgg, notebook, QtAgg,
+              QtCairo, TkAgg, TkCairo, WebAgg, WX, WXAgg, WXCairo, Qt5Agg, Qt5Cairo
+
+            - non-interactive backends:
+              agg, cairo, pdf, pgf, ps, svg, template
+
+            or a string of the form: ``module://my.module.name``.
+
+            notebook is a synonym for nbAgg.
+
+            Switching to an interactive backend is not possible if an unrelated
+            event loop has already been started (e.g., switching to GTK3Agg if a
+            TkAgg window has already been opened).  Switching to a non-interactive
+            backend is always possible.
+
+        force : bool, default: True
+            If True (the default), raise an `ImportError` if the backend cannot be
+            set up (either because it fails to import, or because an incompatible
+            GUI interactive framework is already running); if False, silently
+            ignore the failure.
+
+        See Also
+        --------
+        :ref:`backends`
+        matplotlib.get_backend
+        matplotlib.pyplot.switch_backend
+
+DATA
+    __all__ = ['__bibtex__', '__version__', '__version_info__', 'set_logle...
+    __bibtex__ = '@Article{Hunter:2007,\n  Author    = {Hunter, J. ...ishe...
+    bivar_colormaps = <matplotlib.cm.ColormapRegistry object>
+    color_sequences = <matplotlib.colors.ColorSequenceRegistry object>
+    colormaps = <matplotlib.cm.ColormapRegistry object>
+    defaultParams = {'_internal.classic_mode': [False, <function validate_...
+    multivar_colormaps = <matplotlib.cm.ColormapRegistry object>
+    rcParams = RcParams({'_internal.classic_mode': False,
+         ...nor.widt...
+    rcParamsDefault = RcParams({'_internal.classic_mode': False,
+         ...n...
+    rcParamsOrig = RcParams({'_internal.classic_mode': False,
+         ...nor....
+
+VERSION
+    3.11.1
+
+FILE
+    c:\users\rrebe\documents\python projects\too damn hot!\.venv\lib\site-packages\matplotlib\__init__.py
+
+
+
+__________________
+Directory Function
+['ExecutableNotFoundError', 'MatplotlibDeprecationWarning', 'MutableMapping', 'Parameter', 'Path', 'RcParams', '_ExecInfo', '_VersionInfo', '__all__', '__bibtex__', '__builtins__', '__cached__', '__doc__', '__file__', '__getattr__', '__loader__', '__name__', '__package__', '__path__', '__spec__', '_add_data_doc', '_afm', '_api', '_blocking_input', '_c_internal_utils', '_check_versions', '_cm', '_cm_bivar', '_cm_listed', '_cm_multivar', '_color_data', '_constrained_layout', '_docstring', '_ensure_handler', '_enums', '_fontconfig_pattern', '_get_config_or_cache_dir', '_get_executable_info', '_get_ssl_context', '_get_version', '_get_xdg_cache_dir', '_get_xdg_config_dir', '_image', '_init_tests', '_label_from_arg', '_layoutgrid', '_log', '_logged_cached', '_mathtext', '_mathtext_data', '_open_file_or_url', '_parse_to_version_info', '_path', '_preprocess_data', '_pylab_helpers', '_rc_params_in_file', '_replacer', '_style_helpers', '_text_helpers', '_tight_bbox', '_tight_layout', '_val_or_rc', '_version', 'artist', 'atexit', 'axes', 'axis', 'backend_bases', 'backend_managers', 'backend_tools', 'backends', 'bezier', 'bivar_colormaps', 'category', 'cbook', 'cm', 'collections', 'color_sequences', 'colorbar', 'colorizer', 'colormaps', 'colors', 'container', 'contextlib', 'contour', 'cycler', 'dates', 'defaultParams', 'dviread', 'figure', 'font_manager', 'ft2font', 'functools', 'get_backend', 'get_cachedir', 'get_configdir', 'get_data_path', 'gridspec', 'hatch', 'image', 'importlib', 'inset', 'inspect', 'interactive', 'is_interactive', 'layout_engine', 'legend', 'legend_handler', 'lines', 'locale', 'logging', 'markers', 'mathtext', 'matplotlib_fname', 'mlab', 'multivar_colormaps', 'namedtuple', 'offsetbox', 'os', 'parse_version', 'patches', 'path', 'pprint', 'projections', 'pyplot', 'quiver', 'rc', 'rcParams', 'rcParamsDefault', 'rcParamsOrig', 'rc_context', 'rc_file', 'rc_file_defaults', 'rc_params', 'rc_params_from_file', 'rcdefaults', 'rcsetup', 're', 'sanitize_sequence', 'scale', 'set_loglevel', 'shutil', 'spines', 'stackplot', 'streamplot', 'style', 'subprocess', 'sys', 'table', 'tempfile', 'texmanager', 'text', 'textpath', 'ticker', 'transforms', 'tri', 'units', 'use', 'validate_backend', 'widgets']
