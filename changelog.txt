@@ -21,3 +21,22 @@ v0.3.0
     - added another graph script to create a precipitation graph with the same parameters as temperature graph
         - sometimes it doesn't rain, made sure that a blank graph is not generated
     - !turned down the temperature!
+
+v0.4.0 - The Future Is Here!
+    - cleaned up the program directory, organizing files into folders
+    - integrated openmeteo to collect forecasting data for current date + 7 days
+    - added daily forecast
+        - collects temperatures (hi and low) and precipitation chance 
+        - outputs them into a text file in an easy to read format
+    - added hourly forecast
+        - collects temperature (mean), precipitation chance, sunrise/sunset, and weather description (sunny, cloudy, etc)
+        - outputs data into text file in an easy to read format
+    - added global_params.py in Data folder
+        - allows for centralized parameters that are used by various scripts (i.e. location, date)
+        - structures variables so that they can be easily edited when a GUI is implemented, adding to user experience
+    - added config.json for a separate way to alter the user's location, for future use
+    - integrated existing descriptions.json written by GitHub user stellasphere 
+        - https://gist.github.com/stellasphere/9490c195ed2b53c707087c8c2db4ec0c
+        - Interprets weather codes into user-readable phrases (1 = clear, etc.)
+    - deleted unnecessary files and tests
+    - !turned down the temperature!
