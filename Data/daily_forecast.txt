@@ -1,0 +1,12 @@
+Coordinates: 35.69601821899414°N , -81.2970962524414°E
+Elevation: 319.0m above sea level
+Timezone: b'America/New_York'
+~~~Daily Data~~~
+                       Date Temperature High Temperature Low  WMO Weather Code Chance of Precipitation
+0 2026-09-15 00:00:00-04:00             79°F            68°F               3.0                      1%
+1 2026-09-16 00:00:00-04:00             87°F            62°F               2.0                      0%
+2 2026-09-17 00:00:00-04:00             94°F            64°F              82.0                      3%
+3 2026-09-18 00:00:00-04:00             91°F            68°F              81.0                     13%
+4 2026-09-19 00:00:00-04:00             85°F            69°F              53.0                     17%
+5 2026-09-20 00:00:00-04:00             90°F            68°F              53.0                     11%
+6 2026-09-21 00:00:00-04:00             89°F            68°F              51.0                     24%
