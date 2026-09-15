@@ -7,16 +7,34 @@ The program now creates a temperature normals graph for the specific location be
 
 
 v0.3.0 - The script is now separated into two parts for ease of use. The user can now write their own scripts using the function get_weather_data from weather_script1.py
+v0.4.0 - The future is here! You can now collect forecasts!
 
 :)
 
 To use:
+Forecasting - 
 
-    1. Open weather_script1.py
-    2. Line 19: change 'station_id' to the id corresponding to your selected location's id
-        - info found on https://meteostat.net
-    3. Change 'location_name' to the name of the city you are searching
-    4. Run graphs.py
+            1. Open 'Too Damn Hot! / Data / global_params.py'
+            2. Locate DEFAULT_LOCATION (at the top)
+            3. Change the Longitude and Latitude to match the region you want to search
+            4. Run 'Too Damn Hot! / Forecast_Graphing / Daily.py and Hourly.py'
+            5. Open 'Too Damn Hot! / Data / daily_forecast.txt and hourly_forecast.txt
+                - The forecast data is separated into two different text files for easier reading.
+
+Historical - 
+
+            1. Open 'Too Damn Hot! / Data / global_params.py'
+            2. Locate DEFAULT_LOCATION (at the top)
+            3. Change Longitude and Latitude to match the region you want to search
+            4. Go to https://meteostat.net/en/ and look up your location using any search term you want (long, lat / zip code / etc.)
+            5. On the right side of the screen, under "Station Identifiers," find Meteostat: *****
+                - This is the "station_id" that Meteostat uses to find the station you want to get data from
+            6. In global_params.py  >  DEFAULT_LOCATION, change 'station_id' to the number you got from Meteostat's website
+            7. Run 'Too Damn Hot! / Historical_Graphing / Precip.py and Temp.py
+                - Each one will show you 2 graphs of the precipitation and temperature values from YESTERDAY (i.e. 'current date' minus 1 day)
+                - One graph shows you the full day for yesterday, measuring precipitation or temperature
+                - The second graph shows you the historical mean (norms) for temperature or precipitation between the years 1990 and 2026
+                        (This can be used to compare the values for the historical mean and yesterday for a neat comparison)
 
 
 notes: 
