@@ -18,7 +18,7 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).parent.parent))
 
-from Data.global_params import load_location, get_daily_params, OPENMETEO_CLIENT, load_descriptions
+from Config.global_params import load_location, get_daily_params, OPENMETEO_CLIENT, load_descriptions
 
 #===== COLLECT PARAMETERS AND VARIABLES =====
 url = 'https://api.open-meteo.com/v1/forecast'

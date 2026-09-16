@@ -18,7 +18,7 @@ from pathlib import Path
 # tell python to search entire folder structure for imports
 sys.path.append(str(Path(__file__).parent.parent))
 # import data from global params as needed for openmeteo
-from Data.global_params import (
+from Config.global_params import (
     get_hourly_params, 
     OPENMETEO_CLIENT, 
     load_descriptions, 
