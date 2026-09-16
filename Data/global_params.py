@@ -47,13 +47,17 @@ def get_yesterday():        # yesterday's date and time
     return get_today() - timedelta(days=1)
 
 def get_day_bounds(target_date):
-    # Returns (start, end) datetimes spanning midnight to 23:59:59 for the given date.
-    start = target_date.replace(hour=0, minute=0, second=0, microsecond=0)      # yesterday, 00:00:00 am EST
-    end = target_date.replace(hour=23, minute=59, second=59, microsecond=0)     # yesterday, 11:59:59 pm EST
-    return start, end       # record full day for yesterday, all hours, data feeds into historical data
+# Returns (start, end) datetimes spanning midnight to 23:59:59 for the given date.
+    start = target_date.replace(hour=0, minute=0, second=0, microsecond=0)      
+    # yesterday, 00:00:00 am EST
+    end = target_date.replace(hour=23, minute=59, second=59, microsecond=0)     
+    # yesterday, 11:59:59 pm EST
+    return start, end       
+    # record full day for yesterday, all hours, data feeds into historical data
 
 def to_utc_naive(dt):
-    return dt.astimezone(UTC).replace(tzinfo=None)    # convert datetime into UTC for use in Meteostat
+    return dt.astimezone(UTC).replace(tzinfo=None)    
+# convert datetime into UTC for use in Meteostat
 
 
 
@@ -69,7 +73,8 @@ def get_daily_params():
     return {
         'latitude': location['latitude'],
         'longitude': location['longitude'],
-        'daily': ['temperature_2m_max', 'temperature_2m_min', 'weather_code', 'precipitation_probability_mean'],
+        'daily': ['temperature_2m_max', 'temperature_2m_min', 
+                  'weather_code', 'precipitation_probability_mean'],
         'models': 'best_match',
         'timezone': 'America/New_York',
         'forecast_days': 7,
@@ -84,7 +89,8 @@ def get_hourly_params():
     return {
         'latitude': location['latitude'],
         'longitude': location['longitude'],
-        'hourly': ['temperature_2m', 'apparent_temperature', 'precipitation_probability', 'weather_code'],
+        'hourly': ['temperature_2m', 'apparent_temperature',
+                    'precipitation_probability', 'weather_code'],
         'daily' : ['sunrise', 'sunset'],
         'models': 'best_match',
         'timezone': 'America/New_York',
