@@ -3,7 +3,8 @@ File Name: temperature_graphs.py
 Author: Jonathan W
 Date: 9/9/2026
 Version: 0.4.0
-Scope: Takes and runs function from weather_script1 to collect temperature data, then puts it in a graph
+Scope: Takes and runs function from weather_script1 to collect temperature data, 
+       then puts it in a graph
 '''
 
 from pathlib import Path
@@ -104,13 +105,36 @@ if need_norms:
 
     ax_norm.plot(
         months, tavg,
-        color='#1f5c99', linewidth=2.5, marker='o', markersize=6, label='Average'
+        color='#1f5c99',
+        linewidth=2.5,
+        marker='o',
+        markersize=6,
+        label='Average'
     )       # shows a bold average line through the middle
 
-    ax_norm.plot(months, tmax, color='#d9534f', linewidth=1, linestyle='--', alpha=0.6, label='Max')
-    ax_norm.plot(months, tmin, color='#5bc0de', linewidth=1, linestyle='--', alpha=0.6, label='Min')
+    ax_norm.plot(
+        months,
+        tmax,
+        color='#d9534f',
+        linewidth=1,
+        linestyle='--',
+        alpha=0.6,
+        label='Max'
+    )
+
+    ax_norm.plot(
+        months,
+        tmin,
+        color='#5bc0de',
+        linewidth=1,
+        linestyle='--',
+        alpha=0.6,
+        label='Min'
+    )
         # min and max lines, red and blue, bold
 
+
+# begin for loop to create graph only if it does not exist
 # only label to average points
     for xi, yi in zip(months, tavg):
         ax_norm.annotate(
@@ -122,10 +146,12 @@ if need_norms:
             fontsize=8,
             color='#1f5c99',
             fontweight='bold',
-        )
+    )
 
 
-    month_labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    month_labels = [
+        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+    ]
 # monthly labels
     ax_norm.set_xticks(range(1, 13))
 # only show the intended labels

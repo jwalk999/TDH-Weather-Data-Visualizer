@@ -3,7 +3,8 @@ File Name: precip_graphs.py
 Author: Jonathan W
 Date: 9/10/2026
 Version: 0.4.0
-Scope: Takes and runs function from weather_script1 to collect precipitation data, then puts it in a graph
+Scope: Takes and runs function from weather_script1 to collect precipitation data,
+       then puts it in a graph
 '''
 
 from pathlib import Path
@@ -27,7 +28,8 @@ x_valid = df_hour.index[valid]
 y_valid = df_hour['prcp'][valid]
 
 
-# only create the precipitation graph if there is precipitation data for the date range
+# only create the precipitation graph if there is precipitation data 
+# for the specified date range
 if valid.any():
 
     fig_hour, ax = plt.subplots(figsize=(12, 5)) # to fit 24hr labels
