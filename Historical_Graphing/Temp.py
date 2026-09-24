@@ -105,6 +105,7 @@ if need_norms:
     )  # shades temperature range, blue
 
     ax_norm.plot(
+<<<<<<< HEAD
         months,
         tavg,
         color="#1f5c99",
@@ -113,10 +114,20 @@ if need_norms:
         markersize=6,
         label="Average",
     )  # shows a bold average line through the middle
+=======
+        months, tavg,
+        color='#1f5c99',
+        linewidth=2.5,
+        marker='o',
+        markersize=6,
+        label='Average'
+    )       # shows a bold average line through the middle
+>>>>>>> 7f142145393d7d1c34f0a0639e942d1a80882a32
 
     ax_norm.plot(
         months,
         tmax,
+<<<<<<< HEAD
         color="#d9534f",
         linewidth=1,
         linestyle="--",
@@ -135,6 +146,29 @@ if need_norms:
     # min and max lines, red and blue, bold
 
     # only label to average points
+=======
+        color='#d9534f',
+        linewidth=1,
+        linestyle='--',
+        alpha=0.6,
+        label='Max'
+    )
+
+    ax_norm.plot(
+        months,
+        tmin,
+        color='#5bc0de',
+        linewidth=1,
+        linestyle='--',
+        alpha=0.6,
+        label='Min'
+    )
+        # min and max lines, red and blue, bold
+
+
+# begin for loop to create graph only if it does not exist
+# only label to average points
+>>>>>>> 7f142145393d7d1c34f0a0639e942d1a80882a32
     for xi, yi in zip(months, tavg):
         ax_norm.annotate(
             f"{yi:.0f}°",
@@ -143,6 +177,7 @@ if need_norms:
             xytext=(0, 10),
             ha="center",
             fontsize=8,
+<<<<<<< HEAD
             color="#1f5c99",
             fontweight="bold",
         )
@@ -162,6 +197,17 @@ if need_norms:
         "Dec",
     ]
     # monthly labels
+=======
+            color='#1f5c99',
+            fontweight='bold',
+    )
+
+
+    month_labels = [
+        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+    ]
+# monthly labels
+>>>>>>> 7f142145393d7d1c34f0a0639e942d1a80882a32
     ax_norm.set_xticks(range(1, 13))
     # only show the intended labels
     ax_norm.set_xticklabels(month_labels)

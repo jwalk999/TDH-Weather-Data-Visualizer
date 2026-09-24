@@ -27,7 +27,8 @@ x_valid = df_hour.index[valid]
 y_valid = df_hour["prcp"][valid]
 
 
-# only create the precipitation graph if there is precipitation data for the date range
+# only create the precipitation graph if there is precipitation data 
+# for the specified date range
 if valid.any():
     fig_hour, ax = plt.subplots(figsize=(12, 5))  # to fit 24hr labels
     # instructions for the chart layout
