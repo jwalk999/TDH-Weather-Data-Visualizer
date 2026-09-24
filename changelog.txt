@@ -40,3 +40,8 @@ v0.4.0 - The Future Is Here!
         - Interprets weather codes into user-readable phrases (1 = clear, etc.)
     - deleted unnecessary files and tests
     - !turned down the temperature!
+
+v0.4.1
+    - Added Forecast_Graphing/Collect_data.py
+        -- combines Daily and Hourly from before into 1 callable script
+    - Reformatted all existing files using ruff tool
