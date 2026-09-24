@@ -1,0 +1,12 @@
+Building a program to collect and display weather data for a specific area.
+
+Dependencies:
+    - meteostat
+    - matplotlib
+    - pandas
+
+
+    jupyter notebook
+        -ipynb file 
+
+https://github.com/PySimpleGUI/PySimpleGUI/blob/master/DemoPrograms/Demo_Multithreaded_Long_Tasks.py
