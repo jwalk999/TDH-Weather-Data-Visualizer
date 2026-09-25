@@ -47,4 +47,7 @@ v0.5.0
     - changed major layout of the program for easier management
     - formatted primary .py files to make reading / maintenance easier
     - updated how the weather data is stored, changed from text file to a csv file
-    - 
+    - Daily.py and Hourly.py are now built as callable functions for graphing and GUI use
+
+    To Do:
+    - Build Daily_Graph.py and Hourly_Graph.py to make the graphs
