@@ -8,17 +8,16 @@ Scope: Shared constants, API clients, and location settings used across all weat
         - should be location agnostic
 """
 
-from datetime import datetime, timedelta
+import json
+from datetime import datetime
+from pathlib import Path
 from zoneinfo import ZoneInfo
+
 import openmeteo_requests
 import requests_cache
 from retry_requests import retry
-import json
-from pathlib import Path
-
 
 # ===== LOCATION =====
-
 DEFAULT_LOCATION = {
     "latitude": 35.7411,
     "longitude": -81.3895,
@@ -26,6 +25,10 @@ DEFAULT_LOCATION = {
 }
 
 
+#===== TIME FRAMES=====
+EASTERN = ZoneInfo('US/Eastern')
+def get_today():
+    return datetime.now(tz=EASTERN)
 
 #===== DATE FORMATTING =====
 DATE_FORMAT = "%m-%d-%Y"
@@ -104,7 +107,14 @@ CONFIG_PATH = Path(__file__).parent / "config.json"
 
 
 #===== SAVING CONFIGS =====
-
+def save_location(latitude, longitude, location_name):
+    data = {
+        "latitude": latitude,
+        "longitude": longitude,
+        "location_name": location_name,
+    }
+    with open(CONFIG_PATH, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=4)
 
 
 # create config file if it doesn"t exist

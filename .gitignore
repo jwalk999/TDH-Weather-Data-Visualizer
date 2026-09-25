@@ -1,0 +1,45 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ===== Virtual environments =====
+.venv/
+venv/
+env/
+ENV/
+
+# ===== Packaging / build artifacts =====
+build/
+dist/
+*.egg-info/
+*.egg
+
+# ===== Ruff / linters / formatters =====
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+
+# ===== Requests cache (from requests_cache) =====
+.cache
+.cache.sqlite
+
+# ===== Project-specific generated/local files =====
+Config/config.json
+Data/hourly_forecast.txt
+weather_charts/
+*.png
+ruff_output.txt
+ruff_check_results.txt
+
+# ===== Editor / OS junk =====
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+.DS_Store
+
+# ===== Environment variables / secrets =====
+.env
+*.env

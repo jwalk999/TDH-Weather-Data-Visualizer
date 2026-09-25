@@ -10,14 +10,15 @@ Scope: Collects daily forecast for the next 7 days
 # tell python to search grandparent directory for required import files
 import sys
 from pathlib import Path
+
 sys.path.append(str(Path(__file__).parent.parent))
 
-import openmeteo_requests
 import pandas as pd
-import requests_cache
-from retry_requests import retry
 
-from Config.global_params import load_location, get_daily_params, OPENMETEO_CLIENT, load_descriptions
+from Config.global_params import (
+    OPENMETEO_CLIENT,
+    get_daily_params,
+)
 
 #===== COLLECT PARAMETERS AND VARIABLES =====
 url = 'https://api.open-meteo.com/v1/forecast'

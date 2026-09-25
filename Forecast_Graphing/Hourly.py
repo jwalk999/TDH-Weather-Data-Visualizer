@@ -8,22 +8,20 @@ Scope: Collects hourly forecast for the next 7 days
         - settings found in global_param.py
 '''
 
-
-import openmeteo_requests
-import pandas as pd
-import requests_cache
-from retry_requests import retry
 import sys
 from pathlib import Path
+
+import pandas as pd
+
 # tell python to search entire folder structure for imports
 sys.path.append(str(Path(__file__).parent.parent))
 # import data from global params as needed for openmeteo
 from Config.global_params import (
-    get_hourly_params, 
-    OPENMETEO_CLIENT, 
-    load_descriptions, 
-    get_period, 
-    get_weather_description
+    OPENMETEO_CLIENT,
+    get_hourly_params,
+    get_period,
+    get_weather_description,
+    load_descriptions,
 )
 
 #===== COLLECT PARAMETERS =====
