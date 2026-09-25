@@ -40,3 +40,7 @@ v0.4.0 - The Future Is Here!
         - Interprets weather codes into user-readable phrases (1 = clear, etc.)
     - deleted unnecessary files and tests
     - !turned down the temperature!
+
+v0.5.0
+    - removed all uses of Meteostat
+        - The use case that I was using it for does not fit how the API works. The historical data they gather would constantly be 1 month+ out of date and fetching results for "yesterday" would constantly pull "None." Empty data frames cannot be graphed.    :)
