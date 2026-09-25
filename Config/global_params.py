@@ -25,20 +25,24 @@ DEFAULT_LOCATION = {
 }
 
 
-#===== TIME FRAMES=====
-EASTERN = ZoneInfo('US/Eastern')
+# ===== TIME FRAMES=====
+EASTERN = ZoneInfo("US/Eastern")
+
+
 def get_today():
     return datetime.now(tz=EASTERN)
 
-#===== DATE FORMATTING =====
+
+# ===== DATE FORMATTING =====
 DATE_FORMAT = "%m-%d-%Y"
 DATETIME_FORMAT = "%Y-%m-%d %H:%M"
 
 
-#===== OPEN-METEO CLIENT =====
+# ===== OPEN-METEO CLIENT =====
 cache_session = requests_cache.CachedSession(".cache", expire_after=3600)
 retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
 OPENMETEO_CLIENT = openmeteo_requests.Client(session=retry_session)
+
 
 # set parameters for forecasting data collection with openmeteo
 def get_daily_params():
@@ -46,8 +50,12 @@ def get_daily_params():
     return {
         "latitude": location["latitude"],
         "longitude": location["longitude"],
-        "daily": ["temperature_2m_max", "temperature_2m_min", 
-                  "weather_code", "precipitation_probability_mean"],
+        "daily": [
+            "temperature_2m_max",
+            "temperature_2m_min",
+            "weather_code",
+            "precipitation_probability_mean",
+        ],
         "models": "best_match",
         "timezone": "America/New_York",
         "forecast_days": 7,
@@ -56,15 +64,20 @@ def get_daily_params():
         "precipitation_unit": "inch",
     }
 
+
 def get_hourly_params():
     location = load_location()
     today = get_today()
     return {
         "latitude": location["latitude"],
         "longitude": location["longitude"],
-        "hourly": ["temperature_2m", "apparent_temperature",
-                    "precipitation_probability", "weather_code"],
-        "daily" : ["sunrise", "sunset"],
+        "hourly": [
+            "temperature_2m",
+            "apparent_temperature",
+            "precipitation_probability",
+            "weather_code",
+        ],
+        "daily": ["sunrise", "sunset"],
         "models": "best_match",
         "timezone": "America/New_York",
         "wind_speed_unit": "mph",
@@ -74,15 +87,17 @@ def get_hourly_params():
     }
 
 
-
-#===== WEATHER CODE DESCRIPTIONS =====
+# ===== WEATHER CODE DESCRIPTIONS =====
 
 # tell python where to find the descriptions for weather codes
 DESCRIPTIONS_PATH = Path(__file__).parent / "descriptions.json"
+
+
 # open and read weather code descriptions
 def load_descriptions():
     with open(DESCRIPTIONS_PATH, "r", encoding="utf-8") as f:
         return json.load(f)
+
 
 # set parameters for what counts as day and night
 # day = after sunrise and before sunset
@@ -90,8 +105,9 @@ def load_descriptions():
 # "timestamp" is the value we are checking
 def get_period(timestamp, sunrise, sunset):
     if sunrise <= timestamp <= sunset:
-        return "day" 
+        return "day"
     return "night"
+
 
 def get_weather_description(code, ww_data, period="day"):
     entry = ww_data.get(str(int(code)))
@@ -100,13 +116,13 @@ def get_weather_description(code, ww_data, period="day"):
     return entry[period]["description"]
 
 
-#===== GLOBAL USE SETTINGS
+# ===== GLOBAL USE SETTINGS
 # use configuration json file to set location and station id info
 # set path for config file
 CONFIG_PATH = Path(__file__).parent / "config.json"
 
 
-#===== SAVING CONFIGS =====
+# ===== SAVING CONFIGS =====
 def save_location(latitude, longitude, location_name):
     data = {
         "latitude": latitude,
@@ -123,4 +139,3 @@ def load_location():
         save_location(**DEFAULT_LOCATION)
     with open(CONFIG_PATH, "r", encoding="utf-8") as f:
         return json.load(f)
-
