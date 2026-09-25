@@ -55,6 +55,8 @@ def get_daily_params():
             "temperature_2m_min",
             "weather_code",
             "precipitation_probability_mean",
+            "sunrise",
+            "sunset",
         ],
         "models": "best_match",
         "timezone": "America/New_York",
