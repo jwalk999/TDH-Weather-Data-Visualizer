@@ -10,3 +10,52 @@ Dependencies:
         -ipynb file 
 
 https://github.com/PySimpleGUI/PySimpleGUI/blob/master/DemoPrograms/Demo_Multithreaded_Long_Tasks.py
+
+
+
+    # ===== FORMAT OUTPUT DATA =====
+
+    
+
+    # Format temperatures as whole numbers with Fahrenheit units.
+    daily_dataframe["Temperature High"] = daily_dataframe[
+        "Temperature High"
+    ].map(lambda x: f"{x:.0f}°F")
+
+    daily_dataframe["Temperature Low"] = daily_dataframe[
+        "Temperature Low"
+    ].map(lambda x: f"{x:.0f}°F")
+
+    # Format precipitation probability as a whole-number percentage.
+    daily_dataframe["Chance of Precipitation"] = daily_dataframe[
+        "Chance of Precipitation"
+    ].map(lambda x: f"{x:.0f}%")
+
+    # Format dates as YYYY-MM-DD for easier reading in the output file.
+    daily_dataframe["Date"] = daily_dataframe["Date"].dt.strftime("%Y-%m-%d")
+
+
+
+
+    # ===== FORMAT OUTPUT DATA =====
+
+    
+    # Format temperatures as whole numbers with Fahrenheit units.
+    hourly_dataframe["Temperature"] = hourly_dataframe[
+        "Temperature"
+    ].map(lambda x: f"{x:.0f}°F")
+
+    hourly_dataframe["Feels Like"] = hourly_dataframe[
+        "Feels Like"
+    ].map(lambda x: f"{x:.0f}°F")
+
+    # Format precipitation probability as a whole-number percentage.
+    hourly_dataframe["Chance of Precipitation"] = hourly_dataframe[
+        "Chance of Precipitation"
+    ].map(lambda x: f"{x:.0f}%")
+
+    # Format dates as YYYY-MM-DD HH:MM for easier reading.
+    hourly_dataframe["Date"] = hourly_dataframe[
+        "Date"
+    ].dt.strftime("%Y-%m-%d %H:%M")
+
