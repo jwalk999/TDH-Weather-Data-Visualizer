@@ -7,16 +7,15 @@ Scope: Collects daily forecast for the next 7 days
         - logs temperature highs and lows, precipitation probability, and weather type
         - settings found in global_param.py
 '''
-
+# tell python to search grandparent directory for required import files
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent.parent))
 
 import openmeteo_requests
 import pandas as pd
 import requests_cache
 from retry_requests import retry
-import sys
-from pathlib import Path
-
-sys.path.append(str(Path(__file__).parent.parent))
 
 from Config.global_params import load_location, get_daily_params, OPENMETEO_CLIENT, load_descriptions
 
