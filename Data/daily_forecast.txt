@@ -1,0 +1,12 @@
+Coordinates: 35.69601821899414°N , -81.2970962524414°E
+Elevation: 319.0m above sea level
+Timezone: b'America/New_York'
+~~~Daily Data~~~
+                       Date Temperature High Temperature Low Chance of Precipitation Weather Description
+0 2026-09-25 00:00:00-04:00             71°F            71°F                      0%              Cloudy
+1 2026-09-26 00:00:00-04:00             76°F            76°F                      0%       Partly Cloudy
+2 2026-09-27 00:00:00-04:00             80°F            80°F                      0%               Clear
+3 2026-09-28 00:00:00-04:00             80°F            80°F                      0%               Clear
+4 2026-09-29 00:00:00-04:00             82°F            82°F                      0%               Clear
+5 2026-09-30 00:00:00-04:00             85°F            85°F                      0%        Mainly Clear
+6 2026-10-01 00:00:00-04:00             88°F            88°F                      5%              Cloudy
