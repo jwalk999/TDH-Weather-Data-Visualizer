@@ -19,16 +19,35 @@ Scope:
 import sys
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).parent.parent))
+
+def _find_project_root(marker="Config"):
+    """
+    Set the folder directory for all scripts to append their search queries
+
+    Returns: the full folder path of the program
+    Errors: Raise a runtime error if it cannot find the Config file
+    """
+    path = Path(__file__).resolve().parent
+    while not (path / marker).is_dir():
+        if path.parent == path:
+            raise RuntimeError(f"Could not find project root (looking for '{marker}' folder)")
+        path = path.parent
+    return path
+
+
+sys.path.append(str(_find_project_root()))
 
 import pandas as pd
 
 from Config.global_params import (
     get_hourly_params,
+    get_openmeteo_client,
     get_period,
     get_weather_description,
     load_descriptions,
 )
+# Set the project's root folder
+PROJECT_ROOT = _find_project_root()
 
 
 # Create a runnable function to collect weather data.
@@ -59,17 +78,10 @@ def get_hourly_forecast():
 
 
     # ===== COLLECT WEATHER DATA =====
-
-    # The parameters that allow for data collection from API
-    cache_session = requests_cache.CachedSession(".cache", expire_after=3600)
-    # Retry the request if it times out // max 5 times // wait 0.2 seconds before next try
-    retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
-    # Make the API call
-    OPENMETEO_CLIENT = openmeteo_requests.Client(session=retry_session)
-
+    # Run data collection functions
+    client = get_openmeteo_client()
     # Send the request to Open-Meteo using the configured parameters.
-    responses_hourly = OPENMETEO_CLIENT.weather_api(url, params_hourly)
-
+    responses_hourly = client.weather_api(url, params_hourly)
     # The API may return multiple responses. This project uses the first response.
     response_hourly = responses_hourly[0]
 
@@ -158,11 +170,9 @@ def get_hourly_forecast():
 
     # Export the DataFrame as a CSV file.
     # index=False prevents pandas from adding an unnecessary row-number column.
-    hourly_dataframe.to_csv(
-        "Data/hourly_forecast.csv",
-        index=False,
-        encoding="utf-8",
-    )
+    output_path = PROJECT_ROOT / "Data" / "hourly_forecast.csv"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    hourly_dataframe.to_csv(output_path, index=False, encoding="utf-8")
 
     # Collect the same DataFrame so that it can be used in a GUI
     return hourly_dataframe

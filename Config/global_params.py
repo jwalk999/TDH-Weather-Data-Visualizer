@@ -38,7 +38,24 @@ DATETIME_FORMAT = "%Y-%m-%d %H:%M" # Month-Day-Year // 12/25/202X 11:59 (pm)
 
 
 # ===== OPEN-METEO CLIENT =====
+_openmeteo_client = None
+def get_openmeteo_client():
+    """
+    Sets the parameters needed to make the API call to OpenMeteo
 
+    Params: _openmeteo_client = Object that tells if there is data collected
+            cache_session: creates a cache for the api call
+            retry_session: retry the API call 5 times in case of failure
+            openmeteo_requests: the API call, copies data to cache
+
+    Returns: The weather data as collected from the API call
+    """
+    global _openmeteo_client
+    if _openmeteo_client is None:
+        cache_session = requests_cache.CachedSession(".cache", expire_after=3600)
+        retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
+        _openmeteo_client = openmeteo_requests.Client(session=retry_session)
+    return _openmeteo_client
 
 # set parameters for forecasting data collection with openmeteo
 def get_daily_params():
@@ -181,7 +198,7 @@ def save_location(latitude, longitude, location_name):
     """
     Set the location and location name as defined from above and paste them into a json
     file for easily reading where the user is so a GUI can read it. User can change the json file 
-    to point to their chosen locaiton.
+    to point to their chosen location.
     """
     data = {
         "latitude": latitude,

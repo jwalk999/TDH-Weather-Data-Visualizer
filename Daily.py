@@ -17,18 +17,37 @@ Scope:
 import sys
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).parent.parent))
+
+def _find_project_root(marker="Config"):
+    """
+    Set the folder directory for all scripts to append their search queries
+
+    Returns: the full folder path of the program
+    Errors: Raise a runtime error if it cannot find the Config file
+    """
+
+    path = Path(__file__).resolve().parent
+    while not (path / marker).is_dir():
+        if path.parent == path:
+            raise RuntimeError(f"Could not find project root (looking for '{marker}' folder)")
+        path = path.parent
+    return path
+
+
+sys.path.append(str(_find_project_root()))
 
 import pandas as pd
-from matplotlib import pyplot
 
-from Config.global_params import(
+from Config.global_params import (
     get_daily_params,
-    load_descriptions,
-    get_weather_description,
+    get_openmeteo_client,
     get_period,
+    get_weather_description,
+    load_descriptions,
 )
 
+# set the project's root folder
+PROJECT_ROOT = _find_project_root()
 
 # Create a runnable function to collect weather data.
 def get_daily_forecast():
@@ -55,18 +74,11 @@ def get_daily_forecast():
     params_daily = get_daily_params()
 
 
-
     # ===== COLLECT WEATHER DATA =====
     # The parameters that allow for data collection from API
-    cache_session = requests_cache.CachedSession(".cache", expire_after=3600)
-    # Retry the request if it times out // max 5 times // wait 0.2 seconds before next try
-    retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
-    # Make the API call
-    OPENMETEO_CLIENT = openmeteo_requests.Client(session=retry_session)
-
+    client = get_openmeteo_client()
     # Send the request to Open-Meteo using the configured parameters
-    responses_daily = OPENMETEO_CLIENT.weather_api(url, params_daily)
-
+    responses_daily = client.weather_api(url, params_daily)
     # The API may return multiple responses, we will use only the first response
     response_daily = responses_daily[0]
 
@@ -151,12 +163,9 @@ def get_daily_forecast():
 
     # Export the DataFrame as a CSV file.
     # index=False prevents pandas from adding an unnecessary row-number column.
-    daily_dataframe.to_csv(
-        "Data/daily_forecast.csv",
-        index=False,
-        encoding="utf-8",
-    )
-
+    output_path = PROJECT_ROOT / "Data" / "daily_forecast.csv"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    daily_dataframe.to_csv(output_path, index=False, encoding="utf-8")
     # Collect the same DataFrame so that it can be used in a GUI
     return daily_dataframe
 

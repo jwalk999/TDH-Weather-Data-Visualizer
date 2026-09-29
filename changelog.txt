@@ -51,3 +51,11 @@ v0.5.0
 
     To Do:
     - Build Daily_Graph.py and Hourly_Graph.py to make the graphs
+
+
+v0.5.1
+    - Attempting to ensure low-level coupling
+        - Moved API calls to their respective script files
+        - Defined a function for the API call to only be ran when needed, 
+            set up in \Config\global_params.py
+    - Added docstrings to functions
