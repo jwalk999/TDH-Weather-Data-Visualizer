@@ -24,7 +24,6 @@ sys.path.append(str(Path(__file__).parent.parent))
 import pandas as pd
 
 from Config.global_params import (
-    OPENMETEO_CLIENT,
     get_hourly_params,
     get_period,
     get_weather_description,
@@ -34,6 +33,21 @@ from Config.global_params import (
 
 # Create a runnable function to collect weather data.
 def get_hourly_forecast():
+    """
+    Make an API call to Openmeteo_Requests to collect hourly forecast data from it.
+
+    Params: url == the open-meteo api url
+            cache_session / retry_session: retry the requests if it fails
+            responses_hourly: the data that comes back from Openmeteo
+            hourly_%parameter%: define the data that comes back
+            daily_sunrise(set): Define what sunrise and sunset is and format the dates
+            hourly_dataframe: export the data into a Pandas dataframe for displaying to user
+            ww_data: convert numeric WMO weather code into condition(sunny, cloudy, etc)
+    
+    Returns: Collect all of the data [temperature(high)(low)], precip%, WMO weather code
+                then spit it out into a csv format file and automatically save it to /Data/ folder
+                for the GUI to read
+    """
 
     # ===== API PARAMETERS =====
 
@@ -45,6 +59,13 @@ def get_hourly_forecast():
 
 
     # ===== COLLECT WEATHER DATA =====
+
+    # The parameters that allow for data collection from API
+    cache_session = requests_cache.CachedSession(".cache", expire_after=3600)
+    # Retry the request if it times out // max 5 times // wait 0.2 seconds before next try
+    retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
+    # Make the API call
+    OPENMETEO_CLIENT = openmeteo_requests.Client(session=retry_session)
 
     # Send the request to Open-Meteo using the configured parameters.
     responses_hourly = OPENMETEO_CLIENT.weather_api(url, params_hourly)

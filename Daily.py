@@ -23,7 +23,6 @@ import pandas as pd
 from matplotlib import pyplot
 
 from Config.global_params import(
-    OPENMETEO_CLIENT,
     get_daily_params,
     load_descriptions,
     get_weather_description,
@@ -33,7 +32,21 @@ from Config.global_params import(
 
 # Create a runnable function to collect weather data.
 def get_daily_forecast():
+    """
+    Make an API call to Openmeteo_Requests to collect daily forecast data from it.
 
+    Params: url == the open-meteo api url
+            cache_session / retry_session: retry the requests if it fails
+            responses_daily: the data that comes back from Openmeteo
+            daily_%parameter% AND sunrise(set)_unix: define the data that comes back
+            Define what sunrise and sunset is and format the dates
+            daily_dataframe: export the data into a Pandas dataframe for displaying to user
+            ww_data: convert numeric WMO weather code into condition(sunny, cloudy, etc)
+    
+    Returns: Collect all of the data [temperature(high)(low)], precip%, WMO weather code
+                then spit it out into a csv format file and automatically save it to /Data/ folder
+                for the GUI to read
+    """
     # ===== API PARAMETERS =====
     # Open-Meteo forecast API endpoint
     url = "https://api.open-meteo.com/v1/forecast"
@@ -44,6 +57,12 @@ def get_daily_forecast():
 
 
     # ===== COLLECT WEATHER DATA =====
+    # The parameters that allow for data collection from API
+    cache_session = requests_cache.CachedSession(".cache", expire_after=3600)
+    # Retry the request if it times out // max 5 times // wait 0.2 seconds before next try
+    retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
+    # Make the API call
+    OPENMETEO_CLIENT = openmeteo_requests.Client(session=retry_session)
 
     # Send the request to Open-Meteo using the configured parameters
     responses_daily = OPENMETEO_CLIENT.weather_api(url, params_daily)
