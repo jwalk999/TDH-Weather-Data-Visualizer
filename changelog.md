@@ -1,0 +1,104 @@
+# Changelog
+
+All notable changes to **Too Damn Hot!** are documented here.
+
+Version numbers follow `MAJOR.MINOR.PATCH`:
+- **MAJOR** (`0.x.x`) stays `0` until the project is stable/feature-complete
+- **MINOR** bumps when a new feature or file is added (e.g. a new graph script)
+- **PATCH** bumps for bug fixes and small internal cleanups with no new capability
+
+---
+
+## v0.6.0
+
+### Added
+- Built `Daily_Graph.py`
+  - Temperature line chart combined with a ghosted precipitation bar chart on a secondary (`twinx`) axis, in a single figure
+  - Chart auto-saves to `Data/daily_forecast_chart.png` on every run, overwrites automatically
+  - X-axis dates formatted as `09/30`, `10/1`, etc
+
+### Fixed
+- `Daily_Graph.py`: Fixed invalid variable references
+- Removed an invalid import statement
+- Fixed a misuse that was passing a DataFrame where a timezone was expected
+
+### Changed
+- `Daily.py` / `Hourly.py`: Open-Meteo client set to a shared `get_openmeteo_client()` function
+- `sys.path` setup replaced with a small upward-searching `_find_project_root()` helper
+- Removed unused imports
+- Deleted `Collect_data.py`
+- Changed the changelog
+
+**To Do:** Begin integrating freesimplegui and build the user interface -- !Fix global warming!
+
+---
+
+## v0.5.1
+- Attempting to ensure low-level coupling
+  - Moved API calls to their respective script files
+  - Defined a function for the API call to only be run when needed, set up in `\Config\global_params.py`
+- Added docstrings to functions
+- *!sun cooler failed!*
+
+---
+
+## v0.5.0
+- Removed all uses of Meteostat
+  - The use case didn't fit how the API works — historical data was consistently 1+ month out of date, and     fetching "yesterday" reliably returned `None`. Empty DataFrames can't be graphed. 🙂
+- Changed major layout of the program for easier management
+- Formatted primary `.py` files for readability/maintenance
+- Weather data storage changed from text file to CSV
+- `Daily.py` and `Hourly.py` rebuilt as callable functions for graphing and GUI use
+- *!turned down the temperature!*
+- *!currently researching physics to install a cooler on the sun!*
+**To Do:** Build `Daily_Graph.py` and `Hourly_Graph.py` to make the graphs
+
+---
+
+## v0.4.0 — *The Future Is Here!*
+- Cleaned up the program directory, organizing files into folders
+- Integrated Open-Meteo to collect forecasting data for current date + 7 days
+- Added daily forecast
+  - Collects temperatures (hi/low) and precipitation chance
+  - Outputs to a text file in an easy-to-read format
+- Added hourly forecast
+  - Collects average temperature (mean), precipitation chance, sunrise/sunset, and weather description (sunny, cloudy, etc.)
+  - Outputs to a text file in an easy-to-read format
+- Added `global_params.py` in the Data folder
+  - Centralizes parameters used across scripts (location, date)
+  - Structured for easy editing once a GUI is implemented
+- Added `config.json` as a separate way to alter the user's location, for future use
+- Integrated `descriptions.json`, written by GitHub user [stellasphere](https://gist.github.com/stellasphere/9490c195ed2b53c707087c8c2db4ec0c)
+  - Interprets weather codes into user-readable phrases (1 = clear, etc.)
+- Deleted unnecessary files and tests
+- *!turned down the temperature!*
+
+---
+
+## v0.3.0
+- Separated the scripts that collect data from the scripts that turn it into graphs
+  - Cleaner, runs more efficiently
+- Changed the main data collection script into a callable function with station ID and location name as parameters
+- Climate normals graph script now only runs if the user hasn't run it before
+  - Checks for the norms file in Documents and skips it if it exists
+- Added a precipitation graph script with the same parameters as the temperature graph
+  - Sometimes it doesn't rain — made sure a blank graph is not generated
+- *!turned down the temperature!*
+
+---
+
+## v0.2.0
+- Added a graph to plot monthly normal temperatures for comparison
+- Changed save command to not run if the files are already present
+- Added this changelog file
+- Graphs now have color and are more visually appealing
+- Changed the minimum temperature for the hourly graph to 30°F
+- Added LaGuardia Airport, NYC as a station ID example
+- Removed unnecessary files
+- Added location name to the graph, changes when `location_name` var is changed
+- *!turned down the temperature!*
+
+---
+
+## v0.1.0 — *original alpha release*
+- Added a graph to plot yesterday's temperatures in Fahrenheit
