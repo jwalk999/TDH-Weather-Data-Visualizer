@@ -8,6 +8,15 @@ Version numbers follow `MAJOR.MINOR.PATCH`:
 - **PATCH** bumps for bug fixes and small internal cleanups with no new capability
 
 ---
+## v0.6.1
+
+### Changed
+- `Daily_Graph.py`: 
+  - Changed overall layout of the graphs: temperature chart is now separate from precipitation. Temperature chart now shows low and high temps forecasted for that specific day. There are now fun colors.
+
+**To Do:** Look into integrating matplotlibs into freesimplegui -- !Boost Earth's magnetic field!
+
+---
 
 ## v0.6.0
 
@@ -27,7 +36,8 @@ Version numbers follow `MAJOR.MINOR.PATCH`:
 - `sys.path` setup replaced with a small upward-searching `_find_project_root()` helper
 - Removed unused imports
 - Deleted `Collect_data.py`
-- Changed the changelog
+- Standardized the changelog
+- Moved the graph output to stay inside the main folder for portability
 
 **To Do:** Begin integrating freesimplegui and build the user interface -- !Fix global warming!
 

@@ -1,8 +1,10 @@
 """
 File Name: global_params.py
+
 Author: Jonathan W
 Date: 9/14/2026
-Version: 0.4.0
+Version: 0.6.0
+
 Scope: Shared constants, API clients, and location settings used across all weather scripts.
         - should be set up to ensure data does not become obselete when running individual scripts
         - should be location agnostic

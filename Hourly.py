@@ -3,12 +3,11 @@ File Name: Hourly.py
 
 Author: Jonathan W
 Date: 9/15/2026
-Version: 0.5.0
+Version: 0.6.0
 
-Scope:
-    Collects the hourly weather forecast for the next 7 days
-    and records temperature, apparent temperature,
-    precipitation probability, and weather conditions.
+Scope: Collects the hourly weather forecast for the next 7 days
+            and records temperature, apparent temperature,
+            precipitation probability, and weather conditions.
 """
 
 

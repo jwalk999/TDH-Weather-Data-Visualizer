@@ -3,11 +3,9 @@ File Name: Daily_Graph.py
 
 Author: Jonathan W
 Date: 9/25/2026
-Version: 0.5.0
+Version: 0.6.1
 
 Scope: Create a nested graph (line and bar) from data collected from Daily.py
-        - Calls on daily.py to get the forecast data
-        - Puts it into a graph
 """
 
 #===== IMPORTS =====
@@ -43,37 +41,35 @@ PROJECT_ROOT = _find_project_root()
 
 from Daily import get_daily_forecast
 
-# ===== GET DATA =====
+
+
+# ===== VARIABLES / DATA COLLECTION =====
+# Label the collected data and point variables to dataframes
 daily_dataframe = get_daily_forecast()
 x = daily_dataframe["Date"]
 temp_high = daily_dataframe["Temperature High"]
+temp_low = daily_dataframe["Temperature Low"]
 precip_chance = daily_dataframe["Chance of Precipitation"]
 
 
-# ===== COMBINED CHART =====
-fig, ax_temp = plt.subplots(figsize=(12, 6))
-
-# --- ghosted precipitation bars, drawn first so the line sits on top ---
-ax_precip = ax_temp.twinx()
-ax_precip.bar(
-    x, precip_chance,
-    width=0.6,
-    color="#4a90d9",
-    alpha=0.25,
-    zorder=1,
-    label="Chance of Precipitation",
+# ===== PLOTTING =====
+# Create 1 window (figure) with 2 subplots (temp/precip)
+fig, (ax_temp, ax_precip) = plt.subplots(
+    2, 1, # temp on top, precip on bottom -- rows=2 columns=1
+    figsize=(8, 6),
+    sharex=True,
+    facecolor=("#efe3f4") # cunty purple
 )
-ax_precip.set_ylim(0, 100)
-ax_precip.set_ylabel("Chance of Precipitation (%)")
-ax_precip.grid(False)  # avoid a second grid fighting with the primary axis
 
-# --- temperature line, drawn on top ---
+# Create temperature plots on the top panel
+# Make hi temp subplot
 ax_temp.plot(
     x, temp_high,
-    marker="o", linewidth=1.5, color="#d9534f",
-    zorder=2, label="Temperature High",
+    marker="o",
+    linewidth=1.5,
+    color="#d9534f", # red
+    label="Temp (Hi)",
 )
-
 for xi, yi in zip(x, temp_high):
     ax_temp.annotate(
         f"{yi:.0f}°F",
@@ -82,31 +78,61 @@ for xi, yi in zip(x, temp_high):
         xytext=(0, 8),
         ha="center",
         fontsize=8,
-        zorder=3,
     )
 
-ax_temp.set_zorder(ax_precip.get_zorder() + 1)  # ensures the line's background stays transparent
-ax_temp.patch.set_visible(False)
-
-ax_temp.set_xticks(x)
-ax_temp.xaxis.set_major_locator(mdates.AutoDateLocator())
-ax_temp.xaxis.set_major_formatter(mdates.DateFormatter("%m/%d"))
-ax_temp.set_ylim(0, 110)
-ax_temp.set(
-    xlabel="Date (Month/Day)",
-    ylabel="Temperature (°F)",
-    title="7-Day Forecast: Temperature & Chance of Precipitation",
+# Make lo temp subplot
+ax_temp.plot(
+    x, temp_low,
+    marker="o",
+    linewidth=1.5,
+    color="#4A90D9", # blue
+    label="Temp (Lo)",
 )
+for xi, yi in zip(x, temp_low):
+    ax_temp.annotate(
+        f"{yi:.0f}°F",
+        (xi, yi),
+        textcoords="offset points",
+        xytext=(0, -14),
+        ha="center",
+        fontsize=8,
+    )
+# Set plot parameters
+ax_temp.set_ylim(0, 110)
+ax_temp.set_ylabel("Temperature (°F)")
+ax_temp.set_title("7-Day Forecast")
+# Make the legend top left, outside of the plotting area
+ax_temp.legend(
+        bbox_to_anchor=(0., 1.02),
+        loc='lower left',
+        ncols=1,
+        borderaxespad=0.1
+    )
 
 
-# combined legend from both axes
-lines_temp, labels_temp = ax_temp.get_legend_handles_labels()
-lines_precip, labels_precip = ax_precip.get_legend_handles_labels()
-ax_temp.legend(lines_temp + lines_precip, labels_temp + labels_precip, loc="upper left")
+# Create precip bar chart on the bottom panel
+ax_precip.bar(
+    x, precip_chance,
+    width=0.6,
+    color="#4a90d9", # soft blue
+    label="Chance of Precipitation",
+)
+# Put value labels on the bars and format (50%)
+bar_container = ax_precip.bar(x, precip_chance)
+ax_precip.bar_label(bar_container, fmt='{:.0f}%')
+ax_precip.set_ylim(0, 100)
+ax_precip.set_ylabel("Chance of\nPrecipitation (%)")
 
+# Make a shared x axis for the dates
+ax_precip.xaxis.set_major_locator(mdates.AutoDateLocator())
+ax_precip.xaxis.set_major_formatter(mdates.DateFormatter("%m/%d"))
+ax_precip.set_xlabel("Date (Month/Day)")
+
+# Save the file, make one if it does not exist, over-write if it does
 save_path = PROJECT_ROOT / "Data" / "daily_forecast_chart.png"
 save_path.parent.mkdir(parents=True, exist_ok=True)
 fig.savefig(save_path, dpi=300, bbox_inches="tight")
 
+# Show the plots
 plt.tight_layout()
 plt.show()

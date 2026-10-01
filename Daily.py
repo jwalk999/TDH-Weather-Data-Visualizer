@@ -3,10 +3,9 @@ File Name: Daily.py
 
 Author: Jonathan W
 Date: 9/15/2026
-Version: 0.5.0
+Version: 0.6.0
 
-Scope: 
-        - Collects the daily weather forecast for the next 7 days
+Scope: Collects the daily weather forecast for the next 7 days
         - prepares the data for graphing.
 """
 
