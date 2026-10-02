@@ -44,5 +44,10 @@ Thumbs.db
 .env
 *.env
 
-# ===== Test Files =====
+# ===== Other Junk =====
 Test Files/
+markdown_syntax.md
+notes.txt
+Data/daily_forecast_chart.png
+Data/daily_forecast.csv
+Data/hourly_forecast.csv

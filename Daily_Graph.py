@@ -2,13 +2,14 @@
 File Name: Daily_Graph.py
 
 Author: Jonathan W
-Date: 9/25/2026
-Version: 0.6.1
+Date Created: 9/25/2026
+Last Update: 9/30/2026
+Version: 1.1.1
 
 Scope: Create a nested graph (line and bar) from data collected from Daily.py
 """
 
-#===== IMPORTS =====
+# ===== IMPORTS =====
 # Add the project's parent directory to Python's import search path
 # This allows the file to import modules from the Config package
 import sys
@@ -26,7 +27,9 @@ def _find_project_root(marker="Config"):
     path = Path(__file__).resolve().parent
     while not (path / marker).is_dir():
         if path.parent == path:
-            raise RuntimeError(f"Could not find project root (looking for '{marker}' folder)")
+            raise RuntimeError(
+                f"Could not find project root (looking for '{marker}' folder)"
+            )
         path = path.parent
     return path
 
@@ -41,11 +44,11 @@ PROJECT_ROOT = _find_project_root()
 
 from Daily import get_daily_forecast
 
-
-
 # ===== VARIABLES / DATA COLLECTION =====
-# Label the collected data and point variables to dataframes
+
+# Run the script and assign the collected data
 daily_dataframe = get_daily_forecast()
+# Set variables for collected data
 x = daily_dataframe["Date"]
 temp_high = daily_dataframe["Temperature High"]
 temp_low = daily_dataframe["Temperature Low"]
@@ -55,19 +58,21 @@ precip_chance = daily_dataframe["Chance of Precipitation"]
 # ===== PLOTTING =====
 # Create 1 window (figure) with 2 subplots (temp/precip)
 fig, (ax_temp, ax_precip) = plt.subplots(
-    2, 1, # temp on top, precip on bottom -- rows=2 columns=1
+    2,
+    1,  # temp on top, precip on bottom -- rows=2 columns=1
     figsize=(8, 6),
     sharex=True,
-    facecolor=("#efe3f4") # cunty purple
+    facecolor=("#efe3f4"),  # cunty purple
 )
 
 # Create temperature plots on the top panel
 # Make hi temp subplot
 ax_temp.plot(
-    x, temp_high,
+    x,
+    temp_high,
     marker="o",
     linewidth=1.5,
-    color="#d9534f", # red
+    color="#d9534f",  # red
     label="Temp (Hi)",
 )
 for xi, yi in zip(x, temp_high):
@@ -82,10 +87,11 @@ for xi, yi in zip(x, temp_high):
 
 # Make lo temp subplot
 ax_temp.plot(
-    x, temp_low,
+    x,
+    temp_low,
     marker="o",
     linewidth=1.5,
-    color="#4A90D9", # blue
+    color="#4A90D9",  # blue
     label="Temp (Lo)",
 )
 for xi, yi in zip(x, temp_low):
@@ -97,31 +103,28 @@ for xi, yi in zip(x, temp_low):
         ha="center",
         fontsize=8,
     )
-# Set plot parameters
+# Set temp plot parameters
 ax_temp.set_ylim(0, 110)
-ax_temp.set_ylabel("Temperature (°F)")
-ax_temp.set_title("7-Day Forecast")
+ax_temp.set(
+    ylabel="Temperature (°F)",
+    title="7-Day Forecast",
+)
+
 # Make the legend top left, outside of the plotting area
-ax_temp.legend(
-        bbox_to_anchor=(0., 1.02),
-        loc='lower left',
-        ncols=1,
-        borderaxespad=0.1
-    )
+ax_temp.legend(bbox_to_anchor=(0.0, 1.02), loc="lower left", ncols=1, borderaxespad=0.1)
 
 
 # Create precip bar chart on the bottom panel
-ax_precip.bar(
-    x, precip_chance,
+bar_container = ax_precip.bar(
+    x,
+    precip_chance,
     width=0.6,
-    color="#4a90d9", # soft blue
+    color="#4a90d9",  # soft blue
     label="Chance of Precipitation",
 )
 # Put value labels on the bars and format (50%)
-bar_container = ax_precip.bar(x, precip_chance)
-ax_precip.bar_label(bar_container, fmt='{:.0f}%')
-ax_precip.set_ylim(0, 100)
-ax_precip.set_ylabel("Chance of\nPrecipitation (%)")
+ax_precip.bar_label(bar_container, fmt="{:.0f}%")
+ax_precip.set(ylim=(0, 100), ylabel="Chance of\nPrecipitation(%)")
 
 # Make a shared x axis for the dates
 ax_precip.xaxis.set_major_locator(mdates.AutoDateLocator())

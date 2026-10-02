@@ -3,7 +3,7 @@ File Name: global_params.py
 
 Author: Jonathan W
 Date: 9/14/2026
-Version: 0.6.0
+Version: 1.0.0
 
 Scope: Shared constants, API clients, and location settings used across all weather scripts.
         - should be set up to ensure data does not become obselete when running individual scripts
@@ -36,11 +36,13 @@ EASTERN = ZoneInfo("US/Eastern")
 # ===== DATE FORMATTING =====
 # set the date and time formats
 DATE_FORMAT = "%m-%d-%Y"  # Month-Day-Year // 12/25/202X == Christmas
-DATETIME_FORMAT = "%Y-%m-%d %H:%M" # Month-Day-Year // 12/25/202X 11:59 (pm)
+DATETIME_FORMAT = "%Y-%m-%d %H:%M"  # Month-Day-Year // 12/25/202X 11:59 (pm)
 
 
 # ===== OPEN-METEO CLIENT =====
 _openmeteo_client = None
+
+
 def get_openmeteo_client():
     """
     Sets the parameters needed to make the API call to OpenMeteo
@@ -58,6 +60,7 @@ def get_openmeteo_client():
         retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
         _openmeteo_client = openmeteo_requests.Client(session=retry_session)
     return _openmeteo_client
+
 
 # set parameters for forecasting data collection with openmeteo
 def get_daily_params():
@@ -153,7 +156,7 @@ DESCRIPTIONS_PATH = Path(__file__).parent / "descriptions.json"
 def load_descriptions():
     """
     Open the descriptions.json file and read its contents
-    
+
     Returns: Weather descriptions to translate WMO weather codes into weather condition
             types. Encodes the data unto utf-8 for readability.
 
@@ -199,7 +202,7 @@ CONFIG_PATH = Path(__file__).parent / "config.json"
 def save_location(latitude, longitude, location_name):
     """
     Set the location and location name as defined from above and paste them into a json
-    file for easily reading where the user is so a GUI can read it. User can change the json file 
+    file for easily reading where the user is so a GUI can read it. User can change the json file
     to point to their chosen location.
     """
     data = {

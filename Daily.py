@@ -2,15 +2,15 @@
 File Name: Daily.py
 
 Author: Jonathan W
-Date: 9/15/2026
-Version: 0.6.0
+Date Created: 9/15/2026
+Last Update: 10/1/2026
+Version: 1.1.0
 
 Scope: Collects the daily weather forecast for the next 7 days
         - prepares the data for graphing.
 """
 
-
-#===== IMPORTS =====
+# ===== IMPORTS =====
 # Add the project's parent directory to Python's import search path
 # This allows the file to import modules from the Config package
 import sys
@@ -28,12 +28,16 @@ def _find_project_root(marker="Config"):
     path = Path(__file__).resolve().parent
     while not (path / marker).is_dir():
         if path.parent == path:
-            raise RuntimeError(f"Could not find project root (looking for '{marker}' folder)")
+            raise RuntimeError(
+                f"Could not find project root (looking for '{marker}' folder)"
+            )
         path = path.parent
     return path
 
 
 sys.path.append(str(_find_project_root()))
+
+import datetime
 
 import pandas as pd
 
@@ -48,6 +52,7 @@ from Config.global_params import (
 # set the project's root folder
 PROJECT_ROOT = _find_project_root()
 
+
 # Create a runnable function to collect weather data.
 def get_daily_forecast():
     """
@@ -60,10 +65,10 @@ def get_daily_forecast():
             Define what sunrise and sunset is and format the dates
             daily_dataframe: export the data into a Pandas dataframe for displaying to user
             ww_data: convert numeric WMO weather code into condition(sunny, cloudy, etc)
-    
+
     Returns: Collect all of the data [temperature(high)(low)], precip%, WMO weather code
                 then spit it out into a csv format file and automatically save it to /Data/ folder
-                for the GUI to read
+                for the GUI to read -- also writes the time of the last run for tracking
     """
     # ===== API PARAMETERS =====
     # Open-Meteo forecast API endpoint
@@ -72,7 +77,6 @@ def get_daily_forecast():
     # Load the daily forcast parameters from global_params.py
     params_daily = get_daily_params()
 
-
     # ===== COLLECT WEATHER DATA =====
     # The parameters that allow for data collection from API
     client = get_openmeteo_client()
@@ -80,7 +84,6 @@ def get_daily_forecast():
     responses_daily = client.weather_api(url, params_daily)
     # The API may return multiple responses, we will use only the first response
     response_daily = responses_daily[0]
-
 
     # ===== PROCESS WEATHER DATA =====
 
@@ -102,25 +105,21 @@ def get_daily_forecast():
     # Convert sunrise and sunset timestamps to the forecast location's
     # local timezone. Only the first day's sunrise and sunset are needed
     # for determining the day/night period.
-    sunrise = pd.to_datetime(
-        sunrise_unix,
-        unit="s",
-        utc=True
-    ).tz_convert(
+    sunrise = pd.to_datetime(sunrise_unix, unit="s", utc=True).tz_convert(
         response_daily.Timezone().decode()
     )[0]
-
 
     sunset = pd.to_datetime(
         sunset_unix,
         unit="s",
         utc=True,
-    ).tz_convert(
-        response_daily.Timezone().decode()
-    )[0]
-
+    ).tz_convert(response_daily.Timezone().decode())[0]
 
     # ===== CREATE DAILY DATASET =====
+
+    # Get and time the date that the script was last ran
+    # Used to make sure the data is not stale
+    script_last_update = f"Last Updated: {datetime.datetime.now()}"
 
     # Create a date/time range using the start time, end time, and interval
     # supplied by the Open-Meteo response.
@@ -138,7 +137,7 @@ def get_daily_forecast():
     daily_data["Temperature Low"] = daily_temperature_2m_min
     daily_data["Chance of Precipitation"] = daily_precipitation_probability_mean
 
-    # Convert the collected data into a pandas DataFrame for 
+    # Convert the collected data into a pandas DataFrame for
     # easier processing and formatting.
     daily_dataframe = pd.DataFrame(data=daily_data)
 
@@ -149,7 +148,8 @@ def get_daily_forecast():
     # The period (day/night) is determined using the sunrise and sunset times.
     daily_dataframe["Weather Description"] = [
         get_weather_description(
-            code, ww_data,
+            code,
+            ww_data,
             period=get_period(ts, sunrise, sunset),
         )
         for code, ts in zip(
@@ -165,8 +165,14 @@ def get_daily_forecast():
     output_path = PROJECT_ROOT / "Data" / "daily_forecast.csv"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     daily_dataframe.to_csv(output_path, index=False, encoding="utf-8")
-    # Collect the same DataFrame so that it can be used in a GUI
+
+    # Write the last time the data was collected at the bottom for tracking
+    with open(output_path, "a") as f:
+        f.write(script_last_update)
+
+    # Store the DataFrame into memory for graphing
     return daily_dataframe
+
 
 # Make this file runnable by itself for testing
 if __name__ == "__main__":

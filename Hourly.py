@@ -2,8 +2,9 @@
 File Name: Hourly.py
 
 Author: Jonathan W
-Date: 9/15/2026
-Version: 0.6.0
+Date Created: 9/15/2026
+Last Update: 10/1/2026
+Version: 1.1.0
 
 Scope: Collects the hourly weather forecast for the next 7 days
             and records temperature, apparent temperature,
@@ -29,12 +30,16 @@ def _find_project_root(marker="Config"):
     path = Path(__file__).resolve().parent
     while not (path / marker).is_dir():
         if path.parent == path:
-            raise RuntimeError(f"Could not find project root (looking for '{marker}' folder)")
+            raise RuntimeError(
+                f"Could not find project root (looking for '{marker}' folder)"
+            )
         path = path.parent
     return path
 
 
 sys.path.append(str(_find_project_root()))
+
+import datetime
 
 import pandas as pd
 
@@ -45,6 +50,7 @@ from Config.global_params import (
     get_weather_description,
     load_descriptions,
 )
+
 # Set the project's root folder
 PROJECT_ROOT = _find_project_root()
 
@@ -61,10 +67,10 @@ def get_hourly_forecast():
             daily_sunrise(set): Define what sunrise and sunset is and format the dates
             hourly_dataframe: export the data into a Pandas dataframe for displaying to user
             ww_data: convert numeric WMO weather code into condition(sunny, cloudy, etc)
-    
+
     Returns: Collect all of the data [temperature(high)(low)], precip%, WMO weather code
                 then spit it out into a csv format file and automatically save it to /Data/ folder
-                for the GUI to read
+                for the GUI to read -- also writes the time of the last run for tracking
     """
 
     # ===== API PARAMETERS =====
@@ -75,7 +81,6 @@ def get_hourly_forecast():
     # Load the hourly forecast parameters from global_params.py.
     params_hourly = get_hourly_params()
 
-
     # ===== COLLECT WEATHER DATA =====
     # Run data collection functions
     client = get_openmeteo_client()
@@ -83,7 +88,6 @@ def get_hourly_forecast():
     responses_hourly = client.weather_api(url, params_hourly)
     # The API may return multiple responses. This project uses the first response.
     response_hourly = responses_hourly[0]
-
 
     # ===== PROCESS HOURLY DATA =====
 
@@ -96,7 +100,6 @@ def get_hourly_forecast():
     hourly_apparent_temperature = hourly.Variables(1).ValuesAsNumpy()
     hourly_precipitation_probability = hourly.Variables(2).ValuesAsNumpy()
     hourly_weather_code = hourly.Variables(3).ValuesAsNumpy()
-
 
     # ===== PROCESS SUNRISE AND SUNSET DATA =====
 
@@ -113,20 +116,19 @@ def get_hourly_forecast():
         sunrise_unix,
         unit="s",
         utc=True,
-    ).tz_convert(
-        response_hourly.Timezone().decode()
-    )[0]
+    ).tz_convert(response_hourly.Timezone().decode())[0]
 
     sunset = pd.to_datetime(
         sunset_unix,
         unit="s",
         utc=True,
-    ).tz_convert(
-        response_hourly.Timezone().decode()
-    )[0]
-
+    ).tz_convert(response_hourly.Timezone().decode())[0]
 
     # ===== CREATE HOURLY DATASET =====
+
+    # Get and time the date that the script was last ran
+    # Used to make sure the data is not stale
+    script_last_update = f"Last Updated: {datetime.datetime.now()}"
 
     # Create a date/time range using the start time, end time,
     # and interval supplied by the Open-Meteo response.
@@ -165,6 +167,9 @@ def get_hourly_forecast():
         )
     ]
 
+    # Export the sunrise and sunset times for plotting
+    hourly_dataframe["Sunrise"] = sunrise
+    hourly_dataframe["Sunset"] = sunset
     # ===== EXPORT HOURLY FORECAST =====
 
     # Export the DataFrame as a CSV file.
@@ -173,8 +178,13 @@ def get_hourly_forecast():
     output_path.parent.mkdir(parents=True, exist_ok=True)
     hourly_dataframe.to_csv(output_path, index=False, encoding="utf-8")
 
-    # Collect the same DataFrame so that it can be used in a GUI
+    # Write the last time the data was collected at the bottom for tracking
+    with open(output_path, "a") as f:
+        f.write(script_last_update)
+
+    # Store the DataFrame into memory for graphing
     return hourly_dataframe
+
 
 # Make this file runnable by itself for testing
 if __name__ == "__main__":

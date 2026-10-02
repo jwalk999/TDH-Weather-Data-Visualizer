@@ -7,6 +7,36 @@ Version numbers follow `MAJOR.MINOR.PATCH`:
 - **MINOR** bumps when a new feature or file is added (e.g. a new graph script)
 - **PATCH** bumps for bug fixes and small internal cleanups with no new capability
 
+Script-specific version numbers follow `MAJOR.MINOR.PATCH`, scoped to that file alone:
+- **MAJOR** stays `0` until that file's scope is considered stable/complete, then becomes `1`
+- **MINOR** bumps when new functionality is added to that file
+- **PATCH** bumps for bug fixes and small internal cleanups with no new capability
+
+---
+## v0.7.0
+
+### Added
+- Built `Hourly_Graph.py`
+  - Essentially the same as `Daily_Graph.py`, but this one shows the forecast for the current date between the hours 00:00 and 23:59. Labels are marked every 2 hours and it uses colors to make it easier to view. It also marks the sunrise and sunset time.
+  - **Currently only shows to EST**
+
+### Fixed
+- `Daily_Graph.py` **1.1.1**
+  - Fixed a double call for the bar graph (ax_precip.bar). Set the container to the actual code I wanted to create the bar graph. 
+      - bar_container = ax_precip.bar(x, precip_chance)
+      - This draws a second, unneeded bar graph instead of simply assigning the required bar container to the correct graph.
+- Ran linting and formatting using [Ruff]
+
+### Changed
+- Changed the file headers to mark the version of each .py file. For in-house tracking of specific file versions. v1.0 files are generally untouched and feature-complete. (For now)
+  - `Daily_Graph.py` has been set to an arbitrary 1.1.1 due to the change in **v0.6.1**  + the fix from above
+- `Daily.py` and `Hourly.py`
+  - Added a line to write down the date and time the script was last ran to make sure the data is not stale
+  - Added the sunrise and sunset times in `Hourly.py` to the dataframe for graphing
+- `.gitignore`
+  - added files that do not need to be uploaded to repo
+- Minor comment additions
+
 ---
 ## v0.6.1
 
