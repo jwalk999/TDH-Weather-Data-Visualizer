@@ -3,8 +3,8 @@ File Name: Hourly.py
 
 Author: Jonathan W
 Date Created: 9/15/2026
-Last Update: 10/1/2026
-Version: 1.1.0
+Last Update: 10/2/2026
+Version: 1.1.1
 
 Scope: Collects the hourly weather forecast for the next 7 days
             and records temperature, apparent temperature,
@@ -16,10 +16,22 @@ Scope: Collects the hourly weather forecast for the next 7 days
 
 # Add the project's parent directory to Python's import search path.
 # This allows this file to import modules from the Config package.
+import datetime
 import sys
 from pathlib import Path
 
+import pandas as pd
 
+from Config.global_params import (
+    get_hourly_params,
+    get_openmeteo_client,
+    get_period,
+    get_weather_description,
+    load_descriptions,
+)
+
+
+# Create function to mark the root directory
 def _find_project_root(marker="Config"):
     """
     Set the folder directory for all scripts to append their search queries
@@ -35,27 +47,15 @@ def _find_project_root(marker="Config"):
             )
         path = path.parent
     return path
-
-
-sys.path.append(str(_find_project_root()))
-
-import datetime
-
-import pandas as pd
-
-from Config.global_params import (
-    get_hourly_params,
-    get_openmeteo_client,
-    get_period,
-    get_weather_description,
-    load_descriptions,
-)
-
 # Set the project's root folder
+sys.path.append(str(_find_project_root()))
 PROJECT_ROOT = _find_project_root()
 
 
-# Create a runnable function to collect weather data.
+# ============================================================================
+# ============================== CREATE FUNCTION =============================
+# ============================================================================
+
 def get_hourly_forecast():
     """
     Make an API call to Openmeteo_Requests to collect hourly forecast data from it.

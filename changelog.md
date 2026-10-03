@@ -13,6 +13,28 @@ Script-specific version numbers follow `MAJOR.MINOR.PATCH`, scoped to that file 
 - **PATCH** bumps for bug fixes and small internal cleanups with no new capability
 
 ---
+## v0.8.0
+
+### Added
+- Built `gui_test1.py`
+  - Beginning to explore how to implement a GUI into the program
+    - Full app implementation
+
+### Fixed
+- `Hourly_Graph.py` **1.0.1**
+  - Fixed a missing required ymin / ymax argument when calling ax_temp.vlines
+
+
+### Changed
+- `Hourly_Graph.py` **1.1.1**
+  - Changed all variables to hourly_ to avoid confusing daily variables
+  - Turned the main function of the program into a callable script
+- `Daily_Graph.py` 
+  - Same as above
+- Made some fun looking header commends so I can find everything
+- Changed imports on all main scripts to be easier to read
+
+---
 ## v0.7.0
 
 ### Added
