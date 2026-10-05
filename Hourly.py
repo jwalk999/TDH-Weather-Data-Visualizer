@@ -12,7 +12,9 @@ Scope: Collects the hourly weather forecast for the next 7 days
 """
 
 
-# ===== IMPORTS =====
+# ============================================================================
+# =============================== IMPORTS ====================================
+# ============================================================================
 
 # Add the project's parent directory to Python's import search path.
 # This allows this file to import modules from the Config package.

@@ -10,7 +10,10 @@ Scope: Collects the daily weather forecast for the next 7 days
         - prepares the data for graphing.
 """
 
-# ===== IMPORTS =====
+# ============================================================================
+# =============================== IMPORTS ====================================
+# ============================================================================
+
 # Add the project's parent directory to Python's import search path
 # This allows the file to import modules from the Config package
 import datetime

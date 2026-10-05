@@ -16,9 +16,8 @@ Script-specific version numbers follow `MAJOR.MINOR.PATCH`, scoped to that file 
 ## v0.8.0
 
 ### Added
-- Built `gui_test1.py`
-  - Beginning to explore how to implement a GUI into the program
-    - Full app implementation
+- Built `main.py`
+  - This is where the new main GUI file will live and what will run when launching the program.
 
 ### Fixed
 - `Hourly_Graph.py` **1.0.1**
