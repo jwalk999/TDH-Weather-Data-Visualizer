@@ -10,6 +10,7 @@ Scope: Shared constants, API clients, and location settings used across all weat
         - should be location agnostic
 """
 
+import sys
 import json
 from datetime import datetime
 from pathlib import Path
@@ -192,11 +193,6 @@ def get_weather_description(code, ww_data, period="day"):
     return entry[period]["description"]
 
 
-# ===== GLOBAL USE SETTINGS
-# use configuration json file to set location and station id info
-# set path for config file
-CONFIG_PATH = Path(__file__).parent / "config.json"
-
 
 # ===== SAVING CONFIGS =====
 def save_location(latitude, longitude, location_name):
@@ -205,13 +201,15 @@ def save_location(latitude, longitude, location_name):
     file for easily reading where the user is so a GUI can read it. User can change the json file
     to point to their chosen location.
     """
-    data = {
-        "latitude": latitude,
-        "longitude": longitude,
-        "location_name": location_name,
-    }
+    CONFIG_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(CONFIG_PATH, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=4)
+        data = {
+            "latitude": latitude,
+            "longitude": longitude,
+            "location_name": location_name,
+        }
+        with open(CONFIG_PATH, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4)
 
 
 # create config file if it doesn"t exist
@@ -224,3 +222,23 @@ def load_location():
         save_location(**DEFAULT_LOCATION)
     with open(CONFIG_PATH, "r", encoding="utf-8") as f:
         return json.load(f)
+
+import sys
+from pathlib import Path
+
+
+def _config_path() -> Path:
+    """Resolve where config.json lives, both from source and when frozen by PyInstaller.
+
+    From source, the file sits beside this module in the Config folder. When frozen, it sits
+    next to the executable so user edits persist between runs and survive rebuilds.
+
+    Returns:
+        Absolute path to config.json.
+    """
+    if getattr(sys, "frozen", False):
+        return Path(sys.executable).parent / "config.json"
+    return Path(__file__).parent / "config.json"
+
+
+CONFIG_PATH = _config_path()
