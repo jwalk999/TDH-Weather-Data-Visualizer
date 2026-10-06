@@ -3,205 +3,99 @@ File Name: Hourly_Graph.py
 
 Author: Jonathan W
 Date Created: 9/30/2026
-Last Update: 10/2/2026
-Version: 1.1.2
+Last Update: 10/6/2026
+Version: 1.2.0
 
-Scope: Create a nested graph (line and bar) from data collected from Hourly.py
+Scope: Builds today's hourly chart (temperature line over precipitation bars, sunrise/sunset marked) from
+    Hourly.py's data.
 """
 
-# ============================================================================
-# =============================== IMPORTS ====================================
-# ============================================================================
-
-# Add the project's parent directory to Python's import search path
-# This allows the file to import modules from the Config package
 import sys
 from pathlib import Path
-from zoneinfo import ZoneInfo
 
 import matplotlib.dates as mdates
-import matplotlib.pyplot as plt
 import pandas as pd
+from matplotlib.figure import Figure
 
-from Hourly import get_hourly_forecast
+# Make the Config package importable when this file is run on its own. Skipped in the .exe, where it's bundled.
+if not getattr(sys, "frozen", False):
+    _root = next((p for p in Path(__file__).resolve().parents if (p / "Config").is_dir()), None)
+    if _root is None:
+        raise RuntimeError("Could not find the project root (no 'Config' folder above this file)")
+    sys.path.append(str(_root))
+
+from Config.global_params import DATA_DIR  # noqa: E402 - must come after the sys.path setup above
+from Hourly import get_hourly_forecast  # noqa: E402
+
+BACKGROUND_COLOR = "#efe3f4"  # Light purple
+TEMP_COLOR = "#d9534f"  # Pinkish red
+PRECIP_COLOR = "#4a90d9"  # Soft blue
+SUNRISE_COLOR = "#f0ad4e"  # Orange
+SUNSET_COLOR = "#5bc0de"  # Light blue
 
 
-# Create function to mark the root directory
-def _find_project_root(marker="Config"):
+def make_hourly_graphs(hourly_df: pd.DataFrame | None = None) -> Figure:
+    """Builds today's hourly chart and saves it to Data/hourly_forecast_chart.png.
+
+    Uses matplotlib's Figure directly rather than pyplot, so it embeds cleanly in Qt (FigureCanvasQTAgg) and
+    regenerating it doesn't pile up hidden pyplot figures in memory.
+
+    Args:
+        hourly_df: Output of get_hourly_forecast(). Fetched fresh if not given; pass it in to avoid a second API call.
+
+    Returns:
+        The finished Figure.
     """
-    Set the folder directory for all scripts to append their search queries
+    if hourly_df is None:
+        hourly_df = get_hourly_forecast()
 
-    Returns: the full folder path of the program
-    Errors: Raise a runtime error if it cannot find the Config file
-    """
+    times = hourly_df["Date"]
+    temps = hourly_df["Temperature"]
+    sunrise = hourly_df["Sunrise"].iloc[0]
+    sunset = hourly_df["Sunset"].iloc[0]
+    tz = times.dt.tz  # Axis labels default to UTC unless told otherwise
 
-    path = Path(__file__).resolve().parent
-    while not (path / marker).is_dir():
-        if path.parent == path:
-            raise RuntimeError(
-                f"Could not find project root (looking for '{marker}' folder)"
-            )
-        path = path.parent
-    return path
-# Set the project's root folder
-sys.path.append(str(_find_project_root()))
-PROJECT_ROOT = _find_project_root()
+    fig = Figure(figsize=(12, 6), facecolor=BACKGROUND_COLOR)
+    ax_temp, ax_precip = fig.subplots(2, 1, sharex=True)
 
+    # Full-height sunrise/sunset lines on both charts. Only the temperature chart shows a legend.
+    for ax in (ax_temp, ax_precip):
+        ax.axvline(sunrise, color=SUNRISE_COLOR, linestyle="--", linewidth=1.5, label="Sunrise")
+        ax.axvline(sunset, color=SUNSET_COLOR, linestyle="--", linewidth=1.5, label="Sunset")
 
+    # ===== TEMPERATURE =====
+    ax_temp.plot(times, temps, marker="o", linewidth=1.5, color=TEMP_COLOR, label="Actual Temp")
+    for x, temp in zip(times, temps):
+        ax_temp.annotate(f"{temp:.0f}°F", (x, temp), textcoords="offset points", xytext=(0, 8), ha="center",
+                         fontsize=8)
 
-# ============================================================================
-# =============================== VARIABLES ==================================
-# ============================ DATA COLLECTION ===============================
-# ============================================================================
+    # Scale to the data, with room for the labels, so very hot or below-zero locations aren't cut off
+    ax_temp.set_ylim(temps.min() - 10, temps.max() + 10)
+    ax_temp.set(ylabel="Temperature (°F)", title=f"Hourly Forecast for {times.iloc[0]:%d-%b}")
+    ax_temp.legend(bbox_to_anchor=(0.0, 1.02), loc="lower left", ncols=3, borderaxespad=0.1)
 
-# Run the script and assign the collected data
-hourly_dataframe = get_hourly_forecast()
+    # ===== PRECIPITATION =====
+    # Bar width on a date axis is in days, so 0.6 of an hour is 0.6 / 24
+    bars = ax_precip.bar(times, hourly_df["Chance of Precipitation"], width=0.6 / 24, color=PRECIP_COLOR)
+    ax_precip.bar_label(bars, fmt="{:.0f}%")
+    ax_precip.set(ylim=(0, 110), ylabel="Chance of\nPrecipitation (%)")  # 110 leaves room for the bar labels
+    ax_precip.set_yticks(range(0, 101, 20))
 
-# Label the collected data and point variables to dataframes
-x_hourly = hourly_dataframe["Date"]
-hourly_temp_real = hourly_dataframe["Temperature"]
-hourly_precip_chance = hourly_dataframe["Chance of Precipitation"]
-hourly_weather_description = hourly_dataframe["Weather Description"]
-hourly_sunrise_time = hourly_dataframe["Sunrise"]
-hourly_sunset_time = hourly_dataframe["Sunset"]
+    ax_precip.xaxis.set_major_locator(mdates.HourLocator(interval=2, tz=tz))
+    ax_precip.xaxis.set_major_formatter(mdates.DateFormatter("%H:%M", tz=tz))
 
-
-# ============================================================================
-# ============================ PLOTTING ======================================
-# ============================================================================
-
-# Define the graphing section as a callable function
-def make_hourly_graphs():
-
-    """
-    Use data collected from Hourly.py to create a line graph and bar chart
-
-    Params: x_hourly: the x axis, timestamps
-            hourly_temp_real: The real air temperature recorded
-            hourly_precip_chance: % Chance of precipitation for each hour
-            hourly_weather_description: e.g sunny, cloudy, clear, etc
-            hourly_sunrise_time: The timestamp recorded for sunrise
-            hourly_sunset_time: The timestamp recorded for sunset
-
-    Returns: Create the graph then save it into memory for the GUI to use
-    """
-
-    # Create 1 window (figure) with 2 subplots (temp/precip)
-    fig, (ax_temp, ax_precip) = plt.subplots(
-        2,
-        1,
-        figsize=(12, 6),
-        sharex=True,  # graphs share the x axis
-        facecolor=("#efe3f4"),  # cunty purple-white
-    )
-
-# =============================================================================
-# ======================= CREATE TEMPERATURE CHART ============================
-# =============================================================================
-    # Make real air temperature subplot
-    ax_temp.plot(
-        x_hourly,
-        hourly_temp_real,
-        marker="o",
-        linewidth=1.5,
-        color=("#d9534f"),  # pinkish red
-        label="Actual Temp",
-    )
-    for xi, yi in zip(x_hourly, hourly_temp_real):
-        ax_temp.annotate(
-            f"{yi:.0f}°F",
-            (xi, yi),
-            textcoords="offset points",
-            xytext=(0, 8),
-            ha="center",
-            fontsize=8,
-        )
-
-    # Create 2 vertical lines and label them for sunrise and sunset
-    ax_temp.vlines(
-        hourly_sunrise_time.iloc[0],
-        0, # y min == all the way to the bottom
-        110, # y max == all the way to the top
-        color="#f0ad4e", # sunrise orange
-        linestyle="dashed",
-        lw=1.5,
-    )
-    ax_temp.vlines(
-        hourly_sunset_time.iloc[0],
-        0,
-        110,
-        color="#5bc0de", # sunset blue
-        linestyle="dashed",
-        lw=1.5,
-    )
-    # Set temp plot paremeters
-    ax_temp.set_ylim(0, 110)
-    ax_temp.set(
-        ylabel="Temperature (°F)",
-        title=f"Hourly Forecast for {x_hourly[1]:%d-%b}",
-    )
-
-    # Make the legend top left, outside of the plotting area
-    ax_temp.legend(bbox_to_anchor=(0.0, 1.02), loc="lower left", ncols=1, borderaxespad=0.1)
-
-
-# =============================================================================
-# ======================= CREATE PRECIPITATION CHART ==========================
-# =============================================================================
-
-    bar_container = ax_precip.bar(
-        x_hourly,
-        hourly_precip_chance,
-        width=0.6,
-        color="#4a90d9",  # soft blue
-        label="Chance of Precipitation",
-    )
-    # Put value labels on the bars and format (50%)
-    ax_precip.bar_label(bar_container, fmt="{:.0f}%")
-    ax_precip.set(ylim=(0, 100), ylabel=("Chance of\nPrecipitation (%)"))
-    # Copy the vertical lines from above
-    ax_precip.vlines(
-        hourly_sunrise_time.iloc[0],
-        0,
-        110,
-        color="#f0ad4e", # sunrise orange
-        linestyle="dashed",
-        lw=1.5,
-        label="Sunrise",
-    )
-    ax_precip.vlines(
-        hourly_sunset_time.iloc[0],
-        0,
-        110,
-        color="#5bc0de", # sunset blue
-        linestyle="dashed",
-        lw=1.5,
-        label="Sunset",
-    )
-
-    # Make shared x axis for the times
-    # X axis labels as hours across the day
-    ax_precip.xaxis.set_major_locator(mdates.HourLocator(interval=2))
-    # Make sure the date format is in the correct timezone
-    ax_precip.xaxis.set_major_formatter(
-        mdates.DateFormatter("%H:%M", tz=ZoneInfo("America/New_York"))
-    )
-    # Add a little blank space for a cleaner graph
+    # First to last hour plus padding. Uses the real last row, since DST days have 23 or 25 hours.
     padding = pd.Timedelta(minutes=30)
-    ax_precip.set_xlim(x_hourly[0] - padding, x_hourly[23] + padding)
+    ax_precip.set_xlim(times.iloc[0] - padding, times.iloc[-1] + padding)
 
-
-    # Save the created chart as a png
-    save_path = PROJECT_ROOT / "Data" / "hourly_forecast_chart.png"
+    # Lay out before saving so the PNG and the GUI get the same spacing
+    fig.tight_layout()
+    save_path = DATA_DIR / "hourly_forecast_chart.png"
     save_path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(save_path, dpi=300, bbox_inches="tight")
-
-    plt.tight_layout()
 
     return fig
 
 
-# Make this file runnable by itself for testing
 if __name__ == "__main__":
     make_hourly_graphs()
-

@@ -2,16 +2,16 @@
 File Name: global_params.py
 
 Author: Jonathan W
-Date: 9/14/2026
-Version: 1.0.0
+Date Created: 9/14/2026
+Last Update: 10/6/2026
+Version: 1.2.0
 
-Scope: Shared constants, API clients, and location settings used across all weather scripts.
-        - should be set up to ensure data does not become obselete when running individual scripts
-        - should be location agnostic
+Scope: Shared paths, location settings and Open-Meteo helpers for every weather script.
+    Anything that can go stale (dates, location) is read through a function, never stored at import time.
 """
 
-import sys
 import json
+import sys
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -20,86 +20,108 @@ import openmeteo_requests
 import requests_cache
 from retry_requests import retry
 
+# ===== PATHS =====
+# In the .exe, user files live next to the executable. PyInstaller's unpack folder is deleted on exit, so anything
+# written there (config, CSVs, charts) would vanish. From source, config.json is in Config/ and Data/ is in the root.
+if getattr(sys, "frozen", False):
+    CONFIG_PATH = Path(sys.executable).parent / "config.json"
+    DATA_DIR = Path(sys.executable).parent / "Data"
+else:
+    CONFIG_PATH = Path(__file__).parent / "config.json"
+    DATA_DIR = Path(__file__).parent.parent / "Data"
+
+# Read-only, so it can stay bundled. Add it in auto-py-to-exe as: Config/descriptions.json -> Config
+DESCRIPTIONS_PATH = Path(__file__).parent / "descriptions.json"
+
+
 # ===== LOCATION =====
-# set default location as a baseline
+# Used when config.json is missing or corrupt, and to fill keys an older config.json lacks
 DEFAULT_LOCATION = {
+    "location_name": "Hickory, NC",
     "latitude": 35.7411,
     "longitude": -81.3895,
-    "location_name": "Hickory, NC",
+    "elevation": None,  # Metres. None lets Meteostat estimate it; geocoding results fill it in.
+    "timezone": "America/New_York",
 }
 
 
-# ===== TIME FRAMES=====
-# set Eastern Standard Time - must match DEFAULT_LOCATION's coordinates
-EASTERN = ZoneInfo("US/Eastern")
+def save_location(location: dict) -> None:
+    """Saves a location to config.json via a temp file, so a crash mid-write can't corrupt it.
+
+    Args:
+        location: Dict with location_name, latitude, longitude, elevation and timezone keys.
+    """
+    CONFIG_PATH.parent.mkdir(parents=True, exist_ok=True)
+    tmp_path = CONFIG_PATH.with_suffix(".tmp")
+    with tmp_path.open("w", encoding="utf-8") as f:
+        json.dump(location, f, indent=4)
+    tmp_path.replace(CONFIG_PATH)
+
+
+def load_location() -> dict:
+    """Loads the saved location, recreating config.json from the default if it's missing or corrupt.
+
+    Returns:
+        Location dict. Keys missing from the file are filled from DEFAULT_LOCATION.
+    """
+    try:
+        with CONFIG_PATH.open(encoding="utf-8") as f:
+            saved = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        save_location(DEFAULT_LOCATION)
+        return DEFAULT_LOCATION.copy()
+    return {**DEFAULT_LOCATION, **saved}
+
+
+def get_timezone() -> ZoneInfo:
+    """Returns the saved location's timezone."""
+    return ZoneInfo(load_location()["timezone"])
 
 
 # ===== DATE FORMATTING =====
-# set the date and time formats
-DATE_FORMAT = "%m-%d-%Y"  # Month-Day-Year // 12/25/202X == Christmas
-DATETIME_FORMAT = "%Y-%m-%d %H:%M"  # Month-Day-Year // 12/25/202X 11:59 (pm)
+DATE_FORMAT = "%m-%d-%Y"  # 12-25-2026
+DATETIME_FORMAT = "%Y-%m-%d %H:%M"  # 2026-12-25 23:59
 
 
-# ===== OPEN-METEO CLIENT =====
+# ===== OPEN-METEO =====
+FORECAST_URL = "https://api.open-meteo.com/v1/forecast"
 _openmeteo_client = None
 
 
-def get_openmeteo_client():
-    """
-    Sets the parameters needed to make the API call to OpenMeteo
+def get_openmeteo_client() -> openmeteo_requests.Client:
+    """Returns the shared Open-Meteo client, creating it on first use.
 
-    Params: _openmeteo_client = Object that tells if there is data collected
-            cache_session: creates a cache for the api call
-            retry_session: retry the API call 5 times in case of failure
-            openmeteo_requests: the API call, copies data to cache
-
-    Returns: The weather data as collected from the API call
+    Responses are cached for an hour in Data/ and failed requests are retried up to 5 times. The cache path is
+    absolute so it doesn't depend on which folder the script or .exe was launched from.
     """
     global _openmeteo_client
     if _openmeteo_client is None:
-        cache_session = requests_cache.CachedSession(".cache", expire_after=3600)
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
+        cache_session = requests_cache.CachedSession(str(DATA_DIR / ".cache"), expire_after=3600)
         retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
         _openmeteo_client = openmeteo_requests.Client(session=retry_session)
     return _openmeteo_client
 
 
-# set parameters for forecasting data collection with openmeteo
-def get_daily_params():
-    """
-    Set parameters for the weather collection function
-    Params: longitude, latitude - as set by object 'location'
-            daily: *weather_output_type* <- what weather data do you want?
-                    temperature_2m - temperature with 2 meter resolution
-                    temperature_2m_max - the highest temperature recorded
-                    temperature_2m_min - lowest temperature recorded
-                    weather_code - WMO weather code (translates to conditions)
-                    precipitation_probability_mean - average precip % reported
-                    sunrise - checks to see if a specific time is after sunrise
-                    sunset - checks to see if a specific time is after sunset
-            models: best_match (picks the weather model that has the most informaiton
-                                for a given location)
-            timezone: pick your timezone
-            forecast_days: the amount of days the API will collect data for
-            wind_speed_unit: miles per hour / kilometers per hour
-            temperature_unit: fahrenheit / celcius
-            precipitation_unit: inch / centimeter
+def get_daily_params() -> dict:
+    """Builds request params for the 7-day daily forecast at the saved location.
 
-    Returns: Only sets the specific parameters needed for openmeteo_requests responses
+    The "daily" list order sets the Variables(n) indexes in Daily.py. Change one, change the other.
     """
     location = load_location()
     return {
         "latitude": location["latitude"],
         "longitude": location["longitude"],
         "daily": [
-            "temperature_2m_max",
-            "temperature_2m_min",
-            "weather_code",
-            "precipitation_probability_mean",
-            "sunrise",
-            "sunset",
+            "temperature_2m_max",  # 0
+            "temperature_2m_min",  # 1
+            "weather_code",  # 2
+            "precipitation_probability_mean",  # 3
+            "sunrise",  # 4
+            "sunset",  # 5
         ],
         "models": "best_match",
-        "timezone": "America/New_York",
+        "timezone": location["timezone"],
         "forecast_days": 7,
         "wind_speed_unit": "mph",
         "temperature_unit": "fahrenheit",
@@ -107,138 +129,62 @@ def get_daily_params():
     }
 
 
-def get_hourly_params():
-    """
-    Set parameters for the weather collection function
-    Params: longitude, latitude - as set by object 'location'
-            daily: *weather_output_type* <- what weather data do you want?
-                temperature_2m - temperature with 2 meter resolution
-                apparent_temperature - "feels like" temp
-                weather_code - WMO weather code (translates to conditions)
-                precipitation_probability_mean - average precip % reported
-            models: best_match (picks the weather model that has the most informaiton
-                                for a given location)
-            timezone: pick your timezone
-            forecast_days: the amount of days the API will collect data for
-            wind_speed_unit: miles per hour / kilometers per hour
-            temperature_unit: fahrenheit / celcius
-            start_date AND end_date: set the time frame needed from the API
+def get_hourly_params() -> dict:
+    """Builds request params for today's hourly forecast at the saved location.
 
-    Returns: Only sets the specific parameters needed for openmeteo_requests responses
+    "Today" is taken in the location's timezone, not the computer's. The "hourly" and "daily" list orders set the
+    Variables(n) indexes in Hourly.py.
     """
     location = load_location()
-    today = datetime.now(tz=EASTERN)
+    today = datetime.now(tz=ZoneInfo(location["timezone"])).strftime("%Y-%m-%d")
     return {
         "latitude": location["latitude"],
         "longitude": location["longitude"],
         "hourly": [
-            "temperature_2m",
-            "apparent_temperature",
-            "precipitation_probability",
-            "weather_code",
+            "temperature_2m",  # 0
+            "apparent_temperature",  # 1
+            "precipitation_probability",  # 2
+            "weather_code",  # 3
         ],
-        "daily": ["sunrise", "sunset"],
+        "daily": ["sunrise", "sunset"],  # 0, 1
         "models": "best_match",
-        "timezone": "America/New_York",
+        "timezone": location["timezone"],
         "wind_speed_unit": "mph",
         "temperature_unit": "fahrenheit",
-        "start_date": today.strftime("%Y-%m-%d"),
-        "end_date": today.strftime("%Y-%m-%d"),
+        "start_date": today,
+        "end_date": today,
     }
 
 
 # ===== WEATHER CODE DESCRIPTIONS =====
-
-# tell python where to find the descriptions for weather codes
-DESCRIPTIONS_PATH = Path(__file__).parent / "descriptions.json"
-
-
-# open and read weather code descriptions
-def load_descriptions():
-    """
-    Open the descriptions.json file and read its contents
-
-    Returns: Weather descriptions to translate WMO weather codes into weather condition
-            types. Encodes the data unto utf-8 for readability.
-
-    """
-    with open(DESCRIPTIONS_PATH, "r", encoding="utf-8") as f:
+def load_descriptions() -> dict:
+    """Loads WMO weather code descriptions, keyed by code as a string, each with "day" and "night" entries."""
+    with DESCRIPTIONS_PATH.open(encoding="utf-8") as f:
         return json.load(f)
 
 
-# set parameters for what counts as day and night
-# day = after sunrise and before sunset
-# all other values = night
-# "timestamp" is the value we are checking
-def get_period(timestamp, sunrise, sunset):
-    """
-    Define when day and night is according to sunrise and sunset time stamps
+def get_period(timestamp: datetime, sunrise: datetime, sunset: datetime) -> str:
+    """Returns "day" if the timestamp is between sunrise and sunset (inclusive), otherwise "night".
 
-    Returns: if %TIME% is before sunset and after sunrise = day
-             if %TIME% is outside of this time range = night
+    All three must be timezone-aware, or the comparison raises a TypeError.
     """
     if sunrise <= timestamp <= sunset:
         return "day"
     return "night"
 
 
-def get_weather_description(code, ww_data, period="day"):
-    """
-    Use the get_period functions return (day/night) to define which weather code
-        description is returned: day = sunny // night = clear
+def get_weather_description(code: float, ww_data: dict, period: str = "day") -> str:
+    """Translates a WMO weather code into a description, e.g. 0 -> "Sunny" (day) or "Clear" (night).
+
+    Args:
+        code: WMO code. Open-Meteo returns floats, so it's converted to int for the lookup.
+        ww_data: Descriptions from load_descriptions().
+        period: "day" or "night".
+
+    Returns:
+        The description, or "Unknown" if the code isn't in descriptions.json.
     """
     entry = ww_data.get(str(int(code)))
     if entry is None:
         return "Unknown"
     return entry[period]["description"]
-
-
-
-# ===== SAVING CONFIGS =====
-def save_location(latitude, longitude, location_name):
-    """
-    Set the location and location name as defined from above and paste them into a json
-    file for easily reading where the user is so a GUI can read it. User can change the json file
-    to point to their chosen location.
-    """
-    CONFIG_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with open(CONFIG_PATH, "w", encoding="utf-8") as f:
-        data = {
-            "latitude": latitude,
-            "longitude": longitude,
-            "location_name": location_name,
-        }
-        with open(CONFIG_PATH, "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=4)
-
-
-# create config file if it doesn"t exist
-def load_location():
-    """
-    Set the save location of the config.json file if it does not exist
-
-    """
-    if not CONFIG_PATH.exists():
-        save_location(**DEFAULT_LOCATION)
-    with open(CONFIG_PATH, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-import sys
-from pathlib import Path
-
-
-def _config_path() -> Path:
-    """Resolve where config.json lives, both from source and when frozen by PyInstaller.
-
-    From source, the file sits beside this module in the Config folder. When frozen, it sits
-    next to the executable so user edits persist between runs and survive rebuilds.
-
-    Returns:
-        Absolute path to config.json.
-    """
-    if getattr(sys, "frozen", False):
-        return Path(sys.executable).parent / "config.json"
-    return Path(__file__).parent / "config.json"
-
-
-CONFIG_PATH = _config_path()
