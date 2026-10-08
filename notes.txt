@@ -37,3 +37,9 @@ Make a solutions area: a mix of good and !FUN! advice
 
 ICON!!!!!!
 asol_studio at www.flaticon.com
+
+
+> Open UI designer
+pyside6-designer
+> Create .py from .ui
+pyside6-uic main_window.ui -o ui_main_window.py

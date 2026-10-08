@@ -83,4 +83,5 @@ def get_daily_forecast() -> pd.DataFrame:
 
 
 if __name__ == "__main__":
-    print(get_daily_forecast())
+    daily_df = get_daily_forecast()
+    #print(get_daily_forecast())

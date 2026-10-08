@@ -90,4 +90,5 @@ def get_hourly_forecast() -> pd.DataFrame:
 
 
 if __name__ == "__main__":
-    print(get_hourly_forecast())
+    hourly_df = get_hourly_forecast()
+    #print(get_hourly_forecast())

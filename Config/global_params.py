@@ -188,3 +188,20 @@ def get_weather_description(code: float, ww_data: dict, period: str = "day") -> 
     if entry is None:
         return "Unknown"
     return entry[period]["description"]
+
+
+
+# ===== CONVERSIONS =====
+def f_to_c(temp_f):
+    """
+    Convert °F into °C.
+
+    Works on single numbers and on pandas Series alike.
+
+    Args:
+        temp_f: Temperature in °F, a float or a Series of floats.
+
+    Returns:
+        The temperature in °C, the same type as the input.
+    """
+    return (temp_f - 32) * 5 / 9
