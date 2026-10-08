@@ -24,8 +24,11 @@ if not getattr(sys, "frozen", False):
         raise RuntimeError("Could not find the project root (no 'Config' folder above this file)")
     sys.path.append(str(_root))
 
-from Config.global_params import DATA_DIR, f_to_c  # noqa: E402 - must come after the sys.path setup above
-from Hourly import get_hourly_forecast  # noqa: E402
+from Config.global_params import (  # noqa: E402, RUF100
+    DATA_DIR,
+    f_to_c,
+)
+from Hourly import get_hourly_forecast  # noqa: E402, RUF100
 
 BACKGROUND_COLOR = "#efe3f4"  # Light purple
 TEMP_COLOR = "#d9534f"  # Pinkish red
