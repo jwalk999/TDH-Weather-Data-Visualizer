@@ -43,3 +43,6 @@ asol_studio at www.flaticon.com
 pyside6-designer
 > Create .py from .ui
 pyside6-uic main_window.ui -o ui_main_window.py
+
+> auto-py-to-exe
+pyinstaller --noconfirm --onedir --console --name "TooDamnHot" --clean --add-data "C:\Users\rrebe\Documents\Python Projects\Too Damn Hot!\Config\descriptions.json;." --add-data "C:\Users\rrebe\Documents\Python Projects\Too Damn Hot!\hot-temperature.ico;." --add-data "C:\Users\rrebe\Documents\Python Projects\Too Damn Hot!\README.md;." --collect-data "tzdata"  "C:\Users\rrebe\Documents\Python Projects\Too Damn Hot!\main.py"
