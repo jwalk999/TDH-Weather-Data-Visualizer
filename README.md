@@ -1,5 +1,5 @@
 # Too Damn Hot! 🌡️
-
+Click [Here](https://github.com/jwalk999/TDH-Weather-Data-Visualizer/releases/download/v0.9.0/TooDamnHot.7z) to download the latest version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
               \     :     /
