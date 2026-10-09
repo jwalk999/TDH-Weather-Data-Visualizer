@@ -36,29 +36,41 @@ See [`changelog.md`](./changelog.md) for full version history.
 
 - 7-day daily and single-day hourly forecasts via [Open-Meteo](https://open-meteo.com/)
 - Weather codes translated into plain-language descriptions
-- Forecast data exported to CSV for easy reading or GUI use
-- Combined temperature + precipitation-chance graph, auto-saved as a PNG
+- Forecast data exported to CSV for easy reading and GUI use
+- Combined temperature + precipitation-chance graph, can be saved as a PNG
+- Only allows for 7-day forecasting due to Open-Meteo's API limitations
 
 ---
 
-## Project Structure
+## How To:
 
-```
-Too Damn Hot!/
-├── Config/
-│   ├── global_params.py     # shared constants, location config, API params
-│   ├── config.json          # current location (edit here, or via GUI later)
-│   └── descriptions.json    # WMO weather code → readable description
-├── Data/                    # generated output (CSV + chart PNGs)
-├── Daily.py                 # collects the daily forecast
-├── Hourly.py                # collects the hourly forecast
-├── Daily_Graph.py           # graphs the daily forecast
-└── requirements.txt
-```
+1. Run TooDamnHot.exe
+   - It will take a minute to load
+   - A Command Line window will open, do not be alarmed: it is so python can be ran
+2. Enjoy!
 
----
+To Change Views:
+1. Click on View
+2. Pick the option you want
+   - Fahrenheit  -- Temperatures in °F, auto checked ON
+   - Celcius --  Temperatures in °C
+   - Show Forecast -- show or hide the forecast section, auto checked ON
+   - Show Graph -- show or hid the graph section, auto checked ON
+   - Daily Graph -- show the 7 day forecast graph, auto checked ON
+            - Temperature - the red line is the **High Temp**, the blue line is the **Low Temp**
+            - Chance of Precipitation  - bar graph showing % chance of precipitation
+   - Hourly Graph -- show the current day's hourly graph, 00:00am to 11:59pm
+            - Temperature - red line showing the actual air temperature for each specific hour
+            - Precipitation - % chance of precipitation for each specific hour
+            - Orange Dotted Line - shows sunrise time
+            - Blue Dotted Line - shows sunset time
 
-## Usage: Forecasting
+Refresh the app by clicking `View / Refresh` or press *F5*
+Save the graphs to your PC by clicking `View / Save Graphs` or press *Ctrl + S*
+Exit by clicking the red X, `View / Quit`, or press *Ctrl + Q*
+
+
+## Usage // *Deprecated*
 
 1. Open `Too Damn Hot! / Config / global_params.py`
 2. Find `DEFAULT_LOCATION` near the top
@@ -80,12 +92,24 @@ Too Damn Hot!/
 
 ---
 
-## Disclosure on AI
+## Responsible Disclosures
 
 Everything written and designed here comes from my own fingers. This project
 is a test bed for me to learn Python and how everything works. I am using
 Claude AI to teach me the ropes. Any code generated is checked by myself for
 applicability and is only integrated into the code if I think it would work,
 with personal refinements as needed. The main files of this program are
-untouched by AI, and none of it is shared that I do not want big-tech to
-have. If it looks like AI-generated code, it's because I'm still a beginner. :)
+untouched by AI. 
+
+This app does not collect any data on your system, it may generate a `Cache` folder, this is only used by the python 
+environment used within the app. Nothing is collected or saved and you can uninstall the app by just deleting the 
+`TooDamnHot` folder. API calls made to Open-Meteo are only used to retrieve data from their servers. Nothing is sent
+to them.
+
+
+---
+
+## License
+This project is built under the GNU GENERAL PUBLIC LICENSE, but all that mumbo jumbo basically means you can use 
+the code and project in any way you want. I just ask that any changes be made on a separate Git repository and all forks 
+link back to the original Main repo. Also, please keep all versions of this software free for public use.

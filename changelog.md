@@ -13,6 +13,42 @@ Script-specific version numbers follow `MAJOR.MINOR.PATCH`, scoped to that file 
 - **PATCH** bumps for bug fixes and small internal cleanups with no new capability
 
 ---
+## v0.9.0
+
+### Added
+- `main.py`
+  - A list of functions that acts as the logic behind the User Interface code. 
+    - `load_data()` -- the main function, runs `Daily.py` and `Hourly.py`, automatically and organizes all of the collected data into variables for the rest to use
+    - `class MainWindow(QMainWindow):` -- builds the window you see when you run the program
+    - The setup section adds actions to the buttons and populates the data into 7 individual frames. It also creates the matplotlib graph and uses the settings from `Daily_Graph.py` and `Hourly_Graph.py` to fill in data.
+    - The menu bar is also populated:
+        - File
+            - Refresh
+                - Refresh the data to most current
+            - Save Graphs
+                - Opens a file save box for the graphs
+            - Check Connection
+                - Pings the Open-Meteo API website to check for connectivity
+            - Quit
+                - Closes the program
+        - View
+            - Fahrenheit / Celcius -- pick between °F and °C
+            - Show Forecast / Show Graph -- show or hide the forcast or graph sections
+            - **Daily Graph / Hourly Graph** -- Pick between the graphs for Daily or Hourly weather forecast
+            - ~~Localization~~ -- Coming soon.
+            - ~~Themes~~  --  Coming soon.
+        - Settings 
+            - ~~Set Location~~ -- Not yet implemented, opens a text box for now. 
+        - Help
+            - About -- Shows the about window
+            - Github...  --  opens the Github url
+            - **Readme...**  --  Opens the Readme for instructions
+- The layout is very simple and rudimentary, I hope to add themes and some kind of localization for international users. 
+
+### Changed
+- All .py files have been structured for use in the UI, Ruff used to ensure best practices
+
+---
 ## v0.8.0
 
 ### Added
