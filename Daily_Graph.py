@@ -3,10 +3,10 @@ File Name: Daily_Graph.py
 
 Author: Jonathan W
 Date Created: 9/25/2026
-Last Update: 10/7/2026
-Version: 1.3.0
+Last Update: 10/15/2026
+Version: 1.5.0
 
-Scope: Builds the 7-day chart (temperature lines over precipitation bars) from Daily.py's data.
+Scope: Builds the 7-day chart (temperature lines over precipitation bars) from Forecasts.py's data.
 """
 
 import sys
@@ -24,12 +24,8 @@ if not getattr(sys, "frozen", False):
     sys.path.append(str(_root))
 
 from Config.global_params import DATA_DIR, f_to_c  # noqa: E402 - must come after the sys.path setup above
-from Daily import get_daily_forecast  # noqa: E402
-
-BACKGROUND_COLOR = "#efe3f4"  # Light purple
-HIGH_COLOR = "#d9534f"  # Red
-LOW_COLOR = "#4a90d9"  # Blue
-PRECIP_COLOR = "#4a90d9"  # Soft blue
+from Forecasts import get_forecast  # noqa: E402
+from theme import COOL, HOT, PRECIP, WINDOW  # noqa: E402 - importing theme also applies the dark chart style
 
 
 def make_daily_graphs(
@@ -44,7 +40,7 @@ def make_daily_graphs(
     regenerating it doesn't pile up hidden pyplot figures in memory.
 
     Args:
-        daily_df: Output of get_daily_forecast(). Fetched fresh if not given; pass it in to avoid a second API call.
+        daily_df: Daily data from get_forecast(). Fetched fresh if not given; pass it in to avoid a second API call.
         fig: Figure to draw into, such as the one embedded in the GUI. It is cleared first. A new Figure is
             created if not given.
         celsius: Show temperatures in °C instead of °F. The DataFrame itself is left in °F.
@@ -54,13 +50,13 @@ def make_daily_graphs(
         The finished Figure.
     """
     if daily_df is None:
-        daily_df = get_daily_forecast()
+        daily_df, _ = get_forecast()
 
     if fig is None:
-        fig = Figure(figsize=(8, 6))
+        fig = Figure(figsize=(10, 7))
     else:
         fig.clear()
-    fig.set_facecolor(BACKGROUND_COLOR)
+    fig.set_facecolor(WINDOW)
     fig.set_layout_engine("constrained")  # Recomputed on every draw, so the GUI chart adapts when resized
 
     dates = daily_df["Date"]
@@ -75,8 +71,8 @@ def make_daily_graphs(
     ax_temp, ax_precip = fig.subplots(2, 1, sharex=True)
 
     # ===== TEMPERATURE =====
-    ax_temp.plot(dates, highs, marker="o", linewidth=1.5, color=HIGH_COLOR, label="Temp (Hi)")
-    ax_temp.plot(dates, lows, marker="o", linewidth=1.5, color=LOW_COLOR, label="Temp (Lo)")
+    ax_temp.plot(dates, highs, marker="o", linewidth=2, color=HOT, label="High")
+    ax_temp.plot(dates, lows, marker="o", linewidth=2, color=COOL, label="Low")
     for x, high, low in zip(dates, highs, lows):
         ax_temp.annotate(f"{high:.0f}{unit}", (x, high), textcoords="offset points", xytext=(0, 8), ha="center",
                          fontsize=8)
@@ -85,12 +81,14 @@ def make_daily_graphs(
 
     # Scale to the data, with room for the labels, so very hot or below-zero locations aren't cut off
     ax_temp.set_ylim(lows.min() - pad, highs.max() + pad)
-    ax_temp.set(ylabel=f"Temperature ({unit})", title="7-Day Forecast")
-    ax_temp.legend(bbox_to_anchor=(0.0, 1.02), loc="lower left", ncols=2, borderaxespad=0.1)
+    ax_temp.set_ylabel(f"Temperature ({unit})")
+    # Title on the left and legend on the right, so they share the top row without overlapping
+    ax_temp.set_title("7-Day Forecast", loc="left")
+    ax_temp.legend(bbox_to_anchor=(1.0, 1.0), loc="lower right", ncols=2, borderaxespad=0.2)
 
     # ===== PRECIPITATION =====
-    bars = ax_precip.bar(dates, daily_df["Chance of Precipitation"], width=0.6, color=PRECIP_COLOR)  # Width in days
-    ax_precip.bar_label(bars, fmt="{:.0f}%")
+    bars = ax_precip.bar(dates, daily_df["Chance of Precipitation"], width=0.6, color=PRECIP)  # Width in days
+    ax_precip.bar_label(bars, fmt="{:.0f}%", fontsize=8, padding=2)
     # 110 leaves room for the bar labels
     ax_precip.set(ylim=(0, 110), ylabel="Chance of\nPrecipitation (%)", xlabel="Date (Month/Day)")
     ax_precip.set_yticks(range(0, 101, 20))

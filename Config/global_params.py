@@ -3,7 +3,7 @@ File Name: global_params.py
 
 Author: Jonathan W
 Date Created: 9/14/2026
-Last Update: 10/6/2026
+Last Update: 10/15/2026
 Version: 1.2.0
 
 Scope: Shared paths, location settings and Open-Meteo helpers for every weather script.

@@ -3,11 +3,11 @@ File Name: Hourly_Graph.py
 
 Author: Jonathan W
 Date Created: 9/30/2026
-Last Update: 10/7/2026
-Version: 1.3.0
+Last Update: 10/15/2026
+Version: 1.5.0
 
 Scope: Builds today's hourly chart (temperature line over precipitation bars, sunrise/sunset marked) from
-    Hourly.py's data.
+    Forecasts.py's data.
 """
 
 import sys
@@ -28,13 +28,8 @@ from Config.global_params import (  # noqa: E402, RUF100
     DATA_DIR,
     f_to_c,
 )
-from Hourly import get_hourly_forecast  # noqa: E402, RUF100
-
-BACKGROUND_COLOR = "#efe3f4"  # Light purple
-TEMP_COLOR = "#d9534f"  # Pinkish red
-PRECIP_COLOR = "#4a90d9"  # Soft blue
-SUNRISE_COLOR = "#f0ad4e"  # Orange
-SUNSET_COLOR = "#5bc0de"  # Light blue
+from Forecasts import get_forecast  # noqa: E402, RUF100
+from theme import HOT, PRECIP, SUNRISE, SUNSET, WINDOW  # noqa: E402 - also applies the dark chart style
 
 
 def make_hourly_graphs(
@@ -49,7 +44,7 @@ def make_hourly_graphs(
     regenerating it doesn't pile up hidden pyplot figures in memory.
 
     Args:
-        hourly_df: Output of get_hourly_forecast(). Fetched fresh if not given; pass it in to avoid a second API call.
+        hourly_df: Hourly data from get_forecast(). Fetched fresh if not given; pass it in to avoid a second API call.
         fig: Figure to draw into, such as the one embedded in the GUI. It is cleared first. A new Figure is
             created if not given.
         celsius: Show temperatures in °C instead of °F. The DataFrame itself is left in °F.
@@ -59,13 +54,13 @@ def make_hourly_graphs(
         The finished Figure.
     """
     if hourly_df is None:
-        hourly_df = get_hourly_forecast()
+        _, hourly_df = get_forecast()
 
     if fig is None:
         fig = Figure(figsize=(12, 6))
     else:
         fig.clear()
-    fig.set_facecolor(BACKGROUND_COLOR)
+    fig.set_facecolor(WINDOW)
     fig.set_layout_engine("constrained")  # Recomputed on every draw, so the GUI chart adapts when resized
 
     times = hourly_df["Date"]
@@ -82,28 +77,34 @@ def make_hourly_graphs(
 
     # Full-height sunrise/sunset lines on both charts. Only the temperature chart shows a legend.
     for ax in (ax_temp, ax_precip):
-        ax.axvline(sunrise, color=SUNRISE_COLOR, linestyle="--", linewidth=1.5, label="Sunrise")
-        ax.axvline(sunset, color=SUNSET_COLOR, linestyle="--", linewidth=1.5, label="Sunset")
+        ax.axvline(sunrise, color=SUNRISE, linestyle="--", linewidth=1.5, label="Sunrise")
+        ax.axvline(sunset, color=SUNSET, linestyle="--", linewidth=1.5, label="Sunset")
 
     # ===== TEMPERATURE =====
-    ax_temp.plot(times, temps, marker="o", linewidth=1.5, color=TEMP_COLOR, label="Actual Temp")
-    for x, temp in zip(times, temps):
+    ax_temp.plot(times, temps, marker="o", markersize=4, linewidth=2, color=HOT, label="Temperature")
+    # Label every other hour, lined up with the 2-hour ticks. Labelling all 24 makes neighbours collide.
+    for x, temp in list(zip(times, temps))[::2]:
         ax_temp.annotate(f"{temp:.0f}{unit}", (x, temp), textcoords="offset points", xytext=(0, 8), ha="center",
                          fontsize=8)
 
     # Scale to the data, with room for the labels, so very hot or below-zero locations aren't cut off
     ax_temp.set_ylim(temps.min() - pad, temps.max() + pad)
-    ax_temp.set(ylabel=f"Temperature ({unit})", title=f"Hourly Forecast for {times.iloc[0]:%d-%b}")
-    ax_temp.legend(bbox_to_anchor=(0.0, 1.02), loc="lower left", ncols=3, borderaxespad=0.1)
+    ax_temp.set_ylabel(f"Temperature ({unit})")
+    # Title on the left and legend on the right, so they share the top row without overlapping
+    ax_temp.set_title(f"Hourly Forecast for {times.iloc[0]:%d-%b}", loc="left")
+    ax_temp.legend(bbox_to_anchor=(1.0, 1.0), loc="lower right", ncols=3, borderaxespad=0.2)
 
     # ===== PRECIPITATION =====
     # Bar width on a date axis is in days, so 0.6 of an hour is 0.6 / 24
-    bars = ax_precip.bar(times, hourly_df["Chance of Precipitation"], width=0.6 / 24, color=PRECIP_COLOR)
-    ax_precip.bar_label(bars, fmt="{:.0f}%")
+    chances = hourly_df["Chance of Precipitation"]
+    bars = ax_precip.bar(times, chances, width=0.6 / 24, color=PRECIP)
+    # Skip 0% labels so dry hours don't fill the chart with clutter
+    ax_precip.bar_label(bars, labels=[f"{c:.0f}%" if c > 0 else "" for c in chances], fontsize=7, padding=2)
     ax_precip.set(ylim=(0, 110), ylabel="Chance of\nPrecipitation (%)")  # 110 leaves room for the bar labels
     ax_precip.set_yticks(range(0, 101, 20))
 
-    ax_precip.xaxis.set_major_locator(mdates.HourLocator(interval=2, tz=tz))
+    # Even hours, so the ticks line up with the temperature labels above
+    ax_precip.xaxis.set_major_locator(mdates.HourLocator(byhour=range(0, 24, 2), tz=tz))
     ax_precip.xaxis.set_major_formatter(mdates.DateFormatter("%H:%M", tz=tz))
 
     # First to last hour plus padding. Uses the real last row, since DST days have 23 or 25 hours.

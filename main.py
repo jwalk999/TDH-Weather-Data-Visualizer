@@ -3,8 +3,8 @@ File Name: main.py
 
 Author: Jonathan W
 Date Created: 10/5/2026
-Last Update: 10/5/2026
-Version: 0.0.1
+Last Update: 10/15/2026
+Version: 0.0.2
 
 Scope: Creates the main GUI environment for the application
 """
@@ -42,6 +42,7 @@ import sys
 from pathlib import Path
 
 import pandas as pd
+import requests
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
 from PySide6.QtCore import Qt, QUrl
@@ -59,13 +60,18 @@ from PySide6.QtWidgets import (
 
 from Config.global_params import (
     f_to_c,
+    get_period,
+    get_weather_description,
+    load_descriptions,
     load_location,
+    save_location,
 )
-from Daily import get_daily_forecast
 from Daily_Graph import make_daily_graphs
-from Hourly import get_hourly_forecast
+from Forecasts import get_forecast
 from Hourly_Graph import make_hourly_graphs
+from geocoding import format_match, geocode, match_to_location
 from quips import get_quip
+from theme import STYLESHEET, dark_palette
 from ui_main_window import Ui_MainWindow
 
 HERE = Path(__file__).parent
@@ -82,16 +88,16 @@ VERSION = "0.1"
 def load_data():
     """
     Load current and 7-day forecast conditions for display.
-    All units are held in Imperial format, the window will format them according to 
+    All units are held in Imperial format, the window will format them according to
     user settings.
 
     Returns:
-        tuple[dict, list[dict]]: A ``(current, forecast)`` pair.
-        daily_df and hourly_df are the raw dataframes, used for graphing
+        tuple[dict, list[dict], pd.DataFrame, pd.DataFrame]: A ``(current, forecast, daily_df, hourly_df)``
+        tuple. daily_df and hourly_df are the raw dataframes, used for graphing.
 
     ``current`` has keys:
         location (str):     Display location name and info.
-        temp_f (float):       Current temperature in °F.
+        temp_f (float):     Current temperature in °F.
         condition (str):    Current weather description. e.g. "Clear".
         sunrise (str):      Formatted sunrise time, e.g. "6:52 AM".
         sunset (str):       Formatted sunset time, e.g. "8:45 PM".
@@ -103,38 +109,38 @@ def load_data():
         low_f (float):      Daily low in °F.
         precip_chance (int): Chance of precipitation, 0-100%.
         precip_in (float):  Expected precipitation in inches.
-        
 
     Raises:
         requests.exceptions.ConnectionError: If Open-Meteo cannot be reached
-
     """
-    hourly_df = get_hourly_forecast()
-    daily_df = get_daily_forecast()
+    location = load_location()
+    tz = location["timezone"]
+    daily_df, hourly_df = get_forecast(location)
 
     # Latest hourly row at or before now (hourly data starts at midnight, so row 0 is wrong)
-    times = pd.to_datetime(hourly_df["Date"])
-    now_row = hourly_df[times <= pd.Timestamp.now(tz=times.dt.tz)].iloc[-1]
+    now_row = hourly_df[hourly_df["Date"] <= pd.Timestamp.now(tz=tz)].iloc[-1]
+    today = daily_df.iloc[0]
 
     temp_f = float(now_row["Temperature"])
-    condition = now_row["Weather Description"]
+    period = get_period(now_row["Date"], today["Sunrise"], today["Sunset"])
+    condition = get_weather_description(now_row["Weather Code"], load_descriptions(), period)
 
-    tz = load_location()["timezone"]
     current = {
-        "location": load_location()["location_name"],
+        "location": location["location_name"],
         "temp_f": temp_f,
         "condition": condition,
-        "sunrise": pd.to_datetime(now_row["Sunrise"], unit="s", utc=True).tz_convert(tz).strftime("%I:%M %p").lstrip("0"),
-        "sunset": pd.to_datetime(now_row["Sunset"], unit="s", utc=True).tz_convert(tz).strftime("%I:%M %p").lstrip("0"),
+        "sunrise": today["Sunrise"].strftime("%I:%M %p").lstrip("0"),
+        "sunset": today["Sunset"].strftime("%I:%M %p").lstrip("0"),
         "quip": get_quip(temp_f, condition),
     }
 
     forecast = [
         {
-            "day": pd.to_datetime(row["Date"]).strftime("%a"),
+            "day": row["Date"].strftime("%a"),
             "high_f": float(row["Temperature High"]),
             "low_f": float(row["Temperature Low"]),
             "precip_chance": int(row["Chance of Precipitation"]),
+            "precip_in": float(row["Precipitation"]),
         }
         for row in daily_df.head(7).to_dict("records")
     ]
@@ -220,10 +226,12 @@ class MainWindow(QMainWindow):
         """
         frame.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Preferred)
         frame.setMinimumWidth(70)
+        frame.setProperty("card", True)  # Picks up the rounded card style from theme.STYLESHEET
         layout = QVBoxLayout(frame)
         cell = {}
         for key in ("day", "main", "sub"):
             label = QLabel("-", frame)
+            label.setProperty("role", key)  # Lets the stylesheet dim the day and sub labels
             label.setAlignment(Qt.AlignmentFlag.AlignCenter)
             layout.addWidget(label)
             cell[key] = label
@@ -239,6 +247,8 @@ class MainWindow(QMainWindow):
         """
         self.figure = Figure()
         self.canvas = FigureCanvasQTAgg(self.figure)
+        self.canvas.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        self.ui.plotArea.setMinimumHeight(560)  # Designer sets 300, which squeezes the two charts together
         layout = self.ui.plotArea.layout() or QVBoxLayout(self.ui.plotArea)
         layout.addWidget(self.canvas)
 
@@ -336,6 +346,21 @@ class MainWindow(QMainWindow):
         return f"{temp_f:.0f}°F"
 
 
+    def fmt_precip(self, precip_in: float) -> str:
+        """
+        Format a precipitation amount for display in the user's selected unit.
+
+        Args:
+            precip_in: Precipitation in inches.
+
+        Returns:
+            str: Millimetres rounded to a whole number when Celsius is selected, otherwise inches to two decimals.
+        """
+        if self.use_celsius:
+            return f"{precip_in * 25.4:.0f} mm"
+        return f"{precip_in:.2f} in"
+
+
     # Update function
     def update_display(self):
         """
@@ -363,6 +388,7 @@ class MainWindow(QMainWindow):
             t_cell["sub"].setText(self.fmt_temp(day["low_f"]))
             p_cell["day"].setText(day["day"])
             p_cell["main"].setText(f"{day['precip_chance']}%")
+            p_cell["sub"].setText(self.fmt_precip(day["precip_in"]))
 
         self.draw_graph()
 
@@ -438,16 +464,36 @@ class MainWindow(QMainWindow):
 
     def set_location(self):
         """
-        Prompt for a city name and show it in the location label.
-        
-        Only updates the label for now; the forecast does not change until 
-        geocoding and saving to config.json are added.
+        Prompt for a place name, geocode it, save the chosen match to config.json and refresh.
+
+        If the search returns more than one match, the user picks from a list. Network errors and empty
+        results are shown in a warning dialog, and the saved location is left unchanged.
         """
         current = self.current["location"] if self.current else ""
-        text, ok = QInputDialog.getText(self, "Set Location", "City: ", text=current)
-        if ok and text.strip():
-            # TODO: Geocode the city and save it to config.json, then self.refresh()
-            self.ui.locationLabel.setText(text.strip())
+        text, ok = QInputDialog.getText(self, "Set Location", "City or postal code:", text=current)
+        if not ok or not text.strip():
+            return
+
+        try:
+            matches = geocode(text.strip(), limit=5)
+        except requests.RequestException as err:
+            QMessageBox.warning(self, "Location Lookup Failed", f"Couldn't search for that location:\n{err}")
+            return
+        if not matches:
+            QMessageBox.warning(self, "Location Not Found", f'No places found for "{text.strip()}".')
+            return
+
+        match = matches[0]
+        if len(matches) > 1:
+            names = [format_match(m) for m in matches]
+            choice, ok = QInputDialog.getItem(self, "Choose Location", "Which one?", names, 0, False)
+            if not ok:
+                return
+            match = matches[names.index(choice)]
+
+        # Merge so keys this dialog doesn't set (like station_id) survive the save
+        save_location({**load_location(), **match_to_location(match)})
+        self.refresh()
 
     def open_readme(self):
         """
@@ -481,6 +527,9 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    app.setStyle("Fusion")  # The native Windows style ignores most palette colors
+    app.setPalette(dark_palette())
+    app.setStyleSheet(STYLESHEET)
     window = MainWindow()
     window.show()
     sys.exit(app.exec())

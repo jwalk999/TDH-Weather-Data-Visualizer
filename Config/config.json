@@ -1,6 +1,8 @@
 {
-    "station_id": "72301",
-    "latitude": 35.7,
-    "longitude": -81.31,
-    "location_name": "Hickory, NC"
+    "location_name": "Tucson, Arizona, United States",
+    "latitude": 32.22174,
+    "longitude": -110.92648,
+    "elevation": 759.0,
+    "timezone": "America/Phoenix",
+    "station_id": "72301"
 }
