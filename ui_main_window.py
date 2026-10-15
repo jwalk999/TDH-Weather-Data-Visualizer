@@ -11,7 +11,7 @@
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
     QMetaObject, QObject, QPoint, QRect,
     QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
+from PySide6.QtGui import (QAction, QActionGroup, QBrush, QColor, QConicalGradient,
     QCursor, QFont, QFontDatabase, QGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
@@ -395,6 +395,33 @@ class Ui_MainWindow(object):
 
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
+    
+    def _build_theme_menu(self) -> None:
+        menu = self.ui.menuView.addmenu("&Theme")
+        group = QActionGroup(self)
+        for name in theme.THEMES:
+                action = QAction(name, self)
+                action.setCheckable(True)
+                action.setChecked(name == theme.current().name)
+                action.triggered.connect(lambda _checked, n=name: self.change_theme(n))
+                group.addAction(action)
+                menu.addAction(action)
+        
+    def change_theme(self, name: str) -> None:
+        theme.apply_theme(QApplication.instance(), name)
+        QSettings("TooDamnHot", "TooDamnHot").setValue("theme", name)
+        self.update_graphs()
+
+
+
+
+
+
+
+
+
+
+
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Too Damn Hot!", None))

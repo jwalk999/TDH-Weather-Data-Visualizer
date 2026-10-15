@@ -30,6 +30,7 @@ QUIPS_TEMP_V_HIGH = [
     "Even the AC is sweating",
     "You could fry an egg on the sidewalk. Don't.",
     "Hell is leaving bad reviews about the heat",
+    "Climate Change is real, just look outside!",
 ]
 
 QUIPS_TEMP_HIGH = [
@@ -45,11 +46,11 @@ QUIPS_TEMP_HIGH = [
 ]
 
 QUIPS_TEMP_NORMAL = [
-    "The one day the app's name does not apply",
+    "The one day the app name doesn't apply",
     "Take a walk outside",
     "Go to the park",
     "Reduce, Reuse, Recycle",
-    "Drink lots of water",
+    "Stay hydrated, hero!",
     "Period queen, slay!",
     "Perfect weather. Suspicious.",
     "Open the windows, save on the electric bill",

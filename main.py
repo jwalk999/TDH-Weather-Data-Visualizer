@@ -45,7 +45,7 @@ import pandas as pd
 import requests
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
-from PySide6.QtCore import Qt, QUrl
+from PySide6.QtCore import QSettings, Qt, QUrl
 from PySide6.QtGui import QAction, QActionGroup, QDesktopServices, QIcon
 from PySide6.QtWidgets import (
     QApplication,
@@ -53,11 +53,13 @@ from PySide6.QtWidgets import (
     QInputDialog,
     QLabel,
     QMainWindow,
+    QMenu,
     QMessageBox,
     QSizePolicy,
     QVBoxLayout,
 )
 
+import theme
 from Config.global_params import (
     f_to_c,
     get_period,
@@ -71,7 +73,6 @@ from Forecasts import get_forecast
 from geocoding import format_match, geocode, match_to_location
 from Hourly_Graph import make_hourly_graphs
 from quips import get_quip
-from theme import STYLESHEET, dark_palette
 from ui_main_window import Ui_MainWindow
 
 HERE = Path(__file__).parent
@@ -84,6 +85,19 @@ VERSION = "0.1"
 # ============================== DATA FETCH ===================================
 # ==============================AND LOADING ===================================
 # =============================================================================
+
+# Pass the scroll function through the figure canvas so scrolling works on the graphs
+class ScrollPassthroughCanvas(FigureCanvasQTAgg):
+    """A matplotlib canvas that lets the mosue wheel scroll the page instead of the chart"""
+
+    def wheelEvent(self, event):
+        """ Pass the wheel event to the parent widget.
+
+        Args:
+            event (QWheelEvent): The mouse wheel event.
+        """
+        event.ignore()
+
 
 def load_data():
     """
@@ -188,6 +202,8 @@ class MainWindow(QMainWindow):
         self._setup_plot()
         self._setup_menus()
 
+        self._build_theme_menu()
+
         self.statusBar().showMessage("Ready")
         self.refresh()
 
@@ -226,7 +242,7 @@ class MainWindow(QMainWindow):
         """
         frame.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Preferred)
         frame.setMinimumWidth(70)
-        frame.setProperty("card", True)  # Picks up the rounded card style from theme.STYLESHEET
+        frame.setProperty("card", True)  # Picks up the rounded card style from theme.build_stylesheet()
         layout = QVBoxLayout(frame)
         cell = {}
         for key in ("day", "main", "sub"):
@@ -246,7 +262,7 @@ class MainWindow(QMainWindow):
 
         """
         self.figure = Figure()
-        self.canvas = FigureCanvasQTAgg(self.figure)
+        self.canvas = ScrollPassthroughCanvas(self.figure)
         self.canvas.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         self.ui.plotArea.setMinimumHeight(560)  # Designer sets 300, which squeezes the two charts together
         layout = self.ui.plotArea.layout() or QVBoxLayout(self.ui.plotArea)
@@ -282,7 +298,7 @@ class MainWindow(QMainWindow):
             
 
         ui.action_Localization.triggered.connect(lambda: self.not_ready("Localization"))
-        ui.action_Themes.triggered.connect(lambda: self.not_ready("Themes"))
+        
 
         # Graphs
         graphs = QActionGroup(self)
@@ -302,6 +318,25 @@ class MainWindow(QMainWindow):
         ui.actionAbout.triggered.connect(self.show_about)
         ui.actionReadme.triggered.connect(self.open_readme)
         ui.actionGithub.triggered.connect(lambda: QDesktopServices.openUrl(QUrl(GITHUB_URL)))
+
+    def _build_theme_menu(self):
+        """
+        Replace Designer's View > Themes placeholder with a submenu of checkable themes.
+
+        Entries come from ``theme.THEMES`` in order, with the active theme checked. The submenu is inserted
+        where the placeholder sat and the placeholder is hidden, so regenerating the .ui file doesn't break it.
+        """
+        menu = QMenu(self.ui.action_Themes.text(), self)
+        group = QActionGroup(self)  # Exclusive by default, so only one theme is checked
+        for name in theme.THEMES:
+            action = QAction(name, self)
+            action.setCheckable(True)
+            action.setChecked(name == theme.current().name)
+            action.triggered.connect(lambda _checked, n=name: self.change_theme(n))
+            group.addAction(action)
+            menu.addAction(action)
+        self.ui.menu_View.insertMenu(self.ui.action_Themes, menu)
+        self.ui.action_Themes.setVisible(False)
 
     # ====================================================================
     # ====================================================================
@@ -433,7 +468,19 @@ class MainWindow(QMainWindow):
         """
         self.use_celsius = checked
         self.update_display()
-    
+
+    def change_theme(self, name: str):
+        """
+        Switch the app to a theme, save the choice, and redraw the graph in the new colors.
+
+        Args:
+            name: Key from ``theme.THEMES``.
+        """
+        theme.apply_theme(QApplication.instance(), name)
+        QSettings("TooDamnHot", "TooDamnHot").setValue("theme", name)
+        self.draw_graph()  # The chart keeps its old colors until it's redrawn
+        self.statusBar().showMessage(f"Theme: {name}", 3000)
+
     def save_graph(self):
         """
         Ask for a file name and save the current graph.
@@ -528,8 +575,7 @@ class MainWindow(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setStyle("Fusion")  # The native Windows style ignores most palette colors
-    app.setPalette(dark_palette())
-    app.setStyleSheet(STYLESHEET)
+    theme.apply_theme(app, QSettings("TooDamnHot", "TooDamnHot").value("theme", theme.DEFAULT_THEME))
     window = MainWindow()
     window.show()
     sys.exit(app.exec())

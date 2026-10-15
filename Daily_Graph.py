@@ -23,9 +23,9 @@ if not getattr(sys, "frozen", False):
         raise RuntimeError("Could not find the project root (no 'Config' folder above this file)")
     sys.path.append(str(_root))
 
-from Config.global_params import DATA_DIR, f_to_c  # noqa: E402 - must come after the sys.path setup above
-from Forecasts import get_forecast  # noqa: E402
-from theme import COOL, HOT, PRECIP, WINDOW  # noqa: E402 - importing theme also applies the dark chart style
+from Config.global_params import DATA_DIR, f_to_c
+from Forecasts import get_forecast
+from theme import current
 
 
 def make_daily_graphs(
@@ -56,7 +56,8 @@ def make_daily_graphs(
         fig = Figure(figsize=(10, 7))
     else:
         fig.clear()
-    fig.set_facecolor(WINDOW)
+    colors = current()
+    fig.set_facecolor(colors.window)
     fig.set_layout_engine("constrained")  # Recomputed on every draw, so the GUI chart adapts when resized
 
     dates = daily_df["Date"]
@@ -71,8 +72,8 @@ def make_daily_graphs(
     ax_temp, ax_precip = fig.subplots(2, 1, sharex=True)
 
     # ===== TEMPERATURE =====
-    ax_temp.plot(dates, highs, marker="o", linewidth=2, color=HOT, label="High")
-    ax_temp.plot(dates, lows, marker="o", linewidth=2, color=COOL, label="Low")
+    ax_temp.plot(dates, highs, marker="o", linewidth=2, color=colors.hot, label="High")
+    ax_temp.plot(dates, lows, marker="o", linewidth=2, color=colors.cool, label="Low")
     for x, high, low in zip(dates, highs, lows):
         ax_temp.annotate(f"{high:.0f}{unit}", (x, high), textcoords="offset points", xytext=(0, 8), ha="center",
                          fontsize=8)
@@ -87,7 +88,7 @@ def make_daily_graphs(
     ax_temp.legend(bbox_to_anchor=(1.0, 1.0), loc="lower right", ncols=2, borderaxespad=0.2)
 
     # ===== PRECIPITATION =====
-    bars = ax_precip.bar(dates, daily_df["Chance of Precipitation"], width=0.6, color=PRECIP)  # Width in days
+    bars = ax_precip.bar(dates, daily_df["Chance of Precipitation"], width=0.6, color=colors.precip)  # Width in days
     ax_precip.bar_label(bars, fmt="{:.0f}%", fontsize=8, padding=2)
     # 110 leaves room for the bar labels
     ax_precip.set(ylim=(0, 110), ylabel="Chance of\nPrecipitation (%)", xlabel="Date (Month/Day)")

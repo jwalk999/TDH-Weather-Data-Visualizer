@@ -24,12 +24,12 @@ if not getattr(sys, "frozen", False):
         raise RuntimeError("Could not find the project root (no 'Config' folder above this file)")
     sys.path.append(str(_root))
 
-from Config.global_params import (  # noqa: E402, RUF100
+from Config.global_params import (
     DATA_DIR,
     f_to_c,
 )
-from Forecasts import get_forecast  # noqa: E402, RUF100
-from theme import HOT, PRECIP, SUNRISE, SUNSET, WINDOW  # noqa: E402 - also applies the dark chart style
+from Forecasts import get_forecast
+from theme import current
 
 
 def make_hourly_graphs(
@@ -60,7 +60,8 @@ def make_hourly_graphs(
         fig = Figure(figsize=(12, 6))
     else:
         fig.clear()
-    fig.set_facecolor(WINDOW)
+    colors = current()
+    fig.set_facecolor(colors.window)
     fig.set_layout_engine("constrained")  # Recomputed on every draw, so the GUI chart adapts when resized
 
     times = hourly_df["Date"]
@@ -77,11 +78,11 @@ def make_hourly_graphs(
 
     # Full-height sunrise/sunset lines on both charts. Only the temperature chart shows a legend.
     for ax in (ax_temp, ax_precip):
-        ax.axvline(sunrise, color=SUNRISE, linestyle="--", linewidth=1.5, label="Sunrise")
-        ax.axvline(sunset, color=SUNSET, linestyle="--", linewidth=1.5, label="Sunset")
+        ax.axvline(sunrise, color=colors.sunrise, linestyle="--", linewidth=1.5, label="Sunrise")
+        ax.axvline(sunset, color=colors.sunset, linestyle="--", linewidth=1.5, label="Sunset")
 
     # ===== TEMPERATURE =====
-    ax_temp.plot(times, temps, marker="o", markersize=4, linewidth=2, color=HOT, label="Temperature")
+    ax_temp.plot(times, temps, marker="o", markersize=4, linewidth=2, color=colors.hot, label="Temperature")
     # Label every other hour, lined up with the 2-hour ticks. Labelling all 24 makes neighbours collide.
     for x, temp in list(zip(times, temps))[::2]:
         ax_temp.annotate(f"{temp:.0f}{unit}", (x, temp), textcoords="offset points", xytext=(0, 8), ha="center",
@@ -97,7 +98,7 @@ def make_hourly_graphs(
     # ===== PRECIPITATION =====
     # Bar width on a date axis is in days, so 0.6 of an hour is 0.6 / 24
     chances = hourly_df["Chance of Precipitation"]
-    bars = ax_precip.bar(times, chances, width=0.6 / 24, color=PRECIP)
+    bars = ax_precip.bar(times, chances, width=0.6 / 24, color=colors.precip)
     # Skip 0% labels so dry hours don't fill the chart with clutter
     ax_precip.bar_label(bars, labels=[f"{c:.0f}%" if c > 0 else "" for c in chances], fontsize=7, padding=2)
     ax_precip.set(ylim=(0, 110), ylabel="Chance of\nPrecipitation (%)")  # 110 leaves room for the bar labels
