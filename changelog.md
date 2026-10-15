@@ -14,45 +14,56 @@ Script-specific version numbers follow `MAJOR.MINOR.PATCH`, scoped to that file 
 
 
 ---
+## v0.11.0
+## We getting colorful now, folks
+
+### Added
+- **View > Themes**: Midnight, Heatwave, Overcast, and Daylight. Your pick is saved between runs.
+- `theme.py`
+  - Rebuilt to hold multiple themes that can be switched while the app is running.
+
+### Changed
+- `Daily_Graph.py` / `Hourly_Graph.py`
+  - Get their colors from the active theme each time they draw.
+  - Removed the `# noqa: E402` comments. Ruff already allows imports after `sys.path` changes.
+
+### Fixed
+- Mouse wheel not scrolling the page while over the graph.
+
+**To Do:** Localization?? (Do I really gotta? I only speak Anglish) -- !Call Ford, tell them they're laid off!
+
+---
 ## v0.10.0
 
 ### Added
 - `Forecasts.py`
   - Combined `Daily.py` and `Hourly.py` into one single file because I was tired of having two files that do essentially the same thing.
   - The main function `get_forecast()` collects both Daily and Hourly forecasts in a single Open-Meteo request.
-  - API variable names and column names are defined together in `DAILY_VARS` / `HOURLY_VARS`, so the `Variables(n)` index can't drift out of sync with the column names.
-  - Hourly data is trimmed to today, and today's sunrise/sunset are added to every hourly row for the hourly graph.
+  - API variable names and column names are defined together, so they can't get out of sync.
+  - Hourly data is trimmed to today, with sunrise/sunset on every row.
 - `geocoding.py`
-  - `geocode()` searches for a place name or postal code with the Open-Meteo Geocoding API.
-  - `format_match()` builds a display name, e.g. "Hickory, North Carolina, United States".
-  - `match_to_location()` converts a search result into the location format saved in `config.json`.
+  - Looks up a place name or postal code and converts the result into the `config.json` format.
 - `theme.py`
-  - One shared dark color palette for the Qt window and the matplotlib graphs, so the graphs blend into the UI.
-  - Importing it applies the dark graph style. Uses Calibri to match the UI, falling back to Segoe UI.
+  - Shared dark colors for the window and graphs.
 - `main.py`
-  - **Settings > Set Location** works: searches the location, shows a picker when there are multiple matches, saves to `config.json`, and refreshes the forecast.
-  - Precipitation cards show the expected amount (inches, or mm in Celsius mode).
-  - `fmt_precip()` formats precipitation in the selected unit.
+  - **Settings > Set Location** works, with a picker when there are multiple matches.
+  - Precipitation cards show the expected amount (in, or mm in Celsius mode).
 
 ### Changed
 - `main.py`
-  - Gets all forecast data from `get_forecast()` instead of separate daily/hourly calls.
-  - Weather descriptions use `get_period()` and `get_weather_description()` from `global_params.py`, so day/night descriptions work (Sunny vs. Clear).
-  - Dark theme: Fusion style, dark palette, and rounded forecast cards with dimmed day names and lows.
-  - Graph area is taller (560px, up from 300px), set in code so it survives regenerating `ui_main_window.py`.
+  - Gets all data from `get_forecast()`.
+  - Day/night weather descriptions (Sunny vs. Clear).
+  - Dark theme with rounded forecast cards.
+  - Taller graph area (560px, up from 300px).
 - `Daily_Graph.py` / `Hourly_Graph.py`
-  - Kept as separate files, now importing `get_forecast()` from `Forecasts.py`.
-  - Dark theme colors from `theme.py`.
-  - Title moved to the left and legend to the right.
+  - Use `Forecasts.py` and the dark theme.
+  - Title on the left, legend on the right.
 - `Hourly_Graph.py`
-  - Labels every other hour instead of all 24.
-  - Time ticks on even hours, so they line up with the temperature labels.
-  - 0% precipitation labels are hidden.
+  - Labels every other hour, ticks on even hours, and hides 0% labels.
 
 ### Fixed
-- Title and legend overlapping at the top of both graphs.
-- Hourly temperature and precipitation labels crowding into each other.
-- `geocoding.py` running its test search and writing `location.json` every time it was imported.
+- Overlapping titles, legends, and labels in both graphs.
+- `geocoding.py` running a test search every time it was imported.
 
 ### Removed
 - `Daily.py` and `Hourly.py`, replaced by `Forecasts.py`.
