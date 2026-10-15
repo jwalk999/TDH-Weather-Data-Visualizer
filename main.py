@@ -68,8 +68,8 @@ from Config.global_params import (
 )
 from Daily_Graph import make_daily_graphs
 from Forecasts import get_forecast
-from Hourly_Graph import make_hourly_graphs
 from geocoding import format_match, geocode, match_to_location
+from Hourly_Graph import make_hourly_graphs
 from quips import get_quip
 from theme import STYLESHEET, dark_palette
 from ui_main_window import Ui_MainWindow
