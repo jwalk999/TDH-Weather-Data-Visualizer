@@ -45,10 +45,12 @@ See [`changelog.md`](./changelog.md) for full version history.
 
 ## How To:
 
-1. Run TooDamnHot.exe
+1. Extract the zip file anywhere you like
+   - Right click on the file you downloaded and click "Extract"
+3. Run TooDamnHot.exe
    - It will take a few seconds to load, enjoy the new Fire Ball Boy mascot while you wait!
    - Running the program no longer opens a command line, it was there for debugging only.
-2. Enjoy!
+4. Enjoy!
 
 To Change Views:
 1. Click on View
