@@ -1,5 +1,5 @@
 # Too Damn Hot! 🌡️
-Click [Here](https://github.com/jwalk999/TDH-Weather-Data-Visualizer/releases/download/v0.9.0/TooDamnHot.7z) to download the latest version
+Click [Here](https://github.com/jwalk999/TDH-Weather-Data-Visualizer/releases/download/v0.11.0/TooDamnHot.7z) to download the latest version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
               \     :     /
@@ -39,14 +39,15 @@ See [`changelog.md`](./changelog.md) for full version history.
 - Forecast data exported to CSV for easy reading and GUI use
 - Combined temperature + precipitation-chance graph, can be saved as a PNG
 - Only allows for 7-day forecasting due to Open-Meteo's API limitations
+- You can now pick your location and theme!
 
 ---
 
 ## How To:
 
 1. Run TooDamnHot.exe
-   - It will take a minute to load
-   - A Command Line window will open, do not be alarmed: it is so python can be ran
+   - It will take a few seconds to load, enjoy the new Fire Ball Boy mascot while you wait!
+   - Running the program no longer opens a command line, it was there for debugging only.
 2. Enjoy!
 
 To Change Views:
@@ -70,19 +71,6 @@ Save the graphs to your PC by clicking `View / Save Graphs` or press *Ctrl + S*
 Exit by clicking the red X, `View / Quit`, or press *Ctrl + Q*
 
 
-## Usage // *Deprecated*
-
-1. Open `Too Damn Hot! / Config / global_params.py`
-2. Find `DEFAULT_LOCATION` near the top
-3. Change the latitude/longitude to your target region
-   (after the first run, you can change location in config.json)
-4. Run `Daily.py` and `Hourly.py` - makes the API call and generates a .csv file for exporting
-5. Run `Daily_Graph.py` - collects data from `Daily.py` and creates a graph
-   (graphs will automatically be displayed)
-6. Check the `Data/` folder for:
-   - `daily_forecast.csv` / `hourly_forecast.csv` — the raw forecast data
-   - `daily_forecast_chart.png` — temperature + precipitation chance, combined
----
 
 ## Contributions
 
