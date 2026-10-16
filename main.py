@@ -37,14 +37,49 @@ Scope: Creates the main GUI environment for the application
 # =============================== IMPORTS ====================================
 # ============================================================================
 
+# Splash screen helpers come first so the bar can update while the heavy imports below load.
+
 import socket
 import sys
 from pathlib import Path
 
+try:
+    import pyi_splash  # Only exists inside the PyInstaller build
+except ImportError:
+    pyi_splash = None
+
+SPLASH_STEPS = 7
+
+
+def splash_progress(step: int, label: str) -> None:
+    """Show a text progress bar on the PyInstaller splash screen.
+
+    Does nothing when running from source or after the splash has closed.
+
+    Args:
+        step: Current step number, 1 to ``SPLASH_STEPS``.
+        label: Short description of the current step.
+    """
+    if pyi_splash and pyi_splash.is_alive():
+        filled = round(10 * step / SPLASH_STEPS)
+        pyi_splash.update_text(f"{'█' * filled}{'░' * (10 - filled)}  {label}")
+
+
+def close_splash() -> None:
+    """Close the PyInstaller splash screen if it is still open."""
+    if pyi_splash and pyi_splash.is_alive():
+        pyi_splash.close()
+
+
+splash_progress(1, "Loading pandas...")
 import pandas as pd
 import requests
+
+splash_progress(2, "Loading matplotlib...")
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
+
+splash_progress(3, "Loading Qt...")
 from PySide6.QtCore import QSettings, Qt, QUrl
 from PySide6.QtGui import QAction, QActionGroup, QDesktopServices, QIcon
 from PySide6.QtWidgets import (
@@ -59,6 +94,7 @@ from PySide6.QtWidgets import (
     QVBoxLayout,
 )
 
+splash_progress(4, "Loading app modules...")
 import theme
 from Config.global_params import (
     f_to_c,
@@ -205,6 +241,7 @@ class MainWindow(QMainWindow):
         self._build_theme_menu()
 
         self.statusBar().showMessage("Ready")
+        splash_progress(6, "Fetching forecast...")
         self.refresh()
 
     # ====================================================================
@@ -358,6 +395,7 @@ class MainWindow(QMainWindow):
         try:
             self.current, self.forecast, self.daily_df, self.hourly_df = load_data()
         except Exception as err: # throw an error without crashing  # noqa: BLE001
+            close_splash()  # The splash stays on top and would hide the dialog
             QMessageBox.warning(self, "Refresh Failed", f"Couldn't load weather data:\n{err}")
             self.statusBar().showMessage("Refresh failed")
             return
@@ -573,9 +611,12 @@ class MainWindow(QMainWindow):
         self.statusBar().showMessage(f"{feature} is coming soon", 4000)
 
 if __name__ == "__main__":
+    splash_progress(5, "Building window...")
     app = QApplication(sys.argv)
     app.setStyle("Fusion")  # The native Windows style ignores most palette colors
     theme.apply_theme(app, QSettings("TooDamnHot", "TooDamnHot").value("theme", theme.DEFAULT_THEME))
     window = MainWindow()
+    splash_progress(7, "Ready")
     window.show()
+    close_splash()
     sys.exit(app.exec())
