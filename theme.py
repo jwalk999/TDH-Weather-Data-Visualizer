@@ -84,6 +84,12 @@ THEMES: dict[str, Theme] = {
             accent="#e0602a", hot="#d6453a", cool="#2f74d0", precip="#3b82c4", sunrise="#c98a00",
             sunset="#7a4fd0", highlighted_text="#ffffff",
         ),
+        Theme(
+            name="Cunty Purple",  # Deep plum with a loud orchid accent. Serving.
+            window="#1c1424", surface="#271b33", border="#3d2b4d", text="#f3e8f8", muted="#b7a0c8",
+            accent="#d26bff", hot="#ff6b9a", cool="#7fb8ff", precip="#6f9fe8", sunrise="#ffc247",
+            sunset="#e48cff", highlighted_text="#1c1424",
+        ),
     )
 }
 DEFAULT_THEME = "Midnight"
