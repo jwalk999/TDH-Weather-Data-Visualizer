@@ -1,5 +1,6 @@
 # Too Damn Hot! 🌡️
-Click [Here](https://github.com/jwalk999/TDH-Weather-Data-Visualizer/releases/download/v0.11.0/TooDamnHot.7z) to download the latest version
+## The weather app with a personality disorder!
+Click [Here](https://github.com/jwalk999/TDH-Weather-Data-Visualizer/releases/download/v1.0.0/TooDamnHot.7z) to download the latest version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
               \     :     /
