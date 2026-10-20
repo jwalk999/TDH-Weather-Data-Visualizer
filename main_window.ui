@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>863</width>
-    <height>599</height>
+    <width>1100</width>
+    <height>740</height>
    </rect>
   </property>
-  <property name="mouseTracking">
-   <bool>false</bool>
-  </property>
-  <property name="acceptDrops">
-   <bool>false</bool>
+  <property name="minimumSize">
+   <size>
+    <width>900</width>
+    <height>600</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Too Damn Hot!</string>
@@ -23,689 +23,1189 @@
    <iconset>
     <normaloff>hot-temperature.png</normaloff>hot-temperature.png</iconset>
   </property>
-  <property name="autoFillBackground">
-   <bool>true</bool>
-  </property>
   <property name="locale">
    <locale language="English" country="UnitedStates"/>
-  </property>
-  <property name="dockOptions">
-   <set>QMainWindow::DockOption::AllowTabbedDocks|QMainWindow::DockOption::AnimatedDocks</set>
   </property>
   <property name="unifiedTitleAndToolBarOnMac">
    <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout_3">
+   <layout class="QHBoxLayout" name="centralLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
     <item>
-     <widget class="QScrollArea" name="scrollArea">
-      <property name="widgetResizable">
-       <bool>true</bool>
+     <widget class="QListWidget" name="navList">
+      <property name="minimumSize">
+       <size>
+        <width>188</width>
+        <height>0</height>
+       </size>
       </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>829</width>
-         <height>867</height>
-        </rect>
+      <property name="maximumSize">
+       <size>
+        <width>188</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::FocusPolicy::NoFocus</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+      <item>
+       <property name="text">
+        <string>Now</string>
        </property>
-       <property name="minimumSize">
-        <size>
-         <width>800</width>
-         <height>0</height>
-        </size>
+      </item>
+      <item>
+       <property name="text">
+        <string>Hourly</string>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,1">
+      </item>
+      <item>
+       <property name="text">
+        <string>10-Day</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Alerts</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Radar</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Locations</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Settings</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item>
+     <widget class="QStackedWidget" name="pages">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <!-- ===== PAGE 0: NOW ===== -->
+      <widget class="QWidget" name="nowPage">
+       <layout class="QVBoxLayout" name="nowPageLayout">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
-         <widget class="QGroupBox" name="mainBox">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>16777215</height>
-           </size>
+         <widget class="QScrollArea" name="nowScroll">
+          <property name="frameShape">
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
-          <property name="baseSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="autoFillBackground">
+          <property name="widgetResizable">
            <bool>true</bool>
           </property>
-          <property name="locale">
-           <locale language="English" country="UnitedStates"/>
+          <widget class="QWidget" name="nowContents">
+           <property name="page" stdset="0">
+            <bool>true</bool>
+           </property>
+           <layout class="QVBoxLayout" name="nowLayout">
+            <property name="spacing">
+             <number>14</number>
+            </property>
+            <property name="leftMargin">
+             <number>20</number>
+            </property>
+            <property name="topMargin">
+             <number>20</number>
+            </property>
+            <property name="rightMargin">
+             <number>20</number>
+            </property>
+            <property name="bottomMargin">
+             <number>20</number>
+            </property>
+            <item>
+             <widget class="QFrame" name="alertBanner">
+              <property name="banner" stdset="0">
+               <bool>true</bool>
+              </property>
+              <layout class="QHBoxLayout" name="alertBannerLayout">
+               <property name="spacing">
+                <number>14</number>
+               </property>
+               <property name="leftMargin">
+                <number>14</number>
+               </property>
+               <property name="topMargin">
+                <number>10</number>
+               </property>
+               <property name="rightMargin">
+                <number>14</number>
+               </property>
+               <property name="bottomMargin">
+                <number>10</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="alertTitleLabel">
+                 <property name="role" stdset="0">
+                  <string>strong</string>
+                 </property>
+                 <property name="text">
+                  <string>Excessive Heat Warning</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="alertDetailLabel">
+                 <property name="text">
+                  <string>alert detail</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="alertBannerSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="alertLinkLabel">
+                 <property name="text">
+                  <string>Details →</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="mainBox">
+              <property name="card" stdset="0">
+               <bool>true</bool>
+              </property>
+              <layout class="QGridLayout" name="heroLayout" columnstretch="0,1">
+               <property name="leftMargin">
+                <number>24</number>
+               </property>
+               <property name="topMargin">
+                <number>20</number>
+               </property>
+               <property name="rightMargin">
+                <number>24</number>
+               </property>
+               <property name="bottomMargin">
+                <number>20</number>
+               </property>
+               <property name="horizontalSpacing">
+                <number>32</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>4</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="locationLabel">
+                 <property name="role" stdset="0">
+                  <string>location</string>
+                 </property>
+                 <property name="text">
+                  <string>location</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="dateLabel">
+                 <property name="role" stdset="0">
+                  <string>sub</string>
+                 </property>
+                 <property name="text">
+                  <string>date · updated</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="bigtempLabel">
+                 <property name="role" stdset="0">
+                  <string>bigtemp</string>
+                 </property>
+                 <property name="text">
+                  <string>--</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="bigprecLabel">
+                 <property name="role" stdset="0">
+                  <string>body</string>
+                 </property>
+                 <property name="text">
+                  <string>weather cond · feels like</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="hiloLabel">
+                 <property name="role" stdset="0">
+                  <string>sub</string>
+                 </property>
+                 <property name="text">
+                  <string>H -- · L --</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QLabel" name="quipKickerLabel">
+                 <property name="role" stdset="0">
+                  <string>kicker</string>
+                 </property>
+                 <property name="text">
+                  <string>BUCKET</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1" rowspan="2">
+                <widget class="QLabel" name="quipLabel">
+                 <property name="role" stdset="0">
+                  <string>headline</string>
+                 </property>
+                 <property name="text">
+                  <string>QUIPS</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <layout class="QHBoxLayout" name="statsLayout">
+                 <property name="spacing">
+                  <number>12</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="humidityLabel">
+                   <property name="text">
+                    <string>humidity</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="windLabel">
+                   <property name="text">
+                    <string>wind</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="uvLabel">
+                   <property name="text">
+                    <string>uv</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="precipNowLabel">
+                   <property name="text">
+                    <string>precip</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="4" column="1">
+                <layout class="QHBoxLayout" name="sunLayout">
+                 <property name="spacing">
+                  <number>24</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="sunriseLabel">
+                   <property name="role" stdset="0">
+                    <string>sunrise</string>
+                   </property>
+                   <property name="text">
+                    <string>sunrise</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="sunsetLabel">
+                   <property name="role" stdset="0">
+                    <string>sunset</string>
+                   </property>
+                   <property name="text">
+                    <string>sunset</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="sunSpacer">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="forecastBox">
+              <layout class="QVBoxLayout" name="forecastLayout">
+               <property name="spacing">
+                <number>8</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="tempsLabel">
+                 <property name="role" stdset="0">
+                  <string>section</string>
+                 </property>
+                 <property name="text">
+                  <string>Next 7 days</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="daysLayout">
+                 <property name="spacing">
+                  <number>8</number>
+                 </property>
+                 <item>
+                  <widget class="QFrame" name="tempFrame1"/>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="tempFrame2"/>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="tempFrame3"/>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="tempFrame4"/>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="tempFrame5"/>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="tempFrame6"/>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="tempFrame7"/>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="plotArea" native="true">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>420</height>
+               </size>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <!-- ===== PAGE 1: HOURLY ===== -->
+      <widget class="QWidget" name="hourlyPage">
+       <layout class="QVBoxLayout" name="hourlyPageLayout">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QScrollArea" name="hourlyScroll">
+          <property name="frameShape">
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
-          <property name="title">
-           <string/>
-          </property>
-          <property name="flat">
+          <property name="widgetResizable">
            <bool>true</bool>
           </property>
-          <layout class="QGridLayout" name="gridLayout_3">
-           <property name="sizeConstraint">
-            <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+          <widget class="QWidget" name="hourlyContents">
+           <property name="page" stdset="0">
+            <bool>true</bool>
            </property>
-           <property name="leftMargin">
-            <number>9</number>
+           <layout class="QVBoxLayout" name="hourlyLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <property name="leftMargin">
+             <number>20</number>
+            </property>
+            <property name="topMargin">
+             <number>20</number>
+            </property>
+            <property name="rightMargin">
+             <number>20</number>
+            </property>
+            <property name="bottomMargin">
+             <number>20</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="hourlyTitle">
+              <property name="role" stdset="0">
+               <string>title</string>
+              </property>
+              <property name="text">
+               <string>Hour by hour.</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="hourlySubtitle">
+              <property name="role" stdset="0">
+               <string>subtitle</string>
+              </property>
+              <property name="text">
+               <string>The bar is the temperature. The faint line is feels-like. Both are bad.</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="hourlyList" native="true">
+              <layout class="QVBoxLayout" name="hourlyListLayout">
+               <property name="spacing">
+                <number>2</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>10</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <spacer name="hourlySpacer">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <!-- ===== PAGE 2: 10-DAY ===== -->
+      <widget class="QWidget" name="tenDayPage">
+       <layout class="QVBoxLayout" name="tenDayPageLayout">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QScrollArea" name="tenDayScroll">
+          <property name="frameShape">
+           <enum>QFrame::Shape::NoFrame</enum>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="tenDayContents">
+           <property name="page" stdset="0">
+            <bool>true</bool>
            </property>
-           <property name="topMargin">
-            <number>3</number>
+           <layout class="QVBoxLayout" name="tenDayLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <property name="leftMargin">
+             <number>20</number>
+            </property>
+            <property name="topMargin">
+             <number>20</number>
+            </property>
+            <property name="rightMargin">
+             <number>20</number>
+            </property>
+            <property name="bottomMargin">
+             <number>20</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="tenDayTitle">
+              <property name="role" stdset="0">
+               <string>title</string>
+              </property>
+              <property name="text">
+               <string>Ten days of this.</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="tenDaySubtitle">
+              <property name="role" stdset="0">
+               <string>subtitle</string>
+              </property>
+              <property name="text">
+               <string>subtitle</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="tenDayList" native="true">
+              <layout class="QVBoxLayout" name="tenDayListLayout">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>12</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <spacer name="tenDaySpacer">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <!-- ===== PAGE 3: ALERTS ===== -->
+      <widget class="QWidget" name="alertsPage">
+       <layout class="QVBoxLayout" name="alertsPageLayout">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QScrollArea" name="alertsScroll">
+          <property name="frameShape">
+           <enum>QFrame::Shape::NoFrame</enum>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="alertsContents">
+           <property name="page" stdset="0">
+            <bool>true</bool>
            </property>
-           <property name="rightMargin">
-            <number>5</number>
-           </property>
-           <property name="bottomMargin">
-            <number>3</number>
-           </property>
-           <item row="0" column="1" rowspan="2">
-            <widget class="QLabel" name="quipLabel">
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>14</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>QUIPS</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="bigtempLabel">
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>14</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>big temp</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="0">
-            <widget class="QLabel" name="sunriseLabel">
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>sunrise</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0" rowspan="2">
-            <widget class="QLabel" name="locationLabel">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>18</pointsize>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>location</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="bigprecLabel">
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>14</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>weather cond</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="1">
-            <widget class="QLabel" name="sunsetLabel">
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>sunset</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
+           <layout class="QVBoxLayout" name="alertsLayout">
+            <property name="spacing">
+             <number>12</number>
+            </property>
+            <property name="leftMargin">
+             <number>20</number>
+            </property>
+            <property name="topMargin">
+             <number>20</number>
+            </property>
+            <property name="rightMargin">
+             <number>20</number>
+            </property>
+            <property name="bottomMargin">
+             <number>20</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="alertsTitle">
+              <property name="role" stdset="0">
+               <string>title</string>
+              </property>
+              <property name="text">
+               <string>Alerts</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="alertsSubtitle">
+              <property name="role" stdset="0">
+               <string>subtitle</string>
+              </property>
+              <property name="text">
+               <string>subtitle</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="alertsList" native="true">
+              <layout class="QVBoxLayout" name="alertsListLayout">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <spacer name="alertsSpacer">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <!-- ===== PAGE 4: RADAR ===== -->
+      <widget class="QWidget" name="radarPage">
+       <property name="page" stdset="0">
+        <bool>true</bool>
+       </property>
+       <layout class="QVBoxLayout" name="radarLayout">
+        <property name="spacing">
+         <number>8</number>
+        </property>
+        <property name="leftMargin">
+         <number>20</number>
+        </property>
+        <property name="topMargin">
+         <number>20</number>
+        </property>
+        <property name="rightMargin">
+         <number>20</number>
+        </property>
+        <property name="bottomMargin">
+         <number>20</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="radarTitle">
+          <property name="role" stdset="0">
+           <string>title</string>
+          </property>
+          <property name="text">
+           <string>Radar</string>
+          </property>
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="forecastBox">
+         <widget class="QLabel" name="radarSubtitle">
+          <property name="role" stdset="0">
+           <string>subtitle</string>
+          </property>
+          <property name="text">
+           <string>Radar loop, no API key needed. US: NEXRAD via Iowa Environmental Mesonet. Elsewhere: RainViewer. Map: Esri Gray Canvas.</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="radarHost" native="true">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
             <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
+            <verstretch>1</verstretch>
            </sizepolicy>
           </property>
-          <property name="minimumSize">
-           <size>
-            <width>800</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="baseSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="autoFillBackground">
-           <bool>true</bool>
-          </property>
-          <property name="title">
-           <string/>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_2" columnstretch="1,1,1,1,1,1,1">
-           <property name="sizeConstraint">
-            <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
-           </property>
+          <layout class="QVBoxLayout" name="radarHostLayout">
            <property name="leftMargin">
-            <number>9</number>
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
            </property>
            <property name="rightMargin">
-            <number>5</number>
+            <number>0</number>
            </property>
-           <item row="0" column="0" colspan="7">
-            <widget class="QLabel" name="tempsLabel">
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Temps Label</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="6">
-            <widget class="QFrame" name="precipFrame7">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>140</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="3">
-            <widget class="QFrame" name="tempFrame4">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>140</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="4">
-            <widget class="QFrame" name="tempFrame5">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>140</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="2">
-            <widget class="QFrame" name="tempFrame3">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>140</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QFrame" name="tempFrame1">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>140</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0">
-            <widget class="QFrame" name="precipFrame1">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>140</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="5">
-            <widget class="QFrame" name="tempFrame6">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>140</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="3">
-            <widget class="QFrame" name="precipFrame4">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>140</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="2">
-            <widget class="QFrame" name="precipFrame3">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>140</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="1">
-            <widget class="QFrame" name="precipFrame2">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>140</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="0" colspan="7">
-            <widget class="Line" name="line_2">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="6">
-            <widget class="QFrame" name="tempFrame7">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>140</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="5">
-            <widget class="QFrame" name="precipFrame6">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>140</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0" colspan="7">
-            <widget class="QLabel" name="precipsLabel">
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Precip Label</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="4">
-            <widget class="QFrame" name="precipFrame5">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>140</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QFrame" name="tempFrame2">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>140</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0" colspan="7">
-            <spacer name="tempPrecipSpacer">
-             <property name="orientation">
-              <enum>Qt::Orientation::Vertical</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Policy::Fixed</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>15</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="5" column="0" colspan="7">
-            <spacer name="precipLineSpacer">
-             <property name="orientation">
-              <enum>Qt::Orientation::Vertical</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Policy::Fixed</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>15</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
           </layout>
          </widget>
         </item>
+       </layout>
+      </widget>
+      <!-- ===== PAGE 5: LOCATIONS ===== -->
+      <widget class="QWidget" name="locationsPage">
+       <layout class="QVBoxLayout" name="locationsPageLayout">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
-         <widget class="QWidget" name="plotArea" native="true">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>300</height>
-           </size>
+         <widget class="QScrollArea" name="locationsScroll">
+          <property name="frameShape">
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
-          <property name="autoFillBackground">
+          <property name="widgetResizable">
            <bool>true</bool>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout">
-           <property name="sizeConstraint">
-            <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
+          <widget class="QWidget" name="locationsContents">
+           <property name="page" stdset="0">
+            <bool>true</bool>
            </property>
-          </layout>
+           <layout class="QVBoxLayout" name="locationsLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <property name="leftMargin">
+             <number>20</number>
+            </property>
+            <property name="topMargin">
+             <number>20</number>
+            </property>
+            <property name="rightMargin">
+             <number>20</number>
+            </property>
+            <property name="bottomMargin">
+             <number>20</number>
+            </property>
+            <item>
+             <layout class="QHBoxLayout" name="locationsHeader">
+              <item>
+               <widget class="QLabel" name="locationsTitle">
+                <property name="role" stdset="0">
+                 <string>title</string>
+                </property>
+                <property name="text">
+                 <string>Locations</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="locationsHeaderSpacer">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="addLocationButton">
+                <property name="primary" stdset="0">
+                 <bool>true</bool>
+                </property>
+                <property name="text">
+                 <string>+ Add place</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QLabel" name="locationsSubtitle">
+              <property name="role" stdset="0">
+               <string>subtitle</string>
+              </property>
+              <property name="text">
+               <string>Compare your suffering.</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="locationsList" native="true">
+              <layout class="QVBoxLayout" name="locationsListLayout">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>12</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <spacer name="locationsSpacer">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <!-- ===== PAGE 6: SETTINGS ===== -->
+      <widget class="QWidget" name="settingsPage">
+       <layout class="QVBoxLayout" name="settingsPageLayout">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QScrollArea" name="settingsScroll">
+          <property name="frameShape">
+           <enum>QFrame::Shape::NoFrame</enum>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="settingsContents">
+           <property name="page" stdset="0">
+            <bool>true</bool>
+           </property>
+           <layout class="QVBoxLayout" name="settingsLayout">
+            <property name="spacing">
+             <number>14</number>
+            </property>
+            <property name="leftMargin">
+             <number>20</number>
+            </property>
+            <property name="topMargin">
+             <number>20</number>
+            </property>
+            <property name="rightMargin">
+             <number>20</number>
+            </property>
+            <property name="bottomMargin">
+             <number>20</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="settingsTitle">
+              <property name="role" stdset="0">
+               <string>title</string>
+              </property>
+              <property name="text">
+               <string>Settings</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="settingsBox">
+              <property name="card" stdset="0">
+               <bool>true</bool>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>760</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <layout class="QFormLayout" name="settingsForm">
+               <property name="horizontalSpacing">
+                <number>24</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>16</number>
+               </property>
+               <property name="leftMargin">
+                <number>20</number>
+               </property>
+               <property name="topMargin">
+                <number>18</number>
+               </property>
+               <property name="rightMargin">
+                <number>20</number>
+               </property>
+               <property name="bottomMargin">
+                <number>18</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="unitsCaption">
+                 <property name="role" stdset="0">
+                  <string>sub</string>
+                 </property>
+                 <property name="text">
+                  <string>Units</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QComboBox" name="unitsCombo">
+                 <item>
+                  <property name="text">
+                   <string>Fahrenheit</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Celsius</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="themeCaption">
+                 <property name="role" stdset="0">
+                  <string>sub</string>
+                 </property>
+                 <property name="text">
+                  <string>Theme</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QComboBox" name="themeCombo"/>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="viewCaption">
+                 <property name="role" stdset="0">
+                  <string>sub</string>
+                 </property>
+                 <property name="text">
+                  <string>View</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <layout class="QHBoxLayout" name="viewChecks">
+                 <property name="spacing">
+                  <number>20</number>
+                 </property>
+                 <item>
+                  <widget class="QCheckBox" name="showForecastCheck">
+                   <property name="text">
+                    <string>Show Forecast</string>
+                   </property>
+                   <property name="checked">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="showGraphCheck">
+                   <property name="text">
+                    <string>Show Graph</string>
+                   </property>
+                   <property name="checked">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="viewChecksSpacer">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="heatCaption">
+                 <property name="role" stdset="0">
+                  <string>sub</string>
+                 </property>
+                 <property name="text">
+                  <string>Heat alert at</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QSpinBox" name="heatThresholdSpin">
+                 <property name="suffix">
+                  <string>°F heat index</string>
+                 </property>
+                 <property name="minimum">
+                  <number>80</number>
+                 </property>
+                 <property name="maximum">
+                  <number>130</number>
+                 </property>
+                 <property name="value">
+                  <number>105</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="locationCaption">
+                 <property name="role" stdset="0">
+                  <string>sub</string>
+                 </property>
+                 <property name="text">
+                  <string>Location</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <layout class="QHBoxLayout" name="locationRow">
+                 <property name="spacing">
+                  <number>12</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="locationValueLabel">
+                   <property name="text">
+                    <string>location</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="changeLocationButton">
+                   <property name="text">
+                    <string>Change…</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="locationRowSpacer">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="refreshCaption">
+                 <property name="role" stdset="0">
+                  <string>sub</string>
+                 </property>
+                 <property name="text">
+                  <string>Refresh</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="1">
+                <widget class="QLabel" name="refreshValueLabel">
+                 <property name="text">
+                  <string>Every hour (matches the cache expiry) · F5 to force it</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <spacer name="settingsSpacer">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
          </widget>
         </item>
        </layout>
@@ -719,7 +1219,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>863</width>
+     <width>1100</width>
      <height>33</height>
     </rect>
    </property>
@@ -766,6 +1266,7 @@
    <addaction name="menu_Settings"/>
    <addaction name="menu_Help"/>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
   <action name="actionSave">
    <property name="text">
     <string>Save Graphs</string>

@@ -12,6 +12,34 @@ Script-specific version numbers follow `MAJOR.MINOR.PATCH`, scoped to that file 
 - **MINOR** bumps when new functionality is added to that file
 - **PATCH** bumps for bug fixes and small internal cleanups with no new capability
 
+---
+## v1.0.0
+## The Weather App with a personality disorder
+
+### Added
+- **New layout**: sidebar navigation with seven pages: Now, Hourly, 10-Day, Alerts, Radar, Locations, Settings.
+- **Hourly** page: heat bars for every hour, colored by how much it hates you, with feels-like markers.
+- **10-Day** page: 10-day forecast (up from 7), each day with its own quip.
+- **Alerts** page: live National Weather Service alerts, plus your own heat-index threshold.
+- **Radar** page: looping radar map, no API key needed (NEXRAD in the US, RainViewer elsewhere).
+- **Locations** page: save places, compare temps, and set a new default.
+- **Settings** page: units, theme, view toggles, heat alert threshold and location, all in one place.
+- `alerts.py`: fetches active alerts from api.weather.gov.
+- `widgets.py`: custom rows and cards for the new pages.
+- Archivo font support (`assets/fonts/`), with Calibri as the fallback.
+
+### Changed
+- `main_window.ui`: rebuilt around a `QListWidget` + `QStackedWidget`.
+- `main.py`: Now page shows the quip as the headline, plus humidity, wind, UV and precip. Units are saved between runs.
+- `Forecasts.py`: new `get_forecast_and_current()` adds current conditions and up to 16 days. `get_forecast()` is unchanged.
+- `theme.py`: sidebar, page and label styles, a heat color scale, and font loading.
+- Temp and precip cards merged into a single row of 7 day cards.
+
+### Fixed
+- The theme not fully applying at launch.
+
+**To Do:** Mobile app? -- !Unplug the sun, plug it back in!
+
 
 ---
 ## v0.11.0

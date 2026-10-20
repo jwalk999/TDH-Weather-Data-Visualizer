@@ -54,6 +54,7 @@ QUIPS_TEMP_V_HIGH = [
     "Double Black Flag is in effect. Wait until you see Triple Black Flag.",
     "Fun fact: You are mostly water, and the sky is trying to remove it.",
     "We have mandated a formal inquiry.",
+    "The bottom layer of the Mesosphere is roughly -15°C. Too bad you're down here."
 ]
 
 QUIPS_TEMP_HIGH = [
@@ -120,7 +121,7 @@ QUIPS_TEMP_NORMAL = [
     "The apocalypse can wait.",
     "Koalas hug trees to cool off. Find a tree. Hold it.",
     "The world isn't ending. Yet.",
-    "The bottom layer of the Mesosphere is roughly -15°C. Too bad you're down here."
+    
 ]
 
 QUIPS_TEMP_LOW = [
