@@ -9,7 +9,8 @@ Version: 0.2.0
 Scope: Creates the main GUI environment for the application. Sidebar + stacked pages layout:
     Now, Hourly, 10-Day, Alerts, Radar, Locations and Settings.
 """
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
 #              \     :     /
 #       `.      \    :    /      .'         /$$$$$$$$                      /$$$$$$$
@@ -131,7 +132,15 @@ VERSION = "0.2"
 FORECAST_DAYS = 10
 
 # Sidebar rows, in the same order as the pages in the QStackedWidget
-PAGE_NOW, PAGE_HOURLY, PAGE_TENDAY, PAGE_ALERTS, PAGE_RADAR, PAGE_LOCATIONS, PAGE_SETTINGS = range(7)
+(
+    PAGE_NOW,
+    PAGE_HOURLY,
+    PAGE_TENDAY,
+    PAGE_ALERTS,
+    PAGE_RADAR,
+    PAGE_LOCATIONS,
+    PAGE_SETTINGS,
+) = range(7)
 
 HEAT_TIPS = [
     "Drink water before you feel thirsty.",
@@ -144,6 +153,7 @@ HEAT_TIPS = [
 # =============================================================================
 # ============================== FORMATTING ===================================
 # =============================================================================
+
 
 def _num(value, default: float = 0.0) -> float:
     """Returns ``value`` as a float, or ``default`` if it's missing or NaN (Open-Meteo leaves gaps far out)."""
@@ -165,7 +175,12 @@ def uv_label(uv: float) -> str:
 
 def bucket_name(temp_f: float) -> str:
     """Names the quips.py temperature bucket a reading falls in."""
-    for limit, name in ((V_HIGH_F, "Too damn hot"), (HIGH_F, "Hot"), (NORMAL_F, "Normal"), (LOW_F, "Chilly")):
+    for limit, name in (
+        (V_HIGH_F, "Too damn hot"),
+        (HIGH_F, "Hot"),
+        (NORMAL_F, "Normal"),
+        (LOW_F, "Chilly"),
+    ):
         if temp_f >= limit:
             return name
     return "Freezing"
@@ -173,7 +188,12 @@ def bucket_name(temp_f: float) -> str:
 
 def bucket_kicker(temp_f: float) -> str:
     """The small caption above the quip headline, e.g. "TOO DAMN HOT BUCKET · 95°F+"."""
-    for limit, name in ((V_HIGH_F, "TOO DAMN HOT"), (HIGH_F, "HOT"), (NORMAL_F, "NORMAL"), (LOW_F, "CHILLY")):
+    for limit, name in (
+        (V_HIGH_F, "TOO DAMN HOT"),
+        (HIGH_F, "HOT"),
+        (NORMAL_F, "NORMAL"),
+        (LOW_F, "CHILLY"),
+    ):
         if temp_f >= limit:
             return f"{name} BUCKET · {limit}°F+"
     return f"FREEZING BUCKET · UNDER {LOW_F}°F"
@@ -188,6 +208,7 @@ def fmt_hour(stamp: pd.Timestamp) -> str:
 # ============================== DATA FETCH ===================================
 # ==============================AND LOADING ===================================
 # =============================================================================
+
 
 # Pass the scroll function through the figure canvas so scrolling works on the graphs
 class ScrollPassthroughCanvas(FigureCanvasQTAgg):
@@ -232,7 +253,9 @@ def load_data():
     now_row = past.iloc[-1] if len(past) else hourly_df.iloc[0]
 
     temp_f = now["Temperature"]
-    condition = get_weather_description(now["Weather Code"], descriptions, "day" if now["Is Day"] else "night")
+    condition = get_weather_description(
+        now["Weather Code"], descriptions, "day" if now["Is Day"] else "night"
+    )
 
     current = {
         "location": location["location_name"],
@@ -258,17 +281,21 @@ def load_data():
     days = []
     for i, row in enumerate(daily_df.to_dict("records")):
         high_f = _num(row["Temperature High"])
-        day_condition = get_weather_description(_num(row["Weather Code"]), descriptions, "day")
-        days.append({
-            "day": "Today" if i == 0 else row["Date"].strftime("%a"),
-            "date": f"{row['Date'].month}/{row['Date'].day}",
-            "high_f": high_f,
-            "low_f": _num(row["Temperature Low"]),
-            "precip_chance": int(_num(row["Chance of Precipitation"])),
-            "precip_in": _num(row["Precipitation"]),
-            "condition": day_condition,
-            "quip": get_quip(high_f, day_condition),
-        })
+        day_condition = get_weather_description(
+            _num(row["Weather Code"]), descriptions, "day"
+        )
+        days.append(
+            {
+                "day": "Today" if i == 0 else row["Date"].strftime("%a"),
+                "date": f"{row['Date'].month}/{row['Date'].day}",
+                "high_f": high_f,
+                "low_f": _num(row["Temperature Low"]),
+                "precip_chance": int(_num(row["Chance of Precipitation"])),
+                "precip_in": _num(row["Precipitation"]),
+                "condition": day_condition,
+                "quip": get_quip(high_f, day_condition),
+            }
+        )
 
     hours = [
         {
@@ -356,7 +383,9 @@ class MainWindow(QMainWindow):
         """Connect the sidebar to the stacked pages and start on the Now page."""
         self.ui.navList.currentRowChanged.connect(self._on_page_changed)
         self.ui.navList.setCurrentRow(PAGE_NOW)
-        self.ui.alertLinkLabel.linkActivated.connect(lambda _link: self.ui.navList.setCurrentRow(PAGE_ALERTS))
+        self.ui.alertLinkLabel.linkActivated.connect(
+            lambda _link: self.ui.navList.setCurrentRow(PAGE_ALERTS)
+        )
 
     def _on_page_changed(self, row: int):
         """
@@ -377,7 +406,9 @@ class MainWindow(QMainWindow):
 
         Stores the labels for each in ``self.day_cells``, in day order.
         """
-        self.day_cells = [self._build_cell(getattr(self.ui, f"tempFrame{i}")) for i in range(1, 8)]
+        self.day_cells = [
+            self._build_cell(getattr(self.ui, f"tempFrame{i}")) for i in range(1, 8)
+        ]
 
     @staticmethod
     def _build_cell(frame):
@@ -392,7 +423,9 @@ class MainWindow(QMainWindow):
         """
         frame.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Preferred)
         frame.setMinimumWidth(70)
-        frame.setProperty("card", True)  # Picks up the rounded card style from theme.build_stylesheet()
+        frame.setProperty(
+            "card", True
+        )  # Picks up the rounded card style from theme.build_stylesheet()
         layout = QVBoxLayout(frame)
         layout.setContentsMargins(12, 10, 12, 10)
         layout.setSpacing(2)
@@ -412,7 +445,9 @@ class MainWindow(QMainWindow):
         """
         self.figure = Figure()
         self.canvas = ScrollPassthroughCanvas(self.figure)
-        self.canvas.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        self.canvas.setSizePolicy(
+            QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding
+        )
         layout = self.ui.plotArea.layout() or QVBoxLayout(self.ui.plotArea)
         layout.addWidget(self.canvas)
 
@@ -440,7 +475,10 @@ class MainWindow(QMainWindow):
         if self.use_celsius:
             ui.actionCelcius.setChecked(True)
 
-        for action, widget in ((ui.actionShow_Forecast, ui.forecastBox), (ui.actionShow_Graph, ui.plotArea)):
+        for action, widget in (
+            (ui.actionShow_Forecast, ui.forecastBox),
+            (ui.actionShow_Graph, ui.plotArea),
+        ):
             action.setCheckable(True)
             action.setChecked(True)
             action.toggled.connect(widget.setVisible)
@@ -464,7 +502,9 @@ class MainWindow(QMainWindow):
         # Help
         ui.actionAbout.triggered.connect(self.show_about)
         ui.actionReadme.triggered.connect(self.open_readme)
-        ui.actionGithub.triggered.connect(lambda: QDesktopServices.openUrl(QUrl(GITHUB_URL)))
+        ui.actionGithub.triggered.connect(
+            lambda: QDesktopServices.openUrl(QUrl(GITHUB_URL))
+        )
 
     def _build_theme_menu(self):
         """
@@ -499,7 +539,10 @@ class MainWindow(QMainWindow):
         ui.themeCombo.currentTextChanged.connect(self.change_theme)
 
         # setChecked() only emits toggled when the value changes, so these two-way links don't loop
-        for check, action in ((ui.showForecastCheck, ui.actionShow_Forecast), (ui.showGraphCheck, ui.actionShow_Graph)):
+        for check, action in (
+            (ui.showForecastCheck, ui.actionShow_Forecast),
+            (ui.showGraphCheck, ui.actionShow_Graph),
+        ):
             check.toggled.connect(action.setChecked)
             action.toggled.connect(check.setChecked)
 
@@ -524,17 +567,29 @@ class MainWindow(QMainWindow):
         self.statusBar().showMessage("Loading Data...")
         QApplication.processEvents()  # show message before fetching
         try:
-            (self.current, self.days, self.hours, self.alerts,
-             self.daily_df, self.hourly_df) = load_data()
+            (
+                self.current,
+                self.days,
+                self.hours,
+                self.alerts,
+                self.daily_df,
+                self.hourly_df,
+            ) = load_data()
         except Exception as err:  # throw an error without crashing  # noqa: BLE001
             close_splash()  # The splash stays on top and would hide the dialog
-            QMessageBox.warning(self, "Refresh Failed", f"Couldn't load weather data:\n{err}")
+            QMessageBox.warning(
+                self, "Refresh Failed", f"Couldn't load weather data:\n{err}"
+            )
             self.statusBar().showMessage("Refresh failed")
             return
         self.update_display()
         if self.radar_view is not None:
-            load_radar(self.radar_view, self.current["latitude"], self.current["longitude"])
-        self.statusBar().showMessage(f"Open-Meteo · updated {self.current['updated']} · F5 to refresh")
+            load_radar(
+                self.radar_view, self.current["latitude"], self.current["longitude"]
+            )
+        self.statusBar().showMessage(
+            f"Open-Meteo · updated {self.current['updated']} · F5 to refresh"
+        )
 
     def fmt_temp(self, temp_f: float) -> str:
         """
@@ -579,8 +634,10 @@ class MainWindow(QMainWindow):
     def _stat_html(name: str, value: str) -> str:
         """Two-line rich text for the stat row: a small muted caption over the value."""
         muted = theme.current().muted
-        return (f"<span style='color:{muted};font-size:11px'>{name.upper()}</span><br>"
-                f"<span style='font-size:19px'>{value}</span>")
+        return (
+            f"<span style='color:{muted};font-size:11px'>{name.upper()}</span><br>"
+            f"<span style='font-size:19px'>{value}</span>"
+        )
 
     def update_display(self):
         """
@@ -598,7 +655,9 @@ class MainWindow(QMainWindow):
         # ===== NOW =====
         ui.locationLabel.setText(cur["location"])
         ui.dateLabel.setText(f"{cur['date']} · updated {cur['updated']}")
-        ui.bigtempLabel.setText(f"{number}<span style='font-size:36px;color:{colors.hot}'>{unit}</span>")
+        ui.bigtempLabel.setText(
+            f"{number}<span style='font-size:36px;color:{colors.hot}'>{unit}</span>"
+        )
         ui.bigprecLabel.setText(
             f"{cur['condition']} · Feels like <b style='color:{colors.hot}'>{self.fmt_deg(cur['feels_f'])}</b>"
         )
@@ -609,8 +668,12 @@ class MainWindow(QMainWindow):
         ui.quipKickerLabel.setText(bucket_kicker(cur["temp_f"]))
         ui.quipLabel.setText(cur["quip"])
         ui.humidityLabel.setText(self._stat_html("Humidity", f"{cur['humidity']:.0f}%"))
-        ui.windLabel.setText(self._stat_html("Wind", self.fmt_wind(cur["wind_mph"], cur["wind_dir"])))
-        ui.uvLabel.setText(self._stat_html("UV index", f"{cur['uv']:.0f} · {uv_label(cur['uv'])}"))
+        ui.windLabel.setText(
+            self._stat_html("Wind", self.fmt_wind(cur["wind_mph"], cur["wind_dir"]))
+        )
+        ui.uvLabel.setText(
+            self._stat_html("UV index", f"{cur['uv']:.0f} · {uv_label(cur['uv'])}")
+        )
         ui.precipNowLabel.setText(self._stat_html("Precip", f"{cur['precip_chance']}%"))
         ui.sunriseLabel.setText(f"● Sunrise {cur['sunrise']}")
         ui.sunsetLabel.setText(f"● Sunset {cur['sunset']}")
@@ -620,7 +683,9 @@ class MainWindow(QMainWindow):
             cell["day"].setText(day["day"])
             cell["main"].setText(self.fmt_deg(day["high_f"]))
             cell["low"].setText(self.fmt_deg(day["low_f"]))
-            cell["precip"].setText(f"{day['precip_chance']}% · {self.fmt_precip(day['precip_in'])}")
+            cell["precip"].setText(
+                f"{day['precip_chance']}% · {self.fmt_precip(day['precip_in'])}"
+            )
 
         self._update_alert_banner()
         self._render_hourly()
@@ -628,7 +693,9 @@ class MainWindow(QMainWindow):
         self._render_alerts()
 
         alerts_item = ui.navList.item(PAGE_ALERTS)
-        alerts_item.setText(f"Alerts  ({len(self.alerts)})" if self.alerts else "Alerts")
+        alerts_item.setText(
+            f"Alerts  ({len(self.alerts)})" if self.alerts else "Alerts"
+        )
         ui.locationValueLabel.setText(cur["location"])
         self.draw_graph()
 
@@ -658,7 +725,9 @@ class MainWindow(QMainWindow):
             ui.alertBanner.hide()
             return
         ink = theme.current().highlighted_text
-        ui.alertLinkLabel.setText(f"<a href='#alerts' style='color:{ink};text-decoration:none'><b>Details →</b></a>")
+        ui.alertLinkLabel.setText(
+            f"<a href='#alerts' style='color:{ink};text-decoration:none'><b>Details →</b></a>"
+        )
         ui.alertBanner.show()
 
     def _render_hourly(self):
@@ -678,15 +747,17 @@ class MainWindow(QMainWindow):
         self.ui.hourlySubtitle.setText(summary)
 
         for hour in self.hours:
-            layout.addWidget(HourRow(
-                fmt_hour(hour["stamp"]),
-                self.fmt_deg(hour["temp_f"]),
-                self.fmt_deg(hour["feels_f"]),
-                hour["precip_chance"],
-                hour["temp_f"],
-                hour["feels_f"],
-                is_now=hour["is_now"],
-            ))
+            layout.addWidget(
+                HourRow(
+                    fmt_hour(hour["stamp"]),
+                    self.fmt_deg(hour["temp_f"]),
+                    self.fmt_deg(hour["feels_f"]),
+                    hour["precip_chance"],
+                    hour["temp_f"],
+                    hour["feels_f"],
+                    is_now=hour["is_now"],
+                )
+            )
 
     def _render_ten_day(self):
         """Rebuild the 10-Day page rows and its summary."""
@@ -701,16 +772,18 @@ class MainWindow(QMainWindow):
             self.ui.tenDaySubtitle.setText("Not one day above 95 degrees. Suspicious.")
 
         for day in self.days:
-            layout.addWidget(DayRow(
-                day["day"],
-                day["date"],
-                self.fmt_deg(day["high_f"]),
-                self.fmt_deg(day["low_f"]),
-                day["high_f"],
-                day["quip"],
-                day["condition"],
-                day["precip_chance"],
-            ))
+            layout.addWidget(
+                DayRow(
+                    day["day"],
+                    day["date"],
+                    self.fmt_deg(day["high_f"]),
+                    self.fmt_deg(day["low_f"]),
+                    day["high_f"],
+                    day["quip"],
+                    day["condition"],
+                    day["precip_chance"],
+                )
+            )
 
     def _render_alerts(self):
         """Rebuild the Alerts page: NWS alert cards (or an all-clear), heat tips, and the user's threshold."""
@@ -718,26 +791,40 @@ class MainWindow(QMainWindow):
         clear_layout(layout)
         count = len(self.alerts)
         self.ui.alertsSubtitle.setText(
-            f"{count} active for {self.current['location']}" if count else f"Nothing active for {self.current['location']}"
+            f"{count} active for {self.current['location']}"
+            if count
+            else f"Nothing active for {self.current['location']}"
         )
 
         for alert in self.alerts:
-            layout.addWidget(AlertCard(alert, get_quip(self.current["temp_f"], self.current["condition"])))
+            layout.addWidget(
+                AlertCard(
+                    alert, get_quip(self.current["temp_f"], self.current["condition"])
+                )
+            )
         if not count:
-            layout.addWidget(make_label(
-                "No alerts. The atmosphere has temporarily suspended hostilities.", "subtitle", wrap=True
-            ))
+            layout.addWidget(
+                make_label(
+                    "No alerts. The atmosphere has temporarily suspended hostilities.",
+                    "subtitle",
+                    wrap=True,
+                )
+            )
 
         peak = self._peak_feels()
+
+        # Heat Tips show up even if threshold is not met (even on a frost advisory!)
         if count or (peak is not None and peak >= self.heat_threshold_f):
             layout.addWidget(make_label("Don't die out there", "section"))
             for tip in HEAT_TIPS:
                 layout.addWidget(make_label(f"•  {tip}", "body", wrap=True))
 
-        layout.addWidget(make_label(
-            f"Your own heat alert: feels-like ≥ {self.fmt_temp(self.heat_threshold_f)}. Change it in Settings.",
-            "sub",
-        ))
+        layout.addWidget(
+            make_label(
+                f"Your own heat alert: feels-like ≥ {self.fmt_temp(self.heat_threshold_f)}. Change it in Settings.",
+                "sub",
+            )
+        )
 
     def draw_graph(self):
         """
@@ -749,9 +836,13 @@ class MainWindow(QMainWindow):
         if self.daily_df is None:
             return
         if self.graph_mode == "hourly":
-            make_hourly_graphs(self.hourly_df, fig=self.figure, celsius=self.use_celsius)
+            make_hourly_graphs(
+                self.hourly_df, fig=self.figure, celsius=self.use_celsius
+            )
         else:
-            make_daily_graphs(self.daily_df.head(7), fig=self.figure, celsius=self.use_celsius)
+            make_daily_graphs(
+                self.daily_df.head(7), fig=self.figure, celsius=self.use_celsius
+            )
         self.canvas.draw_idle()
 
     def set_graph_mode(self, mode: str):
@@ -809,8 +900,11 @@ class MainWindow(QMainWindow):
         QApplication.processEvents()
 
         default = load_location()
-        entries = [(default, True)] + [(p, False) for p in self._load_places()
-                                       if p["location_name"] != default["location_name"]]
+        entries = [(default, True)] + [
+            (p, False)
+            for p in self._load_places()
+            if p["location_name"] != default["location_name"]
+        ]
         for loc, is_default in entries:
             try:
                 temp_f = get_current_temp(loc)
@@ -819,16 +913,21 @@ class MainWindow(QMainWindow):
             if temp_f is None:
                 detail, temp_text = "Couldn't reach Open-Meteo", "--"
             else:
-                detail, temp_text = f"{bucket_name(temp_f)} · “{get_quip(temp_f)}”", self.fmt_deg(temp_f)
-            layout.addWidget(place_row(
-                loc["location_name"],
-                temp_text,
-                temp_f,
-                detail,
-                is_default,
-                None if is_default else (lambda loc=loc: self.make_default(loc)),
-                None if is_default else (lambda loc=loc: self.remove_place(loc)),
-            ))
+                detail, temp_text = (
+                    f"{bucket_name(temp_f)} · “{get_quip(temp_f)}”",
+                    self.fmt_deg(temp_f),
+                )
+            layout.addWidget(
+                place_row(
+                    loc["location_name"],
+                    temp_text,
+                    temp_f,
+                    detail,
+                    is_default,
+                    None if is_default else (lambda loc=loc: self.make_default(loc)),
+                    None if is_default else (lambda loc=loc: self.remove_place(loc)),
+                )
+            )
         self.statusBar().showMessage("Places updated", 3000)
 
     def _pick_location(self, title: str) -> dict | None:
@@ -844,23 +943,33 @@ class MainWindow(QMainWindow):
             A location dict for config.json, or None if cancelled or nothing was found.
         """
         current = self.current["location"] if self.current else ""
-        text, ok = QInputDialog.getText(self, title, "City or postal code:", text=current)
+        text, ok = QInputDialog.getText(
+            self, title, "City or postal code:", text=current
+        )
         if not ok or not text.strip():
             return None
 
         try:
             matches = geocode(text.strip(), limit=5)
         except requests.RequestException as err:
-            QMessageBox.warning(self, "Location Lookup Failed", f"Couldn't search for that location:\n{err}")
+            QMessageBox.warning(
+                self,
+                "Location Lookup Failed",
+                f"Couldn't search for that location:\n{err}",
+            )
             return None
         if not matches:
-            QMessageBox.warning(self, "Location Not Found", f'No places found for "{text.strip()}".')
+            QMessageBox.warning(
+                self, "Location Not Found", f'No places found for "{text.strip()}".'
+            )
             return None
 
         match = matches[0]
         if len(matches) > 1:
             names = [format_match(m) for m in matches]
-            choice, ok = QInputDialog.getItem(self, "Choose Location", "Which one?", names, 0, False)
+            choice, ok = QInputDialog.getItem(
+                self, "Choose Location", "Which one?", names, 0, False
+            )
             if not ok:
                 return None
             match = matches[names.index(choice)]
@@ -871,13 +980,23 @@ class MainWindow(QMainWindow):
         location = self._pick_location("Add Place")
         if location is None:
             return
-        places = [p for p in self._load_places() if p["location_name"] != location["location_name"]]
+        places = [
+            p
+            for p in self._load_places()
+            if p["location_name"] != location["location_name"]
+        ]
         self._save_places(places + [location])
         self._refresh_places()
 
     def remove_place(self, location: dict):
         """Remove a place from the saved list."""
-        self._save_places([p for p in self._load_places() if p["location_name"] != location["location_name"]])
+        self._save_places(
+            [
+                p
+                for p in self._load_places()
+                if p["location_name"] != location["location_name"]
+            ]
+        )
         self._refresh_places()
 
     def make_default(self, location: dict):
@@ -888,9 +1007,27 @@ class MainWindow(QMainWindow):
             location: The place to make default.
         """
         old = load_location()
-        places = [p for p in self._load_places() if p["location_name"] != location["location_name"]]
-        self._save_places(places + [{k: old[k] for k in ("location_name", "latitude", "longitude",
-                                                          "elevation", "timezone") if k in old}])
+        places = [
+            p
+            for p in self._load_places()
+            if p["location_name"] != location["location_name"]
+        ]
+        self._save_places(
+            places
+            + [
+                {
+                    k: old[k]
+                    for k in (
+                        "location_name",
+                        "latitude",
+                        "longitude",
+                        "elevation",
+                        "timezone",
+                    )
+                    if k in old
+                }
+            ]
+        )
         # Merge so keys this page doesn't set (like station_id) survive the save
         save_location({**old, **location})
         self.refresh()
@@ -961,7 +1098,10 @@ class MainWindow(QMainWindow):
         Format follows the file extension shown in the dialog. Does nothing if cancelled.
         """
         path, _ = QFileDialog.getSaveFileName(
-            self, "Save Graph", str(HERE / "forecast.png"), "PNG Image (*.png);; PDF (*.pdf);; SVG(*.svg)"
+            self,
+            "Save Graph",
+            str(HERE / "forecast.png"),
+            "PNG Image (*.png);; PDF (*.pdf);; SVG(*.svg)",
         )
         if path:
             self.figure.savefig(path, dpi=150)
@@ -980,7 +1120,9 @@ class MainWindow(QMainWindow):
                 pass
             self.statusBar().showMessage("Connection successful", 5000)
         except OSError:
-            QMessageBox.warning(self, "No connection", "Could not reach api.open-meteo.com.")
+            QMessageBox.warning(
+                self, "No connection", "Could not reach api.open-meteo.com."
+            )
 
     def set_location(self):
         """Prompt for a new default location, save it to config.json and refresh."""
@@ -1028,7 +1170,9 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setStyle("Fusion")  # The native Windows style ignores most palette colors
     theme.load_fonts()  # Before apply_theme(), because the stylesheet names the font families
-    theme.apply_theme(app, QSettings("TooDamnHot", "TooDamnHot").value("theme", theme.DEFAULT_THEME))
+    theme.apply_theme(
+        app, QSettings("TooDamnHot", "TooDamnHot").value("theme", theme.DEFAULT_THEME)
+    )
     window = MainWindow()
     splash_progress(7, "Ready")
     window.show()
