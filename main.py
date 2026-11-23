@@ -149,6 +149,13 @@ HEAT_TIPS = [
     "Do outdoor work before 10 AM or after 7 PM.",
 ]
 
+COLD_TIPS = [
+    "Bare skin is susceptible to frostbite within 30 minutes.",
+    "Pets are cold too.",
+    "Keep your faucet at a drip to prevent cracked pipes.",
+    "A hot cup of joe never hurt anyone."
+]
+
 
 # =============================================================================
 # ============================== FORMATTING ===================================
@@ -256,6 +263,7 @@ def load_data():
     condition = get_weather_description(
         now["Weather Code"], descriptions, "day" if now["Is Day"] else "night"
     )
+    print(repr(now["Weather Code"]), repr(condition))
 
     current = {
         "location": location["location_name"],
