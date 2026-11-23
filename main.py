@@ -821,7 +821,6 @@ class MainWindow(QMainWindow):
 
         peak = self._peak_feels()
 
-        # Heat Tips show up even if threshold is not met (even on a frost advisory!)
         if count or (peak is not None and peak >= self.heat_threshold_f):
             layout.addWidget(make_label("Don't die out there", "section"))
             for tip in HEAT_TIPS:
